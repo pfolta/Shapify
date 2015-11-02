@@ -70,4 +70,8 @@ public class MainScene {
         borderPane.setCenter(scrollPane);
     }
 
+    public void clearArtBoard() {
+        borderPane.setCenter(null);
+    }
+
 }
