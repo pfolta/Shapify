@@ -17,4 +17,8 @@ public class Main extends Application {
         mainController = new MainController();
         mainController.initGUI(primaryStage);
     }
+
+    public static void exit() {
+        System.exit(0);
+    }
 }
