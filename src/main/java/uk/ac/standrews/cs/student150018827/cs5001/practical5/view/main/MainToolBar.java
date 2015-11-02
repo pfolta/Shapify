@@ -13,6 +13,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIContr
 public class MainToolBar extends ToolBar {
 
     private GUIController guiController;
+    private MainWindow mainWindow;
 
     private Button btnNew;
     private Button btnOpen;
@@ -23,10 +24,11 @@ public class MainToolBar extends ToolBar {
 
     private ColorPicker btnColorPicker;
 
-    public MainToolBar(GUIController guiController) {
+    public MainToolBar(GUIController guiController, MainWindow mainWindow) {
         super();
 
         this.guiController = guiController;
+        this.mainWindow = mainWindow;
 
         buildToolBar();
     }
@@ -50,11 +52,11 @@ public class MainToolBar extends ToolBar {
         });
 
         btnOpen = new Button();
-        btnOpen.setText("Open");
+        btnOpen.setText("Open...");
         btnOpen.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Open Clicked!");
+                mainWindow.openFile();
             }
         });
 
@@ -63,7 +65,7 @@ public class MainToolBar extends ToolBar {
         btnSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Save Clicked!");
+                mainWindow.saveFile();
             }
         });
 

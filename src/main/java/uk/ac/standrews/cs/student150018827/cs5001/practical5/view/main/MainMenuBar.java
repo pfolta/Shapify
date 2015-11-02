@@ -15,6 +15,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIContr
 public class MainMenuBar extends MenuBar {
 
     private GUIController guiController;
+    private MainWindow mainWindow;
 
     private MenuItem fileNewItem;
     private MenuItem fileOpenItem;
@@ -27,10 +28,11 @@ public class MainMenuBar extends MenuBar {
 
     private MenuItem helpAboutItem;
 
-    public MainMenuBar(GUIController guiController) {
+    public MainMenuBar(GUIController guiController, MainWindow mainWindow) {
         super();
 
         this.guiController = guiController;
+        this.mainWindow = mainWindow;
 
         Menu fileMenu = buildFileMenu();
         Menu editMenu = buildEditMenu();
@@ -54,12 +56,12 @@ public class MainMenuBar extends MenuBar {
         });
 
         fileOpenItem = new MenuItem();
-        fileOpenItem.setText("_Open");
+        fileOpenItem.setText("_Open...");
         fileOpenItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
         fileOpenItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Open Clicked!");
+                mainWindow.openFile();
             }
         });
 
@@ -69,17 +71,17 @@ public class MainMenuBar extends MenuBar {
         fileSaveItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Save Clicked!");
+                mainWindow.saveFile();
             }
         });
 
         fileSaveAsItem = new MenuItem();
-        fileSaveAsItem.setText("Save _As");
+        fileSaveAsItem.setText("Save _As...");
         fileSaveAsItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
         fileSaveAsItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Save As Clicked!");
+                mainWindow.saveAsFile();
             }
         });
 

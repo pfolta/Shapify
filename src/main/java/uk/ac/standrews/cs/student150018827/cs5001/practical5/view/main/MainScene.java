@@ -14,21 +14,23 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIContr
 public class MainScene {
 
     private GUIController guiController;
+    private MainWindow mainWindow;
 
     private Scene scene;
 
     private MainMenuBar mainMenuBar;
     private MainToolBar mainToolBar;
 
-    public MainScene(GUIController guiController) {
+    public MainScene(GUIController guiController, MainWindow mainWindow) {
         this.guiController = guiController;
+        this.mainWindow = mainWindow;
 
         BorderPane pane = new BorderPane();
 
         VBox vBox = new VBox();
 
-        mainMenuBar = new MainMenuBar(guiController);
-        mainToolBar = new MainToolBar(guiController);
+        mainMenuBar = new MainMenuBar(guiController, mainWindow);
+        mainToolBar = new MainToolBar(guiController, mainWindow);
 
         vBox.getChildren().addAll(mainMenuBar, mainToolBar);
 
