@@ -21,6 +21,7 @@ public class MainMenuBar extends MenuBar {
     private MenuItem fileOpenItem;
     private MenuItem fileSaveItem;
     private MenuItem fileSaveAsItem;
+    private MenuItem fileCloseItem;
     private MenuItem fileExitItem;
 
     private MenuItem editUndoItem;
@@ -85,6 +86,16 @@ public class MainMenuBar extends MenuBar {
             }
         });
 
+        fileCloseItem = new MenuItem();
+        fileCloseItem.setText("_Close");
+        fileCloseItem.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN));
+        fileCloseItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Close Clicked!");
+            }
+        });
+
         fileExitItem = new MenuItem();
         fileExitItem.setText("E_xit");
         fileExitItem.setAccelerator(new KeyCodeCombination(KeyCode.F4, KeyCombination.ALT_DOWN));
@@ -95,7 +106,7 @@ public class MainMenuBar extends MenuBar {
             }
         });
 
-        menu.getItems().addAll(fileNewItem, new SeparatorMenuItem(), fileOpenItem, fileSaveItem, fileSaveAsItem, new SeparatorMenuItem(), fileExitItem);
+        menu.getItems().addAll(fileNewItem, new SeparatorMenuItem(), fileOpenItem, fileSaveItem, fileSaveAsItem, new SeparatorMenuItem(), fileCloseItem, fileExitItem);
 
         return menu;
     }
