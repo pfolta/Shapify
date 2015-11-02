@@ -71,6 +71,7 @@ public class MainWindow {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File to Save To");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.setInitialFileName("fileName.svg");
 
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg"),
