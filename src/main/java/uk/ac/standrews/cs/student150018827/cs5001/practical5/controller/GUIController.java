@@ -1,7 +1,7 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 
 import javafx.stage.Stage;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.about.AboutDialog;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.about.AboutStage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainWindow;
 
 public class GUIController {
@@ -29,8 +29,8 @@ public class GUIController {
     }
 
     public void openAboutDialog(Stage parent) {
-        AboutDialog aboutDialog = new AboutDialog(this);
-        aboutDialog.open(parent);
+        AboutStage aboutStage = new AboutStage(this, parent);
+        aboutStage.show();
     }
 
 }
