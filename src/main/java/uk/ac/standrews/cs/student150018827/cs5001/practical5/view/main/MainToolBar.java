@@ -18,6 +18,9 @@ public class MainToolBar extends ToolBar {
     private Button btnOpen;
     private Button btnSave;
 
+    private Button btnUndo;
+    private Button btnRedo;
+
     private ColorPicker btnColorPicker;
 
     public MainToolBar(GUIController guiController) {
@@ -30,9 +33,10 @@ public class MainToolBar extends ToolBar {
 
     private void buildToolBar() {
         buildFileControls();
+        getItems().add(new Separator());
+        buildEditControls();
+        getItems().add(new Separator());
         buildColorControls();
-
-        getItems().addAll(btnNew, btnOpen, btnSave, new Separator(), btnColorPicker);
     }
 
     private void buildFileControls() {
@@ -62,6 +66,30 @@ public class MainToolBar extends ToolBar {
                 System.out.println("Save Clicked!");
             }
         });
+
+        getItems().addAll(btnNew, btnOpen, btnSave);
+    }
+
+    private void buildEditControls() {
+        btnUndo = new Button();
+        btnUndo.setText("Undo");
+        btnUndo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Undo Clicked!");
+            }
+        });
+
+        btnRedo = new Button();
+        btnRedo.setText("Redo");
+        btnRedo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Redo Clicked!");
+            }
+        });
+
+        getItems().addAll(btnUndo, btnRedo);
     }
 
     private void buildColorControls() {
@@ -74,6 +102,8 @@ public class MainToolBar extends ToolBar {
                 System.out.println("Color Chosen: " + btnColorPicker.getValue());
             }
         });
+
+        getItems().addAll(btnColorPicker);
     }
 
 }

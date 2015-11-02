@@ -22,6 +22,9 @@ public class MainMenuBar extends MenuBar {
     private MenuItem fileSaveAsItem;
     private MenuItem fileExitItem;
 
+    private MenuItem editUndoItem;
+    private MenuItem editRedoItem;
+
     private MenuItem helpAboutItem;
 
     public MainMenuBar(GUIController guiController) {
@@ -30,9 +33,10 @@ public class MainMenuBar extends MenuBar {
         this.guiController = guiController;
 
         Menu fileMenu = buildFileMenu();
+        Menu editMenu = buildEditMenu();
         Menu helpMenu = buildHelpMenu();
 
-        this.getMenus().addAll(fileMenu, helpMenu);
+        this.getMenus().addAll(fileMenu, editMenu, helpMenu);
     }
 
     private Menu buildFileMenu() {
@@ -94,12 +98,41 @@ public class MainMenuBar extends MenuBar {
         return menu;
     }
 
+    private Menu buildEditMenu() {
+        Menu menu = new Menu();
+        menu.setText("_Edit");
+
+        editUndoItem = new MenuItem();
+        editUndoItem.setText("_Undo");
+        editUndoItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
+        editUndoItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Undo Clicked!");
+            }
+        });
+
+        editRedoItem = new MenuItem();
+        editRedoItem.setText("_Redo");
+        editRedoItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
+        editRedoItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Redo Clicked!");
+            }
+        });
+
+        menu.getItems().addAll(editUndoItem, editRedoItem);
+
+        return menu;
+    }
+
     private Menu buildHelpMenu() {
         Menu menu = new Menu();
         menu.setText("_Help");
 
         helpAboutItem = new MenuItem();
-        helpAboutItem.setText("About");
+        helpAboutItem.setText("_About");
         helpAboutItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
