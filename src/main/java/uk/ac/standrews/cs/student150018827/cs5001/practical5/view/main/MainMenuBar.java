@@ -36,8 +36,8 @@ public class MainMenuBar extends MenuBar {
     }
 
     private Menu buildFileMenu() {
-        Menu fileMenu = new Menu();
-        fileMenu.setText("_File");
+        Menu menu = new Menu();
+        menu.setText("_File");
 
         fileNewItem = new MenuItem();
         fileNewItem.setText("_New");
@@ -89,14 +89,14 @@ public class MainMenuBar extends MenuBar {
             }
         });
 
-        fileMenu.getItems().addAll(fileNewItem, new SeparatorMenuItem(), fileOpenItem, fileSaveItem, fileSaveAsItem, new SeparatorMenuItem(), fileExitItem);
+        menu.getItems().addAll(fileNewItem, new SeparatorMenuItem(), fileOpenItem, fileSaveItem, fileSaveAsItem, new SeparatorMenuItem(), fileExitItem);
 
-        return fileMenu;
+        return menu;
     }
 
     private Menu buildHelpMenu() {
-        Menu helpMenu = new Menu();
-        helpMenu.setText("_Help");
+        Menu menu = new Menu();
+        menu.setText("_Help");
 
         helpAboutItem = new MenuItem();
         helpAboutItem.setText("About");
@@ -107,9 +107,9 @@ public class MainMenuBar extends MenuBar {
             }
         });
 
-        helpMenu.getItems().addAll(helpAboutItem);
+        menu.getItems().addAll(helpAboutItem);
 
-        return helpMenu;
+        return menu;
     }
 
 }
