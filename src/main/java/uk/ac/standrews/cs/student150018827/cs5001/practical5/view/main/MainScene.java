@@ -1,10 +1,12 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
+import javafx.beans.binding.Bindings;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -50,7 +52,8 @@ public class MainScene {
         Group group = new Group();
         StackPane stackPane = new StackPane(group);
 
-        ScrollPane scrollPane = new ScrollPane(stackPane);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(stackPane);
         Canvas canvas = new Canvas(width, height);
 
         for (int i = 0; i <= width; i += 10) {
@@ -64,6 +67,12 @@ public class MainScene {
                 canvas.getGraphicsContext2D().fillRect(i, j, 10, 10);
             }
         }
+
+        GridPane grid = new GridPane();
+
+        stackPane.minWidthProperty().bind(Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds().getWidth(), scrollPane.viewportBoundsProperty()));
+        stackPane.minHeightProperty().bind(Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds().getHeight(), scrollPane.viewportBoundsProperty()));
+        grid.getChildren().add(stackPane);
 
         group.getChildren().addAll(canvas);
 
