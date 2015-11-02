@@ -8,7 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIController;
 
 public class MainScene {
@@ -18,6 +17,8 @@ public class MainScene {
 
     private Scene scene;
 
+    private BorderPane borderPane;
+
     private MainMenuBar mainMenuBar;
     private MainToolBar mainToolBar;
 
@@ -25,36 +26,48 @@ public class MainScene {
         this.guiController = guiController;
         this.mainWindow = mainWindow;
 
-        BorderPane pane = new BorderPane();
+        borderPane = new BorderPane();
 
         VBox vBox = new VBox();
 
-        mainMenuBar = new MainMenuBar(guiController, mainWindow);
-        mainToolBar = new MainToolBar(guiController, mainWindow);
+        mainMenuBar = new MainMenuBar(this.guiController, this.mainWindow);
+        mainToolBar = new MainToolBar(this.guiController, this.mainWindow);
 
         vBox.getChildren().addAll(mainMenuBar, mainToolBar);
 
-        Group group = new Group();
-        StackPane stackPane = new StackPane(group);
+        borderPane.setTop(vBox);
 
-        ScrollPane scrollPane = new ScrollPane(stackPane);
-        Canvas canvas = new Canvas(500, 500);
-        Rectangle rectangle = new Rectangle(210, 10, 100, 100);
-        group.getChildren().add(rectangle);
-        canvas.getGraphicsContext2D().fillRect(10, 10, 100, 100);
-        canvas.getGraphicsContext2D().setFill(Color.rgb(192, 128, 96));
-        canvas.getGraphicsContext2D().fillRect(110, 10, 100, 100);
-        group.getChildren().addAll(canvas);
+        setArtBoard(640, 480);
 
-
-        pane.setTop(vBox);
-        pane.setCenter(scrollPane);
-
-        scene = new Scene(pane, 1024, 768);
+        scene = new Scene(borderPane, 1024, 768);
     }
 
     public Scene getScene() {
         return scene;
+    }
+
+    public void setArtBoard(int width, int height) {
+        Group group = new Group();
+        StackPane stackPane = new StackPane(group);
+
+        ScrollPane scrollPane = new ScrollPane(stackPane);
+        Canvas canvas = new Canvas(width, height);
+
+        for (int i = 0; i <= width; i += 10) {
+            for (int j = 0; j <= height; j += 10) {
+                if (i % 20 == 0 && j % 20 != 0 || i % 20 != 0 && j % 20 == 0) {
+                    canvas.getGraphicsContext2D().setFill(Color.rgb(225, 225, 225));
+                } else {
+                    canvas.getGraphicsContext2D().setFill(Color.rgb(255, 255, 255));
+                }
+
+                canvas.getGraphicsContext2D().fillRect(i, j, 10, 10);
+            }
+        }
+
+        group.getChildren().addAll(canvas);
+
+        borderPane.setCenter(scrollPane);
     }
 
 }
