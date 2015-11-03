@@ -7,11 +7,11 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Separator;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 
 public class ToolBar extends javafx.scene.control.ToolBar {
 
-    private GUIController guiController;
+    private MainController mainController;
     private MainWindow mainWindow;
 
     private Button btnNew;
@@ -23,10 +23,10 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private ColorPicker btnColorPicker;
 
-    public ToolBar(GUIController guiController, MainWindow mainWindow) {
+    public ToolBar(MainController mainController, MainWindow mainWindow) {
         super();
 
-        this.guiController = guiController;
+        this.mainController = mainController;
         this.mainWindow = mainWindow;
 
         buildToolBar();
@@ -47,7 +47,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         btnNew.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                guiController.openNewDrawingDialog((Stage) ToolBar.this.getScene().getWindow());
+                mainController.getGUIController().openNewDrawingDialog((Stage) ToolBar.this.getScene().getWindow());
             }
         });
 

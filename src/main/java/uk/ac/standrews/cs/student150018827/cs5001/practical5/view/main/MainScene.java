@@ -12,11 +12,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 
 public class MainScene extends Scene {
 
-    private GUIController guiController;
+    private MainController mainController;
     private MainWindow mainWindow;
 
     private BorderPane borderPane;
@@ -26,18 +26,18 @@ public class MainScene extends Scene {
 
     private StatusBar statusBar;
 
-    public MainScene(GUIController guiController, MainWindow mainWindow) {
+    public MainScene(MainController mainController, MainWindow mainWindow) {
         super(new BorderPane(), 1000, 700);
 
-        this.guiController = guiController;
+        this.mainController = mainController;
         this.mainWindow = mainWindow;
 
         borderPane = new BorderPane();
 
         VBox vBox = new VBox();
 
-        mainMenuBar = new MenuBar(this.guiController, this.mainWindow);
-        mainToolBar = new ToolBar(this.guiController, this.mainWindow);
+        mainMenuBar = new MenuBar(this.mainController, this.mainWindow);
+        mainToolBar = new ToolBar(this.mainController, this.mainWindow);
 
         vBox.getChildren().addAll(mainMenuBar, mainToolBar);
 
@@ -45,7 +45,7 @@ public class MainScene extends Scene {
 
         setArtBoard(640, 480);
 
-        statusBar = new StatusBar(this.guiController, this.mainWindow);
+        statusBar = new StatusBar(this.mainController, this.mainWindow);
         borderPane.setBottom(statusBar);
 
         setRoot(borderPane);

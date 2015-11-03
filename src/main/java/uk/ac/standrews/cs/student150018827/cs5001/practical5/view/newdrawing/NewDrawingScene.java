@@ -1,24 +1,17 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.newdrawing;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.GUIUtils;
-
-import java.text.NumberFormat;
-import java.text.ParsePosition;
-import java.util.function.UnaryOperator;
 
 public class NewDrawingScene extends Scene {
 

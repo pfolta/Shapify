@@ -20,4 +20,8 @@ public class MainController {
         Main.exit();
     }
 
+    public GUIController getGUIController() {
+        return guiController;
+    }
+
 }

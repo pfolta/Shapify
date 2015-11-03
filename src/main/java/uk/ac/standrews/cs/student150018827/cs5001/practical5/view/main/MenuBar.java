@@ -7,11 +7,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 
 public class MenuBar extends javafx.scene.control.MenuBar {
 
-    private GUIController guiController;
+    private MainController mainController;
     private MainWindow mainWindow;
 
     private MenuItem fileNewItem;
@@ -31,10 +31,10 @@ public class MenuBar extends javafx.scene.control.MenuBar {
 
     private MenuItem helpAboutItem;
 
-    public MenuBar(GUIController guiController, MainWindow mainWindow) {
+    public MenuBar(MainController mainController, MainWindow mainWindow) {
         super();
 
-        this.guiController = guiController;
+        this.mainController = mainController;
         this.mainWindow = mainWindow;
 
         Menu fileMenu = buildFileMenu();
@@ -60,7 +60,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileNewItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                guiController.openNewDrawingDialog((Stage) MenuBar.this.getScene().getWindow());
+                mainController.getGUIController().openNewDrawingDialog((Stage) MenuBar.this.getScene().getWindow());
             }
         });
 
@@ -119,7 +119,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileExitItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                guiController.exit();
+                mainController.exit();
             }
         });
 
@@ -219,7 +219,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         helpAboutItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                guiController.openAboutDialog((Stage) MenuBar.this.getScene().getWindow());
+                mainController.getGUIController().openAboutDialog((Stage) MenuBar.this.getScene().getWindow());
             }
         });
 

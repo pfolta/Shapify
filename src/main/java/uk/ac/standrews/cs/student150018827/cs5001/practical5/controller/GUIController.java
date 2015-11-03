@@ -14,7 +14,7 @@ public class GUIController {
     public GUIController(MainController mainController, Stage mainStage) {
         this.mainController = mainController;
 
-        this.mainWindow = new MainWindow(this, mainStage);
+        this.mainWindow = new MainWindow(mainController, mainStage);
     }
 
     public void openMainWindow() {
@@ -26,19 +26,15 @@ public class GUIController {
     }
 
     public void openNewDrawingDialog(Stage parent) {
-        NewDrawingStage newDrawingStage = new NewDrawingStage(this, parent);
+        NewDrawingStage newDrawingStage = new NewDrawingStage(mainController, parent);
         newDrawingStage.show();
         newDrawingStage.requestFocus();
     }
 
     public void openAboutDialog(Stage parent) {
-        AboutStage aboutStage = new AboutStage(this, parent);
+        AboutStage aboutStage = new AboutStage(mainController, parent);
         aboutStage.show();
         aboutStage.requestFocus();
-    }
-
-    public void exit() {
-        mainController.exit();
     }
 
 }

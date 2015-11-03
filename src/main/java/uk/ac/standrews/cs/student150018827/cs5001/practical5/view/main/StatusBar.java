@@ -3,19 +3,19 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 
 public class StatusBar extends BorderPane {
 
-    private GUIController guiController;
+    private MainController mainController;
     private MainWindow mainWindow;
 
     private Label coordinatesLabel;
 
-    public StatusBar(GUIController guiController, MainWindow mainWindow) {
+    public StatusBar(MainController mainController, MainWindow mainWindow) {
         super();
 
-        this.guiController = guiController;
+        this.mainController = mainController;
         this.mainWindow = mainWindow;
 
         setPadding(new Insets(2, 2, 2, 2));

@@ -6,33 +6,33 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 
 import java.io.File;
 
 public class MainWindow {
 
-    private GUIController guiController;
+    private MainController mainController;
     private Stage mainStage;
 
     private MainScene mainScene;
 
-    public MainWindow(GUIController guiController, Stage mainStage) {
-        this.guiController = guiController;
+    public MainWindow(MainController mainController, Stage mainStage) {
+        this.mainController = mainController;
         this.mainStage = mainStage;
 
         setup();
     }
 
     private void setup() {
-        mainScene = new MainScene(guiController, this);
+        mainScene = new MainScene(mainController, this);
 
         mainStage.setTitle("Drawing Program");
         mainStage.setFullScreenExitKeyCombination(new KeyCodeCombination(KeyCode.F11));
         mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                guiController.exit();
+                mainController.exit();
                 event.consume();
             }
         });
