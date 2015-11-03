@@ -20,9 +20,7 @@ import java.text.NumberFormat;
 import java.text.ParsePosition;
 import java.util.function.UnaryOperator;
 
-public class NewDrawingScene {
-
-    private Scene scene;
+public class NewDrawingScene extends Scene {
 
     private GridPane gridPane;
 
@@ -41,6 +39,8 @@ public class NewDrawingScene {
     private Button cancelButton;
 
     public NewDrawingScene() {
+        super(new VBox());
+
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10, 10, 10, 10));
 
@@ -98,7 +98,7 @@ public class NewDrawingScene {
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Stage stage = (Stage) NewDrawingScene.this.getScene().getWindow();
+                Stage stage = (Stage) NewDrawingScene.this.getWindow();
                 stage.close();
             }
         });
@@ -117,11 +117,7 @@ public class NewDrawingScene {
         vbox.getChildren().add(gridPane);
         vbox.getChildren().add(hbox);
 
-        scene = new Scene(vbox);
-    }
-
-    public Scene getScene() {
-        return scene;
+        setRoot(vbox);
     }
 
 }

@@ -21,15 +21,11 @@ public class GUIController {
         mainWindow.open();
     }
 
-    public void exit() {
-        mainController.exit();
-    }
-
-    public void close() {
+    public void closeMainWindow() {
         mainWindow.close();
     }
 
-    public void openNewDrawingDialo(Stage parent) {
+    public void openNewDrawingDialog(Stage parent) {
         NewDrawingStage newDrawingStage = new NewDrawingStage(this, parent);
         newDrawingStage.show();
         newDrawingStage.requestFocus();
@@ -39,6 +35,10 @@ public class GUIController {
         AboutStage aboutStage = new AboutStage(this, parent);
         aboutStage.show();
         aboutStage.requestFocus();
+    }
+
+    public void exit() {
+        mainController.exit();
     }
 
 }

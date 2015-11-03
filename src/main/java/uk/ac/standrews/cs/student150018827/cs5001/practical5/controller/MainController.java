@@ -16,7 +16,7 @@ public class MainController {
     }
 
     public void exit() {
-        guiController.close();
+        guiController.closeMainWindow();
         Main.exit();
     }
 

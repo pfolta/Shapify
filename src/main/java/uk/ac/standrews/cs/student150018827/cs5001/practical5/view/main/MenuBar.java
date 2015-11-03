@@ -60,7 +60,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileNewItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                guiController.openNewDrawingDialo((Stage) MenuBar.this.getScene().getWindow());
+                guiController.openNewDrawingDialog((Stage) MenuBar.this.getScene().getWindow());
             }
         });
 

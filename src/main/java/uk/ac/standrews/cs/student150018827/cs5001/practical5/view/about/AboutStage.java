@@ -19,7 +19,6 @@ public class AboutStage extends Stage {
         initStyle(StageStyle.UTILITY);
         initModality(Modality.WINDOW_MODAL);
         initOwner(parent);
-
         setScene(new AboutScene());
     }
 

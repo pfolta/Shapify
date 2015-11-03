@@ -37,7 +37,7 @@ public class MainWindow {
             }
         });
 
-        mainStage.setScene(mainScene.getScene());
+        mainStage.setScene(mainScene);
     }
 
     public void open() {

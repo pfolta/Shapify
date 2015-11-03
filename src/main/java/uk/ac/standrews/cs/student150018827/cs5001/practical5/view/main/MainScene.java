@@ -14,12 +14,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIController;
 
-public class MainScene {
+public class MainScene extends Scene {
 
     private GUIController guiController;
     private MainWindow mainWindow;
-
-    private Scene scene;
 
     private BorderPane borderPane;
 
@@ -29,6 +27,8 @@ public class MainScene {
     private StatusBar statusBar;
 
     public MainScene(GUIController guiController, MainWindow mainWindow) {
+        super(new BorderPane(), 1000, 700);
+
         this.guiController = guiController;
         this.mainWindow = mainWindow;
 
@@ -48,11 +48,7 @@ public class MainScene {
         statusBar = new StatusBar(this.guiController, this.mainWindow);
         borderPane.setBottom(statusBar);
 
-        scene = new Scene(borderPane, 800, 600);
-    }
-
-    public Scene getScene() {
-        return scene;
+        setRoot(borderPane);
     }
 
     public void setArtBoard(int width, int height) {
@@ -60,6 +56,7 @@ public class MainScene {
         StackPane stackPane = new StackPane(group);
 
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setStyle("-fx-focus-color: transparent;");
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setContent(stackPane);
@@ -100,6 +97,7 @@ public class MainScene {
                 // Ensure event is within artboard boundaries
                 if (x < 0 || x > canvas.getWidth() || y < 0 || y > canvas.getHeight()) {
                     MainScene.this.statusBar.clearCoordinatesLabel();
+                    event.consume();
                     return;
                 }
 

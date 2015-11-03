@@ -47,7 +47,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         btnNew.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                guiController.openNewDrawingDialo((Stage) ToolBar.this.getScene().getWindow());
+                guiController.openNewDrawingDialog((Stage) ToolBar.this.getScene().getWindow());
             }
         });
 

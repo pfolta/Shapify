@@ -23,7 +23,7 @@ public class NewDrawingStage extends Stage {
 
         NewDrawingScene newDrawingScene = new NewDrawingScene();
 
-        setScene(newDrawingScene.getScene());
+        setScene(newDrawingScene);
     }
 
 }
