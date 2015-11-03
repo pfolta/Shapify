@@ -3,6 +3,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.about.AboutStage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainWindow;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.newdrawing.NewDrawingStage;
 
 public class GUIController {
 
@@ -26,6 +27,11 @@ public class GUIController {
 
     public void close() {
         mainWindow.close();
+    }
+
+    public void openNewDrawingDialo(Stage parent) {
+        NewDrawingStage newDrawingStage = new NewDrawingStage(this, parent);
+        newDrawingStage.show();
     }
 
     public void openAboutDialog(Stage parent) {

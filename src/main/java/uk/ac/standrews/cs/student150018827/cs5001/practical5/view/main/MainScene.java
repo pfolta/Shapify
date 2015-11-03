@@ -1,11 +1,14 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
 import javafx.beans.binding.Bindings;
+import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -22,8 +25,8 @@ public class MainScene {
 
     private BorderPane borderPane;
 
-    private MainMenuBar mainMenuBar;
-    private MainToolBar mainToolBar;
+    private MenuBar mainMenuBar;
+    private ToolBar mainToolBar;
 
     public MainScene(GUIController guiController, MainWindow mainWindow) {
         this.guiController = guiController;
@@ -33,8 +36,8 @@ public class MainScene {
 
         VBox vBox = new VBox();
 
-        mainMenuBar = new MainMenuBar(this.guiController, this.mainWindow);
-        mainToolBar = new MainToolBar(this.guiController, this.mainWindow);
+        mainMenuBar = new MenuBar(this.guiController, this.mainWindow);
+        mainToolBar = new ToolBar(this.guiController, this.mainWindow);
 
         vBox.getChildren().addAll(mainMenuBar, mainToolBar);
 
@@ -59,6 +62,7 @@ public class MainScene {
         scrollPane.setContent(stackPane);
 
         Canvas canvas = new Canvas(width, height);
+        canvas.setCursor(Cursor.CROSSHAIR);
 
         for (int i = 0; i <= width; i += 10) {
             for (int j = 0; j <= height; j += 10) {
@@ -72,11 +76,8 @@ public class MainScene {
             }
         }
 
-        GridPane grid = new GridPane();
-
         stackPane.minWidthProperty().bind(Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds().getWidth(), scrollPane.viewportBoundsProperty()));
         stackPane.minHeightProperty().bind(Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds().getHeight(), scrollPane.viewportBoundsProperty()));
-        grid.getChildren().add(stackPane);
 
         group.getChildren().addAll(canvas);
 
