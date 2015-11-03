@@ -82,7 +82,7 @@ public class NewDrawingScene extends Scene {
         okButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("OK Clicked!");
+                createNewDocument();
             }
         });
 
@@ -111,6 +111,14 @@ public class NewDrawingScene extends Scene {
         vbox.getChildren().add(hbox);
 
         setRoot(vbox);
+    }
+
+    private void createNewDocument() {
+        String name = nameTextField.getText();
+        int width = Integer.parseInt(widthSpinner.getEditor().getText());
+        int height = Integer.parseInt(heightSpinner.getEditor().getText());
+
+        System.out.println("Create new document with name '" + name + "', width = " + width + "px and height = " + height + "px");
     }
 
 }
