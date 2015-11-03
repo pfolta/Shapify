@@ -6,11 +6,9 @@ import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -28,6 +26,8 @@ public class MainScene {
     private MenuBar mainMenuBar;
     private ToolBar mainToolBar;
 
+    private StatusBar statusBar;
+
     public MainScene(GUIController guiController, MainWindow mainWindow) {
         this.guiController = guiController;
         this.mainWindow = mainWindow;
@@ -44,6 +44,9 @@ public class MainScene {
         borderPane.setTop(vBox);
 
         setArtBoard(640, 480);
+
+        statusBar = new StatusBar(this.guiController, this.mainWindow);
+        borderPane.setBottom(statusBar);
 
         scene = new Scene(borderPane, 800, 600);
     }
@@ -63,6 +66,42 @@ public class MainScene {
 
         Canvas canvas = new Canvas(width, height);
         canvas.setCursor(Cursor.CROSSHAIR);
+
+        canvas.setOnMouseMoved(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                int x = (int) event.getX();
+                int y = (int) event.getY();
+
+                MainScene.this.statusBar.setCoordinatesLabel(x, y);
+            }
+        });
+
+        canvas.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                MainScene.this.statusBar.clearCoordinatesLabel();
+            }
+        });
+
+        canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("Mouse Clicked!");
+            }
+        });
+
+        canvas.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                int x = (int) event.getX();
+                int y = (int) event.getY();
+
+                MainScene.this.statusBar.setCoordinatesLabel(x, y);
+
+                System.out.println("Mouse Dragged!");
+            }
+        });
 
         for (int i = 0; i <= width; i += 10) {
             for (int j = 0; j <= height; j += 10) {
