@@ -25,6 +25,8 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     private MenuItem editUndoItem;
     private MenuItem editRedoItem;
 
+    private CheckMenuItem viewToolBarItem;
+    private CheckMenuItem viewStatusBarItem;
     private CheckMenuItem viewFullscreenItem;
 
     private MenuItem helpAboutItem;
@@ -170,6 +172,24 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         Menu menu = new Menu();
         menu.setText("_View");
 
+        viewToolBarItem = new CheckMenuItem();
+        viewToolBarItem.setText("_Toolbar");
+        viewToolBarItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Toolbar Clicked!");
+            }
+        });
+
+        viewStatusBarItem = new CheckMenuItem();
+        viewStatusBarItem.setText("_Status Bar");
+        viewStatusBarItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Status Bar Clicked!");
+            }
+        });
+
         viewFullscreenItem = new CheckMenuItem();
         viewFullscreenItem.setText("_Fullscreen");
         viewFullscreenItem.setAccelerator(new KeyCodeCombination(KeyCode.F11));
@@ -180,7 +200,12 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             }
         });
 
-        menu.getItems().addAll(viewFullscreenItem);
+        menu.getItems().addAll(
+            viewToolBarItem,
+            viewStatusBarItem,
+            new SeparatorMenuItem(),
+            viewFullscreenItem
+        );
 
         return menu;
     }

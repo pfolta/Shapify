@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Separator;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.GUIController;
 
@@ -42,6 +43,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
     private void buildFileControls() {
         btnNew = new Button();
         btnNew.setText("New");
+        btnNew.setTooltip(new Tooltip("New (Ctrl+N)"));
         btnNew.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -51,6 +53,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
         btnOpen = new Button();
         btnOpen.setText("Open...");
+        btnOpen.setTooltip(new Tooltip("Open (Ctrl+O)"));
         btnOpen.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -60,6 +63,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
         btnSave = new Button();
         btnSave.setText("Save");
+        btnSave.setTooltip(new Tooltip("Save (Ctrl+S)"));
         btnSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -73,6 +77,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
     private void buildEditControls() {
         btnUndo = new Button();
         btnUndo.setText("Undo");
+        btnUndo.setTooltip(new Tooltip("Undo (Ctrl+Z)"));
         btnUndo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -82,6 +87,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
         btnRedo = new Button();
         btnRedo.setText("Redo");
+        btnRedo.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
         btnRedo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
