@@ -97,6 +97,12 @@ public class MainScene {
                 int x = (int) event.getX();
                 int y = (int) event.getY();
 
+                // Ensure event is within artboard boundaries
+                if (x < 0 || x > canvas.getWidth() || y < 0 || y > canvas.getHeight()) {
+                    MainScene.this.statusBar.clearCoordinatesLabel();
+                    return;
+                }
+
                 MainScene.this.statusBar.setCoordinatesLabel(x, y);
 
                 System.out.println("Mouse Dragged!");
