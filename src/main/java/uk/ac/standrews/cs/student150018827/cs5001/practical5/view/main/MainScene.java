@@ -1,6 +1,7 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
 import javafx.beans.binding.Bindings;
+import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -41,7 +42,7 @@ public class MainScene {
 
         setArtBoard(640, 480);
 
-        scene = new Scene(borderPane, 1024, 768);
+        scene = new Scene(borderPane, 800, 600);
     }
 
     public Scene getScene() {
@@ -53,7 +54,10 @@ public class MainScene {
         StackPane stackPane = new StackPane(group);
 
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setContent(stackPane);
+
         Canvas canvas = new Canvas(width, height);
 
         for (int i = 0; i <= width; i += 10) {
