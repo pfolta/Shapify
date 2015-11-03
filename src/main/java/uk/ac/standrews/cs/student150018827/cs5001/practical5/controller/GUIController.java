@@ -32,11 +32,13 @@ public class GUIController {
     public void openNewDrawingDialo(Stage parent) {
         NewDrawingStage newDrawingStage = new NewDrawingStage(this, parent);
         newDrawingStage.show();
+        newDrawingStage.requestFocus();
     }
 
     public void openAboutDialog(Stage parent) {
         AboutStage aboutStage = new AboutStage(this, parent);
         aboutStage.show();
+        aboutStage.requestFocus();
     }
 
 }
