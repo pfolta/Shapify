@@ -12,14 +12,14 @@ public final class GUIUtils {
     private GUIUtils() {
     }
 
-    public static TextFormatter<Integer> getIntegerTextFormatter(int maximum) {
+    public static TextFormatter<Integer> getIntegerTextFormatter(int minimum, int maximum) {
         NumberFormat format = NumberFormat.getIntegerInstance();
         UnaryOperator<TextFormatter.Change> filter = c -> {
             if (c.isContentChange()) {
                 ParsePosition parsePosition = new ParsePosition(0);
                 format.parse(c.getControlNewText(), parsePosition);
 
-                if (parsePosition.getIndex() == 0 || parsePosition.getIndex() < c.getControlNewText().length() || Integer.valueOf(c.getControlNewText()) > 10000) {
+                if (parsePosition.getIndex() == 0 || parsePosition.getIndex() < c.getControlNewText().length() || Integer.parseInt(c.getControlNewText())  < minimum || Integer.parseInt(c.getControlNewText()) > maximum) {
                     return null;
                 }
             }

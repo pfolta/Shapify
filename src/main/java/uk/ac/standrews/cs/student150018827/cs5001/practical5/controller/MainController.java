@@ -7,11 +7,9 @@ public class MainController {
 
     private GUIController guiController;
 
-    public MainController() {
-    }
-
-    public void initGUI(Stage stage) {
+    public MainController(Stage stage) {
         guiController = new GUIController(this, stage);
+
         guiController.openMainWindow();
     }
 

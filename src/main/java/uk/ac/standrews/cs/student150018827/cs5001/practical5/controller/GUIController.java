@@ -21,6 +21,10 @@ public class GUIController {
         mainWindow.open();
     }
 
+    public MainWindow getMainWindow() {
+        return mainWindow;
+    }
+
     public void closeMainWindow() {
         mainWindow.close();
     }

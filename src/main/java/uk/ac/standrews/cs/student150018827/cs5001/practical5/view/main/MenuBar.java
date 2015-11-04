@@ -106,10 +106,11 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileCloseItem = new MenuItem();
         fileCloseItem.setText("_Close");
         fileCloseItem.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN));
+        fileCloseItem.setDisable(true);
         fileCloseItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Close Clicked!");
+                mainController.getGUIController().getMainWindow().getMainScene().clearArtBoard();
             }
         });
 
@@ -226,6 +227,10 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         menu.getItems().addAll(helpAboutItem);
 
         return menu;
+    }
+
+    public void disableFileCloseItem(boolean disable) {
+        fileCloseItem.setDisable(disable);
     }
 
 }

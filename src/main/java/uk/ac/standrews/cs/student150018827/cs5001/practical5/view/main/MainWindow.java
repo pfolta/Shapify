@@ -45,6 +45,10 @@ public class MainWindow {
         mainStage.requestFocus();
     }
 
+    public MainScene getMainScene() {
+        return mainScene;
+    }
+
     public void close() {
         mainStage.close();
     }

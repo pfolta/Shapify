@@ -11,9 +11,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.GUIUtils;
 
+import java.util.InputMismatchException;
+
 public class NewDrawingScene extends Scene {
+
+    private MainController mainController;
 
     private GridPane gridPane;
 
@@ -21,18 +26,20 @@ public class NewDrawingScene extends Scene {
     private TextField nameTextField;
 
     private Label widthLabel;
-    private Spinner widthSpinner;
+    private TextField widthTextField;
     private Label widthUnitLabel;
 
     private Label heightLabel;
-    private Spinner heightSpinner;
+    private TextField heightTextField;
     private Label heightUnitLabel;
 
     private Button okButton;
     private Button cancelButton;
 
-    public NewDrawingScene() {
+    public NewDrawingScene(MainController mainController) {
         super(new VBox());
+
+        this.mainController = mainController;
 
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10, 10, 10, 10));
@@ -53,10 +60,8 @@ public class NewDrawingScene extends Scene {
         widthLabel.setText("Width: ");
         widthLabel.setTextAlignment(TextAlignment.RIGHT);
 
-        widthSpinner = new Spinner();
-        widthSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10000));
-        widthSpinner.setEditable(true);
-        widthSpinner.getEditor().setTextFormatter(GUIUtils.getIntegerTextFormatter(10000));
+        widthTextField = new TextField();
+        widthTextField.setText("500");
 
         widthUnitLabel = new Label();
         widthUnitLabel.setText("px");
@@ -65,10 +70,8 @@ public class NewDrawingScene extends Scene {
         heightLabel.setText("Height: ");
         heightLabel.setTextAlignment(TextAlignment.RIGHT);
 
-        heightSpinner = new Spinner();
-        heightSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10000));
-        heightSpinner.setEditable(true);
-        heightSpinner.getEditor().setTextFormatter(GUIUtils.getIntegerTextFormatter(10000));
+        heightTextField = new TextField();
+        heightTextField.setText("500");
 
         heightUnitLabel = new Label();
         heightUnitLabel.setText("px");
@@ -91,8 +94,7 @@ public class NewDrawingScene extends Scene {
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Stage stage = (Stage) NewDrawingScene.this.getWindow();
-                stage.close();
+                close();
             }
         });
 
@@ -101,10 +103,10 @@ public class NewDrawingScene extends Scene {
         gridPane.add(nameLabel, 0, 0, 1, 1);
         gridPane.add(nameTextField, 1, 0, 2, 1);
         gridPane.add(widthLabel, 0, 1, 1, 1);
-        gridPane.add(widthSpinner, 1, 1, 1, 1);
+        gridPane.add(widthTextField, 1, 1, 1, 1);
         gridPane.add(widthUnitLabel, 2, 1, 1, 1);
         gridPane.add(heightLabel, 0, 2, 1, 1);
-        gridPane.add(heightSpinner, 1, 2, 1, 1);
+        gridPane.add(heightTextField, 1, 2, 1, 1);
         gridPane.add(heightUnitLabel, 2, 2, 1, 1);
 
         vbox.getChildren().add(gridPane);
@@ -114,11 +116,52 @@ public class NewDrawingScene extends Scene {
     }
 
     private void createNewDocument() {
-        String name = nameTextField.getText();
-        int width = Integer.parseInt(widthSpinner.getEditor().getText());
-        int height = Integer.parseInt(heightSpinner.getEditor().getText());
+        try {
+            validateInputs();
 
-        System.out.println("Create new document with name '" + name + "', width = " + width + "px and height = " + height + "px");
+            String name = nameTextField.getText();
+            int width = Integer.parseInt(widthTextField.getText());
+            int height = Integer.parseInt(heightTextField.getText());
+
+            System.out.println("Create new document with name '" + name + "', width = " + width + "px and height = " + height + "px");
+
+            mainController.getGUIController().getMainWindow().getMainScene().setArtBoard(width, height);
+
+            close();
+        } catch (InputMismatchException exception) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(exception.getMessage());
+
+            alert.showAndWait();
+        }
+    }
+
+    private void validateInputs() throws InputMismatchException {
+        String name = nameTextField.getText();
+
+        if (name.isEmpty()) {
+            throw new InputMismatchException("Please specify a name.");
+        }
+
+        try {
+            int width = Integer.parseInt(widthTextField.getText());
+            int height = Integer.parseInt(heightTextField.getText());
+
+            if (width < 1 || width > 10000) {
+                throw new NumberFormatException();
+            }
+
+            if (height < 1 || height > 10000) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException exception) {
+            throw new InputMismatchException("The values for width and height must be integer numbers between 1 and 10000.");
+        }
+    }
+
+    private void close() {
+        Stage stage = (Stage) NewDrawingScene.this.getWindow();
+        stage.close();
     }
 
 }

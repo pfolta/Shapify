@@ -14,8 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        mainController = new MainController();
-        mainController.initGUI(primaryStage);
+        mainController = new MainController(primaryStage);
     }
 
     public static void exit() {
