@@ -9,6 +9,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 
 public class ToolBar extends javafx.scene.control.ToolBar {
 
@@ -25,6 +26,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private Button selectToolButton;
     private Button rectangleToolButton;
+    private Button ellipseToolButton;
 
     public ToolBar(MainController mainController) {
         super();
@@ -127,7 +129,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         selectToolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Select Tool Clicked!");
+                mainController.getGUIController().setSelectedTool(DrawTools.SELECT_TOOL);
             }
         });
 
@@ -136,11 +138,24 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         rectangleToolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Rectlangle Tool Clicked!");
+                mainController.getGUIController().setSelectedTool(DrawTools.RECTANGLE_TOOL);
             }
         });
 
-        getItems().addAll(selectToolButton, rectangleToolButton);
+        ellipseToolButton = new Button();
+        ellipseToolButton.setText("Ellipse");
+        ellipseToolButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                mainController.getGUIController().setSelectedTool(DrawTools.ELLIPSE_TOOL);
+            }
+        });
+
+        getItems().addAll(
+            selectToolButton,
+            rectangleToolButton,
+            ellipseToolButton
+        );
     }
 
 }

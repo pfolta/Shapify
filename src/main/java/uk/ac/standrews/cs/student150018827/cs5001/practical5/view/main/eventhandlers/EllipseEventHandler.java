@@ -3,18 +3,18 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhan
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Ellipse;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 
-public class RectangleEventHandler extends MouseEventHandler {
+public class EllipseEventHandler extends MouseEventHandler {
 
-    private Rectangle rectangle;
+    private Ellipse ellipse;
 
     private int originalX;
     private int originalY;
 
-    public RectangleEventHandler(MainController mainController) {
+    public EllipseEventHandler(MainController mainController) {
         super(mainController);
     }
 
@@ -23,19 +23,19 @@ public class RectangleEventHandler extends MouseEventHandler {
             originalX = (int) event.getX();
             originalY = (int) event.getY();
 
-            rectangle = new Rectangle();
-            rectangle.setFill(mainController.getDocumentController().getCurrentForeground());
-            rectangle.setHeight(0);
-            rectangle.setWidth(0);
-            rectangle.setX(originalX);
-            rectangle.setY(originalY);
-            rectangle.setCursor(Cursor.CROSSHAIR);
-            rectangle.setOnMouseMoved(getMouseMovedEventHandler());
-            rectangle.setOnMousePressed(getMousePressedEventHandler());
-            rectangle.setOnMouseDragged(getMouseDraggedEventHandler());
-            rectangle.setOnMouseReleased(getMouseReleasedEventHandler());
+            ellipse = new Ellipse();
+            ellipse.setFill(mainController.getDocumentController().getCurrentForeground());
+            ellipse.setRadiusX(0);
+            ellipse.setRadiusY(0);
+            ellipse.setCenterX(originalX);
+            ellipse.setCenterY(originalY);
+            ellipse.setCursor(Cursor.CROSSHAIR);
+            ellipse.setOnMouseMoved(getMouseMovedEventHandler());
+            ellipse.setOnMousePressed(getMousePressedEventHandler());
+            ellipse.setOnMouseDragged(getMouseDraggedEventHandler());
+            ellipse.setOnMouseReleased(getMouseReleasedEventHandler());
 
-            mainController.getDocumentController().getDocument().addObject(rectangle);
+            mainController.getDocumentController().getDocument().addObject(ellipse);
         };
     }
 
@@ -63,31 +63,31 @@ public class RectangleEventHandler extends MouseEventHandler {
                 y = (int) artBoard.getHeight();
             }
 
-            int posx = originalX;
-            int posy = originalY;
+            int radiusX = Math.abs(x - originalX)/2;
+            int radiusY = Math.abs(y - originalY)/2;
 
-            int width = Math.abs(x - originalX);
-            int height = Math.abs(y - originalY);
-
-            // Adjust width and height if Shift is pressed to create a perfect square
+            // Adjust width and height if Shift is pressed to create a perfect circle
             if (event.isShiftDown()) {
-                width = Math.min(width, height);
-                height = Math.min(width, height);
+                radiusX = Math.min(radiusX, radiusY);
+                radiusY = Math.min(radiusX, radiusY);
             }
 
+            int centerX = originalX + radiusX;
+            int centerY = originalY + radiusY;
+
             if (x < originalX) {
-                posx = originalX - width;
+                centerX = originalX - radiusX;
             }
 
             if (y < originalY) {
-                posy = originalY - height;
+                centerY = originalY - radiusY;
             }
 
-            rectangle.setWidth(width);
-            rectangle.setHeight(height);
+            ellipse.setRadiusX(radiusX);
+            ellipse.setRadiusY(radiusY);
 
-            rectangle.setX(posx);
-            rectangle.setY(posy);
+            ellipse.setCenterX(centerX);
+            ellipse.setCenterY(centerY);
 
             //mainScene.getStatusBar().setCoordinatesLabel(x, y);
         };
@@ -95,7 +95,7 @@ public class RectangleEventHandler extends MouseEventHandler {
 
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
         return event -> {
-            rectangle = null;
+            ellipse = null;
         };
     }
 
