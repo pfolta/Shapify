@@ -74,7 +74,9 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileOpenItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainController.getGUIController().getMainWindow().openFile();
+                if (mainController.getDocumentController().closeDocument()) {
+                    mainController.getGUIController().getMainWindow().openFile();
+                }
             }
         });
 

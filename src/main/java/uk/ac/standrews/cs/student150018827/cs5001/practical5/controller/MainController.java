@@ -16,8 +16,10 @@ public class MainController {
     }
 
     public void exit() {
-        guiController.closeMainWindow();
-        Main.exit();
+        if (documentController.closeDocument()) {
+            guiController.closeMainWindow();
+            Main.exit();
+        }
     }
 
     public GUIController getGUIController() {

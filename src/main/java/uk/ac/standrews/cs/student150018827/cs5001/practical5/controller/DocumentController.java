@@ -72,7 +72,7 @@ public class DocumentController {
 
                 ButtonType buttonTypeSave = new ButtonType("Save");
                 ButtonType buttonTypeCloseWithoutSaving = new ButtonType("Close without saving");
-                ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+                ButtonType buttonTypeCancel = new ButtonType("Cancel");
 
                 alert.getButtonTypes().setAll(buttonTypeSave, buttonTypeCloseWithoutSaving, buttonTypeCancel);
 
