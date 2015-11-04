@@ -24,6 +24,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     private MenuItem editUndoItem;
     private MenuItem editRedoItem;
 
+    private CheckMenuItem viewMenuBarItem;
     private CheckMenuItem viewToolBarItem;
     private CheckMenuItem viewStatusBarItem;
     private CheckMenuItem viewFullscreenItem;
@@ -171,6 +172,16 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         Menu menu = new Menu();
         menu.setText("_View");
 
+        viewMenuBarItem = new CheckMenuItem();
+        viewMenuBarItem.setText("_Menu Bar");
+        viewMenuBarItem.setSelected(true);
+        viewMenuBarItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                mainController.getGUIController().getMainWindow().getMainScene().showMenuBar(viewMenuBarItem.isSelected());
+            }
+        });
+
         viewToolBarItem = new CheckMenuItem();
         viewToolBarItem.setText("_Toolbar");
         viewToolBarItem.setSelected(true);
@@ -202,6 +213,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         });
 
         menu.getItems().addAll(
+            viewMenuBarItem,
             viewToolBarItem,
             viewStatusBarItem,
             new SeparatorMenuItem(),
@@ -232,5 +244,18 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     public void disableFileCloseItem(boolean disable) {
         fileCloseItem.setDisable(disable);
     }
+
+    public void selectViewMenuBarItem(boolean selected) {
+        viewMenuBarItem.setSelected(selected);
+    }
+
+    public void selectViewToolBarItem(boolean selected) {
+        viewToolBarItem.setSelected(selected);
+    }
+
+    public void selectViewStatusBarItem(boolean selected) {
+        viewStatusBarItem.setSelected(selected);
+    }
+
 
 }

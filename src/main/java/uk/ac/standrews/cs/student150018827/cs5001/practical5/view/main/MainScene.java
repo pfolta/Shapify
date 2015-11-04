@@ -1,12 +1,14 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
 import javafx.beans.binding.Bindings;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 
 public class MainScene extends Scene {
@@ -14,9 +16,9 @@ public class MainScene extends Scene {
     private MainController mainController;
     private MainWindow mainWindow;
 
-    private BorderPane borderPane;
+    private BorderPane mainBorderPane;
 
-    private VBox topVBox;
+    private BorderPane topBorderPane;
     private MenuBar menuBar;
     private ToolBar toolBar;
 
@@ -31,16 +33,26 @@ public class MainScene extends Scene {
         this.mainController = mainController;
         this.mainWindow = mainWindow;
 
-        borderPane = new BorderPane();
+        mainBorderPane = new BorderPane();
 
-        topVBox = new VBox();
+        topBorderPane = new BorderPane();
 
         menuBar = new MenuBar(this.mainController);
         toolBar = new ToolBar(this.mainController);
 
-        topVBox.getChildren().addAll(menuBar, toolBar);
+        showMenuBar(true);
+        showToolBar(true);
 
-        borderPane.setTop(topVBox);
+        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode().equals(KeyCode.ALT)) {
+                    showMenuBar(true);
+                }
+            }
+        });
+
+        mainBorderPane.setTop(topBorderPane);
 
         artBoardGroup = new Group();
         StackPane stackPane = new StackPane(artBoardGroup);
@@ -54,16 +66,26 @@ public class MainScene extends Scene {
         stackPane.minWidthProperty().bind(Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds().getWidth(), scrollPane.viewportBoundsProperty()));
         stackPane.minHeightProperty().bind(Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds().getHeight(), scrollPane.viewportBoundsProperty()));
 
-        borderPane.setCenter(scrollPane);
+        mainBorderPane.setCenter(scrollPane);
 
         statusBar = new StatusBar(this.mainController);
-        borderPane.setBottom(statusBar);
+        mainBorderPane.setBottom(statusBar);
 
-        setRoot(borderPane);
+        setRoot(mainBorderPane);
     }
 
     public MenuBar getMenuBar() {
         return menuBar;
+    }
+
+    public void showMenuBar(boolean show) {
+        if (show) {
+            topBorderPane.setTop(menuBar);
+        } else {
+            topBorderPane.setTop(null);
+        }
+
+        getMenuBar().selectViewMenuBarItem(show);
     }
 
     public ToolBar getToolBar() {
@@ -71,11 +93,13 @@ public class MainScene extends Scene {
     }
 
     public void showToolBar(boolean show) {
-        if (show && !topVBox.getChildren().contains(toolBar)) {
-            topVBox.getChildren().add(toolBar);
+        if (show) {
+            topBorderPane.setBottom(toolBar);
         } else {
-            topVBox.getChildren().remove(toolBar);
+            topBorderPane.setBottom(null);
         }
+
+        getMenuBar().selectViewToolBarItem(show);
     }
 
     public StatusBar getStatusBar() {
@@ -84,10 +108,12 @@ public class MainScene extends Scene {
 
     public void showStatusBar(boolean show) {
         if (show) {
-            borderPane.setBottom(statusBar);
+            mainBorderPane.setBottom(statusBar);
         } else {
-            borderPane.setBottom(null);
+            mainBorderPane.setBottom(null);
         }
+
+        getMenuBar().selectViewStatusBarItem(show);
     }
 
     public void setArtBoard(int width, int height) {
