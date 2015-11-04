@@ -63,18 +63,25 @@ public class RectangleEventHandler extends MouseEventHandler {
                 y = (int) artBoard.getHeight();
             }
 
+            int width = Math.abs(x - originalX);
+            int height = Math.abs(y - originalY);
 
+            // Adjust width and height if Shift is pressed to create a perfect square
+            if (event.isShiftDown()) {
+                width = Math.min(width, height);
+                height = Math.min(width, height);
+            }
 
             if (x < originalX) {
-                rectangle.setX(x);
+                rectangle.setX(originalX - width);
             }
 
             if (y < originalY) {
-                rectangle.setY(y);
+                rectangle.setY(originalY - height);
             }
 
-            rectangle.setWidth(Math.abs(x - originalX));
-            rectangle.setHeight(Math.abs(y - originalY));
+            rectangle.setWidth(width);
+            rectangle.setHeight(height);
 
             //mainScene.getStatusBar().setCoordinatesLabel(x, y);
         };

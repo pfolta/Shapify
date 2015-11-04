@@ -146,10 +146,9 @@ public class MainScene extends Scene implements DocumentObserver {
     @Override
     public void update() {
         Document document = mainController.getDocumentController().getDocument();
-        List<Node> objects = document.getObjects();
 
         artBoardGroup.getChildren().clear();
         artBoardGroup.getChildren().add(artBoard);
-        artBoardGroup.getChildren().addAll(objects);
+        artBoardGroup.getChildren().addAll(document.getObjects());
     }
 }
