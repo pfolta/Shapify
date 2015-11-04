@@ -96,4 +96,12 @@ public class MainWindow {
         mainStage.setFullScreen(fullscreen);
     }
 
+    public void setTitle(String title) {
+        if (title != null) {
+            mainStage.setTitle(title + " - Drawing Program");
+        } else {
+            mainStage.setTitle("Drawing Program");
+        }
+    }
+
 }

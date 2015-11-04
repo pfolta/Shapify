@@ -12,7 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.GUIUtils;
 
 import java.util.InputMismatchException;
 
@@ -22,8 +21,8 @@ public class NewDrawingScene extends Scene {
 
     private GridPane gridPane;
 
-    private Label nameLabel;
-    private TextField nameTextField;
+    private Label titleLabel;
+    private TextField titleTextField;
 
     private Label widthLabel;
     private TextField widthTextField;
@@ -49,12 +48,12 @@ public class NewDrawingScene extends Scene {
         gridPane.setHgap(10);
         gridPane.setVgap(10);
 
-        nameLabel = new Label();
-        nameLabel.setText("Name: ");
-        nameLabel.setTextAlignment(TextAlignment.RIGHT);
+        titleLabel = new Label();
+        titleLabel.setText("Title: ");
+        titleLabel.setTextAlignment(TextAlignment.RIGHT);
 
-        nameTextField = new TextField();
-        nameTextField.setText("Untitled");
+        titleTextField = new TextField();
+        titleTextField.setText("Untitled");
 
         widthLabel = new Label();
         widthLabel.setText("Width: ");
@@ -102,8 +101,8 @@ public class NewDrawingScene extends Scene {
 
         hbox.getChildren().addAll(okButton, cancelButton);
 
-        gridPane.add(nameLabel, 0, 0, 1, 1);
-        gridPane.add(nameTextField, 1, 0, 2, 1);
+        gridPane.add(titleLabel, 0, 0, 1, 1);
+        gridPane.add(titleTextField, 1, 0, 2, 1);
         gridPane.add(widthLabel, 0, 1, 1, 1);
         gridPane.add(widthTextField, 1, 1, 1, 1);
         gridPane.add(widthUnitLabel, 2, 1, 1, 1);
@@ -121,13 +120,16 @@ public class NewDrawingScene extends Scene {
         try {
             validateInputs();
 
-            String name = nameTextField.getText();
+            String title = titleTextField.getText();
             int width = Integer.parseInt(widthTextField.getText());
             int height = Integer.parseInt(heightTextField.getText());
 
-            System.out.println("Create new document with name '" + name + "', width = " + width + "px and height = " + height + "px");
+            mainController.getDocumentController().createDocument();
+            mainController.getDocumentController().setDimension(width, height);
+            mainController.getDocumentController().setTitle(title);
 
             mainController.getGUIController().getMainWindow().getMainScene().setArtBoard(width, height);
+            mainController.getGUIController().getMainWindow().setTitle(title);
 
             close();
         } catch (InputMismatchException exception) {
@@ -139,10 +141,10 @@ public class NewDrawingScene extends Scene {
     }
 
     private void validateInputs() throws InputMismatchException {
-        String name = nameTextField.getText();
+        String title = titleTextField.getText();
 
-        if (name.isEmpty()) {
-            throw new InputMismatchException("Please specify a name.");
+        if (title.isEmpty()) {
+            throw new InputMismatchException("Please specify a title.");
         }
 
         try {

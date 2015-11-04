@@ -7,8 +7,10 @@ import java.util.*;
 
 public class Document {
 
-    private String name;
+    private String title;
     private Path file;
+
+    private boolean isSaved;
 
     private int width;
     private int height;
@@ -17,14 +19,15 @@ public class Document {
 
     public Document() {
         layers = new ArrayList<List<Shape>>();
+        isSaved = false;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Path getFile() {
@@ -33,6 +36,14 @@ public class Document {
 
     public void setFile(Path file) {
         this.file = file;
+    }
+
+    public boolean isSaved() {
+        return isSaved;
+    }
+
+    public void setSaved(boolean saved) {
+        this.isSaved = saved;
     }
 
     public void setDimensions(int width, int height) {
