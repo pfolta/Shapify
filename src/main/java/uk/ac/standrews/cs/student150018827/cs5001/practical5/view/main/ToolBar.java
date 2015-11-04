@@ -2,10 +2,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Separator;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
@@ -24,9 +21,10 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private ColorPicker btnColorPicker;
 
-    private Button selectToolButton;
-    private Button rectangleToolButton;
-    private Button ellipseToolButton;
+    private ToggleGroup toolToggleGroup;
+    private ToggleButton selectToolButton;
+    private ToggleButton rectangleToolButton;
+    private ToggleButton ellipseToolButton;
 
     public ToolBar(MainController mainController) {
         super();
@@ -124,8 +122,12 @@ public class ToolBar extends javafx.scene.control.ToolBar {
     }
 
     private void buildToolControls() {
-        selectToolButton = new Button();
+        toolToggleGroup = new ToggleGroup();
+
+        selectToolButton = new ToggleButton();
         selectToolButton.setText("Select");
+        selectToolButton.setToggleGroup(toolToggleGroup);
+        selectToolButton.setSelected(true);
         selectToolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -133,8 +135,9 @@ public class ToolBar extends javafx.scene.control.ToolBar {
             }
         });
 
-        rectangleToolButton = new Button();
+        rectangleToolButton = new ToggleButton();
         rectangleToolButton.setText("Rectangle");
+        rectangleToolButton.setToggleGroup(toolToggleGroup);
         rectangleToolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -142,8 +145,9 @@ public class ToolBar extends javafx.scene.control.ToolBar {
             }
         });
 
-        ellipseToolButton = new Button();
+        ellipseToolButton = new ToggleButton();
         ellipseToolButton.setText("Ellipse");
+        ellipseToolButton.setToggleGroup(toolToggleGroup);
         ellipseToolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
