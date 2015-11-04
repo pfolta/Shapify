@@ -82,6 +82,7 @@ public class NewDrawingScene extends Scene {
 
         okButton = new Button();
         okButton.setText("OK");
+        okButton.setDefaultButton(true);
         okButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -91,6 +92,7 @@ public class NewDrawingScene extends Scene {
 
         cancelButton = new Button();
         cancelButton.setText("Cancel");
+        cancelButton.setCancelButton(true);
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
