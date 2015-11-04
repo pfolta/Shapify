@@ -47,21 +47,11 @@ public class RectangleEventHandler extends MouseEventHandler {
             int y = (int) event.getY();
 
             // Ensure event is within artboard boundaries
-            if (x < 0) {
-                x = 0;
-            }
+            x = Math.max(x, 0);
+            x = Math.min(x, (int) artBoard.getWidth());
 
-            if (x > artBoard.getWidth()) {
-                x = (int) artBoard.getWidth();
-            }
-
-            if (y < 0) {
-                y = 0;
-            }
-
-            if (y > artBoard.getHeight()) {
-                y = (int) artBoard.getHeight();
-            }
+            y = Math.max(y, 0);
+            y = Math.min(y, (int) artBoard.getHeight());
 
             int posx = originalX;
             int posy = originalY;

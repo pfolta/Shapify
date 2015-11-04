@@ -34,33 +34,9 @@ public class ArtBoard extends Canvas {
         }
     }
 
-    public void setSelectedTool(DrawTools selectedTool) {
-        switch (selectedTool) {
-            case SELECT_TOOL: {
-                setCursor(Cursor.DEFAULT);
-                mouseEventHandler = new SelectEventHandler(mainController);
-                registerEventHandlers();
+    public void setMouseEventHandler(MouseEventHandler mouseEventHandler) {
+        this.mouseEventHandler = mouseEventHandler;
 
-                break;
-            }
-            case RECTANGLE_TOOL: {
-                setCursor(Cursor.CROSSHAIR);
-                mouseEventHandler = new RectangleEventHandler(mainController);
-                registerEventHandlers();
-
-                break;
-            }
-            case ELLIPSE_TOOL: {
-                setCursor(Cursor.CROSSHAIR);
-                mouseEventHandler = new EllipseEventHandler(mainController);
-                registerEventHandlers();
-
-                break;
-            }
-        }
-    }
-
-    private void registerEventHandlers() {
         setOnMouseMoved(mouseEventHandler.getMouseMovedEventHandler());
         setOnMouseExited(mouseEventHandler.getMouseExitedEventHandler());
         setOnMousePressed(mouseEventHandler.getMousePressedEventHandler());

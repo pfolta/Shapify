@@ -1,10 +1,21 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.stage.Stage;
+import sun.util.resources.cldr.om.CurrencyNames_om;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.about.AboutStage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainWindow;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.EllipseEventHandler;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.MouseEventHandler;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.RectangleEventHandler;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.SelectEventHandler;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.newdrawing.NewDrawingStage;
+
+import java.util.List;
 
 public class GUIController {
 
@@ -43,21 +54,45 @@ public class GUIController {
     }
 
     public void setSelectedTool(DrawTools selectedTool) {
-        getMainWindow().getMainScene().getArtBoard().setSelectedTool(selectedTool);
+        ArtBoard artBoard = getMainWindow().getMainScene().getArtBoard();
+        Document document = mainController.getDocumentController().getDocument();
 
         switch (selectedTool) {
             case SELECT_TOOL: {
                 getMainWindow().getMainScene().hideBanner();
+
+                artBoard.setCursor(Cursor.DEFAULT);
+
+                MouseEventHandler mouseEventHandler = new SelectEventHandler(mainController);
+
+                artBoard.setMouseEventHandler(mouseEventHandler);
+
+                List<Node> objects = document.getObjects();
+
+                for(Node object : objects) {
+                    object.setCursor(Cursor.MOVE);
+
+                    object.setOnMouseMoved(mouseEventHandler.getMouseMovedEventHandler());
+                    object.setOnMousePressed(mouseEventHandler.getMousePressedEventHandler());
+                    object.setOnMouseDragged(mouseEventHandler.getMouseDraggedEventHandler());
+                    object.setOnMouseReleased(mouseEventHandler.getMouseReleasedEventHandler());
+                }
 
                 break;
             }
             case RECTANGLE_TOOL: {
                 getMainWindow().getMainScene().showBanner("Hold SHIFT down while drawing to create a perfect square.");
 
+                artBoard.setCursor(Cursor.CROSSHAIR);
+                artBoard.setMouseEventHandler(new RectangleEventHandler(mainController));
+
                 break;
             }
             case ELLIPSE_TOOL: {
                 getMainWindow().getMainScene().showBanner("Hold SHIFT down while drawing to create a perfect circle.");
+
+                artBoard.setCursor(Cursor.CROSSHAIR);
+                artBoard.setMouseEventHandler(new EllipseEventHandler(mainController));
 
                 break;
             }
