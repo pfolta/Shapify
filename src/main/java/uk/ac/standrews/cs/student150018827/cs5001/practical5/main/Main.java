@@ -6,15 +6,13 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainCont
 
 public class Main extends Application {
 
-    private static MainController mainController;
-
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        mainController = new MainController(primaryStage);
+        new MainController(primaryStage);
     }
 
     public static void exit() {

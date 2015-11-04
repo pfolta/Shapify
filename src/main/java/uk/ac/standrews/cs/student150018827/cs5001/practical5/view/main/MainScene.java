@@ -95,7 +95,7 @@ public class MainScene extends Scene {
             clearArtBoard();
         }
 
-        artBoard = new ArtBoard(mainController, this, width, height);
+        artBoard = new ArtBoard(mainController, width, height);
 
         artBoardGroup.getChildren().add(artBoard);
 

@@ -13,11 +13,12 @@ public class ArtBoard extends Canvas {
 
     private MainScene mainScene;
 
-    public ArtBoard(MainController mainController, MainScene mainScene, int width, int height) {
+    public ArtBoard(MainController mainController, int width, int height) {
         super(width, height);
 
         this.mainController = mainController;
-        this.mainScene = mainScene;
+
+        mainScene = mainController.getGUIController().getMainWindow().getMainScene();
 
         setCursor(Cursor.CROSSHAIR);
 
