@@ -1,14 +1,11 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.shape.Shape;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class DocumentController {
@@ -49,12 +46,12 @@ public class DocumentController {
         document.setTitle(title);
     }
 
-    public void addShape(Shape shape, List<Shape> layer) {
-        document.addShape(layer, shape);
+    public void addObject(Node object) {
+        document.addObject(object);
     }
 
-    public void removeShape(Shape shape, List<Shape> layer) {
-        document.removeShape(layer, shape);
+    public void removeObject(Node object) {
+        document.removeShape(object);
     }
 
     public boolean closeDocument() {

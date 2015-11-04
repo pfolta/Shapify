@@ -1,9 +1,10 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 
-import javafx.scene.shape.Shape;
+import javafx.scene.Node;
 
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Document {
 
@@ -15,10 +16,10 @@ public class Document {
     private int width;
     private int height;
 
-    private List<List<Shape>> layers;
+    private List<Node> objects;
 
     public Document() {
-        layers = new ArrayList<List<Shape>>();
+        objects = new ArrayList<Node>();
         isSaved = false;
     }
 
@@ -67,28 +68,16 @@ public class Document {
         this.height = height;
     }
 
-    public void addLayer() {
-        layers.add(new ArrayList<Shape>());
+    public void addObject(Node object) {
+        objects.add(object);
     }
 
-    public void removeLayer(List<Shape> layer) {
-        layers.remove(layer);
+    public void removeShape(Node object) {
+        objects.remove(object);
     }
 
-    public void addShape(List<Shape> layer, Shape shape) {
-        layers.get(layers.indexOf(layer)).add(shape);
-    }
-
-    public void removeShape(List<Shape> layer, Shape shape) {
-        layers.get(layers.indexOf(layer)).remove(shape);
-    }
-
-    public List<List<Shape>> getLayers() {
-        return layers;
-    }
-
-    public List<Shape> getLayer(int index) {
-        return layers.get(index);
+    public List<Node> getObjects() {
+        return objects;
     }
 
 }
