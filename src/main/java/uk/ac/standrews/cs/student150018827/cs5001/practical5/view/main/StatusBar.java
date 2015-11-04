@@ -8,15 +8,13 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainCont
 public class StatusBar extends BorderPane {
 
     private MainController mainController;
-    private MainWindow mainWindow;
 
     private Label coordinatesLabel;
 
-    public StatusBar(MainController mainController, MainWindow mainWindow) {
+    public StatusBar(MainController mainController) {
         super();
 
         this.mainController = mainController;
-        this.mainWindow = mainWindow;
 
         setPadding(new Insets(2, 2, 2, 2));
 

@@ -12,7 +12,6 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainCont
 public class MenuBar extends javafx.scene.control.MenuBar {
 
     private MainController mainController;
-    private MainWindow mainWindow;
 
     private MenuItem fileNewItem;
     private MenuItem fileOpenItem;
@@ -31,11 +30,10 @@ public class MenuBar extends javafx.scene.control.MenuBar {
 
     private MenuItem helpAboutItem;
 
-    public MenuBar(MainController mainController, MainWindow mainWindow) {
+    public MenuBar(MainController mainController) {
         super();
 
         this.mainController = mainController;
-        this.mainWindow = mainWindow;
 
         Menu fileMenu = buildFileMenu();
         Menu editMenu = buildEditMenu();
@@ -70,7 +68,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileOpenItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainWindow.openFile();
+                mainController.getGUIController().getMainWindow().openFile();
             }
         });
 
@@ -80,7 +78,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileSaveItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainWindow.saveFile();
+                mainController.getGUIController().getMainWindow().saveFile();
             }
         });
 
@@ -90,7 +88,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileSaveAsItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainWindow.saveAsFile();
+                mainController.getGUIController().getMainWindow().saveAsFile();
             }
         });
 
@@ -175,19 +173,21 @@ public class MenuBar extends javafx.scene.control.MenuBar {
 
         viewToolBarItem = new CheckMenuItem();
         viewToolBarItem.setText("_Toolbar");
+        viewToolBarItem.setSelected(true);
         viewToolBarItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Toolbar Clicked!");
+                mainController.getGUIController().getMainWindow().getMainScene().showToolBar(viewToolBarItem.isSelected());
             }
         });
 
         viewStatusBarItem = new CheckMenuItem();
         viewStatusBarItem.setText("_Status Bar");
+        viewStatusBarItem.setSelected(true);
         viewStatusBarItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Status Bar Clicked!");
+                mainController.getGUIController().getMainWindow().getMainScene().showStatusBar(viewStatusBarItem.isSelected());
             }
         });
 
@@ -197,7 +197,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         viewFullscreenItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainWindow.setFullscreen(viewFullscreenItem.isSelected());
+                mainController.getGUIController().getMainWindow().setFullscreen(viewFullscreenItem.isSelected());
             }
         });
 

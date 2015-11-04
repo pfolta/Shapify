@@ -12,7 +12,6 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainCont
 public class ToolBar extends javafx.scene.control.ToolBar {
 
     private MainController mainController;
-    private MainWindow mainWindow;
 
     private Button btnNew;
     private Button btnOpen;
@@ -23,11 +22,10 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private ColorPicker btnColorPicker;
 
-    public ToolBar(MainController mainController, MainWindow mainWindow) {
+    public ToolBar(MainController mainController) {
         super();
 
         this.mainController = mainController;
-        this.mainWindow = mainWindow;
 
         buildToolBar();
     }
@@ -57,7 +55,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         btnOpen.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainWindow.openFile();
+                mainController.getGUIController().getMainWindow().openFile();
             }
         });
 
@@ -67,7 +65,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         btnSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainWindow.saveFile();
+                mainController.getGUIController().getMainWindow().saveFile();
             }
         });
 

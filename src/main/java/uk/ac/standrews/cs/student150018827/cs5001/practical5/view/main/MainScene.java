@@ -16,6 +16,7 @@ public class MainScene extends Scene {
 
     private BorderPane borderPane;
 
+    private VBox topVBox;
     private MenuBar menuBar;
     private ToolBar toolBar;
 
@@ -32,14 +33,14 @@ public class MainScene extends Scene {
 
         borderPane = new BorderPane();
 
-        VBox vBox = new VBox();
+        topVBox = new VBox();
 
-        menuBar = new MenuBar(this.mainController, this.mainWindow);
-        toolBar = new ToolBar(this.mainController, this.mainWindow);
+        menuBar = new MenuBar(this.mainController);
+        toolBar = new ToolBar(this.mainController);
 
-        vBox.getChildren().addAll(menuBar, toolBar);
+        topVBox.getChildren().addAll(menuBar, toolBar);
 
-        borderPane.setTop(vBox);
+        borderPane.setTop(topVBox);
 
         artBoardGroup = new Group();
         StackPane stackPane = new StackPane(artBoardGroup);
@@ -55,7 +56,7 @@ public class MainScene extends Scene {
 
         borderPane.setCenter(scrollPane);
 
-        statusBar = new StatusBar(this.mainController, this.mainWindow);
+        statusBar = new StatusBar(this.mainController);
         borderPane.setBottom(statusBar);
 
         setRoot(borderPane);
@@ -69,8 +70,24 @@ public class MainScene extends Scene {
         return toolBar;
     }
 
+    public void showToolBar(boolean show) {
+        if (show && !topVBox.getChildren().contains(toolBar)) {
+            topVBox.getChildren().add(toolBar);
+        } else {
+            topVBox.getChildren().remove(toolBar);
+        }
+    }
+
     public StatusBar getStatusBar() {
         return statusBar;
+    }
+
+    public void showStatusBar(boolean show) {
+        if (show) {
+            borderPane.setBottom(statusBar);
+        } else {
+            borderPane.setBottom(null);
+        }
     }
 
     public void setArtBoard(int width, int height) {
