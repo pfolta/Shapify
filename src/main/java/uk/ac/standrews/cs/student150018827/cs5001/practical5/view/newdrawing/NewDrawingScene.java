@@ -60,7 +60,7 @@ public class NewDrawingScene extends Scene {
         widthLabel.setTextAlignment(TextAlignment.RIGHT);
 
         widthTextField = new TextField();
-        widthTextField.setText("1000");
+        widthTextField.setText("750");
 
         widthUnitLabel = new Label();
         widthUnitLabel.setText("px");
@@ -70,7 +70,7 @@ public class NewDrawingScene extends Scene {
         heightLabel.setTextAlignment(TextAlignment.RIGHT);
 
         heightTextField = new TextField();
-        heightTextField.setText("1000");
+        heightTextField.setText("750");
 
         heightUnitLabel = new Label();
         heightUnitLabel.setText("px");

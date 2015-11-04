@@ -44,6 +44,24 @@ public class GUIController {
 
     public void setSelectedTool(DrawTools selectedTool) {
         getMainWindow().getMainScene().getArtBoard().setSelectedTool(selectedTool);
+
+        switch (selectedTool) {
+            case SELECT_TOOL: {
+                getMainWindow().getMainScene().hideBanner();
+
+                break;
+            }
+            case RECTANGLE_TOOL: {
+                getMainWindow().getMainScene().showBanner("Hold SHIFT down while drawing to create a perfect square.");
+
+                break;
+            }
+            case ELLIPSE_TOOL: {
+                getMainWindow().getMainScene().showBanner("Hold SHIFT down while drawing to create a perfect circle.");
+
+                break;
+            }
+        }
     }
 
 }

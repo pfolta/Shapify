@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -89,7 +90,11 @@ public class DocumentController {
 
             if (close) {
                 document = null;
-                mainController.getGUIController().getMainWindow().getMainScene().clearArtBoard();
+
+                MainScene mainScene = mainController.getGUIController().getMainWindow().getMainScene();
+
+                mainScene.clearArtBoard();
+                mainScene.hideBanner();
             }
         }
 

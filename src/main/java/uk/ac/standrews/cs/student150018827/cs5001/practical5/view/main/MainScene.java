@@ -9,7 +9,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.DocumentObserver;
@@ -23,9 +25,10 @@ public class MainScene extends Scene implements DocumentObserver {
 
     private BorderPane mainBorderPane;
 
-    private BorderPane topBorderPane;
+    private VBox topPane;
     private MenuBar menuBar;
     private ToolBar toolBar;
+    private Banner banner;
 
     private ArtBoard artBoard;
     private Group artBoardGroup;
@@ -40,7 +43,7 @@ public class MainScene extends Scene implements DocumentObserver {
 
         mainBorderPane = new BorderPane();
 
-        topBorderPane = new BorderPane();
+        topPane = new VBox();
 
         menuBar = new MenuBar(this.mainController);
         toolBar = new ToolBar(this.mainController);
@@ -57,7 +60,7 @@ public class MainScene extends Scene implements DocumentObserver {
             }
         });
 
-        mainBorderPane.setTop(topBorderPane);
+        mainBorderPane.setTop(topPane);
 
         artBoardGroup = new Group();
         StackPane stackPane = new StackPane(artBoardGroup);
@@ -84,10 +87,10 @@ public class MainScene extends Scene implements DocumentObserver {
     }
 
     public void showMenuBar(boolean show) {
-        if (show) {
-            topBorderPane.setTop(menuBar);
+        if (show && !topPane.getChildren().contains(menuBar)) {
+            topPane.getChildren().add(0, menuBar);
         } else {
-            topBorderPane.setTop(null);
+            topPane.getChildren().remove(menuBar);
         }
 
         getMenuBar().selectViewMenuBarItem(show);
@@ -98,10 +101,10 @@ public class MainScene extends Scene implements DocumentObserver {
     }
 
     public void showToolBar(boolean show) {
-        if (show) {
-            topBorderPane.setBottom(toolBar);
+        if (show && !topPane.getChildren().contains(topPane)) {
+            topPane.getChildren().add(1, toolBar);
         } else {
-            topBorderPane.setBottom(null);
+            topPane.getChildren().remove(toolBar);
         }
 
         getMenuBar().selectViewToolBarItem(show);
@@ -141,6 +144,22 @@ public class MainScene extends Scene implements DocumentObserver {
         artBoardGroup.getChildren().clear();
 
         getMenuBar().disableFileCloseItem(true);
+    }
+
+    public void showBanner(String message) {
+        if (banner != null) {
+            hideBanner();
+        }
+
+        banner = new Banner(mainController, message, true);
+        topPane.getChildren().add(2, banner);
+    }
+
+    public void hideBanner() {
+        if (banner != null) {
+            topPane.getChildren().remove(banner);
+            banner = null;
+        }
     }
 
     @Override
