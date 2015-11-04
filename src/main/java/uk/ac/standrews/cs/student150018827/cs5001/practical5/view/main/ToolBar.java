@@ -12,19 +12,20 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private MainController mainController;
 
-    private Button btnNew;
-    private Button btnOpen;
-    private Button btnSave;
+    private Button newButton;
+    private Button openButton;
+    private Button saveButton;
 
-    private Button btnUndo;
-    private Button btnRedo;
+    private Button undoButton;
+    private Button redoButton;
 
-    private ColorPicker btnColorPicker;
+    private ColorPicker colorPickerButton;
 
     private ToggleGroup toolToggleGroup;
     private ToggleButton selectToolButton;
     private ToggleButton rectangleToolButton;
     private ToggleButton ellipseToolButton;
+    private ToggleButton lineToolButton;
 
     public ToolBar(MainController mainController) {
         super();
@@ -45,10 +46,10 @@ public class ToolBar extends javafx.scene.control.ToolBar {
     }
 
     private void buildFileControls() {
-        btnNew = new Button();
-        btnNew.setText("New");
-        btnNew.setTooltip(new Tooltip("New (Ctrl+N)"));
-        btnNew.setOnAction(new EventHandler<ActionEvent>() {
+        newButton = new Button();
+        newButton.setText("New");
+        newButton.setTooltip(new Tooltip("New (Ctrl+N)"));
+        newButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (mainController.getDocumentController().closeDocument()) {
@@ -57,10 +58,10 @@ public class ToolBar extends javafx.scene.control.ToolBar {
             }
         });
 
-        btnOpen = new Button();
-        btnOpen.setText("Open...");
-        btnOpen.setTooltip(new Tooltip("Open (Ctrl+O)"));
-        btnOpen.setOnAction(new EventHandler<ActionEvent>() {
+        openButton = new Button();
+        openButton.setText("Open...");
+        openButton.setTooltip(new Tooltip("Open (Ctrl+O)"));
+        openButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (mainController.getDocumentController().closeDocument()) {
@@ -69,56 +70,56 @@ public class ToolBar extends javafx.scene.control.ToolBar {
             }
         });
 
-        btnSave = new Button();
-        btnSave.setText("Save");
-        btnSave.setTooltip(new Tooltip("Save (Ctrl+S)"));
-        btnSave.setOnAction(new EventHandler<ActionEvent>() {
+        saveButton = new Button();
+        saveButton.setText("Save");
+        saveButton.setTooltip(new Tooltip("Save (Ctrl+S)"));
+        saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 mainController.getGUIController().getMainWindow().saveFile();
             }
         });
 
-        getItems().addAll(btnNew, btnOpen, btnSave);
+        getItems().addAll(newButton, openButton, saveButton);
     }
 
     private void buildEditControls() {
-        btnUndo = new Button();
-        btnUndo.setText("Undo");
-        btnUndo.setTooltip(new Tooltip("Undo (Ctrl+Z)"));
-        btnUndo.setOnAction(new EventHandler<ActionEvent>() {
+        undoButton = new Button();
+        undoButton.setText("Undo");
+        undoButton.setTooltip(new Tooltip("Undo (Ctrl+Z)"));
+        undoButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Undo Clicked!");
             }
         });
 
-        btnRedo = new Button();
-        btnRedo.setText("Redo");
-        btnRedo.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
-        btnRedo.setOnAction(new EventHandler<ActionEvent>() {
+        redoButton = new Button();
+        redoButton.setText("Redo");
+        redoButton.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
+        redoButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Redo Clicked!");
             }
         });
 
-        getItems().addAll(btnUndo, btnRedo);
+        getItems().addAll(undoButton, redoButton);
     }
 
     private void buildColorControls() {
-        btnColorPicker = new ColorPicker();
-        btnColorPicker.setValue(Color.BLACK);
-        btnColorPicker.getStyleClass().add("split-button");
+        colorPickerButton = new ColorPicker();
+        colorPickerButton.setValue(Color.BLACK);
+        colorPickerButton.getStyleClass().add("split-button");
 
-        btnColorPicker.setOnAction(new EventHandler<ActionEvent>() {
+        colorPickerButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainController.getDocumentController().setCurrentForeground(btnColorPicker.getValue());
+                mainController.getDocumentController().setCurrentForeground(colorPickerButton.getValue());
             }
         });
 
-        getItems().addAll(btnColorPicker);
+        getItems().addAll(colorPickerButton);
     }
 
     private void buildToolControls() {
@@ -155,10 +156,21 @@ public class ToolBar extends javafx.scene.control.ToolBar {
             }
         });
 
+        lineToolButton = new ToggleButton();
+        lineToolButton.setText("Line");
+        lineToolButton.setToggleGroup(toolToggleGroup);
+        lineToolButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL);
+            }
+        });
+
         getItems().addAll(
             selectToolButton,
             rectangleToolButton,
-            ellipseToolButton
+            ellipseToolButton,
+            lineToolButton
         );
     }
 

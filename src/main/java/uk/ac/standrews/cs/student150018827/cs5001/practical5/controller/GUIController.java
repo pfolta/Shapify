@@ -9,10 +9,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.about.AboutSta
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainWindow;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.EllipseEventHandler;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.MouseEventHandler;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.RectangleEventHandler;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.SelectEventHandler;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.*;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.newdrawing.NewDrawingStage;
 
 import java.util.List;
@@ -95,6 +92,12 @@ public class GUIController {
                 artBoard.setMouseEventHandler(new EllipseEventHandler(mainController));
 
                 break;
+            }
+            case LINE_TOOL: {
+                getMainWindow().getMainScene().showBanner("Hold SHIFT down while drawing to create a perfectly straight line.");
+
+                artBoard.setCursor(Cursor.CROSSHAIR);
+                artBoard.setMouseEventHandler(new LineEventHandler(mainController));
             }
         }
     }
