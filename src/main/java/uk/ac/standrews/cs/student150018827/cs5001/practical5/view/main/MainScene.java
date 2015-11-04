@@ -3,6 +3,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 import javafx.beans.binding.Bindings;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
@@ -10,8 +11,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.DocumentObserver;
 
-public class MainScene extends Scene {
+import java.util.List;
+
+public class MainScene extends Scene implements DocumentObserver {
 
     private MainController mainController;
     private MainWindow mainWindow;
@@ -128,10 +133,23 @@ public class MainScene extends Scene {
         getMenuBar().disableFileCloseItem(false);
     }
 
+    public ArtBoard getArtBoard() {
+        return artBoard;
+    }
+
     public void clearArtBoard() {
-        artBoardGroup.getChildren().remove(artBoard);
+        artBoardGroup.getChildren().clear();
 
         getMenuBar().disableFileCloseItem(true);
     }
 
+    @Override
+    public void update() {
+        Document document = mainController.getDocumentController().getDocument();
+        List<Node> objects = document.getObjects();
+
+        artBoardGroup.getChildren().clear();
+        artBoardGroup.getChildren().add(artBoard);
+        artBoardGroup.getChildren().addAll(objects);
+    }
 }

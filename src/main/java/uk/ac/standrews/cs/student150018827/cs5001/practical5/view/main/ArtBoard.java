@@ -1,69 +1,32 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
-import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.MouseEventHandler;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.RectangleEventHandler;
 
 public class ArtBoard extends Canvas {
 
     private MainController mainController;
 
-    private MainScene mainScene;
+    private MouseEventHandler mouseEventHandler;
 
     public ArtBoard(MainController mainController, int width, int height) {
         super(width, height);
 
         this.mainController = mainController;
 
-        mainScene = mainController.getGUIController().getMainWindow().getMainScene();
+        mouseEventHandler = new RectangleEventHandler(mainController);
 
         setCursor(Cursor.CROSSHAIR);
 
-        setOnMouseMoved(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                int x = (int) event.getX();
-                int y = (int) event.getY();
-
-                mainScene.getStatusBar().setCoordinatesLabel(x, y);
-            }
-        });
-
-        setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                mainScene.getStatusBar().clearCoordinatesLabel();
-            }
-        });
-
-        setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("Mouse Clicked!");
-            }
-        });
-
-        setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                int x = (int) event.getX();
-                int y = (int) event.getY();
-
-                // Ensure event is within artboard boundaries
-                if (x < 0 || x > getWidth() || y < 0 || y > getHeight()) {
-                    mainScene.getStatusBar().clearCoordinatesLabel();
-                    event.consume();
-                    return;
-                }
-
-                mainScene.getStatusBar().setCoordinatesLabel(x, y);
-
-                System.out.println("Mouse Dragged!");
-            }
-        });
+        setOnMouseMoved(mouseEventHandler.getMouseMovedEventHandler());
+        setOnMouseExited(mouseEventHandler.getMouseExitedEventHandler());
+        setOnMousePressed(mouseEventHandler.getMousePressedEventHandler());
+        setOnMouseDragged(mouseEventHandler.getMouseDraggedEventHandler());
+        setOnMouseReleased(mouseEventHandler.getMouseReleasedEventHandler());
 
         for (int i = 0; i <= width; i += 10) {
             for (int j = 0; j <= height; j += 10) {

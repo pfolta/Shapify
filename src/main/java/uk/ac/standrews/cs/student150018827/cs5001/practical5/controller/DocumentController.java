@@ -3,6 +3,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 
 import java.io.IOException;
@@ -14,6 +15,8 @@ public class DocumentController {
 
     private FileController fileController;
     private Document document;
+
+    private Color currentForeground;
 
     public DocumentController(MainController mainController) {
         this.mainController = mainController;
@@ -51,7 +54,7 @@ public class DocumentController {
     }
 
     public void removeObject(Node object) {
-        document.removeShape(object);
+        document.removeObject(object);
     }
 
     public boolean closeDocument() {
@@ -91,6 +94,18 @@ public class DocumentController {
         }
 
         return continueTask;
+    }
+
+    public Color getCurrentForeground() {
+        if (currentForeground == null) {
+            return Color.BLACK;
+        }
+
+        return currentForeground;
+    }
+
+    public void setCurrentForeground(Color foreground) {
+        currentForeground = foreground;
     }
 
 }

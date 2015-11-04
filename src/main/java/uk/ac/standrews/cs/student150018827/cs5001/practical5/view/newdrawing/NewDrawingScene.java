@@ -60,7 +60,7 @@ public class NewDrawingScene extends Scene {
         widthLabel.setTextAlignment(TextAlignment.RIGHT);
 
         widthTextField = new TextField();
-        widthTextField.setText("500");
+        widthTextField.setText("1000");
 
         widthUnitLabel = new Label();
         widthUnitLabel.setText("px");
@@ -70,7 +70,7 @@ public class NewDrawingScene extends Scene {
         heightLabel.setTextAlignment(TextAlignment.RIGHT);
 
         heightTextField = new TextField();
-        heightTextField.setText("500");
+        heightTextField.setText("1000");
 
         heightUnitLabel = new Label();
         heightUnitLabel.setText("px");
@@ -130,6 +130,8 @@ public class NewDrawingScene extends Scene {
 
             mainController.getGUIController().getMainWindow().getMainScene().setArtBoard(width, height);
             mainController.getGUIController().getMainWindow().setTitle(title);
+
+            mainController.getDocumentController().getDocument().addObserver(mainController.getGUIController().getMainWindow().getMainScene());
 
             close();
         } catch (InputMismatchException exception) {

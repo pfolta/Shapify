@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Document {
 
+    private List<DocumentObserver> observers;
+
     private String title;
     private Path file;
 
@@ -19,8 +21,24 @@ public class Document {
     private List<Node> objects;
 
     public Document() {
+        observers = new ArrayList<DocumentObserver>();
+
         objects = new ArrayList<Node>();
         isSaved = false;
+    }
+
+    public void addObserver(DocumentObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(DocumentObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        for (DocumentObserver observer : observers) {
+            observer.update();
+        }
     }
 
     public String getTitle() {
@@ -70,10 +88,12 @@ public class Document {
 
     public void addObject(Node object) {
         objects.add(object);
+        notifyObservers();
     }
 
-    public void removeShape(Node object) {
+    public void removeObject(Node object) {
         objects.remove(object);
+        notifyObservers();
     }
 
     public List<Node> getObjects() {

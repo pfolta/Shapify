@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Separator;
 import javafx.scene.control.Tooltip;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 
@@ -22,6 +23,9 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private ColorPicker btnColorPicker;
 
+    private Button selectToolButton;
+    private Button rectangleToolButton;
+
     public ToolBar(MainController mainController) {
         super();
 
@@ -36,6 +40,8 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         buildEditControls();
         getItems().add(new Separator());
         buildColorControls();
+        getItems().add(new Separator());
+        buildToolControls();
     }
 
     private void buildFileControls() {
@@ -102,16 +108,39 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private void buildColorControls() {
         btnColorPicker = new ColorPicker();
+        btnColorPicker.setValue(Color.BLACK);
         btnColorPicker.getStyleClass().add("split-button");
 
         btnColorPicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Color Chosen: " + btnColorPicker.getValue());
+                mainController.getDocumentController().setCurrentForeground(btnColorPicker.getValue());
             }
         });
 
         getItems().addAll(btnColorPicker);
+    }
+
+    private void buildToolControls() {
+        selectToolButton = new Button();
+        selectToolButton.setText("Select");
+        selectToolButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Select Tool Clicked!");
+            }
+        });
+
+        rectangleToolButton = new Button();
+        rectangleToolButton.setText("Rectangle");
+        rectangleToolButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Rectlangle Tool Clicked!");
+            }
+        });
+
+        getItems().addAll(selectToolButton, rectangleToolButton);
     }
 
 }
