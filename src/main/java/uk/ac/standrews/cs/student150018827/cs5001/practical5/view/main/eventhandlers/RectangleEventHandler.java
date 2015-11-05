@@ -79,7 +79,7 @@ public class RectangleEventHandler extends MouseEventHandler {
             rectangle.setX(posx);
             rectangle.setY(posy);
 
-            //mainScene.getStatusBar().setCoordinatesLabel(x, y);
+            mainScene.getStatusBar().setCoordinatesLabel(x, y);
         };
     }
 
