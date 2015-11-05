@@ -1,5 +1,7 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
@@ -124,6 +126,14 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private void buildToolControls() {
         toolToggleGroup = new ToggleGroup();
+        toolToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle newToggle) {
+                if (newToggle == null) {
+                    toggle.setSelected(true);
+                }
+            }
+        });
 
         selectToolButton = new ToggleButton();
         selectToolButton.setText("Select");
