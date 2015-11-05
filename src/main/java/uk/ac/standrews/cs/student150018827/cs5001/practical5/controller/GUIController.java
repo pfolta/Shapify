@@ -54,52 +54,70 @@ public class GUIController {
         ArtBoard artBoard = getMainWindow().getMainScene().getArtBoard();
         Document document = mainController.getDocumentController().getDocument();
 
+        List<Node> objects = document.getObjects();
+
+        MouseEventHandler mouseEventHandler = null;
+
         switch (selectedTool) {
             case SELECT_TOOL: {
                 getMainWindow().getMainScene().hideBanner();
+                mouseEventHandler = new SelectEventHandler(mainController);
 
                 artBoard.setCursor(Cursor.DEFAULT);
 
-                MouseEventHandler mouseEventHandler = new SelectEventHandler(mainController);
-
-                artBoard.setMouseEventHandler(mouseEventHandler);
-
-                List<Node> objects = document.getObjects();
-
                 for(Node object : objects) {
                     object.setCursor(Cursor.MOVE);
-
-                    object.setOnMouseMoved(mouseEventHandler.getMouseMovedEventHandler());
-                    object.setOnMousePressed(mouseEventHandler.getMousePressedEventHandler());
-                    object.setOnMouseDragged(mouseEventHandler.getMouseDraggedEventHandler());
-                    object.setOnMouseReleased(mouseEventHandler.getMouseReleasedEventHandler());
                 }
 
                 break;
             }
             case RECTANGLE_TOOL: {
                 getMainWindow().getMainScene().showBanner("Hold SHIFT down while drawing to create a perfect square.");
+                mouseEventHandler = new RectangleEventHandler(mainController);
 
                 artBoard.setCursor(Cursor.CROSSHAIR);
-                artBoard.setMouseEventHandler(new RectangleEventHandler(mainController));
+
+                for(Node object : objects) {
+                    object.setCursor(Cursor.CROSSHAIR);
+                }
 
                 break;
             }
             case ELLIPSE_TOOL: {
                 getMainWindow().getMainScene().showBanner("Hold SHIFT down while drawing to create a perfect circle.");
+                mouseEventHandler = new EllipseEventHandler(mainController);
 
                 artBoard.setCursor(Cursor.CROSSHAIR);
-                artBoard.setMouseEventHandler(new EllipseEventHandler(mainController));
+
+                for(Node object : objects) {
+                    object.setCursor(Cursor.CROSSHAIR);
+                }
 
                 break;
             }
             case LINE_TOOL: {
                 getMainWindow().getMainScene().showBanner("Hold SHIFT down while drawing to create a perfectly straight line.");
+                mouseEventHandler = new LineEventHandler(mainController);
 
                 artBoard.setCursor(Cursor.CROSSHAIR);
-                artBoard.setMouseEventHandler(new LineEventHandler(mainController));
+
+                for(Node object : objects) {
+                    object.setCursor(Cursor.CROSSHAIR);
+                }
+
+                break;
             }
         }
+
+        artBoard.setMouseEventHandler(mouseEventHandler);
+
+        for(Node object : objects) {
+            object.setOnMouseMoved(mouseEventHandler.getMouseMovedEventHandler());
+            object.setOnMousePressed(mouseEventHandler.getMousePressedEventHandler());
+            object.setOnMouseDragged(mouseEventHandler.getMouseDraggedEventHandler());
+            object.setOnMouseReleased(mouseEventHandler.getMouseReleasedEventHandler());
+        }
+
     }
 
 }
