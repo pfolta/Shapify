@@ -60,9 +60,11 @@ public class LineEventHandler extends MouseEventHandler {
 
             // Adjust width and height if Shift is pressed to create a perfectly straight line
             if (event.isShiftDown()) {
-                if (Math.abs(x) > Math.abs(y)) {
+                if (Math.abs(x - originalX) > Math.abs(y - originalY)) {
                     endy = originalY;
-                } else if (Math.abs(y) > Math.abs(x)) {
+                }
+
+                if (Math.abs(y - originalY) > Math.abs(x - originalX)) {
                     endx = originalX;
                 }
             }
@@ -70,7 +72,7 @@ public class LineEventHandler extends MouseEventHandler {
             line.setEndX(endx);
             line.setEndY(endy);
 
-            //mainScene.getStatusBar().setCoordinatesLabel(x, y);
+            mainScene.getStatusBar().setCoordinatesLabel(x, y);
         };
     }
 
