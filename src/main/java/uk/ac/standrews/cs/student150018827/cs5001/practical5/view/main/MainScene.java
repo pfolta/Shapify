@@ -12,10 +12,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import org.w3c.dom.css.Rect;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.KeyEventHandler;
 
 public class MainScene extends Scene implements Observer {
 
@@ -50,12 +52,6 @@ public class MainScene extends Scene implements Observer {
         showMenuBar(true);
         showToolBar(true);
 
-        this.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ALT)) {
-                showMenuBar(true);
-            }
-        });
-
         mainBorderPane.setTop(topPane);
 
         artBoardGroup = new Group();
@@ -74,6 +70,10 @@ public class MainScene extends Scene implements Observer {
 
         statusBar = new StatusBar(this.mainController);
         mainBorderPane.setBottom(statusBar);
+
+        // Register Key Event Handler
+        KeyEventHandler keyEventHandler = new KeyEventHandler(mainController);
+        setOnKeyPressed(keyEventHandler.getKeyPressedEventHandler());
 
         setRoot(mainBorderPane);
     }
@@ -169,6 +169,12 @@ public class MainScene extends Scene implements Observer {
 
             if (guiState.getSelectedObject() != null) {
                 Node selectedObject = guiState.getSelectedObject();
+
+                // Draw Focus Outline
+                FocusOutline focusOutline = guiState.getFocusOutline();
+                Rectangle focusRectangle = focusOutline.getFocusRectangle();
+
+                artBoardGroup.getChildren().add(focusRectangle);
 
                 if (selectedObject instanceof Rectangle) {
                     ((Rectangle) selectedObject).setFill(guiState.getCurrentForeground());

@@ -21,9 +21,9 @@ public class Document {
     private List<Node> objects;
 
     public Document() {
-        observers = new ArrayList<Observer>();
+        observers = new ArrayList<>();
 
-        objects = new ArrayList<Node>();
+        objects = new ArrayList<>();
         isSaved = false;
     }
 

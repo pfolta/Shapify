@@ -2,6 +2,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.FocusOutline;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,10 @@ public class GUIState {
 
     private Node selectedObject;
     private Color currentForeground;
+    private FocusOutline focusOutline;
 
     public GUIState() {
-        observers = new ArrayList<Observer>();
+        observers = new ArrayList<>();
     }
 
     public void addObserver(Observer observer) {
@@ -51,6 +53,16 @@ public class GUIState {
         currentForeground = foreground;
 
         notifyObservers();
+    }
+
+    public void setFocusOutline(FocusOutline focusOutline) {
+        this.focusOutline = focusOutline;
+
+        notifyObservers();
+    }
+
+    public FocusOutline getFocusOutline() {
+        return focusOutline;
     }
 
 }
