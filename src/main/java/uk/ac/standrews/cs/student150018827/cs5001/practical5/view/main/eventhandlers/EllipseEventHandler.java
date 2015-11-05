@@ -79,7 +79,7 @@ public class EllipseEventHandler extends MouseEventHandler {
             ellipse.setCenterX(centerX);
             ellipse.setCenterY(centerY);
 
-            //mainScene.getStatusBar().setCoordinatesLabel(x, y);
+            mainScene.getStatusBar().setCoordinatesLabel(x, y);
         };
     }
 

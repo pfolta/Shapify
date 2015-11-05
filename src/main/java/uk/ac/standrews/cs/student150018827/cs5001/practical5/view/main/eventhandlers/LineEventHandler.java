@@ -48,11 +48,11 @@ public class LineEventHandler extends MouseEventHandler {
             int y = (int) event.getY();
 
             // Ensure event is within artboard boundaries
-            x = Math.max(x, 0);
-            x = Math.min(x, (int) artBoard.getWidth());
+            x = Math.max(x, (int) (0 + Math.ceil(line.getStrokeWidth()/2.0)));
+            x = Math.min(x, (int) (artBoard.getWidth() - Math.ceil(line.getStrokeWidth()/2.0)));
 
-            y = Math.max(y, 0);
-            y = Math.min(y, (int) artBoard.getHeight());
+            y = Math.max(y, (int) (0 + Math.ceil(line.getStrokeWidth()/2.0)));
+            y = Math.min(y, (int) (artBoard.getHeight() - Math.ceil(line.getStrokeWidth()/2.0)));
 
             int endx = x;
             int endy = y;
