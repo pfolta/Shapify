@@ -3,7 +3,6 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene;
 
@@ -17,11 +16,13 @@ public class DocumentController {
     private FileController fileController;
     private Document document;
 
-    private Color currentForeground;
+    private MainScene mainScene;
 
     public DocumentController(MainController mainController) {
         this.mainController = mainController;
+
         fileController = new FileController();
+        mainScene = mainController.getGUIController().getMainWindow().getMainScene();
     }
 
     public Document getDocument() {
@@ -44,6 +45,9 @@ public class DocumentController {
 
     public void setDimension(int width, int height) {
         document.setDimensions(width, height);
+
+        mainScene.setArtBoard(document.getWidth(), document.getHeight());
+        mainScene.activateControls(true);
     }
 
     public void setTitle(String title) {
@@ -91,26 +95,13 @@ public class DocumentController {
             if (close) {
                 document = null;
 
-                MainScene mainScene = mainController.getGUIController().getMainWindow().getMainScene();
-
                 mainScene.clearArtBoard();
                 mainScene.hideBanner();
+                mainScene.activateControls(false);
             }
         }
 
         return continueTask;
-    }
-
-    public Color getCurrentForeground() {
-        if (currentForeground == null) {
-            return Color.BLACK;
-        }
-
-        return currentForeground;
-    }
-
-    public void setCurrentForeground(Color foreground) {
-        currentForeground = foreground;
     }
 
 }

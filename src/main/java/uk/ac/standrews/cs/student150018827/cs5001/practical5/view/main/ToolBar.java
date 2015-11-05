@@ -8,11 +8,14 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 
-public class ToolBar extends javafx.scene.control.ToolBar {
+public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private MainController mainController;
+
 
     private Button newButton;
     private Button openButton;
@@ -35,6 +38,7 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         this.mainController = mainController;
 
         buildToolBar();
+        activateControls(false);
     }
 
     private void buildToolBar() {
@@ -111,13 +115,12 @@ public class ToolBar extends javafx.scene.control.ToolBar {
 
     private void buildColorControls() {
         colorPickerButton = new ColorPicker();
-        colorPickerButton.setValue(Color.BLACK);
         colorPickerButton.getStyleClass().add("split-button");
-
+        colorPickerButton.setValue(Color.BLACK);
         colorPickerButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                mainController.getDocumentController().setCurrentForeground(colorPickerButton.getValue());
+                mainController.getGUIController().getGuiState().setCurrentForeground(colorPickerButton.getValue());
             }
         });
 
@@ -138,7 +141,6 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         selectToolButton = new ToggleButton();
         selectToolButton.setText("Select");
         selectToolButton.setToggleGroup(toolToggleGroup);
-        selectToolButton.setSelected(true);
         selectToolButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -184,4 +186,24 @@ public class ToolBar extends javafx.scene.control.ToolBar {
         );
     }
 
+    public void activateControls(boolean activate) {
+        saveButton.setDisable(!activate);
+
+        colorPickerButton.setDisable(!activate);
+
+        selectToolButton.setDisable(!activate);
+        selectToolButton.setSelected(true);
+        rectangleToolButton.setDisable(!activate);
+        ellipseToolButton.setDisable(!activate);
+        lineToolButton.setDisable(!activate);
+    }
+
+    @Override
+    public void update() {
+        GUIState guiState = mainController.getGUIController().getGuiState();
+
+        if (guiState.getSelectedObject() != null) {
+            colorPickerButton.setValue(guiState.getCurrentForeground());
+        }
+    }
 }

@@ -25,7 +25,7 @@ public class LineEventHandler extends MouseEventHandler {
                 originalY = (int) event.getY();
 
                 line = new Line();
-                line.setFill(mainController.getDocumentController().getCurrentForeground());
+                line.setStroke(mainController.getGUIController().getGuiState().getCurrentForeground());
                 line.setStrokeWidth(3);
                 line.setStartX(originalX);
                 line.setStartY(originalY);
@@ -39,7 +39,7 @@ public class LineEventHandler extends MouseEventHandler {
 
                 line.setOnContextMenuRequested(new ContextEventHandler(mainController));
 
-                mainController.getDocumentController().getDocument().addObject(line);
+                mainController.getDocumentController().addObject(line);
             }
         };
     }

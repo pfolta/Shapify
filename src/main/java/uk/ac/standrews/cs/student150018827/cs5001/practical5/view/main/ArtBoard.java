@@ -1,20 +1,13 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
-import javafx.scene.Cursor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.EllipseEventHandler;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.MouseEventHandler;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.RectangleEventHandler;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.SelectEventHandler;
 
 public class ArtBoard extends Canvas {
 
     private MainController mainController;
-
-    private MouseEventHandler mouseEventHandler;
 
     public ArtBoard(MainController mainController, int width, int height) {
         super(width, height);
@@ -35,13 +28,10 @@ public class ArtBoard extends Canvas {
     }
 
     public void setMouseEventHandler(MouseEventHandler mouseEventHandler) {
-        this.mouseEventHandler = mouseEventHandler;
-
         setOnMouseMoved(mouseEventHandler.getMouseMovedEventHandler());
         setOnMouseExited(mouseEventHandler.getMouseExitedEventHandler());
         setOnMousePressed(mouseEventHandler.getMousePressedEventHandler());
         setOnMouseDragged(mouseEventHandler.getMouseDraggedEventHandler());
         setOnMouseReleased(mouseEventHandler.getMouseReleasedEventHandler());
     }
-
 }

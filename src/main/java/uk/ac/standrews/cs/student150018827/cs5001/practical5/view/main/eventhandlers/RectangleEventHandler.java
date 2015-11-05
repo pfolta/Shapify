@@ -25,7 +25,7 @@ public class RectangleEventHandler extends MouseEventHandler {
                 originalY = (int) event.getY();
 
                 rectangle = new Rectangle();
-                rectangle.setFill(mainController.getDocumentController().getCurrentForeground());
+                rectangle.setFill(mainController.getGUIController().getGuiState().getCurrentForeground());
                 rectangle.setHeight(0);
                 rectangle.setWidth(0);
                 rectangle.setX(originalX);
@@ -38,7 +38,7 @@ public class RectangleEventHandler extends MouseEventHandler {
 
                 rectangle.setOnContextMenuRequested(new ContextEventHandler(mainController));
 
-                mainController.getDocumentController().getDocument().addObject(rectangle);
+                mainController.getDocumentController().addObject(rectangle);
             }
         };
     }

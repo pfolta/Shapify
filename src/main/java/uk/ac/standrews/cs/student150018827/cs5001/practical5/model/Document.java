@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Document {
 
-    private List<DocumentObserver> observers;
+    private List<Observer> observers;
 
     private String title;
     private Path file;
@@ -21,22 +21,22 @@ public class Document {
     private List<Node> objects;
 
     public Document() {
-        observers = new ArrayList<DocumentObserver>();
+        observers = new ArrayList<Observer>();
 
         objects = new ArrayList<Node>();
         isSaved = false;
     }
 
-    public void addObserver(DocumentObserver observer) {
+    public void addObserver(Observer observer) {
         observers.add(observer);
     }
 
-    public void removeObserver(DocumentObserver observer) {
+    public void removeObserver(Observer observer) {
         observers.remove(observer);
     }
 
     public void notifyObservers() {
-        for (DocumentObserver observer : observers) {
+        for (Observer observer : observers) {
             observer.update();
         }
     }
@@ -47,6 +47,7 @@ public class Document {
 
     public void setTitle(String title) {
         this.title = title;
+        notifyObservers();
     }
 
     public Path getFile() {
@@ -55,6 +56,7 @@ public class Document {
 
     public void setFile(Path file) {
         this.file = file;
+        notifyObservers();
     }
 
     public boolean isSaved() {
@@ -63,11 +65,13 @@ public class Document {
 
     public void setSaved(boolean saved) {
         this.isSaved = saved;
+        notifyObservers();
     }
 
     public void setDimensions(int width, int height) {
         this.width = width;
         this.height = height;
+        notifyObservers();
     }
 
     public int getWidth() {
@@ -76,6 +80,7 @@ public class Document {
 
     public void setWidth(int width) {
         this.width = width;
+        notifyObservers();
     }
 
     public int getHeight() {
@@ -84,6 +89,7 @@ public class Document {
 
     public void setHeight(int height) {
         this.height = height;
+        notifyObservers();
     }
 
     public void addObject(Node object) {

@@ -25,7 +25,7 @@ public class EllipseEventHandler extends MouseEventHandler {
                 originalY = (int) event.getY();
 
                 ellipse = new Ellipse();
-                ellipse.setFill(mainController.getDocumentController().getCurrentForeground());
+                ellipse.setFill(mainController.getGUIController().getGuiState().getCurrentForeground());
                 ellipse.setRadiusX(0);
                 ellipse.setRadiusY(0);
                 ellipse.setCenterX(originalX);
@@ -38,7 +38,7 @@ public class EllipseEventHandler extends MouseEventHandler {
 
                 ellipse.setOnContextMenuRequested(new ContextEventHandler(mainController));
 
-                mainController.getDocumentController().getDocument().addObject(ellipse);
+                mainController.getDocumentController().addObject(ellipse);
             }
         };
     }

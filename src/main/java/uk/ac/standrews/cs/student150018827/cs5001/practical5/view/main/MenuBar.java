@@ -47,6 +47,8 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             viewMenu,
             helpMenu
         );
+
+        activateControls(false);
     }
 
     private Menu buildFileMenu() {
@@ -109,7 +111,6 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         fileCloseItem = new MenuItem();
         fileCloseItem.setText("_Close");
         fileCloseItem.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN));
-        fileCloseItem.setDisable(true);
         fileCloseItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -245,10 +246,6 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         return menu;
     }
 
-    public void disableFileCloseItem(boolean disable) {
-        fileCloseItem.setDisable(disable);
-    }
-
     public void selectViewMenuBarItem(boolean selected) {
         viewMenuBarItem.setSelected(selected);
     }
@@ -261,5 +258,11 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         viewStatusBarItem.setSelected(selected);
     }
 
+    public void activateControls(boolean activate) {
+        fileSaveItem.setDisable(!activate);
+        fileSaveAsItem.setDisable(!activate);
+        fileExportItem.setDisable(!activate);
+        fileCloseItem.setDisable(!activate);
+    }
 
 }

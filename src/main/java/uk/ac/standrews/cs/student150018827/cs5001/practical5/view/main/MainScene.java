@@ -1,24 +1,23 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
 import javafx.beans.binding.Bindings;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.DocumentObserver;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 
-import java.util.List;
-
-public class MainScene extends Scene implements DocumentObserver {
+public class MainScene extends Scene implements Observer {
 
     private MainController mainController;
     private MainWindow mainWindow;
@@ -51,12 +50,9 @@ public class MainScene extends Scene implements DocumentObserver {
         showMenuBar(true);
         showToolBar(true);
 
-        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode().equals(KeyCode.ALT)) {
-                    showMenuBar(true);
-                }
+        this.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ALT)) {
+                showMenuBar(true);
             }
         });
 
@@ -96,10 +92,6 @@ public class MainScene extends Scene implements DocumentObserver {
         getMenuBar().selectViewMenuBarItem(show);
     }
 
-    public ToolBar getToolBar() {
-        return toolBar;
-    }
-
     public void showToolBar(boolean show) {
         if (show && !topPane.getChildren().contains(topPane)) {
             topPane.getChildren().add(1, toolBar);
@@ -132,8 +124,6 @@ public class MainScene extends Scene implements DocumentObserver {
         artBoard = new ArtBoard(mainController, width, height);
 
         artBoardGroup.getChildren().add(artBoard);
-
-        getMenuBar().disableFileCloseItem(false);
     }
 
     public ArtBoard getArtBoard() {
@@ -142,8 +132,6 @@ public class MainScene extends Scene implements DocumentObserver {
 
     public void clearArtBoard() {
         artBoardGroup.getChildren().clear();
-
-        getMenuBar().disableFileCloseItem(true);
     }
 
     public void showBanner(String message) {
@@ -162,12 +150,42 @@ public class MainScene extends Scene implements DocumentObserver {
         }
     }
 
+    public void activateControls(boolean activate) {
+        menuBar.activateControls(activate);
+        toolBar.activateControls(activate);
+    }
+
     @Override
     public void update() {
         Document document = mainController.getDocumentController().getDocument();
+        GUIState guiState = mainController.getGUIController().getGuiState();
 
-        artBoardGroup.getChildren().clear();
-        artBoardGroup.getChildren().add(artBoard);
-        artBoardGroup.getChildren().addAll(document.getObjects());
+        mainWindow.setTitle(document.getTitle());
+
+        if (artBoard != null) {
+            artBoardGroup.getChildren().clear();
+            artBoardGroup.getChildren().add(artBoard);
+            artBoardGroup.getChildren().addAll(document.getObjects());
+
+            if (guiState.getSelectedObject() != null) {
+                Node selectedObject = guiState.getSelectedObject();
+
+                if (selectedObject instanceof Rectangle) {
+                    ((Rectangle) selectedObject).setFill(guiState.getCurrentForeground());
+                }
+
+                if (selectedObject instanceof Ellipse) {
+                    ((Ellipse) selectedObject).setFill(guiState.getCurrentForeground());
+                }
+
+                if (selectedObject instanceof Line) {
+                    ((Line) selectedObject).setStroke(guiState.getCurrentForeground());
+                }
+            }
+        }
+    }
+
+    public ToolBar getToolBar() {
+        return toolBar;
     }
 }

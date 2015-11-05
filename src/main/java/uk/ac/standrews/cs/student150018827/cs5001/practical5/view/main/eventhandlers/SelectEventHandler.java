@@ -3,10 +3,12 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhan
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 
 public class SelectEventHandler extends MouseEventHandler {
@@ -28,11 +30,16 @@ public class SelectEventHandler extends MouseEventHandler {
 
             Node selectedObject = (Node) event.getSource();
 
-            // Set selected object
-            mainController.getGUIController().setSelectedObject(selectedObject);
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            // Reset selected object
+            guiState.setSelectedObject(null);
 
             if (selectedObject instanceof Rectangle) {
                 Rectangle rectangle = (Rectangle) selectedObject;
+
+                // Set selected object color
+                guiState.setCurrentForeground(((Color) rectangle.getFill()));
 
                 deltaX = (int) (originalX - rectangle.getX());
                 deltaY = (int) (originalY - rectangle.getY());
@@ -41,6 +48,9 @@ public class SelectEventHandler extends MouseEventHandler {
             if (selectedObject instanceof Ellipse) {
                 Ellipse ellipse = (Ellipse) selectedObject;
 
+                // Set selected object color
+                guiState.setCurrentForeground(((Color) ellipse.getFill()));
+
                 deltaX = (int) (originalX - ellipse.getCenterX());
                 deltaY = (int) (originalY - ellipse.getCenterY());
             }
@@ -48,9 +58,15 @@ public class SelectEventHandler extends MouseEventHandler {
             if (selectedObject instanceof Line) {
                 Line line = (Line) selectedObject;
 
+                // Set selected object color
+                guiState.setCurrentForeground(((Color) line.getStroke()));
+
                 deltaX = (int) (originalX - line.getStartX());
                 deltaY = (int) (originalY - line.getStartY());
             }
+
+            // Set selected object
+            guiState.setSelectedObject(selectedObject);
         };
     }
 

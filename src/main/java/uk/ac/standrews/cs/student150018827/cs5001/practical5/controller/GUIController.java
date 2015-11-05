@@ -8,6 +8,7 @@ import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import sun.util.resources.cldr.om.CurrencyNames_om;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.about.AboutStage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
@@ -21,14 +22,14 @@ public class GUIController {
 
     private MainController mainController;
 
+    private GUIState guiState;
     private MainWindow mainWindow;
-
-    private Node selectedObject;
 
     public GUIController(MainController mainController, Stage mainStage) {
         this.mainController = mainController;
 
-        this.mainWindow = new MainWindow(mainController, mainStage);
+        guiState = new GUIState();
+        mainWindow = new MainWindow(mainController, mainStage);
     }
 
     public void openMainWindow() {
@@ -58,6 +59,9 @@ public class GUIController {
     public void setSelectedTool(DrawTools selectedTool) {
         ArtBoard artBoard = getMainWindow().getMainScene().getArtBoard();
         Document document = mainController.getDocumentController().getDocument();
+
+        // Reset selected object
+        guiState.setSelectedObject(null);
 
         List<Node> objects = document.getObjects();
 
@@ -127,12 +131,8 @@ public class GUIController {
 
     }
 
-    public Node getSelectedObject() {
-        return selectedObject;
-    }
-
-    public void setSelectedObject(Node selectedObject) {
-        this.selectedObject = selectedObject;
+    public GUIState getGuiState() {
+        return guiState;
     }
 
 }

@@ -125,13 +125,13 @@ public class NewDrawingScene extends Scene {
             int height = Integer.parseInt(heightTextField.getText());
 
             mainController.getDocumentController().createDocument();
-            mainController.getDocumentController().setDimension(width, height);
-            mainController.getDocumentController().setTitle(title);
-
-            mainController.getGUIController().getMainWindow().getMainScene().setArtBoard(width, height);
-            mainController.getGUIController().getMainWindow().setTitle(title);
 
             mainController.getDocumentController().getDocument().addObserver(mainController.getGUIController().getMainWindow().getMainScene());
+            mainController.getGUIController().getGuiState().addObserver(mainController.getGUIController().getMainWindow().getMainScene());
+            mainController.getGUIController().getGuiState().addObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
+
+            mainController.getDocumentController().setDimension(width, height);
+            mainController.getDocumentController().setTitle(title);
 
             close();
         } catch (InputMismatchException exception) {

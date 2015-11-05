@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.ContextMenuEvent;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ContextMenu;
 
 public class ContextEventHandler implements EventHandler<ContextMenuEvent> {
@@ -20,9 +21,11 @@ public class ContextEventHandler implements EventHandler<ContextMenuEvent> {
 
     @Override
     public void handle(ContextMenuEvent event) {
-        mainController.getGUIController().setSelectedObject((Node) event.getSource());
+        GUIState guiState = mainController.getGUIController().getGuiState();
 
-        contextMenu.show(mainController.getGUIController().getSelectedObject(), event.getScreenX(), event.getScreenY());
+        guiState.setSelectedObject((Node) event.getSource());
+
+        contextMenu.show(guiState.getSelectedObject(), event.getScreenX(), event.getScreenY());
     }
 
 }
