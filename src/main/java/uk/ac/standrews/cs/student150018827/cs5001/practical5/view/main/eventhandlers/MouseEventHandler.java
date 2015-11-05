@@ -30,9 +30,7 @@ public abstract class MouseEventHandler {
     }
 
     public EventHandler<MouseEvent> getMouseExitedEventHandler() {
-        return event -> {
-            mainScene.getStatusBar().clearCoordinatesLabel();
-        };
+        return event -> mainScene.getStatusBar().clearCoordinatesLabel();
     }
 
     public abstract EventHandler<MouseEvent> getMousePressedEventHandler();

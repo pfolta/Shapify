@@ -84,9 +84,7 @@ public class RectangleEventHandler extends MouseEventHandler {
     }
 
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return event -> {
-            rectangle = null;
-        };
+        return event -> rectangle = null;
     }
 
 }

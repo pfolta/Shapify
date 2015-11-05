@@ -4,7 +4,6 @@ import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 
@@ -77,9 +76,7 @@ public class LineEventHandler extends MouseEventHandler {
     }
 
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return event -> {
-            line = null;
-        };
+        return event -> line = null;
     }
 
 }

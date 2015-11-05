@@ -1,7 +1,6 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers;
 
 import javafx.event.EventHandler;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Ellipse;
@@ -95,11 +94,25 @@ public class SelectEventHandler extends MouseEventHandler {
             if (object instanceof Line) {
                 Line line = (Line) object;
 
+                // Compute endX and endY delta
+                int endXDelta = (int) (line.getEndX() - line.getStartX());
+                int endYDelta = (int) (line.getEndY() - line.getStartY());
+
+                // Ensure event is within artboard boundaries
+                xpos = Math.max(xpos, 0);
+                xpos = Math.min(xpos, (int) (artBoard.getWidth() - endXDelta));
+
+                ypos = Math.max(ypos, 0);
+                ypos = Math.min(ypos, (int) (artBoard.getHeight() - endYDelta));
+
+                int endX = xpos + endXDelta;
+                int endY = ypos + endYDelta;
+
                 line.setStartX(xpos);
                 line.setStartY(ypos);
 
-                line.setEndX(line.getEndX() - xpos);
-                line.setEndY(line.getEndY() - ypos);
+                line.setEndX(endX);
+                line.setEndY(endY);
             }
 
             mainScene.getStatusBar().setCoordinatesLabel(x, y);

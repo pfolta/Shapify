@@ -84,9 +84,7 @@ public class EllipseEventHandler extends MouseEventHandler {
     }
 
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return event -> {
-            ellipse = null;
-        };
+        return event -> ellipse = null;
     }
 
 }
