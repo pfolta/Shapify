@@ -36,6 +36,8 @@ public class EllipseEventHandler extends MouseEventHandler {
                 ellipse.setOnMouseDragged(getMouseDraggedEventHandler());
                 ellipse.setOnMouseReleased(getMouseReleasedEventHandler());
 
+                ellipse.setOnContextMenuRequested(new ContextEventHandler(mainController));
+
                 mainController.getDocumentController().getDocument().addObject(ellipse);
             }
         };

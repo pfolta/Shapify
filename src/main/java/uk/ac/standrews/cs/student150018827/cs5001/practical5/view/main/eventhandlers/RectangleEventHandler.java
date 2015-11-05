@@ -36,6 +36,8 @@ public class RectangleEventHandler extends MouseEventHandler {
                 rectangle.setOnMouseDragged(getMouseDraggedEventHandler());
                 rectangle.setOnMouseReleased(getMouseReleasedEventHandler());
 
+                rectangle.setOnContextMenuRequested(new ContextEventHandler(mainController));
+
                 mainController.getDocumentController().getDocument().addObject(rectangle);
             }
         };

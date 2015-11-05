@@ -26,24 +26,27 @@ public class SelectEventHandler extends MouseEventHandler {
             originalX = (int) event.getX();
             originalY = (int) event.getY();
 
-            Node object = (Node) event.getSource();
+            Node selectedObject = (Node) event.getSource();
 
-            if (object instanceof Rectangle) {
-                Rectangle rectangle = (Rectangle) object;
+            // Set selected object
+            mainController.getGUIController().setSelectedObject(selectedObject);
+
+            if (selectedObject instanceof Rectangle) {
+                Rectangle rectangle = (Rectangle) selectedObject;
 
                 deltaX = (int) (originalX - rectangle.getX());
                 deltaY = (int) (originalY - rectangle.getY());
             }
 
-            if (object instanceof Ellipse) {
-                Ellipse ellipse = (Ellipse) object;
+            if (selectedObject instanceof Ellipse) {
+                Ellipse ellipse = (Ellipse) selectedObject;
 
                 deltaX = (int) (originalX - ellipse.getCenterX());
                 deltaY = (int) (originalY - ellipse.getCenterY());
             }
 
-            if (object instanceof Line) {
-                Line line = (Line) object;
+            if (selectedObject instanceof Line) {
+                Line line = (Line) selectedObject;
 
                 deltaX = (int) (originalX - line.getStartX());
                 deltaY = (int) (originalY - line.getStartY());

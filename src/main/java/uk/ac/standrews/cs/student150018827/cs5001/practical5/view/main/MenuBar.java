@@ -8,9 +8,6 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
-
-import java.util.Optional;
 
 public class MenuBar extends javafx.scene.control.MenuBar {
 

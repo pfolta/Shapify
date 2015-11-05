@@ -1,7 +1,10 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 
+import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import sun.util.resources.cldr.om.CurrencyNames_om;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
@@ -19,6 +22,7 @@ public class GUIController {
     private MainController mainController;
 
     private MainWindow mainWindow;
+    private Node selectedObject;
 
     public GUIController(MainController mainController, Stage mainStage) {
         this.mainController = mainController;
@@ -116,8 +120,18 @@ public class GUIController {
             object.setOnMousePressed(mouseEventHandler.getMousePressedEventHandler());
             object.setOnMouseDragged(mouseEventHandler.getMouseDraggedEventHandler());
             object.setOnMouseReleased(mouseEventHandler.getMouseReleasedEventHandler());
+
+            object.setOnContextMenuRequested(new ContextEventHandler(mainController));
         }
 
+    }
+
+    public Node getSelectedObject() {
+        return selectedObject;
+    }
+
+    public void setSelectedObject(Node selectedObject) {
+        this.selectedObject = selectedObject;
     }
 
 }

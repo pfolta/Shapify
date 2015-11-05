@@ -37,6 +37,8 @@ public class LineEventHandler extends MouseEventHandler {
                 line.setOnMouseDragged(getMouseDraggedEventHandler());
                 line.setOnMouseReleased(getMouseReleasedEventHandler());
 
+                line.setOnContextMenuRequested(new ContextEventHandler(mainController));
+
                 mainController.getDocumentController().getDocument().addObject(line);
             }
         };
