@@ -20,56 +20,60 @@ public class LineEventHandler extends MouseEventHandler {
 
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
-            originalX = (int) event.getX();
-            originalY = (int) event.getY();
+            if (event.isPrimaryButtonDown()) {
+                originalX = (int) event.getX();
+                originalY = (int) event.getY();
 
-            line = new Line();
-            line.setFill(mainController.getDocumentController().getCurrentForeground());
-            line.setStrokeWidth(3);
-            line.setStartX(originalX);
-            line.setStartY(originalY);
-            line.setEndX(originalX);
-            line.setEndY(originalY);
-            line.setCursor(Cursor.CROSSHAIR);
-            line.setOnMouseMoved(getMouseMovedEventHandler());
-            line.setOnMousePressed(getMousePressedEventHandler());
-            line.setOnMouseDragged(getMouseDraggedEventHandler());
-            line.setOnMouseReleased(getMouseReleasedEventHandler());
+                line = new Line();
+                line.setFill(mainController.getDocumentController().getCurrentForeground());
+                line.setStrokeWidth(3);
+                line.setStartX(originalX);
+                line.setStartY(originalY);
+                line.setEndX(originalX);
+                line.setEndY(originalY);
+                line.setCursor(Cursor.CROSSHAIR);
+                line.setOnMouseMoved(getMouseMovedEventHandler());
+                line.setOnMousePressed(getMousePressedEventHandler());
+                line.setOnMouseDragged(getMouseDraggedEventHandler());
+                line.setOnMouseReleased(getMouseReleasedEventHandler());
 
-            mainController.getDocumentController().getDocument().addObject(line);
+                mainController.getDocumentController().getDocument().addObject(line);
+            }
         };
     }
 
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
-            ArtBoard artBoard = mainScene.getArtBoard();
-
             int x = (int) event.getX();
             int y = (int) event.getY();
 
-            // Ensure event is within artboard boundaries
-            x = Math.max(x, (int) (0 + Math.ceil(line.getStrokeWidth()/2.0)));
-            x = Math.min(x, (int) (artBoard.getWidth() - Math.ceil(line.getStrokeWidth()/2.0)));
+            if (event.isPrimaryButtonDown()) {
+                ArtBoard artBoard = mainScene.getArtBoard();
 
-            y = Math.max(y, (int) (0 + Math.ceil(line.getStrokeWidth()/2.0)));
-            y = Math.min(y, (int) (artBoard.getHeight() - Math.ceil(line.getStrokeWidth()/2.0)));
+                // Ensure event is within artboard boundaries
+                x = Math.max(x, (int) (0 + Math.ceil(line.getStrokeWidth()/2.0)));
+                x = Math.min(x, (int) (artBoard.getWidth() - Math.ceil(line.getStrokeWidth()/2.0)));
 
-            int endx = x;
-            int endy = y;
+                y = Math.max(y, (int) (0 + Math.ceil(line.getStrokeWidth()/2.0)));
+                y = Math.min(y, (int) (artBoard.getHeight() - Math.ceil(line.getStrokeWidth()/2.0)));
 
-            // Adjust width and height if Shift is pressed to create a perfectly straight line
-            if (event.isShiftDown()) {
-                if (Math.abs(x - originalX) > Math.abs(y - originalY)) {
-                    endy = originalY;
+                int endx = x;
+                int endy = y;
+
+                // Adjust width and height if Shift is pressed to create a perfectly straight line
+                if (event.isShiftDown()) {
+                    if (Math.abs(x - originalX) > Math.abs(y - originalY)) {
+                        endy = originalY;
+                    }
+
+                    if (Math.abs(y - originalY) > Math.abs(x - originalX)) {
+                        endx = originalX;
+                    }
                 }
 
-                if (Math.abs(y - originalY) > Math.abs(x - originalX)) {
-                    endx = originalX;
-                }
+                line.setEndX(endx);
+                line.setEndY(endy);
             }
-
-            line.setEndX(endx);
-            line.setEndY(endy);
 
             mainScene.getStatusBar().setCoordinatesLabel(x, y);
         };

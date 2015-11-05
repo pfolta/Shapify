@@ -20,64 +20,68 @@ public class RectangleEventHandler extends MouseEventHandler {
 
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
-            originalX = (int) event.getX();
-            originalY = (int) event.getY();
+            if (event.isPrimaryButtonDown()) {
+                originalX = (int) event.getX();
+                originalY = (int) event.getY();
 
-            rectangle = new Rectangle();
-            rectangle.setFill(mainController.getDocumentController().getCurrentForeground());
-            rectangle.setHeight(0);
-            rectangle.setWidth(0);
-            rectangle.setX(originalX);
-            rectangle.setY(originalY);
-            rectangle.setCursor(Cursor.CROSSHAIR);
-            rectangle.setOnMouseMoved(getMouseMovedEventHandler());
-            rectangle.setOnMousePressed(getMousePressedEventHandler());
-            rectangle.setOnMouseDragged(getMouseDraggedEventHandler());
-            rectangle.setOnMouseReleased(getMouseReleasedEventHandler());
+                rectangle = new Rectangle();
+                rectangle.setFill(mainController.getDocumentController().getCurrentForeground());
+                rectangle.setHeight(0);
+                rectangle.setWidth(0);
+                rectangle.setX(originalX);
+                rectangle.setY(originalY);
+                rectangle.setCursor(Cursor.CROSSHAIR);
+                rectangle.setOnMouseMoved(getMouseMovedEventHandler());
+                rectangle.setOnMousePressed(getMousePressedEventHandler());
+                rectangle.setOnMouseDragged(getMouseDraggedEventHandler());
+                rectangle.setOnMouseReleased(getMouseReleasedEventHandler());
 
-            mainController.getDocumentController().getDocument().addObject(rectangle);
+                mainController.getDocumentController().getDocument().addObject(rectangle);
+            }
         };
     }
 
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
-            ArtBoard artBoard = mainScene.getArtBoard();
-
             int x = (int) event.getX();
             int y = (int) event.getY();
 
-            // Ensure event is within artboard boundaries
-            x = Math.max(x, 0);
-            x = Math.min(x, (int) artBoard.getWidth());
+            if (event.isPrimaryButtonDown()) {
+                ArtBoard artBoard = mainScene.getArtBoard();
 
-            y = Math.max(y, 0);
-            y = Math.min(y, (int) artBoard.getHeight());
+                // Ensure event is within artboard boundaries
+                x = Math.max(x, 0);
+                x = Math.min(x, (int) artBoard.getWidth());
 
-            int posx = originalX;
-            int posy = originalY;
+                y = Math.max(y, 0);
+                y = Math.min(y, (int) artBoard.getHeight());
 
-            int width = Math.abs(x - originalX);
-            int height = Math.abs(y - originalY);
+                int posx = originalX;
+                int posy = originalY;
 
-            // Adjust width and height if Shift is pressed to create a perfect square
-            if (event.isShiftDown()) {
-                width = Math.min(width, height);
-                height = Math.min(width, height);
+                int width = Math.abs(x - originalX);
+                int height = Math.abs(y - originalY);
+
+                // Adjust width and height if Shift is pressed to create a perfect square
+                if (event.isShiftDown()) {
+                    width = Math.min(width, height);
+                    height = Math.min(width, height);
+                }
+
+                if (x < originalX) {
+                    posx = originalX - width;
+                }
+
+                if (y < originalY) {
+                    posy = originalY - height;
+                }
+
+                rectangle.setWidth(width);
+                rectangle.setHeight(height);
+
+                rectangle.setX(posx);
+                rectangle.setY(posy);
             }
-
-            if (x < originalX) {
-                posx = originalX - width;
-            }
-
-            if (y < originalY) {
-                posy = originalY - height;
-            }
-
-            rectangle.setWidth(width);
-            rectangle.setHeight(height);
-
-            rectangle.setX(posx);
-            rectangle.setY(posy);
 
             mainScene.getStatusBar().setCoordinatesLabel(x, y);
         };
