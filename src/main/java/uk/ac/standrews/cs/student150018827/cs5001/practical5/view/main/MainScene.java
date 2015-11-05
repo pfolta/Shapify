@@ -5,19 +5,19 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import org.w3c.dom.css.Rect;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.KeyEventHandler;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.ResizeAnchor;
 
 public class MainScene extends Scene implements Observer {
 
@@ -176,6 +176,11 @@ public class MainScene extends Scene implements Observer {
 
                 artBoardGroup.getChildren().add(focusRectangle);
 
+                for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
+                    artBoardGroup.getChildren().add(resizeAnchor);
+                }
+
+                // Set Color of Object
                 if (selectedObject instanceof Rectangle) {
                     ((Rectangle) selectedObject).setFill(guiState.getCurrentForeground());
                 }

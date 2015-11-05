@@ -2,7 +2,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.FocusOutline;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 
 import java.util.ArrayList;
 import java.util.List;

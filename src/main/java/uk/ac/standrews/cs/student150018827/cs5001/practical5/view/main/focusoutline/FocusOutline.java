@@ -1,4 +1,4 @@
-package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
+package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline;
 
 import javafx.scene.Cursor;
 import javafx.scene.Node;
@@ -7,9 +7,10 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.ContextEventHandler;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.KeyEventHandler;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.MouseEventHandler;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.SelectEventHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FocusOutline {
 
@@ -18,11 +19,14 @@ public class FocusOutline {
 
     private Rectangle focusRectangle;
 
+    private List<ResizeAnchor> resizeAnchors;
+
     public FocusOutline(MainController mainController, Node object) {
         this.mainController = mainController;
         this.selectedObject = object;
 
         createFocusRectangle();
+        createResizeAnchors();
     }
 
     private void createFocusRectangle() {
@@ -44,6 +48,9 @@ public class FocusOutline {
 
             selectedRectangle.xProperty().bind(focusRectangle.xProperty());
             selectedRectangle.yProperty().bind(focusRectangle.yProperty());
+
+            selectedRectangle.widthProperty().bind(focusRectangle.widthProperty());
+            selectedRectangle.heightProperty().bind(focusRectangle.heightProperty());
         }
 
         if (selectedObject instanceof Ellipse) {
@@ -70,6 +77,24 @@ public class FocusOutline {
 
     public Rectangle getFocusRectangle() {
         return focusRectangle;
+    }
+
+    private void createResizeAnchors() {
+        resizeAnchors = new ArrayList<>();
+
+        ResizeAnchor nwResizeAnchor = new ResizeAnchor(mainController, Cursor.NW_RESIZE, focusRectangle);
+        ResizeAnchor neResizeAnchor = new ResizeAnchor(mainController, Cursor.NE_RESIZE, focusRectangle);
+        ResizeAnchor swResizeAnchor = new ResizeAnchor(mainController, Cursor.SW_RESIZE, focusRectangle);
+        ResizeAnchor seResizeAnchor = new ResizeAnchor(mainController, Cursor.SE_RESIZE, focusRectangle);
+
+        resizeAnchors.add(nwResizeAnchor);
+        resizeAnchors.add(neResizeAnchor);
+        resizeAnchors.add(swResizeAnchor);
+        resizeAnchors.add(seResizeAnchor);
+    }
+
+    public List<ResizeAnchor> getResizeAnchors() {
+        return resizeAnchors;
     }
 
 }

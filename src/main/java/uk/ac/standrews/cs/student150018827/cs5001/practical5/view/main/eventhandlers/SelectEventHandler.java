@@ -10,7 +10,7 @@ import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.FocusOutline;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 
 public class SelectEventHandler extends MouseEventHandler {
 
