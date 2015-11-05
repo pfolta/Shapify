@@ -19,27 +19,19 @@ public class Banner extends BorderPane {
     private Label messageLabel;
     private Button closeButton;
 
-    public Banner(MainController mainController, String message, boolean closeable) {
+    public Banner(MainController mainController, String message) {
         super();
 
         this.mainController = mainController;
 
-        setPadding(new Insets(3, 3, 3, 3));
+        setPadding(new Insets(5, 5, 5, 5));
         this.setBackground(new Background(new BackgroundFill(Color.LIGHTYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
 
         messageLabel = new Label();
         messageLabel.setText(message);
-        //messageLabel.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
         messageLabel.setStyle("-fx-font-weight: bold;");
+        messageLabel.setMaxHeight(Double.MAX_VALUE);
 
-        setLeft(messageLabel);
-
-        if (closeable) {
-            createCloseButton();
-        }
-    }
-
-    private void createCloseButton() {
         closeButton = new Button();
         closeButton.setText("X");
         closeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -49,6 +41,7 @@ public class Banner extends BorderPane {
             }
         });
 
+        setLeft(messageLabel);
         setRight(closeButton);
     }
 

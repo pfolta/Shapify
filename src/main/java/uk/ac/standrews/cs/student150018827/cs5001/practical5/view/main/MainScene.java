@@ -151,7 +151,7 @@ public class MainScene extends Scene implements DocumentObserver {
             hideBanner();
         }
 
-        banner = new Banner(mainController, message, true);
+        banner = new Banner(mainController, message);
         topPane.getChildren().add(2, banner);
     }
 

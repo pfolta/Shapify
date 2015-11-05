@@ -22,6 +22,7 @@ public class GUIController {
     private MainController mainController;
 
     private MainWindow mainWindow;
+
     private Node selectedObject;
 
     public GUIController(MainController mainController, Stage mainStage) {
