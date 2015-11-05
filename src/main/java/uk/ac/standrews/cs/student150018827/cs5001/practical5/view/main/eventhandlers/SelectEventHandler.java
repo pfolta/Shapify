@@ -118,6 +118,13 @@ public class SelectEventHandler extends MouseEventHandler {
                 line.setEndY(endY);
             }
 
+            // Ensure event is within artboard boundaries for coordinates display
+            x = Math.max(x, 0);
+            x = Math.min(x, (int) artBoard.getWidth());
+
+            y = Math.max(y, 0);
+            y = Math.min(y, (int) artBoard.getHeight());
+
             mainScene.getStatusBar().setCoordinatesLabel(x, y);
         };
     }
