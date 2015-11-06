@@ -83,8 +83,10 @@ public class MainScene extends Scene implements Observer {
     }
 
     public void showMenuBar(boolean show) {
-        if (show && !topPane.getChildren().contains(menuBar)) {
-            topPane.getChildren().add(0, menuBar);
+        if (show) {
+            if (!topPane.getChildren().contains(menuBar)) {
+                topPane.getChildren().add(0, menuBar);
+            }
         } else {
             topPane.getChildren().remove(menuBar);
         }
@@ -93,8 +95,10 @@ public class MainScene extends Scene implements Observer {
     }
 
     public void showToolBar(boolean show) {
-        if (show && !topPane.getChildren().contains(topPane)) {
-            topPane.getChildren().add(1, toolBar);
+        if (show) {
+            if (!topPane.getChildren().contains(topPane)) {
+                topPane.getChildren().add(1, toolBar);
+            }
         } else {
             topPane.getChildren().remove(toolBar);
         }
