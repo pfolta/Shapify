@@ -104,4 +104,5 @@ public class ResizeEventHandler extends MouseEventHandler {
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
         return null;
     }
+
 }

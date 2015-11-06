@@ -30,19 +30,19 @@ public class ResizeAnchor extends Rectangle {
 
         switch (cursor.toString()) {
             case "NW_RESIZE": {
-                xProperty().bind(focusRectangle.xProperty().add(- RESIZE_ANCHOR_DIMENSION/2));
-                yProperty().bind(focusRectangle.yProperty().add(- RESIZE_ANCHOR_DIMENSION/2));
+                xProperty().bind(focusRectangle.xProperty().subtract(RESIZE_ANCHOR_DIMENSION / 2));
+                yProperty().bind(focusRectangle.yProperty().subtract(RESIZE_ANCHOR_DIMENSION / 2));
 
                 break;
             }
             case "NE_RESIZE": {
                 xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
-                yProperty().bind(focusRectangle.yProperty().add(- RESIZE_ANCHOR_DIMENSION/2));
+                yProperty().bind(focusRectangle.yProperty().subtract(RESIZE_ANCHOR_DIMENSION/2));
 
                 break;
             }
             case "SW_RESIZE": {
-                xProperty().bind(focusRectangle.xProperty().add(- RESIZE_ANCHOR_DIMENSION/2));
+                xProperty().bind(focusRectangle.xProperty().subtract(RESIZE_ANCHOR_DIMENSION/2));
                 yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
 
                 break;
