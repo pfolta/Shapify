@@ -36,20 +36,20 @@ public class ResizeAnchor extends Rectangle {
                 break;
             }
             case "NE_RESIZE": {
-                xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()).add(- RESIZE_ANCHOR_DIMENSION / 2));
+                xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
                 yProperty().bind(focusRectangle.yProperty().add(- RESIZE_ANCHOR_DIMENSION/2));
 
                 break;
             }
             case "SW_RESIZE": {
                 xProperty().bind(focusRectangle.xProperty().add(- RESIZE_ANCHOR_DIMENSION/2));
-                yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()).add(-RESIZE_ANCHOR_DIMENSION / 2));
+                yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
 
                 break;
             }
             case "SE_RESIZE": {
-                xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()).add(- RESIZE_ANCHOR_DIMENSION / 2));
-                yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()).add(-RESIZE_ANCHOR_DIMENSION / 2));
+                xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
+                yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
 
                 break;
             }

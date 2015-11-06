@@ -83,8 +83,17 @@ public class ResizeEventHandler extends MouseEventHandler {
                     break;
                 }
                 case "SE_RESIZE": {
-                    focusRectangle.setWidth(originalWidth + deltaX);
-                    focusRectangle.setHeight(originalHeight + deltaY);
+                    int width = originalWidth + deltaX;
+                    int height = originalHeight + deltaY;
+
+                    width = Math.max(width, 1);
+                    width = Math.min(width, (int) (artBoard.getWidth() - focusRectangle.getX()));
+
+                    height = Math.max(height, 1);
+                    height = Math.min(height, (int) (artBoard.getHeight() - focusRectangle.getY()));
+
+                    focusRectangle.setWidth(width);
+                    focusRectangle.setHeight(height);
 
                     break;
                 }
