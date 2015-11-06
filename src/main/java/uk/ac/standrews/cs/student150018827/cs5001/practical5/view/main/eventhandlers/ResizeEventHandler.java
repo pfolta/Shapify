@@ -58,12 +58,19 @@ public class ResizeEventHandler extends MouseEventHandler {
 
             switch (resizeAnchor.getCursor().toString()) {
                 case "NW_RESIZE": {
-                    System.out.println("NW_RESIZE");
+                    focusRectangle.setX(originalX + deltaX);
+                    focusRectangle.setWidth(originalWidth - deltaX);
+
+                    focusRectangle.setY(originalY + deltaY);
+                    focusRectangle.setHeight(originalHeight - deltaY);
 
                     break;
                 }
                 case "NE_RESIZE": {
-                    System.out.println("NE_RESIZE");
+                    focusRectangle.setWidth(originalWidth + deltaX);
+
+                    focusRectangle.setY(originalY + deltaY);
+                    focusRectangle.setHeight(originalHeight - deltaY);
 
                     break;
                 }
