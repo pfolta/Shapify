@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene;
 
 import java.io.IOException;
@@ -65,6 +66,8 @@ public class DocumentController {
     public boolean closeDocument() {
         boolean continueTask = true;
 
+        GUIState guiState = mainController.getGUIController().getGuiState();
+
         if (document != null) {
             boolean close = false;
 
@@ -93,11 +96,16 @@ public class DocumentController {
             }
 
             if (close) {
+                // Clear document
                 document = null;
 
+                // Clear Artboard
                 mainScene.clearArtBoard();
                 mainScene.hideBanner();
                 mainScene.activateControls(false);
+
+                // Clear selected object
+                guiState.setSelectedObject(null);
             }
         }
 

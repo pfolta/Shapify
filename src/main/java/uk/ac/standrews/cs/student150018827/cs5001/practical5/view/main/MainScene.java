@@ -164,7 +164,9 @@ public class MainScene extends Scene implements Observer {
         Document document = mainController.getDocumentController().getDocument();
         GUIState guiState = mainController.getGUIController().getGuiState();
 
-        mainWindow.setTitle(document.getTitle());
+        if (document != null) {
+            mainWindow.setTitle(document.getTitle());
+        }
 
         if (artBoard != null) {
             artBoardGroup.getChildren().clear();
