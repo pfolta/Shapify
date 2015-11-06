@@ -104,4 +104,8 @@ public class MainWindow {
         }
     }
 
+    public Stage getMainStage() {
+        return mainStage;
+    }
+
 }

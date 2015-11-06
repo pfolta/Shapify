@@ -136,6 +136,7 @@ public class NewDrawingScene extends Scene {
             close();
         } catch (InputMismatchException exception) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(getWindow());
             alert.setContentText(exception.getMessage());
 
             alert.showAndWait();

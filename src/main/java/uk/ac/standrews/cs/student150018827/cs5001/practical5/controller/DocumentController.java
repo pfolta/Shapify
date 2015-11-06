@@ -75,6 +75,7 @@ public class DocumentController {
                 close = true;
             } else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.initOwner(mainController.getGUIController().getMainWindow().getMainStage());
                 alert.setHeaderText("Unsaved Changes");
                 alert.setContentText("Save changes to document \"" + document.getTitle() + "\" before closing?");
 
@@ -96,6 +97,9 @@ public class DocumentController {
             }
 
             if (close) {
+                // Clear selected object
+                guiState.setSelectedObject(null);
+
                 // Clear document
                 document = null;
 
@@ -103,9 +107,6 @@ public class DocumentController {
                 mainScene.clearArtBoard();
                 mainScene.hideBanner();
                 mainScene.activateControls(false);
-
-                // Clear selected object
-                guiState.setSelectedObject(null);
             }
         }
 
