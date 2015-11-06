@@ -197,6 +197,8 @@ public class MainScene extends Scene implements Observer {
                     ((Line) selectedObject).setStroke(guiState.getCurrentForeground());
                 }
             }
+
+            menuBar.objectSelected(guiState.getSelectedObject() != null);
         }
     }
 
