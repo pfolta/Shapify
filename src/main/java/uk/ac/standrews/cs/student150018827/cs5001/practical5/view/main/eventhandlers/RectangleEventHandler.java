@@ -3,8 +3,8 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhan
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 
 public class RectangleEventHandler extends MouseEventHandler {

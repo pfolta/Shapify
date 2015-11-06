@@ -3,8 +3,12 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Line;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene;
 
 import java.io.IOException;
@@ -111,6 +115,45 @@ public class DocumentController {
         }
 
         return continueTask;
+    }
+
+    public void duplicateObject(Node object) {
+        GUIState guiState = mainController.getGUIController().getGuiState();
+
+        if (object instanceof Rectangle) {
+            Rectangle selectedRectangle = (Rectangle) object;
+
+            Rectangle clone = selectedRectangle.clone();
+            clone.setX(clone.getX() + Data.DUPLICATION_OFFSET_X);
+            clone.setY(clone.getY() + Data.DUPLICATION_OFFSET_Y);
+
+            mainController.getDocumentController().addObject(clone);
+            guiState.setSelectedObject(clone);
+        }
+
+        if (object instanceof Ellipse) {
+            Ellipse selectedEllipse = (Ellipse) object;
+
+            Ellipse clone = selectedEllipse.clone();
+            clone.setCenterX(clone.getCenterX() + Data.DUPLICATION_OFFSET_X);
+            clone.setCenterY(clone.getCenterY() + Data.DUPLICATION_OFFSET_Y);
+
+            mainController.getDocumentController().addObject(clone);
+            guiState.setSelectedObject(clone);
+        }
+
+        if (object instanceof Line) {
+            Line selectedLine = (Line) object;
+
+            Line clone = selectedLine.clone();
+            clone.setStartX(clone.getStartX() + Data.DUPLICATION_OFFSET_X);
+            clone.setStartY(clone.getStartY() + Data.DUPLICATION_OFFSET_Y);
+            clone.setEndX(clone.getEndX() + Data.DUPLICATION_OFFSET_X);
+            clone.setEndY(clone.getEndY() + Data.DUPLICATION_OFFSET_Y);
+
+            mainController.getDocumentController().addObject(clone);
+            guiState.setSelectedObject(clone);
+        }
     }
 
 }
