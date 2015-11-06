@@ -28,7 +28,7 @@ public class GUIController {
     public GUIController(MainController mainController, Stage mainStage) {
         this.mainController = mainController;
 
-        guiState = new GUIState();
+        guiState = new GUIState(mainController);
         mainWindow = new MainWindow(mainController, mainStage);
     }
 

@@ -55,10 +55,6 @@ public class SelectEventHandler extends MouseEventHandler {
                     guiState.setCurrentForeground(((Color) line.getStroke()));
                 }
 
-                // Create focus outline
-                FocusOutline focusOutline = new FocusOutline(mainController, selectedObject);
-                guiState.setFocusOutline(focusOutline);
-
                 // Remove Drag Event Listener
                 selectedObject.setOnMouseDragged(null);
 

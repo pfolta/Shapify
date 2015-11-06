@@ -21,6 +21,9 @@ public class RectangleEventHandler extends MouseEventHandler {
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
+                // Reset selected object
+                mainController.getGUIController().getGuiState().setSelectedObject(null);
+
                 originalX = (int) event.getX();
                 originalY = (int) event.getY();
 
@@ -90,7 +93,12 @@ public class RectangleEventHandler extends MouseEventHandler {
     }
 
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return event -> rectangle = null;
+        return event -> {
+            // Set selected object to the currently drawn one
+            mainController.getGUIController().getGuiState().setSelectedObject(rectangle);
+
+            rectangle = null;
+        };
     }
 
 }
