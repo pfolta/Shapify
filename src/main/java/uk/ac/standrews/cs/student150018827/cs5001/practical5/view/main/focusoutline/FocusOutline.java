@@ -14,7 +14,8 @@ import java.util.List;
 
 public class FocusOutline {
 
-    public static final int FOCUS_OUTLINE_STROKE_WIDTH = 1;
+    public static final int FOCUS_OUTLINE_STROKE_WIDTH = 2;
+    public static final Color FOCUS_OUTLINE_COLOR = Color.STEELBLUE;
 
     private MainController mainController;
     private Node selectedObject;
@@ -33,7 +34,7 @@ public class FocusOutline {
 
     private void createFocusRectangle() {
         focusRectangle = new Rectangle();
-        focusRectangle.setStroke(Color.RED);
+        focusRectangle.setStroke(FOCUS_OUTLINE_COLOR);
         focusRectangle.setFill(Color.TRANSPARENT);
         focusRectangle.getStrokeDashArray().addAll(5.0, 5.0);
         focusRectangle.setStrokeWidth(FOCUS_OUTLINE_STROKE_WIDTH);

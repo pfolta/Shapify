@@ -21,7 +21,7 @@ public class ResizeAnchor extends Rectangle {
         setWidth(RESIZE_ANCHOR_DIMENSION);
         setHeight(RESIZE_ANCHOR_DIMENSION);
 
-        setFill(Color.RED);
+        setFill(FocusOutline.FOCUS_OUTLINE_COLOR);
 
         setCursor(cursor);
 
