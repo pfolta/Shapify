@@ -34,7 +34,7 @@ public class ResizeEventHandler extends MouseEventHandler {
 
             focusRectangle = mainController.getGUIController().getGuiState().getFocusOutline().getFocusRectangle();
 
-            originalX= (int) focusRectangle.getX();
+            originalX = (int) focusRectangle.getX();
             originalY = (int) focusRectangle.getY();
 
             originalWidth = (int) focusRectangle.getWidth();

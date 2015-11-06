@@ -4,6 +4,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.ContextEventHandler;
@@ -69,6 +70,38 @@ public class FocusOutline {
 
             selectedEllipse.radiusXProperty().bind(focusRectangle.widthProperty().divide(2));
             selectedEllipse.radiusYProperty().bind(focusRectangle.heightProperty().divide(2));
+        }
+
+        if (selectedObject instanceof Line) {
+            Line selectedLine = (Line) selectedObject;
+
+            if (selectedLine.getStartX() < selectedLine.getEndX()) {
+                focusRectangle.setX(selectedLine.getStartX());
+                focusRectangle.setWidth(selectedLine.getEndX() - selectedLine.getStartX());
+
+                selectedLine.startXProperty().bind(focusRectangle.xProperty());
+                selectedLine.endXProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()));
+            } else {
+                focusRectangle.setX(selectedLine.getEndX());
+                focusRectangle.setWidth(selectedLine.getStartX() - selectedLine.getEndX());
+
+                selectedLine.endXProperty().bind(focusRectangle.xProperty());
+                selectedLine.startXProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()));
+            }
+
+            if (selectedLine.getStartY() < selectedLine.getEndY()) {
+                focusRectangle.setY(selectedLine.getStartY());
+                focusRectangle.setHeight(selectedLine.getEndY() - selectedLine.getStartY());
+
+                selectedLine.startYProperty().bind(focusRectangle.yProperty());
+                selectedLine.endYProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()));
+            } else {
+                focusRectangle.setY(selectedLine.getEndY());
+                focusRectangle.setHeight(selectedLine.getStartY() - selectedLine.getEndY());
+
+                selectedLine.endYProperty().bind(focusRectangle.yProperty());
+                selectedLine.startYProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()));
+            }
         }
 
         SelectEventHandler mouseEventHandler = new SelectEventHandler(mainController);
