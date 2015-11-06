@@ -64,8 +64,11 @@ public class FocusOutline {
             focusRectangle.setWidth(2 * selectedEllipse.getRadiusX());
             focusRectangle.setHeight(2 * selectedEllipse.getRadiusY());
 
-            selectedEllipse.centerXProperty().bind(focusRectangle.xProperty().add(selectedEllipse.getRadiusX()));
-            selectedEllipse.centerYProperty().bind(focusRectangle.yProperty().add(selectedEllipse.getRadiusY()));
+            selectedEllipse.centerXProperty().bind(focusRectangle.xProperty().add(selectedEllipse.radiusXProperty()));
+            selectedEllipse.centerYProperty().bind(focusRectangle.yProperty().add(selectedEllipse.radiusYProperty()));
+
+            selectedEllipse.radiusXProperty().bind(focusRectangle.widthProperty().divide(2));
+            selectedEllipse.radiusYProperty().bind(focusRectangle.heightProperty().divide(2));
         }
 
         SelectEventHandler mouseEventHandler = new SelectEventHandler(mainController);
