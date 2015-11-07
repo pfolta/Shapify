@@ -156,12 +156,20 @@ public class DocumentController {
         }
     }
 
+    public void moveObjectToBottom(Node object) {
+
+    }
+
     public void moveObjectDown(Node object) {
         document.moveObjectDown(object);
     }
 
     public void moveObjectUp(Node object) {
         document.moveObjectUp(object);
+    }
+
+    public void moveObjectToTop(Node object) {
+
     }
 
 }

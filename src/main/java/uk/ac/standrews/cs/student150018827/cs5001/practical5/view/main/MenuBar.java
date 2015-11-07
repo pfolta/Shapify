@@ -1,7 +1,5 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -28,10 +26,10 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     private MenuItem editRedoItem;
     private MenuItem editDuplicateMenuItem;
     private MenuItem editRemoveMenuItem;
-    private MenuItem editMoveBottomMenuItem;
+    private MenuItem editMoveToBottomMenuItem;
     private MenuItem editMoveDownMenuItem;
     private MenuItem editMoveUpMenuItem;
-    private MenuItem editMoveTopMenuItem;
+    private MenuItem editMoveToTopMenuItem;
     private MenuItem editDeselectMenuItem;
 
     private CustomMenuItem toolColorPickerItem;
@@ -164,14 +162,15 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             guiState.setSelectedObject(null);
         });
 
-        editMoveBottomMenuItem = new MenuItem();
-        editMoveBottomMenuItem.setText("Move to Bottom");
-        editMoveBottomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.END));
-        editMoveBottomMenuItem.setDisable(true);
-        editMoveBottomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            }
+        editMoveToBottomMenuItem = new MenuItem();
+        editMoveToBottomMenuItem.setText("Move to Bottom");
+        editMoveToBottomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.END));
+        editMoveToBottomMenuItem.setDisable(true);
+        editMoveToBottomMenuItem.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectToBottom(guiState.getSelectedObject());
         });
 
         editMoveDownMenuItem = new MenuItem();
@@ -196,14 +195,15 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             documentController.moveObjectUp(guiState.getSelectedObject());
         });
 
-        editMoveTopMenuItem = new MenuItem();
-        editMoveTopMenuItem.setText("Move to Top");
-        editMoveTopMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.HOME));
-        editMoveTopMenuItem.setDisable(true);
-        editMoveTopMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            }
+        editMoveToTopMenuItem = new MenuItem();
+        editMoveToTopMenuItem.setText("Move to Top");
+        editMoveToTopMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.HOME));
+        editMoveToTopMenuItem.setDisable(true);
+        editMoveToTopMenuItem.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectToTop(guiState.getSelectedObject());
         });
 
         editDeselectMenuItem = new MenuItem();
@@ -223,10 +223,10 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             editDuplicateMenuItem,
             editRemoveMenuItem,
             new SeparatorMenuItem(),
-                editMoveBottomMenuItem,
-                editMoveDownMenuItem,
-                editMoveUpMenuItem,
-                editMoveTopMenuItem,
+            editMoveToBottomMenuItem,
+            editMoveDownMenuItem,
+            editMoveUpMenuItem,
+            editMoveToTopMenuItem,
             new SeparatorMenuItem(),
             editDeselectMenuItem
         );
@@ -320,10 +320,10 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     public void objectSelected(boolean selected) {
         editDuplicateMenuItem.setDisable(!selected);
         editRemoveMenuItem.setDisable(!selected);
-        editMoveBottomMenuItem.setDisable(!selected);
+        editMoveToBottomMenuItem.setDisable(!selected);
         editMoveDownMenuItem.setDisable(!selected);
         editMoveUpMenuItem.setDisable(!selected);
-        editMoveTopMenuItem.setDisable(!selected);
+        editMoveToTopMenuItem.setDisable(!selected);
         editDeselectMenuItem.setDisable(!selected);
     }
 

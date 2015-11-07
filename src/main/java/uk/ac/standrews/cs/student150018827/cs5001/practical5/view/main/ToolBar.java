@@ -1,9 +1,5 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -23,10 +19,10 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private Button undoButton;
     private Button redoButton;
-    private Button moveBottomButton;
+    private Button moveToBottomButton;
     private Button moveDownButton;
     private Button moveUpButton;
-    private Button moveTopButton;
+    private Button moveToTopButton;
 
     private ColorPicker colorPickerButton;
 
@@ -59,36 +55,25 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         newButton = new Button();
         newButton.setText("New");
         newButton.setTooltip(new Tooltip("New (Ctrl+N)"));
-        newButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (mainController.getDocumentController().closeDocument()) {
-                    mainController.getGUIController().openNewDrawingDialog((Stage) ToolBar.this.getScene().getWindow());
-                }
+        newButton.setOnAction(event -> {
+            if (mainController.getDocumentController().closeDocument()) {
+                mainController.getGUIController().openNewDrawingDialog((Stage) ToolBar.this.getScene().getWindow());
             }
         });
 
         openButton = new Button();
         openButton.setText("Open...");
         openButton.setTooltip(new Tooltip("Open (Ctrl+O)"));
-        openButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (mainController.getDocumentController().closeDocument()) {
-                    mainController.getGUIController().getMainWindow().openFile();
-                }
+        openButton.setOnAction(event -> {
+            if (mainController.getDocumentController().closeDocument()) {
+                mainController.getGUIController().getMainWindow().openFile();
             }
         });
 
         saveButton = new Button();
         saveButton.setText("Save");
         saveButton.setTooltip(new Tooltip("Save (Ctrl+S)"));
-        saveButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                mainController.getGUIController().getMainWindow().saveFile();
-            }
-        });
+        saveButton.setOnAction(event -> mainController.getGUIController().getMainWindow().saveFile());
 
         getItems().addAll(newButton, openButton, saveButton);
     }
@@ -97,31 +82,22 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         undoButton = new Button();
         undoButton.setText("Undo");
         undoButton.setTooltip(new Tooltip("Undo (Ctrl+Z)"));
-        undoButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Undo Clicked!");
-            }
-        });
+        undoButton.setOnAction(event -> System.out.println("Undo Clicked!"));
 
         redoButton = new Button();
         redoButton.setText("Redo");
         redoButton.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
-        redoButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Redo Clicked!");
-            }
-        });
+        redoButton.setOnAction(event -> System.out.println("Redo Clicked!"));
 
-        moveBottomButton = new Button();
-        moveBottomButton.setText("Move to Bottom");
-        moveBottomButton.setTooltip(new Tooltip("Move Selection to Bottom (End)"));
-        moveBottomButton.setDisable(true);
-        moveBottomButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            }
+        moveToBottomButton = new Button();
+        moveToBottomButton.setText("Move to Bottom");
+        moveToBottomButton.setTooltip(new Tooltip("Move Selection to Bottom (End)"));
+        moveToBottomButton.setDisable(true);
+        moveToBottomButton.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectToBottom(guiState.getSelectedObject());
         });
 
         moveDownButton = new Button();
@@ -146,23 +122,24 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
             documentController.moveObjectUp(guiState.getSelectedObject());
         });
 
-        moveTopButton = new Button();
-        moveTopButton.setText("Move to Top");
-        moveTopButton.setTooltip(new Tooltip("Move Selection to Top (Home)"));
-        moveTopButton.setDisable(true);
-        moveTopButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            }
+        moveToTopButton = new Button();
+        moveToTopButton.setText("Move to Top");
+        moveToTopButton.setTooltip(new Tooltip("Move Selection to Top (Home)"));
+        moveToTopButton.setDisable(true);
+        moveToTopButton.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectToTop(guiState.getSelectedObject());
         });
 
         getItems().addAll(
             undoButton,
             redoButton,
-            moveBottomButton,
+            moveToBottomButton,
             moveDownButton,
             moveUpButton,
-            moveTopButton
+            moveToTopButton
         );
     }
 
@@ -170,66 +147,38 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         colorPickerButton = new ColorPicker();
         colorPickerButton.getStyleClass().add("split-button");
         colorPickerButton.setValue(Color.BLACK);
-        colorPickerButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                mainController.getGUIController().getGuiState().setCurrentForeground(colorPickerButton.getValue());
-            }
-        });
+        colorPickerButton.setOnAction(event -> mainController.getGUIController().getGuiState().setCurrentForeground(colorPickerButton.getValue()));
 
         getItems().addAll(colorPickerButton);
     }
 
     private void buildToolControls() {
         toolToggleGroup = new ToggleGroup();
-        toolToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle newToggle) {
-                if (newToggle == null) {
-                    toggle.setSelected(true);
-                }
+        toolToggleGroup.selectedToggleProperty().addListener((ov, toggle, newToggle) -> {
+            if (newToggle == null) {
+                toggle.setSelected(true);
             }
         });
 
         selectToolButton = new ToggleButton();
         selectToolButton.setText("Select");
         selectToolButton.setToggleGroup(toolToggleGroup);
-        selectToolButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                mainController.getGUIController().setSelectedTool(DrawTools.SELECT_TOOL);
-            }
-        });
+        selectToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.SELECT_TOOL));
 
         rectangleToolButton = new ToggleButton();
         rectangleToolButton.setText("Rectangle");
         rectangleToolButton.setToggleGroup(toolToggleGroup);
-        rectangleToolButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                mainController.getGUIController().setSelectedTool(DrawTools.RECTANGLE_TOOL);
-            }
-        });
+        rectangleToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.RECTANGLE_TOOL));
 
         ellipseToolButton = new ToggleButton();
         ellipseToolButton.setText("Ellipse");
         ellipseToolButton.setToggleGroup(toolToggleGroup);
-        ellipseToolButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                mainController.getGUIController().setSelectedTool(DrawTools.ELLIPSE_TOOL);
-            }
-        });
+        ellipseToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.ELLIPSE_TOOL));
 
         lineToolButton = new ToggleButton();
         lineToolButton.setText("Line");
         lineToolButton.setToggleGroup(toolToggleGroup);
-        lineToolButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL);
-            }
-        });
+        lineToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
         getItems().addAll(
             selectToolButton,
@@ -261,10 +210,10 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     }
 
     public void objectSelected(boolean selected) {
-        moveBottomButton.setDisable(!selected);
+        moveToBottomButton.setDisable(!selected);
         moveDownButton.setDisable(!selected);
         moveUpButton.setDisable(!selected);
-        moveTopButton.setDisable(!selected);
+        moveToTopButton.setDisable(!selected);
     }
 
 }
