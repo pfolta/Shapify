@@ -57,42 +57,66 @@ public class ResizeEventHandler extends MouseEventHandler {
 
             switch (resizeAnchor.getCursor().toString()) {
                 case "NW_RESIZE": {
-                    focusRectangle.setX(originalX + deltaX);
-                    focusRectangle.setWidth(originalWidth - deltaX);
+                    int xpos = originalX + deltaX;
+                    xpos = Math.max(xpos, 0);
+                    xpos = Math.min(xpos, originalX + originalWidth - 1);
+                    focusRectangle.setX(xpos);
 
-                    focusRectangle.setY(originalY + deltaY);
-                    focusRectangle.setHeight(originalHeight - deltaY);
+                    int width = (originalX + originalWidth) - xpos;
+                    focusRectangle.setWidth(width);
+
+                    int ypos = originalY + deltaY;
+                    ypos = Math.max(ypos, 0);
+                    ypos = Math.min(ypos, originalY + originalHeight - 1);
+                    focusRectangle.setY(ypos);
+
+                    int height = (originalY + originalHeight) - ypos;
+                    focusRectangle.setHeight(height);
 
                     break;
                 }
                 case "NE_RESIZE": {
-                    focusRectangle.setWidth(originalWidth + deltaX);
+                    int width = originalWidth + deltaX;
+                    width = Math.max(width, 1);
+                    width = Math.min(width, (int) (artBoard.getWidth() - focusRectangle.getX()));
+                    focusRectangle.setWidth(width);
 
-                    focusRectangle.setY(originalY + deltaY);
-                    focusRectangle.setHeight(originalHeight - deltaY);
+                    int ypos = originalY + deltaY;
+                    ypos = Math.max(ypos, 0);
+                    ypos = Math.min(ypos, originalY + originalHeight - 1);
+                    focusRectangle.setY(ypos);
+
+                    int height = (originalY + originalHeight) - ypos;
+                    focusRectangle.setHeight(height);
 
                     break;
                 }
                 case "SE_RESIZE": {
                     int width = originalWidth + deltaX;
-                    int height = originalHeight + deltaY;
-
                     width = Math.max(width, 1);
                     width = Math.min(width, (int) (artBoard.getWidth() - focusRectangle.getX()));
+                    focusRectangle.setWidth(width);
 
+                    int height = originalHeight + deltaY;
                     height = Math.max(height, 1);
                     height = Math.min(height, (int) (artBoard.getHeight() - focusRectangle.getY()));
-
-                    focusRectangle.setWidth(width);
                     focusRectangle.setHeight(height);
 
                     break;
                 }
                 case "SW_RESIZE": {
-                    focusRectangle.setX(originalX + deltaX);
-                    focusRectangle.setWidth(originalWidth - deltaX);
+                    int xpos = originalX + deltaX;
+                    xpos = Math.max(xpos, 0);
+                    xpos = Math.min(xpos, originalX + originalWidth - 1);
+                    focusRectangle.setX(xpos);
 
-                    focusRectangle.setHeight(originalHeight + deltaY);
+                    int width = (originalX + originalWidth) - xpos;
+                    focusRectangle.setWidth(width);
+
+                    int height = originalHeight + deltaY;
+                    height = Math.max(height, 1);
+                    height = Math.min(height, (int) (artBoard.getHeight() - focusRectangle.getY()));
+                    focusRectangle.setHeight(height);
 
                     break;
                 }
