@@ -41,15 +41,40 @@ public class ResizeAnchor extends Rectangle {
 
                 break;
             }
+            case "SE_RESIZE": {
+                xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
+                yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
+
+                break;
+            }
             case "SW_RESIZE": {
                 xProperty().bind(focusRectangle.xProperty().subtract(RESIZE_ANCHOR_DIMENSION/2));
                 yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
 
                 break;
             }
-            case "SE_RESIZE": {
+
+            case "N_RESIZE": {
+                xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty().divide(2)).subtract(RESIZE_ANCHOR_DIMENSION / 2));
+                yProperty().bind(focusRectangle.yProperty().subtract(RESIZE_ANCHOR_DIMENSION / 2));
+
+                break;
+            }
+            case "E_RESIZE": {
                 xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
+                yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty().divide(2)).subtract(RESIZE_ANCHOR_DIMENSION / 2));
+
+                break;
+            }
+            case "S_RESIZE": {
+                xProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty().divide(2)).subtract(RESIZE_ANCHOR_DIMENSION / 2));
                 yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()).subtract(RESIZE_ANCHOR_DIMENSION / 2));
+
+                break;
+            }
+            case "W_RESIZE": {
+                xProperty().bind(focusRectangle.xProperty().subtract(RESIZE_ANCHOR_DIMENSION / 2));
+                yProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty().divide(2)).subtract(RESIZE_ANCHOR_DIMENSION / 2));
 
                 break;
             }

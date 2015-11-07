@@ -123,13 +123,23 @@ public class FocusOutline {
 
         ResizeAnchor nwResizeAnchor = new ResizeAnchor(mainController, Cursor.NW_RESIZE, focusRectangle);
         ResizeAnchor neResizeAnchor = new ResizeAnchor(mainController, Cursor.NE_RESIZE, focusRectangle);
-        ResizeAnchor swResizeAnchor = new ResizeAnchor(mainController, Cursor.SW_RESIZE, focusRectangle);
         ResizeAnchor seResizeAnchor = new ResizeAnchor(mainController, Cursor.SE_RESIZE, focusRectangle);
+        ResizeAnchor swResizeAnchor = new ResizeAnchor(mainController, Cursor.SW_RESIZE, focusRectangle);
+
+        ResizeAnchor nResizeAnchor = new ResizeAnchor(mainController, Cursor.N_RESIZE, focusRectangle);
+        ResizeAnchor eResizeAnchor = new ResizeAnchor(mainController, Cursor.E_RESIZE, focusRectangle);
+        ResizeAnchor sResizeAnchor = new ResizeAnchor(mainController, Cursor.S_RESIZE, focusRectangle);
+        ResizeAnchor wResizeAnchor = new ResizeAnchor(mainController, Cursor.W_RESIZE, focusRectangle);
 
         resizeAnchors.add(nwResizeAnchor);
         resizeAnchors.add(neResizeAnchor);
-        resizeAnchors.add(swResizeAnchor);
         resizeAnchors.add(seResizeAnchor);
+        resizeAnchors.add(swResizeAnchor);
+
+        resizeAnchors.add(nResizeAnchor);
+        resizeAnchors.add(eResizeAnchor);
+        resizeAnchors.add(sResizeAnchor);
+        resizeAnchors.add(wResizeAnchor);
     }
 
     public List<ResizeAnchor> getResizeAnchors() {
