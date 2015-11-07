@@ -7,6 +7,7 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.ContextEventHandler;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.SelectEventHandler;
 
@@ -14,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FocusOutline {
-
-    public static final int FOCUS_OUTLINE_STROKE_WIDTH = 2;
-    public static final Color FOCUS_OUTLINE_COLOR = Color.STEELBLUE;
 
     private MainController mainController;
     private Node selectedObject;
@@ -35,10 +33,10 @@ public class FocusOutline {
 
     private void createFocusRectangle() {
         focusRectangle = new Rectangle();
-        focusRectangle.setStroke(FOCUS_OUTLINE_COLOR);
+        focusRectangle.setStroke(Data.FOCUS_OUTLINE_COLOR);
         focusRectangle.setFill(Color.TRANSPARENT);
         focusRectangle.getStrokeDashArray().addAll(5.0, 5.0);
-        focusRectangle.setStrokeWidth(FOCUS_OUTLINE_STROKE_WIDTH);
+        focusRectangle.setStrokeWidth(Data.FOCUS_OUTLINE_STROKE_WIDTH);
 
         focusRectangle.setCursor(Cursor.MOVE);
 
