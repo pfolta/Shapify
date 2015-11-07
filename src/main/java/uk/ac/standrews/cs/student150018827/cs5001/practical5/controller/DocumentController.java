@@ -1,11 +1,13 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -178,12 +180,43 @@ public class DocumentController {
     }
 
     public boolean exportToPNG(File file) {
-        WritableImage image = mainController.getGUIController().getMainWindow().getMainScene().getArtBoardGroup().snapshot(new SnapshotParameters(), null);
+        Group exportGroup = new Group();
+
+        Rectangle backgroundRectangle = new Rectangle();
+        backgroundRectangle.setX(0);
+        backgroundRectangle.setY(0);
+        backgroundRectangle.setWidth(document.getWidth());
+        backgroundRectangle.setHeight(document.getHeight());
+        backgroundRectangle.setFill(Color.TRANSPARENT);
+
+        exportGroup.getChildren().add(backgroundRectangle);
+
+        for (Node object : document.getObjects()) {
+            Node clone = null;
+
+            if (object instanceof Rectangle) {
+                clone = ((Rectangle) object).clone();
+            }
+
+            if (object instanceof Ellipse) {
+                clone = ((Ellipse) object).clone();
+            }
+
+            if (object instanceof Line) {
+                clone = ((Line) object).clone();
+            }
+
+            exportGroup.getChildren().add(clone);
+        }
+
+        WritableImage image = exportGroup.snapshot(new SnapshotParameters(), null);
 
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         } catch (IOException exception) {
             return false;
+        } finally {
+
         }
 
         return true;
