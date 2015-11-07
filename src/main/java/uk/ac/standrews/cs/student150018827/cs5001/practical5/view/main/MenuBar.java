@@ -1,7 +1,5 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -28,6 +26,9 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     private MenuItem editRedoItem;
     private MenuItem editDuplicateMenuItem;
     private MenuItem editRemoveMenuItem;
+    private MenuItem editDeselectMenuItem;
+
+    private CustomMenuItem toolColorPickerItem;
 
     private CheckMenuItem viewMenuBarItem;
     private CheckMenuItem viewToolBarItem;
@@ -43,12 +44,14 @@ public class MenuBar extends javafx.scene.control.MenuBar {
 
         Menu fileMenu = buildFileMenu();
         Menu editMenu = buildEditMenu();
+        Menu toolMenu = buildToolMenu();
         Menu viewMenu = buildViewMenu();
         Menu helpMenu = buildHelpMenu();
 
         this.getMenus().addAll(
             fileMenu,
             editMenu,
+            toolMenu,
             viewMenu,
             helpMenu
         );
@@ -155,12 +158,40 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             guiState.setSelectedObject(null);
         });
 
+        editDeselectMenuItem = new MenuItem();
+        editDeselectMenuItem.setText("_Deselect");
+        editDeselectMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.ESCAPE));
+        editDeselectMenuItem.setDisable(true);
+        editDeselectMenuItem.setOnAction(event -> {
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            guiState.setSelectedObject(null);
+        });
+
         menu.getItems().addAll(
             editUndoItem,
             editRedoItem,
             new SeparatorMenuItem(),
             editDuplicateMenuItem,
-            editRemoveMenuItem
+            editRemoveMenuItem,
+            new SeparatorMenuItem(),
+            editDeselectMenuItem
+        );
+
+        return menu;
+    }
+
+    private Menu buildToolMenu() {
+        Menu menu = new Menu();
+        menu.setText("_Tool");
+
+        ColorPicker colorPicker = new ColorPicker();
+
+        toolColorPickerItem = new CustomMenuItem(colorPicker);
+        toolColorPickerItem.setHideOnClick(false);
+
+        menu.getItems().addAll(
+            toolColorPickerItem
         );
 
         return menu;
@@ -236,6 +267,7 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     public void objectSelected(boolean selected) {
         editDuplicateMenuItem.setDisable(!selected);
         editRemoveMenuItem.setDisable(!selected);
+        editDeselectMenuItem.setDisable(!selected);
     }
 
 }

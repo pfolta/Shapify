@@ -18,6 +18,8 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
     private MenuItem duplicateMenuItem;
     private MenuItem removeMenuItem;
 
+    private MenuItem deselectMenuItem;
+
     public ContextMenu(MainController mainController) {
         super();
 
@@ -58,12 +60,23 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
             guiState.setSelectedObject(null);
         });
 
+        deselectMenuItem = new MenuItem();
+        deselectMenuItem.setText("_Deselect");
+        deselectMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.ESCAPE));
+        deselectMenuItem.setOnAction(event -> {
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            guiState.setSelectedObject(null);
+        });
+
         getItems().addAll(
             undoMenuItem,
             redoMenuItem,
             new SeparatorMenuItem(),
             duplicateMenuItem,
-            removeMenuItem
+            removeMenuItem,
+            new SeparatorMenuItem(),
+            deselectMenuItem
         );
     }
 
