@@ -1,8 +1,11 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.WritableImage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -11,6 +14,8 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Line;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene;
 
+import javax.imageio.ImageIO;
+import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -170,6 +175,18 @@ public class DocumentController {
 
     public void moveObjectToTop(Node object) {
         document.moveObjectToTop(object);
+    }
+
+    public boolean exportToPNG(File file) {
+        WritableImage image = mainController.getGUIController().getMainWindow().getMainScene().getArtBoardGroup().snapshot(new SnapshotParameters(), null);
+
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        } catch (IOException exception) {
+            return false;
+        }
+
+        return true;
     }
 
 }

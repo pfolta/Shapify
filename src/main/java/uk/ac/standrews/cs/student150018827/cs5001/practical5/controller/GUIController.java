@@ -2,6 +2,8 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.controller;
 
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -12,6 +14,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainWindo
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.*;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.newdrawing.NewDrawingStage;
 
+import java.io.File;
 import java.util.List;
 
 public class GUIController {
@@ -127,6 +130,30 @@ public class GUIController {
 
     public GUIState getGuiState() {
         return guiState;
+    }
+
+    public void exportToPNG(Stage parent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select File to Export To");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.setInitialFileName(mainController.getDocumentController().getDocument().getTitle() + ".png");
+
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("PNG Image (*.png)", "*.png"),
+                new FileChooser.ExtensionFilter("All Files (*.*)", "*.*")
+        );
+
+        File file = fileChooser.showSaveDialog(parent);
+
+        if (file != null) {
+            if (!mainController.getDocumentController().exportToPNG(file)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(parent);
+                alert.setContentText("An error occured while trying to save the exported image.");
+
+                alert.showAndWait();
+            }
+        }
     }
 
 }

@@ -206,4 +206,8 @@ public class MainScene extends Scene implements Observer {
     public ToolBar getToolBar() {
         return toolBar;
     }
+
+    public Group getArtBoardGroup() {
+        return artBoardGroup;
+    }
 }
