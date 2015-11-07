@@ -24,7 +24,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     private Button moveUpButton;
     private Button moveToTopButton;
 
-    private ColorPicker colorPickerButton;
+    private ColorPicker colorPicker;
 
     private ToggleGroup toolToggleGroup;
     private ToggleButton selectToolButton;
@@ -144,12 +144,12 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     }
 
     private void buildColorControls() {
-        colorPickerButton = new ColorPicker();
-        colorPickerButton.getStyleClass().add("split-button");
-        colorPickerButton.setValue(Color.BLACK);
-        colorPickerButton.setOnAction(event -> mainController.getGUIController().getGuiState().setCurrentForeground(colorPickerButton.getValue()));
+        colorPicker = new ColorPicker();
+        colorPicker.getStyleClass().add("split-button");
+        colorPicker.setValue(Color.BLACK);
+        colorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setCurrentForeground(colorPicker.getValue()));
 
-        getItems().addAll(colorPickerButton);
+        getItems().addAll(colorPicker);
     }
 
     private void buildToolControls() {
@@ -186,7 +186,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     public void activateControls(boolean activate) {
         saveButton.setDisable(!activate);
 
-        colorPickerButton.setDisable(!activate);
+        colorPicker.setDisable(!activate);
 
         selectToolButton.setDisable(!activate);
         selectToolButton.setSelected(true);
@@ -199,26 +199,28 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
 
-        if (guiState.getSelectedObject() != null) {
-            colorPickerButton.setValue(guiState.getCurrentForeground());
-        }
+        if (guiState != null) {
+            if (guiState.getSelectedObject() != null) {
+                colorPicker.setValue(guiState.getCurrentForeground());
+            }
 
-        switch (guiState.getSelectedDrawTool()) {
-            case SELECT_TOOL: {
-                selectToolButton.setSelected(true);
-                break;
-            }
-            case RECTANGLE_TOOL: {
-                rectangleToolButton.setSelected(true);
-                break;
-            }
-            case ELLIPSE_TOOL: {
-                ellipseToolButton.setSelected(true);
-                break;
-            }
-            case LINE_TOOL: {
-                lineToolButton.setSelected(true);
-                break;
+            switch (guiState.getSelectedDrawTool()) {
+                case SELECT_TOOL: {
+                    selectToolButton.setSelected(true);
+                    break;
+                }
+                case RECTANGLE_TOOL: {
+                    rectangleToolButton.setSelected(true);
+                    break;
+                }
+                case ELLIPSE_TOOL: {
+                    ellipseToolButton.setSelected(true);
+                    break;
+                }
+                case LINE_TOOL: {
+                    lineToolButton.setSelected(true);
+                    break;
+                }
             }
         }
     }

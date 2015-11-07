@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
@@ -34,7 +35,9 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     private MenuItem editMoveToTopMenuItem;
     private MenuItem editDeselectMenuItem;
 
+    private ColorPicker colorPicker;
     private CustomMenuItem toolColorPickerMenuItem;
+
     private ToggleGroup toolToggleGroup;
     private RadioMenuItem toolSelectToolMenuItem;
     private RadioMenuItem toolRectangleToolMenuItem;
@@ -245,7 +248,10 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         Menu menu = new Menu();
         menu.setText("_Tool");
 
-        ColorPicker colorPicker = new ColorPicker();
+        colorPicker = new ColorPicker();
+        colorPicker.getStyleClass().add("split-button");
+        colorPicker.setValue(Color.BLACK);
+        colorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setCurrentForeground(colorPicker.getValue()));
 
         toolColorPickerMenuItem = new CustomMenuItem(colorPicker);
         toolColorPickerMenuItem.setHideOnClick(false);
@@ -361,22 +367,28 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
 
-        switch (guiState.getSelectedDrawTool()) {
-            case SELECT_TOOL: {
-                toolSelectToolMenuItem.setSelected(true);
-                break;
+        if (guiState != null) {
+            if (guiState.getSelectedObject() != null) {
+                colorPicker.setValue(guiState.getCurrentForeground());
             }
-            case RECTANGLE_TOOL: {
-                toolRectangleToolMenuItem.setSelected(true);
-                break;
-            }
-            case ELLIPSE_TOOL: {
-                toolEllipseToolMenuItem.setSelected(true);
-                break;
-            }
-            case LINE_TOOL: {
-                toolLineToolMenuItem.setSelected(true);
-                break;
+
+            switch (guiState.getSelectedDrawTool()) {
+                case SELECT_TOOL: {
+                    toolSelectToolMenuItem.setSelected(true);
+                    break;
+                }
+                case RECTANGLE_TOOL: {
+                    toolRectangleToolMenuItem.setSelected(true);
+                    break;
+                }
+                case ELLIPSE_TOOL: {
+                    toolEllipseToolMenuItem.setSelected(true);
+                    break;
+                }
+                case LINE_TOOL: {
+                    toolLineToolMenuItem.setSelected(true);
+                    break;
+                }
             }
         }
     }
