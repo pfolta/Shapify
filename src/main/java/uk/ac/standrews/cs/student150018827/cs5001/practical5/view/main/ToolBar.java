@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
@@ -16,13 +17,16 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private MainController mainController;
 
-
     private Button newButton;
     private Button openButton;
     private Button saveButton;
 
     private Button undoButton;
     private Button redoButton;
+    private Button moveBottomButton;
+    private Button moveDownButton;
+    private Button moveUpButton;
+    private Button moveTopButton;
 
     private ColorPicker colorPickerButton;
 
@@ -110,7 +114,56 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
             }
         });
 
-        getItems().addAll(undoButton, redoButton);
+        moveBottomButton = new Button();
+        moveBottomButton.setText("Move to Bottom");
+        moveBottomButton.setTooltip(new Tooltip("Move Selection to Bottom (End)"));
+        moveBottomButton.setDisable(true);
+        moveBottomButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            }
+        });
+
+        moveDownButton = new Button();
+        moveDownButton.setText("Move Down");
+        moveDownButton.setTooltip(new Tooltip("Move Selection Down (Page Down)"));
+        moveDownButton.setDisable(true);
+        moveDownButton.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectDown(guiState.getSelectedObject());
+        });
+
+        moveUpButton = new Button();
+        moveUpButton.setText("Move Up");
+        moveUpButton.setTooltip(new Tooltip("Move Selection Up (Page Up)"));
+        moveUpButton.setDisable(true);
+        moveUpButton.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectUp(guiState.getSelectedObject());
+        });
+
+        moveTopButton = new Button();
+        moveTopButton.setText("Move to Top");
+        moveTopButton.setTooltip(new Tooltip("Move Selection to Top (Home)"));
+        moveTopButton.setDisable(true);
+        moveTopButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            }
+        });
+
+        getItems().addAll(
+            undoButton,
+            redoButton,
+            moveBottomButton,
+            moveDownButton,
+            moveUpButton,
+            moveTopButton
+        );
     }
 
     private void buildColorControls() {
@@ -206,4 +259,12 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
             colorPickerButton.setValue(guiState.getCurrentForeground());
         }
     }
+
+    public void objectSelected(boolean selected) {
+        moveBottomButton.setDisable(!selected);
+        moveDownButton.setDisable(!selected);
+        moveUpButton.setDisable(!selected);
+        moveTopButton.setDisable(!selected);
+    }
+
 }

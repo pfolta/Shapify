@@ -199,6 +199,7 @@ public class MainScene extends Scene implements Observer {
             }
 
             menuBar.objectSelected(guiState.getSelectedObject() != null);
+            toolBar.objectSelected(guiState.getSelectedObject() != null);
         }
     }
 

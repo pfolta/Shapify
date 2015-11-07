@@ -4,6 +4,7 @@ import javafx.scene.Node;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Document {
@@ -104,6 +105,26 @@ public class Document {
 
     public List<Node> getObjects() {
         return objects;
+    }
+
+    public void moveObjectDown(Node object) {
+        int index = objects.indexOf(object);
+
+        if (index > 0) {
+            Collections.swap(objects, index, index - 1);
+
+            notifyObservers();
+        }
+    }
+
+    public void moveObjectUp(Node object) {
+        int index = objects.indexOf(object);
+
+        if (index < objects.size() - 1) {
+            Collections.swap(objects, index, index + 1);
+
+            notifyObservers();
+        }
     }
 
 }

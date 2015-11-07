@@ -1,5 +1,7 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -26,6 +28,10 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     private MenuItem editRedoItem;
     private MenuItem editDuplicateMenuItem;
     private MenuItem editRemoveMenuItem;
+    private MenuItem editMoveBottomMenuItem;
+    private MenuItem editMoveDownMenuItem;
+    private MenuItem editMoveUpMenuItem;
+    private MenuItem editMoveTopMenuItem;
     private MenuItem editDeselectMenuItem;
 
     private CustomMenuItem toolColorPickerItem;
@@ -158,6 +164,48 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             guiState.setSelectedObject(null);
         });
 
+        editMoveBottomMenuItem = new MenuItem();
+        editMoveBottomMenuItem.setText("Move to Bottom");
+        editMoveBottomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.END));
+        editMoveBottomMenuItem.setDisable(true);
+        editMoveBottomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            }
+        });
+
+        editMoveDownMenuItem = new MenuItem();
+        editMoveDownMenuItem.setText("Move Down");
+        editMoveDownMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_DOWN));
+        editMoveDownMenuItem.setDisable(true);
+        editMoveDownMenuItem.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectDown(guiState.getSelectedObject());
+        });
+
+        editMoveUpMenuItem = new MenuItem();
+        editMoveUpMenuItem.setText("Move Up");
+        editMoveUpMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_UP));
+        editMoveUpMenuItem.setDisable(true);
+        editMoveUpMenuItem.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectUp(guiState.getSelectedObject());
+        });
+
+        editMoveTopMenuItem = new MenuItem();
+        editMoveTopMenuItem.setText("Move to Top");
+        editMoveTopMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.HOME));
+        editMoveTopMenuItem.setDisable(true);
+        editMoveTopMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            }
+        });
+
         editDeselectMenuItem = new MenuItem();
         editDeselectMenuItem.setText("_Deselect");
         editDeselectMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.ESCAPE));
@@ -174,6 +222,11 @@ public class MenuBar extends javafx.scene.control.MenuBar {
             new SeparatorMenuItem(),
             editDuplicateMenuItem,
             editRemoveMenuItem,
+            new SeparatorMenuItem(),
+                editMoveBottomMenuItem,
+                editMoveDownMenuItem,
+                editMoveUpMenuItem,
+                editMoveTopMenuItem,
             new SeparatorMenuItem(),
             editDeselectMenuItem
         );
@@ -267,6 +320,10 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     public void objectSelected(boolean selected) {
         editDuplicateMenuItem.setDisable(!selected);
         editRemoveMenuItem.setDisable(!selected);
+        editMoveBottomMenuItem.setDisable(!selected);
+        editMoveDownMenuItem.setDisable(!selected);
+        editMoveUpMenuItem.setDisable(!selected);
+        editMoveTopMenuItem.setDisable(!selected);
         editDeselectMenuItem.setDisable(!selected);
     }
 

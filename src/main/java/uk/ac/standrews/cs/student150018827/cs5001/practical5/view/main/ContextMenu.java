@@ -1,5 +1,7 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
@@ -17,6 +19,11 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
 
     private MenuItem duplicateMenuItem;
     private MenuItem removeMenuItem;
+
+    private MenuItem moveBottomMenuItem;
+    private MenuItem moveDownMenuItem;
+    private MenuItem moveUpMenuItem;
+    private MenuItem moveTopMenuItem;
 
     private MenuItem deselectMenuItem;
 
@@ -60,6 +67,44 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
             guiState.setSelectedObject(null);
         });
 
+        moveBottomMenuItem = new MenuItem();
+        moveBottomMenuItem.setText("Move to Bottom");
+        moveBottomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.END));
+        moveBottomMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            }
+        });
+
+        moveDownMenuItem = new MenuItem();
+        moveDownMenuItem.setText("Move Down");
+        moveDownMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_DOWN));
+        moveDownMenuItem.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectDown(guiState.getSelectedObject());
+        });
+
+        moveUpMenuItem = new MenuItem();
+        moveUpMenuItem.setText("Move Up");
+        moveUpMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_UP));
+        moveUpMenuItem.setOnAction(event -> {
+            DocumentController documentController = mainController.getDocumentController();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            documentController.moveObjectUp(guiState.getSelectedObject());
+        });
+
+        moveTopMenuItem = new MenuItem();
+        moveTopMenuItem.setText("Move to Top");
+        moveTopMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.HOME));
+        moveTopMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            }
+        });
+
         deselectMenuItem = new MenuItem();
         deselectMenuItem.setText("_Deselect");
         deselectMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.ESCAPE));
@@ -75,6 +120,11 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
             new SeparatorMenuItem(),
             duplicateMenuItem,
             removeMenuItem,
+            new SeparatorMenuItem(),
+            moveBottomMenuItem,
+            moveDownMenuItem,
+            moveUpMenuItem,
+            moveTopMenuItem,
             new SeparatorMenuItem(),
             deselectMenuItem
         );

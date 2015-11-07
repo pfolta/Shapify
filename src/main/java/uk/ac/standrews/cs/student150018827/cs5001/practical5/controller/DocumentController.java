@@ -156,4 +156,12 @@ public class DocumentController {
         }
     }
 
+    public void moveObjectDown(Node object) {
+        document.moveObjectDown(object);
+    }
+
+    public void moveObjectUp(Node object) {
+        document.moveObjectUp(object);
+    }
+
 }
