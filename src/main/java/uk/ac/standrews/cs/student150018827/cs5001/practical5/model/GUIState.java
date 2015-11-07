@@ -3,6 +3,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ public class GUIState {
     private MainController mainController;
 
     private List<Observer> observers;
+
+    private DrawTools selectedDrawTool;
 
     private Node selectedObject;
     private Color currentForeground;
@@ -65,6 +68,16 @@ public class GUIState {
 
     public FocusOutline getFocusOutline() {
         return focusOutline;
+    }
+
+    public void setSelectedDrawTool(DrawTools selectedDrawTool) {
+        this.selectedDrawTool = selectedDrawTool;
+
+        notifyObservers();
+    }
+
+    public DrawTools getSelectedDrawTool() {
+        return selectedDrawTool;
     }
 
 }

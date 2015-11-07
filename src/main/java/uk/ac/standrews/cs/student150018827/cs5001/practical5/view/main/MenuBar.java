@@ -9,21 +9,23 @@ import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 
-public class MenuBar extends javafx.scene.control.MenuBar {
+public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
     private MainController mainController;
 
-    private MenuItem fileNewItem;
-    private MenuItem fileOpenItem;
-    private MenuItem fileSaveItem;
-    private MenuItem fileSaveAsItem;
-    private MenuItem fileExportItem;
-    private MenuItem fileCloseItem;
-    private MenuItem fileExitItem;
+    private MenuItem fileNewMenuItem;
+    private MenuItem fileOpenMenuItem;
+    private MenuItem fileSaveMenuItem;
+    private MenuItem fileSaveAsMenuItem;
+    private MenuItem fileExportMenuItem;
+    private MenuItem fileCloseMenuItem;
+    private MenuItem fileExitMenuItem;
 
-    private MenuItem editUndoItem;
-    private MenuItem editRedoItem;
+    private MenuItem editUndoMenuItem;
+    private MenuItem editRedoMenuItem;
     private MenuItem editDuplicateMenuItem;
     private MenuItem editRemoveMenuItem;
     private MenuItem editMoveToBottomMenuItem;
@@ -32,14 +34,19 @@ public class MenuBar extends javafx.scene.control.MenuBar {
     private MenuItem editMoveToTopMenuItem;
     private MenuItem editDeselectMenuItem;
 
-    private CustomMenuItem toolColorPickerItem;
+    private CustomMenuItem toolColorPickerMenuItem;
+    private ToggleGroup toolToggleGroup;
+    private RadioMenuItem toolSelectToolMenuItem;
+    private RadioMenuItem toolRectangleToolMenuItem;
+    private RadioMenuItem toolEllipseToolMenuItem;
+    private RadioMenuItem toolLineToolMenuItem;
 
-    private CheckMenuItem viewMenuBarItem;
-    private CheckMenuItem viewToolBarItem;
-    private CheckMenuItem viewStatusBarItem;
-    private CheckMenuItem viewFullscreenItem;
+    private CheckMenuItem viewMenuBarMenuItem;
+    private CheckMenuItem viewToolBarMenuItem;
+    private CheckMenuItem viewStatusBarMenuItem;
+    private CheckMenuItem viewFullscreenMenuItem;
 
-    private MenuItem helpAboutItem;
+    private MenuItem helpAboutMenuItem;
 
     public MenuBar(MainController mainController) {
         super();
@@ -67,59 +74,59 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         Menu menu = new Menu();
         menu.setText("_File");
 
-        fileNewItem = new MenuItem();
-        fileNewItem.setText("_New");
-        fileNewItem.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
-        fileNewItem.setOnAction(event -> {
+        fileNewMenuItem = new MenuItem();
+        fileNewMenuItem.setText("_New");
+        fileNewMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
+        fileNewMenuItem.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {
                 mainController.getGUIController().openNewDrawingDialog((Stage) MenuBar.this.getScene().getWindow());
             }
         });
 
-        fileOpenItem = new MenuItem();
-        fileOpenItem.setText("_Open...");
-        fileOpenItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
-        fileOpenItem.setOnAction(event -> {
+        fileOpenMenuItem = new MenuItem();
+        fileOpenMenuItem.setText("_Open...");
+        fileOpenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
+        fileOpenMenuItem.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {
                 mainController.getGUIController().getMainWindow().openFile();
             }
         });
 
-        fileSaveItem = new MenuItem();
-        fileSaveItem.setText("_Save");
-        fileSaveItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
-        fileSaveItem.setOnAction(event -> mainController.getGUIController().getMainWindow().saveFile());
+        fileSaveMenuItem = new MenuItem();
+        fileSaveMenuItem.setText("_Save");
+        fileSaveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+        fileSaveMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().saveFile());
 
-        fileSaveAsItem = new MenuItem();
-        fileSaveAsItem.setText("Save _As...");
-        fileSaveAsItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
-        fileSaveAsItem.setOnAction(event -> mainController.getGUIController().getMainWindow().saveAsFile());
+        fileSaveAsMenuItem = new MenuItem();
+        fileSaveAsMenuItem.setText("Save _As...");
+        fileSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
+        fileSaveAsMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().saveAsFile());
 
-        fileExportItem = new MenuItem();
-        fileExportItem.setText("_Export...");
-        fileExportItem.setOnAction(event -> System.out.println("Export Clicked!"));
+        fileExportMenuItem = new MenuItem();
+        fileExportMenuItem.setText("_Export...");
+        fileExportMenuItem.setOnAction(event -> System.out.println("Export Clicked!"));
 
-        fileCloseItem = new MenuItem();
-        fileCloseItem.setText("_Close");
-        fileCloseItem.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN));
-        fileCloseItem.setOnAction(event -> mainController.getDocumentController().closeDocument());
+        fileCloseMenuItem = new MenuItem();
+        fileCloseMenuItem.setText("_Close");
+        fileCloseMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN));
+        fileCloseMenuItem.setOnAction(event -> mainController.getDocumentController().closeDocument());
 
-        fileExitItem = new MenuItem();
-        fileExitItem.setText("E_xit");
-        fileExitItem.setAccelerator(new KeyCodeCombination(KeyCode.F4, KeyCombination.ALT_DOWN));
-        fileExitItem.setOnAction(event -> mainController.exit());
+        fileExitMenuItem = new MenuItem();
+        fileExitMenuItem.setText("E_xit");
+        fileExitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.F4, KeyCombination.ALT_DOWN));
+        fileExitMenuItem.setOnAction(event -> mainController.exit());
 
         menu.getItems().addAll(
-            fileNewItem,
+            fileNewMenuItem,
             new SeparatorMenuItem(),
-            fileOpenItem,
-            fileSaveItem,
-            fileSaveAsItem,
+            fileOpenMenuItem,
+            fileSaveMenuItem,
+            fileSaveAsMenuItem,
             new SeparatorMenuItem(),
-            fileExportItem,
+            fileExportMenuItem,
             new SeparatorMenuItem(),
-            fileCloseItem,
-            fileExitItem
+            fileCloseMenuItem,
+            fileExitMenuItem
         );
 
         return menu;
@@ -129,15 +136,15 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         Menu menu = new Menu();
         menu.setText("_Edit");
 
-        editUndoItem = new MenuItem();
-        editUndoItem.setText("_Undo");
-        editUndoItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
-        editUndoItem.setOnAction(event -> System.out.println("Undo Clicked!"));
+        editUndoMenuItem = new MenuItem();
+        editUndoMenuItem.setText("_Undo");
+        editUndoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
+        editUndoMenuItem.setOnAction(event -> System.out.println("Undo Clicked!"));
 
-        editRedoItem = new MenuItem();
-        editRedoItem.setText("_Redo");
-        editRedoItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
-        editRedoItem.setOnAction(event -> System.out.println("Redo Clicked!"));
+        editRedoMenuItem = new MenuItem();
+        editRedoMenuItem.setText("_Redo");
+        editRedoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
+        editRedoMenuItem.setOnAction(event -> System.out.println("Redo Clicked!"));
 
         editDuplicateMenuItem = new MenuItem();
         editDuplicateMenuItem.setText("_Duplicate");
@@ -217,8 +224,8 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         });
 
         menu.getItems().addAll(
-            editUndoItem,
-            editRedoItem,
+            editUndoMenuItem,
+            editRedoMenuItem,
             new SeparatorMenuItem(),
             editDuplicateMenuItem,
             editRemoveMenuItem,
@@ -240,11 +247,38 @@ public class MenuBar extends javafx.scene.control.MenuBar {
 
         ColorPicker colorPicker = new ColorPicker();
 
-        toolColorPickerItem = new CustomMenuItem(colorPicker);
-        toolColorPickerItem.setHideOnClick(false);
+        toolColorPickerMenuItem = new CustomMenuItem(colorPicker);
+        toolColorPickerMenuItem.setHideOnClick(false);
+
+        toolToggleGroup = new ToggleGroup();
+
+        toolSelectToolMenuItem = new RadioMenuItem();
+        toolSelectToolMenuItem.setText("Select");
+        toolSelectToolMenuItem.setToggleGroup(toolToggleGroup);
+        toolSelectToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.SELECT_TOOL));
+
+        toolRectangleToolMenuItem = new RadioMenuItem();
+        toolRectangleToolMenuItem.setText("Rectangle");
+        toolRectangleToolMenuItem.setToggleGroup(toolToggleGroup);
+        toolRectangleToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.RECTANGLE_TOOL));
+
+        toolEllipseToolMenuItem = new RadioMenuItem();
+        toolEllipseToolMenuItem.setText("Ellipse");
+        toolEllipseToolMenuItem.setToggleGroup(toolToggleGroup);
+        toolEllipseToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.ELLIPSE_TOOL));
+
+        toolLineToolMenuItem = new RadioMenuItem();
+        toolLineToolMenuItem.setText("Line");
+        toolLineToolMenuItem.setToggleGroup(toolToggleGroup);
+        toolLineToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
         menu.getItems().addAll(
-            toolColorPickerItem
+            toolColorPickerMenuItem,
+            new SeparatorMenuItem(),
+            toolSelectToolMenuItem,
+            toolRectangleToolMenuItem,
+            toolEllipseToolMenuItem,
+            toolLineToolMenuItem
         );
 
         return menu;
@@ -254,32 +288,32 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         Menu menu = new Menu();
         menu.setText("_View");
 
-        viewMenuBarItem = new CheckMenuItem();
-        viewMenuBarItem.setText("_Menu Bar");
-        viewMenuBarItem.setSelected(true);
-        viewMenuBarItem.setOnAction(event -> mainController.getGUIController().getMainWindow().getMainScene().showMenuBar(viewMenuBarItem.isSelected()));
+        viewMenuBarMenuItem = new CheckMenuItem();
+        viewMenuBarMenuItem.setText("_Menu Bar");
+        viewMenuBarMenuItem.setSelected(true);
+        viewMenuBarMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().getMainScene().showMenuBar(viewMenuBarMenuItem.isSelected()));
 
-        viewToolBarItem = new CheckMenuItem();
-        viewToolBarItem.setText("_Toolbar");
-        viewToolBarItem.setSelected(true);
-        viewToolBarItem.setOnAction(event -> mainController.getGUIController().getMainWindow().getMainScene().showToolBar(viewToolBarItem.isSelected()));
+        viewToolBarMenuItem = new CheckMenuItem();
+        viewToolBarMenuItem.setText("_Toolbar");
+        viewToolBarMenuItem.setSelected(true);
+        viewToolBarMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().getMainScene().showToolBar(viewToolBarMenuItem.isSelected()));
 
-        viewStatusBarItem = new CheckMenuItem();
-        viewStatusBarItem.setText("_Status Bar");
-        viewStatusBarItem.setSelected(true);
-        viewStatusBarItem.setOnAction(event -> mainController.getGUIController().getMainWindow().getMainScene().showStatusBar(viewStatusBarItem.isSelected()));
+        viewStatusBarMenuItem = new CheckMenuItem();
+        viewStatusBarMenuItem.setText("_Status Bar");
+        viewStatusBarMenuItem.setSelected(true);
+        viewStatusBarMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().getMainScene().showStatusBar(viewStatusBarMenuItem.isSelected()));
 
-        viewFullscreenItem = new CheckMenuItem();
-        viewFullscreenItem.setText("_Fullscreen");
-        viewFullscreenItem.setAccelerator(new KeyCodeCombination(KeyCode.F11));
-        viewFullscreenItem.setOnAction(event -> mainController.getGUIController().getMainWindow().setFullscreen(viewFullscreenItem.isSelected()));
+        viewFullscreenMenuItem = new CheckMenuItem();
+        viewFullscreenMenuItem.setText("_Fullscreen");
+        viewFullscreenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.F11));
+        viewFullscreenMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().setFullscreen(viewFullscreenMenuItem.isSelected()));
 
         menu.getItems().addAll(
-            viewMenuBarItem,
-            viewToolBarItem,
-            viewStatusBarItem,
+            viewMenuBarMenuItem,
+            viewToolBarMenuItem,
+            viewStatusBarMenuItem,
             new SeparatorMenuItem(),
-            viewFullscreenItem
+            viewFullscreenMenuItem
         );
 
         return menu;
@@ -289,32 +323,62 @@ public class MenuBar extends javafx.scene.control.MenuBar {
         Menu menu = new Menu();
         menu.setText("_Help");
 
-        helpAboutItem = new MenuItem();
-        helpAboutItem.setText("_About");
-        helpAboutItem.setOnAction(event -> mainController.getGUIController().openAboutDialog((Stage) MenuBar.this.getScene().getWindow()));
+        helpAboutMenuItem = new MenuItem();
+        helpAboutMenuItem.setText("_About");
+        helpAboutMenuItem.setOnAction(event -> mainController.getGUIController().openAboutDialog((Stage) MenuBar.this.getScene().getWindow()));
 
-        menu.getItems().addAll(helpAboutItem);
+        menu.getItems().addAll(helpAboutMenuItem);
 
         return menu;
     }
 
     public void selectViewMenuBarItem(boolean selected) {
-        viewMenuBarItem.setSelected(selected);
+        viewMenuBarMenuItem.setSelected(selected);
     }
 
     public void selectViewToolBarItem(boolean selected) {
-        viewToolBarItem.setSelected(selected);
+        viewToolBarMenuItem.setSelected(selected);
     }
 
     public void selectViewStatusBarItem(boolean selected) {
-        viewStatusBarItem.setSelected(selected);
+        viewStatusBarMenuItem.setSelected(selected);
     }
 
     public void activateControls(boolean activate) {
-        fileSaveItem.setDisable(!activate);
-        fileSaveAsItem.setDisable(!activate);
-        fileExportItem.setDisable(!activate);
-        fileCloseItem.setDisable(!activate);
+        fileSaveMenuItem.setDisable(!activate);
+        fileSaveAsMenuItem.setDisable(!activate);
+        fileExportMenuItem.setDisable(!activate);
+        fileCloseMenuItem.setDisable(!activate);
+
+        toolSelectToolMenuItem.setDisable(!activate);
+        toolSelectToolMenuItem.setSelected(true);
+        toolRectangleToolMenuItem.setDisable(!activate);
+        toolEllipseToolMenuItem.setDisable(!activate);
+        toolLineToolMenuItem.setDisable(!activate);
+    }
+
+    @Override
+    public void update() {
+        GUIState guiState = mainController.getGUIController().getGuiState();
+
+        switch (guiState.getSelectedDrawTool()) {
+            case SELECT_TOOL: {
+                toolSelectToolMenuItem.setSelected(true);
+                break;
+            }
+            case RECTANGLE_TOOL: {
+                toolRectangleToolMenuItem.setSelected(true);
+                break;
+            }
+            case ELLIPSE_TOOL: {
+                toolEllipseToolMenuItem.setSelected(true);
+                break;
+            }
+            case LINE_TOOL: {
+                toolLineToolMenuItem.setSelected(true);
+                break;
+            }
+        }
     }
 
     public void objectSelected(boolean selected) {

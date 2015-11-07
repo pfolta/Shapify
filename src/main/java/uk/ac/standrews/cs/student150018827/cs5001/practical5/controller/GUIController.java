@@ -52,7 +52,7 @@ public class GUIController {
         aboutStage.requestFocus();
     }
 
-    public void setSelectedTool(DrawTools selectedTool) {
+    public void setSelectedTool(DrawTools selectedDrawTool) {
         ArtBoard artBoard = getMainWindow().getMainScene().getArtBoard();
         Document document = mainController.getDocumentController().getDocument();
 
@@ -60,7 +60,7 @@ public class GUIController {
 
         MouseEventHandler mouseEventHandler = null;
 
-        switch (selectedTool) {
+        switch (selectedDrawTool) {
             case SELECT_TOOL: {
                 getMainWindow().getMainScene().hideBanner();
                 mouseEventHandler = new SelectEventHandler(mainController);
@@ -122,6 +122,7 @@ public class GUIController {
             object.setOnContextMenuRequested(new ContextEventHandler(mainController));
         }
 
+        guiState.setSelectedDrawTool(selectedDrawTool);
     }
 
     public GUIState getGuiState() {

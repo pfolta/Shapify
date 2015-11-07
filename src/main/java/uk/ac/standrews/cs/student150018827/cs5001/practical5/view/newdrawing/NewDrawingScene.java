@@ -128,6 +128,7 @@ public class NewDrawingScene extends Scene {
 
             mainController.getDocumentController().getDocument().addObserver(mainController.getGUIController().getMainWindow().getMainScene());
             mainController.getGUIController().getGuiState().addObserver(mainController.getGUIController().getMainWindow().getMainScene());
+            mainController.getGUIController().getGuiState().addObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
             mainController.getGUIController().getGuiState().addObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
 
             mainController.getDocumentController().setDimension(width, height);

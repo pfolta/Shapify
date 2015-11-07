@@ -154,11 +154,6 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private void buildToolControls() {
         toolToggleGroup = new ToggleGroup();
-        toolToggleGroup.selectedToggleProperty().addListener((ov, toggle, newToggle) -> {
-            if (newToggle == null) {
-                toggle.setSelected(true);
-            }
-        });
 
         selectToolButton = new ToggleButton();
         selectToolButton.setText("Select");
@@ -206,6 +201,25 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
         if (guiState.getSelectedObject() != null) {
             colorPickerButton.setValue(guiState.getCurrentForeground());
+        }
+
+        switch (guiState.getSelectedDrawTool()) {
+            case SELECT_TOOL: {
+                selectToolButton.setSelected(true);
+                break;
+            }
+            case RECTANGLE_TOOL: {
+                rectangleToolButton.setSelected(true);
+                break;
+            }
+            case ELLIPSE_TOOL: {
+                ellipseToolButton.setSelected(true);
+                break;
+            }
+            case LINE_TOOL: {
+                lineToolButton.setSelected(true);
+                break;
+            }
         }
     }
 
