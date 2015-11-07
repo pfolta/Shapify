@@ -107,6 +107,16 @@ public class Document {
         return objects;
     }
 
+    public void moveObjectToBottom(Node object) {
+        int index;
+
+        while ((index = objects.indexOf(object)) > 0) {
+            Collections.swap(objects, index, index - 1);
+        }
+
+        notifyObservers();
+    }
+
     public void moveObjectDown(Node object) {
         int index = objects.indexOf(object);
 
@@ -125,6 +135,16 @@ public class Document {
 
             notifyObservers();
         }
+    }
+
+    public void moveObjectToTop(Node object) {
+        int index;
+
+        while ((index = objects.indexOf(object)) < objects.size() - 1) {
+            Collections.swap(objects, index, index + 1);
+        }
+
+        notifyObservers();
     }
 
 }
