@@ -184,20 +184,9 @@ public class GUIController {
         fileChooser.setTitle("Select File to Export To");
         fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
         fileChooser.setInitialFileName(mainController.getDocumentController().getDocument().getTitle() + ".png");
-
-        FileChooser.ExtensionFilter bmpFilter = new FileChooser.ExtensionFilter("Windows Bitmap (*.bmp)", "*.bmp");
-        FileChooser.ExtensionFilter gifFilter = new FileChooser.ExtensionFilter("GIF Image (*.gif)", "*.gif");
-        FileChooser.ExtensionFilter jpgFilter = new FileChooser.ExtensionFilter("JPEG Image (*.jpg)", "*.jpg");
-        FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG Image (*.png)", "*.png");
-
         fileChooser.getExtensionFilters().addAll(
-            bmpFilter,
-            gifFilter,
-            jpgFilter,
-            pngFilter
+            new FileChooser.ExtensionFilter("PNG Image (*.png)", "*.png")
         );
-
-        fileChooser.setSelectedExtensionFilter(pngFilter);
 
         File file = fileChooser.showSaveDialog(parent);
 
