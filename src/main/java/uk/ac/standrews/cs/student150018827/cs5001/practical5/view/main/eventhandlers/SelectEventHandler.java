@@ -4,11 +4,11 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Line;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 
@@ -55,11 +55,16 @@ public class SelectEventHandler extends MouseEventHandler {
                     guiState.setCurrentForeground(((Color) line.getStroke()));
                 }
 
-                // Remove Drag Event Listener
-                selectedObject.setOnMouseDragged(null);
-
                 // Set selected object
                 guiState.setSelectedObject(selectedObject);
+
+                // Delegate event to Focus Outline for instant object move capabilities
+                if (!(event.getSource() instanceof Rectangle) || !((Rectangle) event.getSource()).isFocusOutline()) {
+                    FocusOutline focusOutline = guiState.getFocusOutline();
+                    Rectangle focusRectangle = focusOutline.getFocusRectangle();
+
+                    focusRectangle.fireEvent(event);
+                }
             }
         };
     }
@@ -78,29 +83,39 @@ public class SelectEventHandler extends MouseEventHandler {
 
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
+            // Delegate event to Focus Outline for instant object move capabilities
+            if (!(event.getSource() instanceof Rectangle) || !((Rectangle) event.getSource()).isFocusOutline()) {
+                GUIState guiState = mainController.getGUIController().getGuiState();
+
+                FocusOutline focusOutline = guiState.getFocusOutline();
+                Rectangle focusRectangle = focusOutline.getFocusRectangle();
+
+                focusRectangle.fireEvent(event);
+
+                return;
+            }
+
             int x = (int) event.getX();
             int y = (int) event.getY();
 
             ArtBoard artBoard = mainScene.getArtBoard();
 
-            if (!(event.getSource() instanceof ArtBoard)) {
-                int xpos = x - deltaX;
-                int ypos = y - deltaY;
+            int xpos = x - deltaX;
+            int ypos = y - deltaY;
 
-                Object object = event.getSource();
+            Object object = event.getSource();
 
-                Rectangle rectangle = (Rectangle) object;
+            Rectangle rectangle = (Rectangle) object;
 
-                // Ensure event is within artboard boundaries
-                xpos = Math.max(xpos, 0);
-                xpos = Math.min(xpos, (int) (artBoard.getWidth() - rectangle.getWidth()));
+            // Ensure event is within artboard boundaries
+            xpos = Math.max(xpos, 0);
+            xpos = Math.min(xpos, (int) (artBoard.getWidth() - rectangle.getWidth()));
 
-                ypos = Math.max(ypos, 0);
-                ypos = Math.min(ypos, (int) (artBoard.getHeight() - rectangle.getHeight()));
+            ypos = Math.max(ypos, 0);
+            ypos = Math.min(ypos, (int) (artBoard.getHeight() - rectangle.getHeight()));
 
-                rectangle.setX(xpos);
-                rectangle.setY(ypos);
-            }
+            rectangle.setX(xpos);
+            rectangle.setY(ypos);
 
             // Ensure event is within artboard boundaries for coordinates display
             x = Math.max(x, 0);

@@ -2,8 +2,12 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects;
 
 public class Rectangle extends javafx.scene.shape.Rectangle {
 
+    private boolean focusOutline;
+
     public Rectangle() {
         super();
+
+        focusOutline = false;
     }
 
     @Override
@@ -24,6 +28,14 @@ public class Rectangle extends javafx.scene.shape.Rectangle {
         clone.setOnMouseReleased(this.getOnMouseReleased());
 
         return clone;
+    }
+
+    public void setFocusOutline(boolean focusOutline) {
+        this.focusOutline = focusOutline;
+    }
+
+    public boolean isFocusOutline() {
+        return focusOutline;
     }
 
 }
