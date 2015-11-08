@@ -14,15 +14,19 @@ public class ArtBoard extends Canvas {
 
         this.mainController = mainController;
 
-        for (int i = 0; i <= width; i += 10) {
-            for (int j = 0; j <= height; j += 10) {
-                if (i % 20 == 0 && j % 20 != 0 || i % 20 != 0 && j % 20 == 0) {
+        paintArtBoardBackground(10);
+    }
+
+    public void paintArtBoardBackground(int tileSize) {
+        for (int i = 0; i <= getWidth(); i += tileSize) {
+            for (int j = 0; j <= getHeight(); j += tileSize) {
+                if (i % (2 * tileSize) == 0 && j % (2 * tileSize) != 0 || i % (2 * tileSize) != 0 && j % (2 * tileSize) == 0) {
                     getGraphicsContext2D().setFill(Color.rgb(225, 225, 225));
                 } else {
                     getGraphicsContext2D().setFill(Color.rgb(255, 255, 255));
                 }
 
-                getGraphicsContext2D().fillRect(i, j, 10, 10);
+                getGraphicsContext2D().fillRect(i, j, tileSize, tileSize);
             }
         }
     }
