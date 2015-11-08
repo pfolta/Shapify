@@ -9,12 +9,14 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.about.AboutStage;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.exportbitmap.ExportBitmapStage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainWindow;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.*;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.newdrawing.NewDrawingStage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class GUIController {
@@ -47,6 +49,12 @@ public class GUIController {
         NewDrawingStage newDrawingStage = new NewDrawingStage(mainController, parent);
         newDrawingStage.show();
         newDrawingStage.requestFocus();
+    }
+
+    public void openExportBitmapDialog(Stage parent) {
+        ExportBitmapStage exportBitmapStage = new ExportBitmapStage(mainController, parent);
+        exportBitmapStage.show();
+        exportBitmapStage.requestFocus();
     }
 
     public void openAboutDialog(Stage parent) {
@@ -132,28 +140,86 @@ public class GUIController {
         return guiState;
     }
 
-    public void exportToPNG(Stage parent) {
+    public void openFile(Stage parent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select File to Export To");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        fileChooser.setInitialFileName(mainController.getDocumentController().getDocument().getTitle() + ".png");
+        fileChooser.setTitle("Select File to Open");
+        fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
 
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("PNG Image (*.png)", "*.png"),
-                new FileChooser.ExtensionFilter("All Files (*.*)", "*.*")
+            new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg"),
+            new FileChooser.ExtensionFilter("All Files (*.*)", "*.*")
+        );
+
+        File file = fileChooser.showOpenDialog(parent);
+
+        if (file != null) {
+            System.out.println("File selected: " + file);
+        }
+    }
+
+    public void saveFile(Stage parent) {
+        saveAsFile(parent);
+    }
+
+    public void saveAsFile(Stage parent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select File to Save To");
+        fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
+        fileChooser.setInitialFileName(mainController.getDocumentController().getDocument().getTitle() + ".svg");
+
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg"),
+            new FileChooser.ExtensionFilter("All Files (*.*)", "*.*")
         );
 
         File file = fileChooser.showSaveDialog(parent);
 
         if (file != null) {
-            if (!mainController.getDocumentController().exportToPNG(file)) {
+            System.out.println("File selected: " + file);
+        }
+    }
+
+    public boolean exportBitmap(Stage parent, double scaleFactor) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select File to Export To");
+        fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
+        fileChooser.setInitialFileName(mainController.getDocumentController().getDocument().getTitle() + ".png");
+
+        FileChooser.ExtensionFilter bmpFilter = new FileChooser.ExtensionFilter("Windows Bitmap (*.bmp)", "*.bmp");
+        FileChooser.ExtensionFilter gifFilter = new FileChooser.ExtensionFilter("GIF Image (*.gif)", "*.gif");
+        FileChooser.ExtensionFilter jpgFilter = new FileChooser.ExtensionFilter("JPEG Image (*.jpg)", "*.jpg");
+        FileChooser.ExtensionFilter pngFilter = new FileChooser.ExtensionFilter("PNG Image (*.png)", "*.png");
+
+        fileChooser.getExtensionFilters().addAll(
+            bmpFilter,
+            gifFilter,
+            jpgFilter,
+            pngFilter
+        );
+
+        fileChooser.setSelectedExtensionFilter(pngFilter);
+
+        File file = fileChooser.showSaveDialog(parent);
+
+        if (file != null) {
+            if (file.getParentFile().isDirectory()) {
+                guiState.setLastUsedDirectory(file.getParentFile());
+            }
+
+            try {
+                mainController.getDocumentController().exportBitmap(file, scaleFactor);
+
+                return true;
+            } catch (IOException exception) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.initOwner(parent);
-                alert.setContentText("An error occured while trying to save the exported image.");
+                alert.setContentText("An error occured while trying to save the exported image: " + exception.getMessage());
 
                 alert.showAndWait();
             }
         }
+
+        return false;
     }
 
 }

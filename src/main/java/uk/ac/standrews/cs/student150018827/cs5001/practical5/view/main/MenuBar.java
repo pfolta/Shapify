@@ -6,15 +6,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
-
-import java.io.File;
 
 public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
@@ -24,7 +21,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     private MenuItem fileOpenMenuItem;
     private MenuItem fileSaveMenuItem;
     private MenuItem fileSaveAsMenuItem;
-    private MenuItem fileExportToPNGMenuItem;
+    private MenuItem fileExportBitmap;
     private MenuItem fileCloseMenuItem;
     private MenuItem fileExitMenuItem;
 
@@ -85,7 +82,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         fileNewMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
         fileNewMenuItem.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {
-                mainController.getGUIController().openNewDrawingDialog((Stage) MenuBar.this.getScene().getWindow());
+                mainController.getGUIController().openNewDrawingDialog(mainController.getGUIController().getMainWindow().getMainStage());
             }
         });
 
@@ -94,23 +91,23 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         fileOpenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
         fileOpenMenuItem.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {
-                mainController.getGUIController().getMainWindow().openFile();
+                mainController.getGUIController().openFile(mainController.getGUIController().getMainWindow().getMainStage());
             }
         });
 
         fileSaveMenuItem = new MenuItem();
         fileSaveMenuItem.setText("_Save");
         fileSaveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
-        fileSaveMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().saveFile());
+        fileSaveMenuItem.setOnAction(event -> mainController.getGUIController().saveFile(mainController.getGUIController().getMainWindow().getMainStage()));
 
         fileSaveAsMenuItem = new MenuItem();
         fileSaveAsMenuItem.setText("Save _As...");
         fileSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
-        fileSaveAsMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().saveAsFile());
+        fileSaveAsMenuItem.setOnAction(event -> mainController.getGUIController().saveAsFile(mainController.getGUIController().getMainWindow().getMainStage()));
 
-        fileExportToPNGMenuItem = new MenuItem();
-        fileExportToPNGMenuItem.setText("_Export to PNG...");
-        fileExportToPNGMenuItem.setOnAction(event -> mainController.getGUIController().exportToPNG(mainController.getGUIController().getMainWindow().getMainStage()));
+        fileExportBitmap = new MenuItem();
+        fileExportBitmap.setText("_Export Bitmap...");
+        fileExportBitmap.setOnAction(event -> mainController.getGUIController().openExportBitmapDialog(mainController.getGUIController().getMainWindow().getMainStage()));
 
         fileCloseMenuItem = new MenuItem();
         fileCloseMenuItem.setText("_Close");
@@ -129,7 +126,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
             fileSaveMenuItem,
             fileSaveAsMenuItem,
             new SeparatorMenuItem(),
-            fileExportToPNGMenuItem,
+            fileExportBitmap,
             new SeparatorMenuItem(),
             fileCloseMenuItem,
             fileExitMenuItem
@@ -356,7 +353,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     public void activateControls(boolean activate) {
         fileSaveMenuItem.setDisable(!activate);
         fileSaveAsMenuItem.setDisable(!activate);
-        fileExportToPNGMenuItem.setDisable(!activate);
+        fileExportBitmap.setDisable(!activate);
         fileCloseMenuItem.setDisable(!activate);
 
         toolSelectToolMenuItem.setDisable(!activate);

@@ -6,6 +6,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainCont
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class GUIState {
     private MainController mainController;
 
     private List<Observer> observers;
+
+    private File lastUsedDirectory;
 
     private DrawTools selectedDrawTool;
 
@@ -25,6 +28,9 @@ public class GUIState {
         this.mainController = mainController;
 
         observers = new ArrayList<>();
+
+        lastUsedDirectory = new File(System.getProperty("user.home"));
+        currentForeground = Color.BLACK;
     }
 
     public void addObserver(Observer observer) {
@@ -37,6 +43,14 @@ public class GUIState {
 
     public void notifyObservers() {
         observers.forEach((observer) -> observer.update());
+    }
+
+    public File getLastUsedDirectory() {
+        return lastUsedDirectory;
+    }
+
+    public void setLastUsedDirectory(File lastUsedDirectory) {
+        this.lastUsedDirectory = lastUsedDirectory;
     }
 
     public Node getSelectedObject() {
@@ -53,10 +67,6 @@ public class GUIState {
     }
 
     public Color getCurrentForeground() {
-        if (currentForeground == null) {
-            return Color.BLACK;
-        }
-
         return currentForeground;
     }
 

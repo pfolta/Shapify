@@ -66,14 +66,14 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         openButton.setTooltip(new Tooltip("Open (Ctrl+O)"));
         openButton.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {
-                mainController.getGUIController().getMainWindow().openFile();
+                mainController.getGUIController().openFile(mainController.getGUIController().getMainWindow().getMainStage());
             }
         });
 
         saveButton = new Button();
         saveButton.setText("Save");
         saveButton.setTooltip(new Tooltip("Save (Ctrl+S)"));
-        saveButton.setOnAction(event -> mainController.getGUIController().getMainWindow().saveFile());
+        saveButton.setOnAction(event -> mainController.getGUIController().saveFile(mainController.getGUIController().getMainWindow().getMainStage()));
 
         getItems().addAll(newButton, openButton, saveButton);
     }

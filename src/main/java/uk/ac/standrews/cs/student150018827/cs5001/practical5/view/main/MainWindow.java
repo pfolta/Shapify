@@ -53,45 +53,6 @@ public class MainWindow {
         mainStage.close();
     }
 
-    public void openFile() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select File to Open");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-
-        fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg"),
-            new FileChooser.ExtensionFilter("All Files (*.*)", "*.*")
-        );
-
-        File file = fileChooser.showOpenDialog(mainStage);
-
-        if (file != null) {
-            System.out.println("File selected: " + file);
-        }
-    }
-
-    public void saveFile() {
-        saveAsFile();
-    }
-
-    public void saveAsFile() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select File to Save To");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        fileChooser.setInitialFileName("fileName.svg");
-
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg"),
-                new FileChooser.ExtensionFilter("All Files (*.*)", "*.*")
-        );
-
-        File file = fileChooser.showSaveDialog(mainStage);
-
-        if (file != null) {
-            System.out.println("File selected: " + file);
-        }
-    }
-
     public void setFullscreen(boolean fullscreen) {
         mainStage.setFullScreen(fullscreen);
     }

@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -85,8 +86,10 @@ public class DocumentController {
             if (document.isSaved()) {
                 close = true;
             } else {
+                Stage mainStage = mainController.getGUIController().getMainWindow().getMainStage();
+
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.initOwner(mainController.getGUIController().getMainWindow().getMainStage());
+                alert.initOwner(mainStage);
                 alert.setHeaderText("Unsaved Changes");
                 alert.setContentText("Save changes to document \"" + document.getTitle() + "\" before closing?");
 
@@ -98,7 +101,7 @@ public class DocumentController {
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == buttonTypeSave) {
-                    mainController.getGUIController().getMainWindow().saveFile();
+                    mainController.getGUIController().saveFile(mainStage);
                     close = true;
                 } else if (result.get() == buttonTypeCloseWithoutSaving) {
                     close = true;
@@ -179,47 +182,62 @@ public class DocumentController {
         document.moveObjectToTop(object);
     }
 
-    public boolean exportToPNG(File file) {
+    public void exportBitmap(File file, double scaleFactor) throws IOException {
+        int width = (int) scaleFactor * document.getWidth();
+        int height = (int) scaleFactor * document.getHeight();
+
         Group exportGroup = new Group();
 
         Rectangle backgroundRectangle = new Rectangle();
         backgroundRectangle.setX(0);
         backgroundRectangle.setY(0);
-        backgroundRectangle.setWidth(document.getWidth());
-        backgroundRectangle.setHeight(document.getHeight());
+        backgroundRectangle.setWidth(width);
+        backgroundRectangle.setHeight(height);
         backgroundRectangle.setFill(Color.TRANSPARENT);
-
         exportGroup.getChildren().add(backgroundRectangle);
 
         for (Node object : document.getObjects()) {
-            Node clone = null;
-
             if (object instanceof Rectangle) {
-                clone = ((Rectangle) object).clone();
+                Rectangle clone = ((Rectangle) object).clone();
+
+                clone.setX(scaleFactor * clone.getX());
+                clone.setY(scaleFactor * clone.getY());
+                clone.setWidth(scaleFactor * clone.getWidth());
+                clone.setHeight(scaleFactor * clone.getHeight());
+
+                exportGroup.getChildren().add(clone);
             }
 
             if (object instanceof Ellipse) {
-                clone = ((Ellipse) object).clone();
+                Ellipse clone = ((Ellipse) object).clone();
+
+                clone.setCenterX(scaleFactor * clone.getCenterX());
+                clone.setCenterY(scaleFactor * clone.getCenterY());
+                clone.setRadiusX(scaleFactor * clone.getRadiusX());
+                clone.setRadiusY(scaleFactor * clone.getRadiusY());
+
+                exportGroup.getChildren().add(clone);
             }
 
             if (object instanceof Line) {
-                clone = ((Line) object).clone();
+                Line clone = ((Line) object).clone();
+
+                clone.setStartX(scaleFactor * clone.getStartX());
+                clone.setStartY(scaleFactor * clone.getStartY());
+                clone.setEndX(scaleFactor * clone.getEndX());
+                clone.setEndY(scaleFactor * clone.getEndY());
+
+                exportGroup.getChildren().add(clone);
             }
-
-            exportGroup.getChildren().add(clone);
         }
 
-        WritableImage image = exportGroup.snapshot(new SnapshotParameters(), null);
+        SnapshotParameters snapshotParameters = new SnapshotParameters();
+        snapshotParameters.setFill(Color.TRANSPARENT);
 
-        try {
-            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-        } catch (IOException exception) {
-            return false;
-        } finally {
+        WritableImage image = new WritableImage(width, height);
+        exportGroup.snapshot(snapshotParameters, image);
 
-        }
-
-        return true;
+        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
     }
 
 }

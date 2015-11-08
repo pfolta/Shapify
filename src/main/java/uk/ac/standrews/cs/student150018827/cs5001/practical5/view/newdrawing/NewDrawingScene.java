@@ -1,7 +1,5 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.newdrawing;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -82,22 +80,12 @@ public class NewDrawingScene extends Scene {
         okButton = new Button();
         okButton.setText("OK");
         okButton.setDefaultButton(true);
-        okButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                createNewDocument();
-            }
-        });
+        okButton.setOnAction(event -> createNewDocument());
 
         cancelButton = new Button();
         cancelButton.setText("Cancel");
         cancelButton.setCancelButton(true);
-        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                close();
-            }
-        });
+        cancelButton.setOnAction(event -> close());
 
         hbox.getChildren().addAll(okButton, cancelButton);
 
