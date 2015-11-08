@@ -199,9 +199,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
 
-        if (guiState.getSelectedObject() != null) {
-            colorPicker.setValue(guiState.getCurrentForeground());
-        }
+        colorPicker.setValue(guiState.getCurrentForeground());
 
         if (guiState.getSelectedDrawTool() != null) {
             switch (guiState.getSelectedDrawTool()) {

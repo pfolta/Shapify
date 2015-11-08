@@ -16,6 +16,8 @@ public class GUIState {
 
     private List<Observer> observers;
 
+    private double zoomLevel;
+
     private File lastUsedDirectory;
 
     private DrawTools selectedDrawTool;
@@ -29,6 +31,7 @@ public class GUIState {
 
         observers = new ArrayList<>();
 
+        zoomLevel = 1.0;
         lastUsedDirectory = new File(System.getProperty("user.home"));
         currentForeground = Color.BLACK;
     }
@@ -82,12 +85,28 @@ public class GUIState {
 
     public void setSelectedDrawTool(DrawTools selectedDrawTool) {
         this.selectedDrawTool = selectedDrawTool;
-
         notifyObservers();
     }
 
     public DrawTools getSelectedDrawTool() {
         return selectedDrawTool;
+    }
+
+    public void setZoomLevel(double zoomLevel) {
+        if (zoomLevel > 5) {
+            zoomLevel = 5;
+        }
+
+        if (zoomLevel < 0.1) {
+            zoomLevel = 0.1;
+        }
+
+        this.zoomLevel = zoomLevel;
+        notifyObservers();
+    }
+
+    public double getZoomLevel() {
+        return zoomLevel;
     }
 
 }

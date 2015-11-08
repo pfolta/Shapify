@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Scale;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -33,6 +34,7 @@ public class MainScene extends Scene implements Observer {
 
     private ArtBoard artBoard;
     private Group artBoardGroup;
+    private Group artBoardZoomGroup;
 
     private StatusBar statusBar;
 
@@ -55,7 +57,10 @@ public class MainScene extends Scene implements Observer {
         mainBorderPane.setTop(topPane);
 
         artBoardGroup = new Group();
-        StackPane stackPane = new StackPane(artBoardGroup);
+        artBoardZoomGroup = new Group();
+        artBoardZoomGroup.getChildren().add(artBoardGroup);
+
+        StackPane stackPane = new StackPane(artBoardZoomGroup);
 
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setStyle("-fx-focus-color: transparent;");
@@ -198,6 +203,9 @@ public class MainScene extends Scene implements Observer {
                 }
             }
 
+            // Set Zoom Level
+            setArtBoardZoomLevel(guiState.getZoomLevel());
+
             menuBar.objectSelected(guiState.getSelectedObject() != null);
             toolBar.objectSelected(guiState.getSelectedObject() != null);
         }
@@ -210,4 +218,10 @@ public class MainScene extends Scene implements Observer {
     public Group getArtBoardGroup() {
         return artBoardGroup;
     }
+
+    private void setArtBoardZoomLevel(double zoomLevel) {
+        artBoardGroup.setScaleX(zoomLevel);
+        artBoardGroup.setScaleY(zoomLevel);
+    }
+
 }

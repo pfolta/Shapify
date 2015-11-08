@@ -4,6 +4,8 @@ import javafx.scene.paint.Color;
 
 public final class Data {
 
+    public static final int ARTBOARD_BACKGROUND_TITLE_SIZE = 10;
+
     public static final int FOCUS_OUTLINE_STROKE_WIDTH = 2;
     public static final Color FOCUS_OUTLINE_COLOR = Color.STEELBLUE;
     public static final int RESIZE_ANCHOR_DIMENSION = 8;

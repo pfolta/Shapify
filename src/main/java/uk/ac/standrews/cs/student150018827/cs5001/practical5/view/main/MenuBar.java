@@ -35,7 +35,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     private MenuItem editMoveToTopMenuItem;
     private MenuItem editDeselectMenuItem;
 
-    private ColorPicker colorPicker;
+    private ColorPicker toolColorPicker;
     private CustomMenuItem toolColorPickerMenuItem;
 
     private ToggleGroup toolToggleGroup;
@@ -47,6 +47,13 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     private CheckMenuItem viewMenuBarMenuItem;
     private CheckMenuItem viewToolBarMenuItem;
     private CheckMenuItem viewStatusBarMenuItem;
+
+    private MenuItem viewZoomInMenuItem;
+    private MenuItem viewZoomOutMenuItem;
+    private MenuItem viewResetZoomMenuItem;
+    private Slider viewZoomSlider;
+    private CustomMenuItem viewZoomSliderMenuItem;
+
     private CheckMenuItem viewFullscreenMenuItem;
 
     private MenuItem helpAboutMenuItem;
@@ -248,13 +255,15 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         Menu menu = new Menu();
         menu.setText("_Tool");
 
-        colorPicker = new ColorPicker();
-        colorPicker.getStyleClass().add("split-button");
-        colorPicker.setValue(Color.BLACK);
-        colorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setCurrentForeground(colorPicker.getValue()));
+        toolColorPicker = new ColorPicker();
+        toolColorPicker.setDisable(true);
+        toolColorPicker.getStyleClass().add("split-button");
+        toolColorPicker.setValue(Color.BLACK);
+        toolColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setCurrentForeground(toolColorPicker.getValue()));
 
-        toolColorPickerMenuItem = new CustomMenuItem(colorPicker);
+        toolColorPickerMenuItem = new CustomMenuItem(toolColorPicker);
         toolColorPickerMenuItem.setHideOnClick(false);
+        toolColorPickerMenuItem.setDisable(true);
 
         toolToggleGroup = new ToggleGroup();
 
@@ -309,6 +318,37 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         viewStatusBarMenuItem.setSelected(true);
         viewStatusBarMenuItem.setOnAction(event -> mainController.getGUIController().getMainWindow().getMainScene().showStatusBar(viewStatusBarMenuItem.isSelected()));
 
+        viewZoomInMenuItem = new MenuItem();
+        viewZoomInMenuItem.setDisable(true);
+        viewZoomInMenuItem.setText("_Zoom In");
+        viewZoomInMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PLUS, KeyCombination.CONTROL_DOWN));
+        viewZoomInMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setZoomLevel(mainController.getGUIController().getGuiState().getZoomLevel() + 0.25));
+
+        viewZoomOutMenuItem = new MenuItem();
+        viewZoomOutMenuItem.setDisable(true);
+        viewZoomOutMenuItem.setText("_Zoom Out");
+        viewZoomOutMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.MINUS, KeyCombination.CONTROL_DOWN));
+        viewZoomOutMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setZoomLevel(mainController.getGUIController().getGuiState().getZoomLevel() - 0.25));
+
+        viewResetZoomMenuItem = new MenuItem();
+        viewResetZoomMenuItem.setDisable(true);
+        viewResetZoomMenuItem.setText("_Reset Zoom");
+        viewResetZoomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.DIGIT0, KeyCombination.CONTROL_DOWN));
+        viewResetZoomMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setZoomLevel(1.0));
+
+        viewZoomSlider = new Slider();
+        viewZoomSlider.setDisable(true);
+        viewZoomSlider.setMin(0.1);
+        viewZoomSlider.setMax(5.0);
+        viewZoomSlider.setValue(1.0);
+        viewZoomSlider.valueProperty().addListener(observable -> {
+            mainController.getGUIController().getGuiState().setZoomLevel(viewZoomSlider.getValue());
+        });
+
+        viewZoomSliderMenuItem = new CustomMenuItem(viewZoomSlider);
+        viewZoomSliderMenuItem.setHideOnClick(false);
+        viewZoomSliderMenuItem.setDisable(true);
+
         viewFullscreenMenuItem = new CheckMenuItem();
         viewFullscreenMenuItem.setText("_Fullscreen");
         viewFullscreenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.F11));
@@ -318,6 +358,11 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
             viewMenuBarMenuItem,
             viewToolBarMenuItem,
             viewStatusBarMenuItem,
+            new SeparatorMenuItem(),
+            viewZoomInMenuItem,
+            viewZoomOutMenuItem,
+            viewResetZoomMenuItem,
+            viewZoomSliderMenuItem,
             new SeparatorMenuItem(),
             viewFullscreenMenuItem
         );
@@ -356,20 +401,28 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         fileExportBitmap.setDisable(!activate);
         fileCloseMenuItem.setDisable(!activate);
 
+        toolColorPicker.setDisable(!activate);
+        toolColorPickerMenuItem.setDisable(!activate);
         toolSelectToolMenuItem.setDisable(!activate);
         toolSelectToolMenuItem.setSelected(true);
         toolRectangleToolMenuItem.setDisable(!activate);
         toolEllipseToolMenuItem.setDisable(!activate);
         toolLineToolMenuItem.setDisable(!activate);
+
+        viewZoomInMenuItem.setDisable(!activate);
+        viewZoomOutMenuItem.setDisable(!activate);
+        viewResetZoomMenuItem.setDisable(!activate);
+        viewZoomSlider.setDisable(!activate);
+        viewZoomSliderMenuItem.setDisable(!activate);
     }
 
     @Override
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
 
-        if (guiState.getSelectedObject() != null) {
-            colorPicker.setValue(guiState.getCurrentForeground());
-        }
+        toolColorPicker.setValue(guiState.getCurrentForeground());
+
+        viewZoomSlider.setValue(guiState.getZoomLevel());
 
         if (guiState.getSelectedDrawTool() != null) {
             switch (guiState.getSelectedDrawTool()) {

@@ -3,7 +3,9 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.MouseEventHandler;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.SelectEventHandler;
 
 public class ArtBoard extends Canvas {
 
@@ -14,7 +16,8 @@ public class ArtBoard extends Canvas {
 
         this.mainController = mainController;
 
-        paintArtBoardBackground(10);
+        paintArtBoardBackground(Data.ARTBOARD_BACKGROUND_TITLE_SIZE);
+        setMouseEventHandler(new SelectEventHandler(mainController));
     }
 
     public void paintArtBoardBackground(int tileSize) {
