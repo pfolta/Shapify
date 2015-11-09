@@ -183,8 +183,8 @@ public class DocumentController {
     }
 
     public void exportBitmap(File file, double scaleFactor) throws IOException {
-        int width = (int) scaleFactor * document.getWidth();
-        int height = (int) scaleFactor * document.getHeight();
+        int width = (int) (scaleFactor * document.getWidth());
+        int height = (int) (scaleFactor * document.getHeight());
 
         Group exportGroup = new Group();
 
