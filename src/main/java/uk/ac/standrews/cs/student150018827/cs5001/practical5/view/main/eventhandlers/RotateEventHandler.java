@@ -2,11 +2,9 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhan
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.transform.Rotate;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.ResizeAnchor;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.RotateAnchor;
 
 public class RotateEventHandler extends MouseEventHandler {
@@ -55,7 +53,10 @@ public class RotateEventHandler extends MouseEventHandler {
             int deltaX = x - mouseOriginalX;
             int deltaY = y - mouseOriginalY;
 
-            focusRectangle.setRotate(focusRectangle.getRotate() + deltaX);
+            double rotation = focusRectangle.getRotate() + deltaX;
+            rotation = rotation % 360;
+
+            focusRectangle.setRotate(rotation);
         };
     }
 
