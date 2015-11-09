@@ -15,8 +15,7 @@ public class RotateEventHandler extends MouseEventHandler {
     private int originalX;
     private int originalY;
 
-    private int originalWidth;
-    private int originalHeight;
+    private double originalRotate;
 
     private Rectangle focusRectangle;
 
@@ -35,8 +34,7 @@ public class RotateEventHandler extends MouseEventHandler {
             originalX = (int) focusRectangle.getX();
             originalY = (int) focusRectangle.getY();
 
-            originalWidth = (int) focusRectangle.getWidth();
-            originalHeight = (int) focusRectangle.getHeight();
+            originalRotate = focusRectangle.getRotate();
         };
     }
 
@@ -53,7 +51,7 @@ public class RotateEventHandler extends MouseEventHandler {
             int deltaX = x - mouseOriginalX;
             int deltaY = y - mouseOriginalY;
 
-            double rotation = focusRectangle.getRotate() + deltaX;
+            double rotation = originalRotate + deltaX;
             rotation = rotation % 360;
 
             focusRectangle.setRotate(rotation);
