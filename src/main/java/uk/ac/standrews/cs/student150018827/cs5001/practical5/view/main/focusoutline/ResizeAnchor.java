@@ -1,6 +1,7 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline;
 
 import javafx.scene.Cursor;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
@@ -19,7 +20,9 @@ public class ResizeAnchor extends Rectangle {
         setWidth(Data.RESIZE_ANCHOR_DIMENSION);
         setHeight(Data.RESIZE_ANCHOR_DIMENSION);
 
-        setFill(Data.FOCUS_OUTLINE_COLOR);
+        setFill(Color.WHITE);
+        setStrokeWidth(2.0);
+        setStroke(Data.FOCUS_OUTLINE_COLOR);
 
         setCursor(cursor);
 
