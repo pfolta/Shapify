@@ -2,8 +2,8 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhan
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.ResizeAnchor;
 
@@ -29,8 +29,6 @@ public class ResizeEventHandler extends MouseEventHandler {
         return event -> {
             mouseOriginalX = (int) event.getX();
             mouseOriginalY = (int) event.getY();
-
-            Rectangle rectangle = (Rectangle) event.getSource();
 
             focusRectangle = mainController.getGUIController().getGuiState().getFocusOutline().getFocusRectangle();
 

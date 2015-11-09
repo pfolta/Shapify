@@ -23,12 +23,15 @@ public class FocusOutline {
 
     private List<ResizeAnchor> resizeAnchors;
 
+    private RotateAnchor rotateAnchor;
+
     public FocusOutline(MainController mainController, Node object) {
         this.mainController = mainController;
         this.selectedObject = object;
 
         createFocusRectangle();
         createResizeAnchors();
+        createRotateAnchor();
     }
 
     private void createFocusRectangle() {
@@ -48,12 +51,15 @@ public class FocusOutline {
             focusRectangle.setY(selectedRectangle.getY());
             focusRectangle.setWidth(selectedRectangle.getWidth());
             focusRectangle.setHeight(selectedRectangle.getHeight());
+            focusRectangle.setRotate(selectedRectangle.getRotate());
 
             selectedRectangle.xProperty().bind(focusRectangle.xProperty());
             selectedRectangle.yProperty().bind(focusRectangle.yProperty());
 
             selectedRectangle.widthProperty().bind(focusRectangle.widthProperty());
             selectedRectangle.heightProperty().bind(focusRectangle.heightProperty());
+
+            selectedRectangle.rotateProperty().bind(focusRectangle.rotateProperty());
         }
 
         if (selectedObject instanceof Ellipse) {
@@ -63,12 +69,15 @@ public class FocusOutline {
             focusRectangle.setY(selectedEllipse.getCenterY() - selectedEllipse.getRadiusY());
             focusRectangle.setWidth(2 * selectedEllipse.getRadiusX());
             focusRectangle.setHeight(2 * selectedEllipse.getRadiusY());
+            focusRectangle.setRotate(selectedEllipse.getRotate());
 
             selectedEllipse.centerXProperty().bind(focusRectangle.xProperty().add(selectedEllipse.radiusXProperty()));
             selectedEllipse.centerYProperty().bind(focusRectangle.yProperty().add(selectedEllipse.radiusYProperty()));
 
             selectedEllipse.radiusXProperty().bind(focusRectangle.widthProperty().divide(2));
             selectedEllipse.radiusYProperty().bind(focusRectangle.heightProperty().divide(2));
+
+            selectedEllipse.rotateProperty().bind(focusRectangle.rotateProperty());
         }
 
         if (selectedObject instanceof Line) {
@@ -101,6 +110,10 @@ public class FocusOutline {
                 selectedLine.endYProperty().bind(focusRectangle.yProperty());
                 selectedLine.startYProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()));
             }
+
+            focusRectangle.setRotate(selectedLine.getRotate());
+
+            selectedLine.rotateProperty().bind(focusRectangle.rotateProperty());
         }
 
         SelectEventHandler mouseEventHandler = new SelectEventHandler(mainController);
@@ -143,6 +156,14 @@ public class FocusOutline {
 
     public List<ResizeAnchor> getResizeAnchors() {
         return resizeAnchors;
+    }
+
+    private void createRotateAnchor() {
+        rotateAnchor = new RotateAnchor(mainController, focusRectangle);
+    }
+
+    public RotateAnchor getRotateAnchor() {
+        return rotateAnchor;
     }
 
 }

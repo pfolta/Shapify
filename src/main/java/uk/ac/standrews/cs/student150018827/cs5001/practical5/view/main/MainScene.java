@@ -185,9 +185,13 @@ public class MainScene extends Scene implements Observer {
 
                 artBoardGroup.getChildren().add(focusRectangle);
 
+                // Draw Focus Outline Resize Anchors
                 for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
                     artBoardGroup.getChildren().add(resizeAnchor);
                 }
+
+                // Draw Focus Outline Rotate Anchor
+                artBoardGroup.getChildren().add(focusOutline.getRotateAnchor());
 
                 // Set Color of Object
                 if (selectedObject instanceof Rectangle) {
