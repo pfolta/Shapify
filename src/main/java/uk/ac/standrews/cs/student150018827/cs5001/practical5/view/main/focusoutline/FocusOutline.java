@@ -112,8 +112,11 @@ public class FocusOutline {
             }
 
             focusRectangle.setRotate(selectedLine.getRotate());
+        }
 
-            selectedLine.rotateProperty().bind(focusRectangle.rotateProperty());
+        // Apply rotation to focus outline
+        if (selectedObject != null) {
+            focusRectangle.getTransforms().addAll(selectedObject.getTransforms());
         }
 
         SelectEventHandler mouseEventHandler = new SelectEventHandler(mainController);

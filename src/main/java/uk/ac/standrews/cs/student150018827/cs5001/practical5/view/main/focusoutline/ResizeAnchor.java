@@ -81,6 +81,9 @@ public class ResizeAnchor extends Rectangle {
                 break;
             }
         }
+
+        // Apply rotation to resize anchors
+        getTransforms().addAll(focusRectangle.getTransforms());
     }
 
 }

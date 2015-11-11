@@ -30,6 +30,9 @@ public class RotateAnchor extends Ellipse {
 
         centerXProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty().divide(2)));
         centerYProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty().divide(2)));
+
+        // Apply rotation to rotate anchor
+        getTransforms().addAll(focusRectangle.getTransforms());
     }
 
 }
