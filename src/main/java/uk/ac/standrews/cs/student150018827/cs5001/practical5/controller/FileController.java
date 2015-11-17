@@ -21,9 +21,7 @@ public class FileController {
 
         // TODO: parse file here
 
-        document = new Document();
-
-        return document;
+        return null;
     }
 
     public void saveDocument(Document document) throws IOException {

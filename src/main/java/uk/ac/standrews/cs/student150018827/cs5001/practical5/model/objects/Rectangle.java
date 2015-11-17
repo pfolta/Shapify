@@ -18,6 +18,7 @@ public class Rectangle extends javafx.scene.shape.Rectangle {
         clone.setY(this.getY());
         clone.setWidth(this.getWidth());
         clone.setHeight(this.getHeight());
+        clone.getTransforms().addAll(this.getTransforms());
 
         clone.setFill(this.getFill());
 

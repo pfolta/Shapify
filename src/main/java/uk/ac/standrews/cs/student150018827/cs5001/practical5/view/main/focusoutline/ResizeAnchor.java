@@ -26,7 +26,7 @@ public class ResizeAnchor extends Rectangle {
 
         setCursor(cursor);
 
-        MouseEventHandler resizeEventHandler = new ResizeEventHandler(mainController);
+        MouseEventHandler resizeEventHandler = new ResizeEventHandler(this.mainController);
         setOnMousePressed(resizeEventHandler.getMousePressedEventHandler());
         setOnMouseDragged(resizeEventHandler.getMouseDraggedEventHandler());
 

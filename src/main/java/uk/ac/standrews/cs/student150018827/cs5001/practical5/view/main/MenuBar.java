@@ -1,14 +1,20 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
@@ -27,13 +33,17 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
     private MenuItem editUndoMenuItem;
     private MenuItem editRedoMenuItem;
-    private MenuItem editDuplicateMenuItem;
-    private MenuItem editRemoveMenuItem;
-    private MenuItem editMoveToBottomMenuItem;
-    private MenuItem editMoveDownMenuItem;
-    private MenuItem editMoveUpMenuItem;
-    private MenuItem editMoveToTopMenuItem;
-    private MenuItem editDeselectMenuItem;
+    private MenuItem editClearArtboard;
+    
+    private MenuItem objectDuplicateMenuItem;
+    private MenuItem objectRemoveMenuItem;
+    private MenuItem objectMoveToBottomMenuItem;
+    private MenuItem objectMoveDownMenuItem;
+    private MenuItem objectMoveUpMenuItem;
+    private MenuItem objectMoveToTopMenuItem;
+    private MenuItem objectRotateClockwiseMenuItem;
+    private MenuItem objectRotateCounterClockwiseMenuItem;
+    private MenuItem objectDeselectMenuItem;
 
     private ColorPicker toolColorPicker;
     private CustomMenuItem toolColorPickerMenuItem;
@@ -65,6 +75,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         Menu fileMenu = buildFileMenu();
         Menu editMenu = buildEditMenu();
+        Menu objectMenu = buildObjectMeu();
         Menu toolMenu = buildToolMenu();
         Menu viewMenu = buildViewMenu();
         Menu helpMenu = buildHelpMenu();
@@ -72,6 +83,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         this.getMenus().addAll(
             fileMenu,
             editMenu,
+            objectMenu,
             toolMenu,
             viewMenu,
             helpMenu
@@ -104,11 +116,13 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         fileSaveMenuItem = new MenuItem();
         fileSaveMenuItem.setText("_Save");
+        fileSaveMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/diskette.png"))));
         fileSaveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
         fileSaveMenuItem.setOnAction(event -> mainController.getGUIController().saveFile(mainController.getGUIController().getMainWindow().getMainStage()));
 
         fileSaveAsMenuItem = new MenuItem();
         fileSaveAsMenuItem.setText("Save _As...");
+        fileSaveAsMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/save_as.png"))));
         fileSaveAsMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
         fileSaveAsMenuItem.setOnAction(event -> mainController.getGUIController().saveAsFile(mainController.getGUIController().getMainWindow().getMainStage()));
 
@@ -123,6 +137,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         fileExitMenuItem = new MenuItem();
         fileExitMenuItem.setText("E_xit");
+        fileExitMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/door_in.png"))));
         fileExitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.F4, KeyCombination.ALT_DOWN));
         fileExitMenuItem.setOnAction(event -> mainController.exit());
 
@@ -148,19 +163,39 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         editUndoMenuItem = new MenuItem();
         editUndoMenuItem.setText("_Undo");
+        editUndoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/undo.png"))));
         editUndoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
         editUndoMenuItem.setOnAction(event -> System.out.println("Undo Clicked!"));
 
         editRedoMenuItem = new MenuItem();
         editRedoMenuItem.setText("_Redo");
+        editRedoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/redo.png"))));
         editRedoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
         editRedoMenuItem.setOnAction(event -> System.out.println("Redo Clicked!"));
 
-        editDuplicateMenuItem = new MenuItem();
-        editDuplicateMenuItem.setText("_Duplicate");
-        editDuplicateMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN));
-        editDuplicateMenuItem.setDisable(true);
-        editDuplicateMenuItem.setOnAction(event -> {
+        editClearArtboard = new MenuItem();
+        editClearArtboard.setText("_Clear Artboard");
+        editClearArtboard.setOnAction(event -> mainController.getDocumentController().clear());
+
+        menu.getItems().addAll(
+            editUndoMenuItem,
+            editRedoMenuItem,
+            new SeparatorMenuItem(),
+            editClearArtboard
+        );
+
+        return menu;
+    }
+
+    private Menu buildObjectMeu() {
+        Menu menu = new Menu();
+        menu.setText("_Object");
+
+        objectDuplicateMenuItem = new MenuItem();
+        objectDuplicateMenuItem.setText("_Duplicate");
+        objectDuplicateMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN));
+        objectDuplicateMenuItem.setDisable(true);
+        objectDuplicateMenuItem.setOnAction(event -> {
             GUIState guiState = mainController.getGUIController().getGuiState();
             Node selectedObject = guiState.getSelectedObject();
 
@@ -168,84 +203,110 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
             documentController.duplicateObject(selectedObject);
         });
 
-        editRemoveMenuItem = new MenuItem();
-        editRemoveMenuItem.setText("_Remove");
-        editRemoveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.DELETE));
-        editRemoveMenuItem.setDisable(true);
-        editRemoveMenuItem.setOnAction(event -> {
+        objectRemoveMenuItem = new MenuItem();
+        objectRemoveMenuItem.setText("_Remove");
+        objectRemoveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.DELETE));
+        objectRemoveMenuItem.setDisable(true);
+        objectRemoveMenuItem.setOnAction(event -> {
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             mainController.getDocumentController().removeObject(guiState.getSelectedObject());
             guiState.setSelectedObject(null);
         });
 
-        editMoveToBottomMenuItem = new MenuItem();
-        editMoveToBottomMenuItem.setText("Move to Bottom");
-        editMoveToBottomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.END));
-        editMoveToBottomMenuItem.setDisable(true);
-        editMoveToBottomMenuItem.setOnAction(event -> {
+        objectMoveToBottomMenuItem = new MenuItem();
+        objectMoveToBottomMenuItem.setText("Move to Bottom");
+        objectMoveToBottomMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_back.png"))));
+        objectMoveToBottomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.END));
+        objectMoveToBottomMenuItem.setDisable(true);
+        objectMoveToBottomMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             documentController.moveObjectToBottom(guiState.getSelectedObject());
         });
 
-        editMoveDownMenuItem = new MenuItem();
-        editMoveDownMenuItem.setText("Move Down");
-        editMoveDownMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_DOWN));
-        editMoveDownMenuItem.setDisable(true);
-        editMoveDownMenuItem.setOnAction(event -> {
+        objectMoveDownMenuItem = new MenuItem();
+        objectMoveDownMenuItem.setText("Move Down");
+        objectMoveDownMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_backwards.png"))));
+        objectMoveDownMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_DOWN));
+        objectMoveDownMenuItem.setDisable(true);
+        objectMoveDownMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             documentController.moveObjectDown(guiState.getSelectedObject());
         });
 
-        editMoveUpMenuItem = new MenuItem();
-        editMoveUpMenuItem.setText("Move Up");
-        editMoveUpMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_UP));
-        editMoveUpMenuItem.setDisable(true);
-        editMoveUpMenuItem.setOnAction(event -> {
+        objectMoveUpMenuItem = new MenuItem();
+        objectMoveUpMenuItem.setText("Move Up");
+        objectMoveUpMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_forwards.png"))));
+        objectMoveUpMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_UP));
+        objectMoveUpMenuItem.setDisable(true);
+        objectMoveUpMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             documentController.moveObjectUp(guiState.getSelectedObject());
         });
 
-        editMoveToTopMenuItem = new MenuItem();
-        editMoveToTopMenuItem.setText("Move to Top");
-        editMoveToTopMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.HOME));
-        editMoveToTopMenuItem.setDisable(true);
-        editMoveToTopMenuItem.setOnAction(event -> {
+        objectMoveToTopMenuItem = new MenuItem();
+        objectMoveToTopMenuItem.setText("Move to Top");
+        objectMoveToTopMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_front.png"))));
+        objectMoveToTopMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.HOME));
+        objectMoveToTopMenuItem.setDisable(true);
+        objectMoveToTopMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             documentController.moveObjectToTop(guiState.getSelectedObject());
         });
 
-        editDeselectMenuItem = new MenuItem();
-        editDeselectMenuItem.setText("_Deselect");
-        editDeselectMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.ESCAPE));
-        editDeselectMenuItem.setDisable(true);
-        editDeselectMenuItem.setOnAction(event -> {
+        objectRotateClockwiseMenuItem = new MenuItem();
+        objectRotateClockwiseMenuItem.setText("Rotate _90° Clockwise");
+        objectRotateClockwiseMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_clockwise.png"))));
+        objectRotateClockwiseMenuItem.setDisable(true);
+        objectRotateClockwiseMenuItem.setOnAction(event -> {
+            Document document = mainController.getDocumentController().getDocument();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            document.rotateObject(guiState.getSelectedObject(), true, -90.0);
+        });
+
+        objectRotateCounterClockwiseMenuItem = new MenuItem();
+        objectRotateCounterClockwiseMenuItem.setText("Rotate 9_0° Counter Clockwise");
+        objectRotateCounterClockwiseMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_anticlockwise.png"))));
+        objectRotateCounterClockwiseMenuItem.setDisable(true);
+        objectRotateCounterClockwiseMenuItem.setOnAction(event -> {
+            Document document = mainController.getDocumentController().getDocument();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            document.rotateObject(guiState.getSelectedObject(), true, 90.0);
+        });
+
+        objectDeselectMenuItem = new MenuItem();
+        objectDeselectMenuItem.setText("_Deselect");
+        objectDeselectMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.ESCAPE));
+        objectDeselectMenuItem.setDisable(true);
+        objectDeselectMenuItem.setOnAction(event -> {
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             guiState.setSelectedObject(null);
         });
 
         menu.getItems().addAll(
-            editUndoMenuItem,
-            editRedoMenuItem,
+            objectDuplicateMenuItem,
+            objectRemoveMenuItem,
             new SeparatorMenuItem(),
-            editDuplicateMenuItem,
-            editRemoveMenuItem,
+            objectMoveToBottomMenuItem,
+            objectMoveDownMenuItem,
+            objectMoveUpMenuItem,
+            objectMoveToTopMenuItem,
             new SeparatorMenuItem(),
-            editMoveToBottomMenuItem,
-            editMoveDownMenuItem,
-            editMoveUpMenuItem,
-            editMoveToTopMenuItem,
+            objectRotateClockwiseMenuItem,
+            objectRotateCounterClockwiseMenuItem,
             new SeparatorMenuItem(),
-            editDeselectMenuItem
+            objectDeselectMenuItem
         );
 
         return menu;
@@ -274,16 +335,19 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         toolRectangleToolMenuItem = new RadioMenuItem();
         toolRectangleToolMenuItem.setText("Rectangle");
+        toolRectangleToolMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_square.png"))));
         toolRectangleToolMenuItem.setToggleGroup(toolToggleGroup);
         toolRectangleToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.RECTANGLE_TOOL));
 
         toolEllipseToolMenuItem = new RadioMenuItem();
         toolEllipseToolMenuItem.setText("Ellipse");
+        toolEllipseToolMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/draw_ellipse.png"))));
         toolEllipseToolMenuItem.setToggleGroup(toolToggleGroup);
         toolEllipseToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.ELLIPSE_TOOL));
 
         toolLineToolMenuItem = new RadioMenuItem();
         toolLineToolMenuItem.setText("Line");
+        toolLineToolMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/draw_line.png"))));
         toolLineToolMenuItem.setToggleGroup(toolToggleGroup);
         toolLineToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
@@ -401,6 +465,8 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         fileExportBitmap.setDisable(!activate);
         fileCloseMenuItem.setDisable(!activate);
 
+        editClearArtboard.setDisable(!activate);
+
         toolColorPicker.setDisable(!activate);
         toolColorPickerMenuItem.setDisable(!activate);
         toolSelectToolMenuItem.setDisable(!activate);
@@ -447,13 +513,18 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     }
 
     public void objectSelected(boolean selected) {
-        editDuplicateMenuItem.setDisable(!selected);
-        editRemoveMenuItem.setDisable(!selected);
-        editMoveToBottomMenuItem.setDisable(!selected);
-        editMoveDownMenuItem.setDisable(!selected);
-        editMoveUpMenuItem.setDisable(!selected);
-        editMoveToTopMenuItem.setDisable(!selected);
-        editDeselectMenuItem.setDisable(!selected);
+        objectDuplicateMenuItem.setDisable(!selected);
+        objectRemoveMenuItem.setDisable(!selected);
+
+        objectMoveToBottomMenuItem.setDisable(!selected);
+        objectMoveDownMenuItem.setDisable(!selected);
+        objectMoveUpMenuItem.setDisable(!selected);
+        objectMoveToTopMenuItem.setDisable(!selected);
+
+        objectRotateClockwiseMenuItem.setDisable(!selected);
+        objectRotateCounterClockwiseMenuItem.setDisable(!selected);
+
+        objectDeselectMenuItem.setDisable(!selected);
     }
 
 }

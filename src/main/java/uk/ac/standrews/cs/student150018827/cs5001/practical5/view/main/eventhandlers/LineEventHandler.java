@@ -5,7 +5,6 @@ import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Line;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 
 public class LineEventHandler extends MouseEventHandler {
 
@@ -18,6 +17,12 @@ public class LineEventHandler extends MouseEventHandler {
         super(mainController);
     }
 
+    @Override
+    public EventHandler<MouseEvent> getMouseExitedEventHandler() {
+        return null;
+    }
+
+    @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
@@ -32,8 +37,8 @@ public class LineEventHandler extends MouseEventHandler {
                 line.setStrokeWidth(3);
                 line.setStartX(originalX);
                 line.setStartY(originalY);
-                line.setEndX(originalX);
-                line.setEndY(originalY);
+                line.setEndX(originalX + 1);
+                line.setEndY(originalY + 1);
                 line.setCursor(Cursor.CROSSHAIR);
                 line.setOnMouseMoved(getMouseMovedEventHandler());
                 line.setOnMousePressed(getMousePressedEventHandler());
@@ -47,21 +52,13 @@ public class LineEventHandler extends MouseEventHandler {
         };
     }
 
+    @Override
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
             int x = (int) event.getX();
             int y = (int) event.getY();
 
             if (event.isPrimaryButtonDown()) {
-                ArtBoard artBoard = mainScene.getArtBoard();
-
-                // Ensure event is within artboard boundaries
-                x = Math.max(x, (int) (0 + Math.ceil(line.getStrokeWidth()/2.0)));
-                x = Math.min(x, (int) (artBoard.getWidth() - Math.ceil(line.getStrokeWidth()/2.0)));
-
-                y = Math.max(y, (int) (0 + Math.ceil(line.getStrokeWidth()/2.0)));
-                y = Math.min(y, (int) (artBoard.getHeight() - Math.ceil(line.getStrokeWidth()/2.0)));
-
                 int endx = x;
                 int endy = y;
 
@@ -84,6 +81,7 @@ public class LineEventHandler extends MouseEventHandler {
         };
     }
 
+    @Override
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
         return event -> {
             // Set selected object to the currently drawn one

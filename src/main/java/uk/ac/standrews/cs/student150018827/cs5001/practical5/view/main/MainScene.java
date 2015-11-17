@@ -11,7 +11,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.transform.Scale;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -39,7 +38,10 @@ public class MainScene extends Scene implements Observer {
     private StatusBar statusBar;
 
     public MainScene(MainController mainController, MainWindow mainWindow) {
-        super(new BorderPane(), 1024, 768);
+        super(new BorderPane(), 0, 600);
+
+        getStylesheets().add(ClassLoader.getSystemResource("css/general.css").toExternalForm());
+        getStylesheets().add(ClassLoader.getSystemResource("css/mainscene.css").toExternalForm());
 
         this.mainController = mainController;
         this.mainWindow = mainWindow;
@@ -217,10 +219,6 @@ public class MainScene extends Scene implements Observer {
 
     public ToolBar getToolBar() {
         return toolBar;
-    }
-
-    public Group getArtBoardGroup() {
-        return artBoardGroup;
     }
 
     private void setArtBoardZoomLevel(double zoomLevel) {

@@ -32,17 +32,13 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
         undoMenuItem.setText("_Undo");
         undoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
         undoMenuItem.setDisable(true);
-        undoMenuItem.setOnAction(event1 -> {
-            System.out.println("Undo Clicked!");
-        });
+        undoMenuItem.setOnAction(event1 -> System.out.println("Undo Clicked!"));
 
         redoMenuItem = new MenuItem();
         redoMenuItem.setText("_Redo");
         redoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
         redoMenuItem.setDisable(true);
-        redoMenuItem.setOnAction(event1 -> {
-            System.out.println("Redo Clicked!");
-        });
+        redoMenuItem.setOnAction(event1 -> System.out.println("Redo Clicked!"));
 
         duplicateMenuItem = new MenuItem();
         duplicateMenuItem.setText("_Duplicate");

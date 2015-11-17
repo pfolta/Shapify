@@ -14,6 +14,7 @@ public class Line extends javafx.scene.shape.Line {
         clone.setStartY(this.getStartY());
         clone.setEndX(this.getEndX());
         clone.setEndY(this.getEndY());
+        clone.getTransforms().addAll(this.getTransforms());
 
         clone.setStroke(this.getStroke());
         clone.setStrokeWidth(this.getStrokeWidth());

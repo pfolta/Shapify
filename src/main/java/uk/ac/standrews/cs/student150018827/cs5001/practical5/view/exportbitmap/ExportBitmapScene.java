@@ -9,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,7 +16,6 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.KeyEventHandler;
 
 import java.util.InputMismatchException;
 
@@ -42,6 +40,8 @@ public class ExportBitmapScene extends Scene {
 
     public ExportBitmapScene(MainController mainController) {
         super(new VBox());
+
+        getStylesheets().add(ClassLoader.getSystemResource("css/general.css").toExternalForm());
 
         this.mainController = mainController;
 

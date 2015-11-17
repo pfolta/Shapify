@@ -4,8 +4,6 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.ResizeAnchor;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.RotateAnchor;
@@ -14,9 +12,6 @@ public class RotateEventHandler extends MouseEventHandler {
 
     private int mouseOriginalX;
     private int mouseOriginalY;
-
-    private int originalX;
-    private int originalY;
 
     private double originalRotate;
 
@@ -27,15 +22,17 @@ public class RotateEventHandler extends MouseEventHandler {
     }
 
     @Override
+    public EventHandler<MouseEvent> getMouseExitedEventHandler() {
+        return null;
+    }
+
+    @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             mouseOriginalX = (int) event.getX();
             mouseOriginalY = (int) event.getY();
 
             focusOutline = mainController.getGUIController().getGuiState().getFocusOutline();
-
-            originalX = (int) focusOutline.getFocusRectangle().getX();
-            originalY = (int) focusOutline.getFocusRectangle().getY();
 
             originalRotate = focusOutline.getFocusRectangle().getRotate();
         };
@@ -45,31 +42,23 @@ public class RotateEventHandler extends MouseEventHandler {
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
             int x = (int) event.getX();
-            int y = (int) event.getY();
-
-            ArtBoard artBoard = mainScene.getArtBoard();
 
             RotateAnchor rotateAnchor = (RotateAnchor) event.getSource();
 
-            int deltaX = x - mouseOriginalX;
-            int deltaY = y - mouseOriginalY;
+            int delta = x - mouseOriginalX;
 
-            double rotation = originalRotate + deltaX;
-            rotation = rotation % 360;
+            Rotate rotation = new Rotate();
+            rotation.setPivotX(focusOutline.getRotateAnchor().getCenterX());
+            rotation.setPivotY(focusOutline.getRotateAnchor().getCenterY());
+            rotation.setAngle(delta);
 
-            Rotate anchorRotation = new Rotate();
-            anchorRotation.setPivotX(focusOutline.getRotateAnchor().getCenterX());
-            anchorRotation.setPivotY(focusOutline.getRotateAnchor().getCenterY());
-            anchorRotation.setAngle(anchorRotation.getAngle() + deltaX);
+            focusOutline.getFocusRectangle().getTransforms().add(rotation);
+            rotateAnchor.getTransforms().add(rotation);
 
-            //focusOutline.getFocusRectangle().setRotate(rotation);
-            focusOutline.getFocusRectangle().getTransforms().add(anchorRotation);
-            focusOutline.getRotateAnchor().getTransforms().add(anchorRotation);
-
-            mainController.getGUIController().getGuiState().getSelectedObject().getTransforms().add(anchorRotation);
+            mainController.getGUIController().getGuiState().getSelectedObject().getTransforms().add(rotation);
 
             for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
-                resizeAnchor.getTransforms().add(anchorRotation);
+                resizeAnchor.getTransforms().add(rotation);
             }
         };
     }

@@ -36,16 +36,12 @@ public class GUIState {
         currentForeground = Color.BLACK;
     }
 
-    public void addObserver(Observer observer) {
+    public void registerObserver(Observer observer) {
         observers.add(observer);
     }
 
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
     public void notifyObservers() {
-        observers.forEach((observer) -> observer.update());
+        observers.forEach(Observer::update);
     }
 
     public File getLastUsedDirectory() {
@@ -75,7 +71,6 @@ public class GUIState {
 
     public void setCurrentForeground(Color foreground) {
         currentForeground = foreground;
-
         notifyObservers();
     }
 
@@ -93,13 +88,8 @@ public class GUIState {
     }
 
     public void setZoomLevel(double zoomLevel) {
-        if (zoomLevel > 5) {
-            zoomLevel = 5;
-        }
-
-        if (zoomLevel < 0.1) {
-            zoomLevel = 0.1;
-        }
+        zoomLevel = Math.min(zoomLevel, 5);
+        zoomLevel = Math.max(zoomLevel, 0.1);
 
         this.zoomLevel = zoomLevel;
         notifyObservers();

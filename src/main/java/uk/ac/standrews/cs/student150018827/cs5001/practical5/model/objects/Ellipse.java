@@ -14,6 +14,7 @@ public class Ellipse extends javafx.scene.shape.Ellipse {
         clone.setCenterY(this.getCenterY());
         clone.setRadiusX(this.getRadiusX());
         clone.setRadiusY(this.getRadiusY());
+        clone.getTransforms().addAll(this.getTransforms());
 
         clone.setFill(this.getFill());
 

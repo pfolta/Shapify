@@ -1,14 +1,9 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
-import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
-
-import java.io.File;
 
 public class MainWindow {
 
@@ -29,12 +24,9 @@ public class MainWindow {
 
         mainStage.setTitle("Drawing Program");
         mainStage.setFullScreenExitKeyCombination(new KeyCodeCombination(KeyCode.F11));
-        mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                mainController.exit();
-                event.consume();
-            }
+        mainStage.setOnCloseRequest(event -> {
+            mainController.exit();
+            event.consume();
         });
 
         mainStage.setScene(mainScene);

@@ -1,6 +1,11 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 
 import javafx.scene.Node;
+import javafx.scene.transform.Rotate;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.ResizeAnchor;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -8,6 +13,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Document {
+
+    private MainController mainController;
 
     private List<Observer> observers;
 
@@ -21,25 +28,21 @@ public class Document {
 
     private List<Node> objects;
 
-    public Document() {
+    public Document(MainController mainController) {
+        this.mainController = mainController;
+
         observers = new ArrayList<>();
 
         objects = new ArrayList<>();
         isSaved = false;
     }
 
-    public void addObserver(Observer observer) {
+    public void registerObserver(Observer observer) {
         observers.add(observer);
     }
 
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
     public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update();
-        }
+        observers.forEach(Observer::update);
     }
 
     public String getTitle() {
@@ -103,6 +106,11 @@ public class Document {
         notifyObservers();
     }
 
+    public void removeAllObjects() {
+        objects.clear();
+        notifyObservers();
+    }
+
     public List<Node> getObjects() {
         return objects;
     }
@@ -145,6 +153,28 @@ public class Document {
         }
 
         notifyObservers();
+    }
+
+    public void rotateObject(Node object, boolean selected, double angle) {
+        GUIState guiState = mainController.getGUIController().getGuiState();
+
+        Rotate rotation = new Rotate();
+        rotation.setAngle(angle);
+
+        object.getTransforms().add(rotation);
+
+        if (selected) {
+            Rectangle focusRectangle = guiState.getFocusOutline().getFocusRectangle();
+            Ellipse rotateAnchor = guiState.getFocusOutline().getRotateAnchor();
+            List<ResizeAnchor> resizeAnchors = guiState.getFocusOutline().getResizeAnchors();
+
+            focusRectangle.getTransforms().add(rotation);
+            rotateAnchor.getTransforms().add(rotation);
+
+            for (ResizeAnchor resizeAnchor : resizeAnchors) {
+                resizeAnchor.getTransforms().add(rotation);
+            }
+        }
     }
 
 }

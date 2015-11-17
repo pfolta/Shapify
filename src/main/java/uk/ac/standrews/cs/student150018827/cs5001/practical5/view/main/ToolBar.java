@@ -1,10 +1,13 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
@@ -19,10 +22,14 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private Button undoButton;
     private Button redoButton;
-    private Button moveToBottomButton;
-    private Button moveDownButton;
-    private Button moveUpButton;
-    private Button moveToTopButton;
+
+    private MenuButton arrangeButton;
+    private MenuItem moveToBottomMenuItem;
+    private MenuItem moveDownMenuItem;
+    private MenuItem moveUpMenuItem;
+    private MenuItem moveToTopMenuItem;
+    private MenuItem rotate90DegRightMenuItem;
+    private MenuItem getRotate90DegLeftMenuItem;
 
     private ColorPicker colorPicker;
 
@@ -89,57 +96,86 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         redoButton.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
         redoButton.setOnAction(event -> System.out.println("Redo Clicked!"));
 
-        moveToBottomButton = new Button();
-        moveToBottomButton.setText("Move to Bottom");
-        moveToBottomButton.setTooltip(new Tooltip("Move Selection to Bottom (End)"));
-        moveToBottomButton.setDisable(true);
-        moveToBottomButton.setOnAction(event -> {
+        arrangeButton = new MenuButton();
+        arrangeButton.setText("Arrange");
+        arrangeButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/32x32/shape_move_back.png"))));
+        arrangeButton.setContentDisplay(ContentDisplay.TOP);
+        arrangeButton.setDisable(true);
+
+        moveToBottomMenuItem = new MenuItem();
+        moveToBottomMenuItem.setText("Move to _Bottom");
+        moveToBottomMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_back.png"))));
+        moveToBottomMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             documentController.moveObjectToBottom(guiState.getSelectedObject());
         });
 
-        moveDownButton = new Button();
-        moveDownButton.setText("Move Down");
-        moveDownButton.setTooltip(new Tooltip("Move Selection Down (Page Down)"));
-        moveDownButton.setDisable(true);
-        moveDownButton.setOnAction(event -> {
+        moveDownMenuItem = new MenuItem();
+        moveDownMenuItem.setText("Move _Down");
+        moveDownMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_backwards.png"))));
+        moveDownMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             documentController.moveObjectDown(guiState.getSelectedObject());
         });
 
-        moveUpButton = new Button();
-        moveUpButton.setText("Move Up");
-        moveUpButton.setTooltip(new Tooltip("Move Selection Up (Page Up)"));
-        moveUpButton.setDisable(true);
-        moveUpButton.setOnAction(event -> {
+        moveUpMenuItem = new MenuItem();
+        moveUpMenuItem.setText("Move _Up");
+        moveUpMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_forwards.png"))));
+        moveUpMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             documentController.moveObjectUp(guiState.getSelectedObject());
         });
 
-        moveToTopButton = new Button();
-        moveToTopButton.setText("Move to Top");
-        moveToTopButton.setTooltip(new Tooltip("Move Selection to Top (Home)"));
-        moveToTopButton.setDisable(true);
-        moveToTopButton.setOnAction(event -> {
+        moveToTopMenuItem = new MenuItem();
+        moveToTopMenuItem.setText("Move to _Top");
+        moveToTopMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_front.png"))));
+        moveToTopMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             documentController.moveObjectToTop(guiState.getSelectedObject());
         });
 
+        rotate90DegRightMenuItem = new MenuItem();
+        rotate90DegRightMenuItem.setText("Rotate 90° _Right");
+        rotate90DegRightMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_clockwise.png"))));
+        rotate90DegRightMenuItem.setOnAction(event -> {
+            Document document = mainController.getDocumentController().getDocument();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            document.rotateObject(guiState.getSelectedObject(), true, -90.0);
+        });
+
+        getRotate90DegLeftMenuItem = new MenuItem();
+        getRotate90DegLeftMenuItem.setText("Rotate 90° _Left");
+        getRotate90DegLeftMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_anticlockwise.png"))));
+        getRotate90DegLeftMenuItem.setOnAction(event -> {
+            Document document = mainController.getDocumentController().getDocument();
+            GUIState guiState = mainController.getGUIController().getGuiState();
+
+            document.rotateObject(guiState.getSelectedObject(), true, 90.0);
+        });
+
+        arrangeButton.getItems().addAll(
+                moveToBottomMenuItem,
+                moveDownMenuItem,
+                moveUpMenuItem,
+                moveToTopMenuItem,
+                new SeparatorMenuItem(),
+                rotate90DegRightMenuItem,
+                getRotate90DegLeftMenuItem
+        );
+
         getItems().addAll(
             undoButton,
             redoButton,
-            moveToBottomButton,
-            moveDownButton,
-            moveUpButton,
-            moveToTopButton
+            arrangeButton
         );
     }
 
@@ -224,10 +260,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     }
 
     public void objectSelected(boolean selected) {
-        moveToBottomButton.setDisable(!selected);
-        moveDownButton.setDisable(!selected);
-        moveUpButton.setDisable(!selected);
-        moveToTopButton.setDisable(!selected);
+        arrangeButton.setDisable(!selected);
     }
 
 }

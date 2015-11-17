@@ -17,7 +17,7 @@ public class ArtBoard extends Canvas {
         this.mainController = mainController;
 
         paintArtBoardBackground(Data.ARTBOARD_BACKGROUND_TITLE_SIZE);
-        setMouseEventHandler(new SelectEventHandler(mainController));
+        setMouseEventHandler(new SelectEventHandler(this.mainController));
     }
 
     public void paintArtBoardBackground(int tileSize) {

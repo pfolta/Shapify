@@ -29,6 +29,8 @@ public class DocumentController {
     private FileController fileController;
     private Document document;
 
+    private GUIState guiState;
+
     private MainScene mainScene;
 
     public DocumentController(MainController mainController) {
@@ -36,6 +38,8 @@ public class DocumentController {
 
         fileController = new FileController();
         mainScene = mainController.getGUIController().getMainWindow().getMainScene();
+
+        guiState = mainController.getGUIController().getGuiState();
     }
 
     public Document getDocument() {
@@ -52,7 +56,7 @@ public class DocumentController {
     }
 
     public Document createDocument() {
-        document = new Document();
+        document = new Document(mainController);
         return document;
     }
 
@@ -75,10 +79,15 @@ public class DocumentController {
         document.removeObject(object);
     }
 
+    public void clear() {
+        if (document != null) {
+            document.removeAllObjects();
+            guiState.setSelectedObject(null);
+        }
+    }
+
     public boolean closeDocument() {
         boolean continueTask = true;
-
-        GUIState guiState = mainController.getGUIController().getGuiState();
 
         if (document != null) {
             boolean close = false;
@@ -128,8 +137,6 @@ public class DocumentController {
     }
 
     public void duplicateObject(Node object) {
-        GUIState guiState = mainController.getGUIController().getGuiState();
-
         if (object instanceof Rectangle) {
             Rectangle selectedRectangle = (Rectangle) object;
 

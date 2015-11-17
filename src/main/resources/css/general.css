@@ -1,0 +1,7 @@
+.bold {
+    -fx-font-weight: bold;
+}
+
+.border-right {
+    -fx-border-color: transparent #cccccc transparent transparent;
+}

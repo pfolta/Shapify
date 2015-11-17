@@ -20,7 +20,7 @@ public class NewDrawingStage extends Stage {
         initModality(Modality.WINDOW_MODAL);
         initOwner(parent);
 
-        NewDrawingScene newDrawingScene = new NewDrawingScene(mainController);
+        NewDrawingScene newDrawingScene = new NewDrawingScene(this.mainController);
 
         setScene(newDrawingScene);
     }

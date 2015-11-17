@@ -22,9 +22,9 @@ public class RotateAnchor extends Ellipse {
 
         setFill(Data.FOCUS_OUTLINE_COLOR);
 
-        setCursor(Cursor.E_RESIZE);
+        setCursor(Cursor.cursor(ClassLoader.getSystemResource("cur/rotate.png").toExternalForm()));
 
-        MouseEventHandler rotateEventHandler = new RotateEventHandler(mainController);
+        MouseEventHandler rotateEventHandler = new RotateEventHandler(this.mainController);
         setOnMousePressed(rotateEventHandler.getMousePressedEventHandler());
         setOnMouseDragged(rotateEventHandler.getMouseDraggedEventHandler());
 

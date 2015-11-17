@@ -1,0 +1,7 @@
+.banner {
+    -fx-background-color: lightyellow;
+}
+
+.statusbar-label {
+    -fx-padding: 2px;
+}

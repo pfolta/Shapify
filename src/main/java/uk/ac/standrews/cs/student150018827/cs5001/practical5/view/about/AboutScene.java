@@ -7,6 +7,8 @@ public class AboutScene extends Scene {
 
     public AboutScene() {
         super(new VBox(), 300, 300);
+
+        getStylesheets().add(ClassLoader.getSystemResource("css/general.css").toExternalForm());
     }
 
 }

@@ -5,7 +5,6 @@ import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 
 public class EllipseEventHandler extends MouseEventHandler {
 
@@ -18,6 +17,12 @@ public class EllipseEventHandler extends MouseEventHandler {
         super(mainController);
     }
 
+    @Override
+    public EventHandler<MouseEvent> getMouseExitedEventHandler() {
+        return null;
+    }
+
+    @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
@@ -29,8 +34,8 @@ public class EllipseEventHandler extends MouseEventHandler {
 
                 ellipse = new Ellipse();
                 ellipse.setFill(mainController.getGUIController().getGuiState().getCurrentForeground());
-                ellipse.setRadiusX(0);
-                ellipse.setRadiusY(0);
+                ellipse.setRadiusX(1);
+                ellipse.setRadiusY(1);
                 ellipse.setCenterX(originalX);
                 ellipse.setCenterY(originalY);
                 ellipse.setCursor(Cursor.CROSSHAIR);
@@ -46,21 +51,13 @@ public class EllipseEventHandler extends MouseEventHandler {
         };
     }
 
+    @Override
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
             int x = (int) event.getX();
             int y = (int) event.getY();
 
             if (event.isPrimaryButtonDown()) {
-                ArtBoard artBoard = mainScene.getArtBoard();
-
-                // Ensure event is within artboard boundaries
-                x = Math.max(x, 0);
-                x = Math.min(x, (int) artBoard.getWidth());
-
-                y = Math.max(y, 0);
-                y = Math.min(y, (int) artBoard.getHeight());
-
                 int radiusX = Math.abs(x - originalX) / 2;
                 int radiusY = Math.abs(y - originalY) / 2;
 
@@ -92,6 +89,7 @@ public class EllipseEventHandler extends MouseEventHandler {
         };
     }
 
+    @Override
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
         return event -> {
             // Set selected object to the currently drawn one

@@ -24,6 +24,12 @@ public class SelectEventHandler extends MouseEventHandler {
         super(mainController);
     }
 
+    @Override
+    public EventHandler<MouseEvent> getMouseExitedEventHandler() {
+        return null;
+    }
+
+    @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
@@ -85,6 +91,7 @@ public class SelectEventHandler extends MouseEventHandler {
         };
     }
 
+    @Override
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
@@ -103,8 +110,6 @@ public class SelectEventHandler extends MouseEventHandler {
                 int x = (int) event.getX();
                 int y = (int) event.getY();
 
-                ArtBoard artBoard = mainScene.getArtBoard();
-
                 int xpos = x - deltaX;
                 int ypos = y - deltaY;
 
@@ -112,31 +117,17 @@ public class SelectEventHandler extends MouseEventHandler {
 
                 Rectangle rectangle = (Rectangle) object;
 
-                // Ensure event is within artboard boundaries
-                xpos = Math.max(xpos, 0);
-                xpos = Math.min(xpos, (int) (artBoard.getWidth() - rectangle.getWidth()));
-
-                ypos = Math.max(ypos, 0);
-                ypos = Math.min(ypos, (int) (artBoard.getHeight() - rectangle.getHeight()));
-
                 rectangle.setX(xpos);
                 rectangle.setY(ypos);
-
-                // Ensure event is within artboard boundaries for coordinates display
-                x = Math.max(x, 0);
-                x = Math.min(x, (int) artBoard.getWidth());
-
-                y = Math.max(y, 0);
-                y = Math.min(y, (int) artBoard.getHeight());
 
                 mainScene.getStatusBar().setCoordinatesLabel(x, y);
             }
         };
     }
 
+    @Override
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return event -> {
-        };
+        return null;
     }
 
 }

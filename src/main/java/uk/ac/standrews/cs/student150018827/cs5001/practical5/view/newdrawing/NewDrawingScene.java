@@ -3,7 +3,10 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.newdrawing;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -35,6 +38,8 @@ public class NewDrawingScene extends Scene {
 
     public NewDrawingScene(MainController mainController) {
         super(new VBox());
+
+        getStylesheets().add(ClassLoader.getSystemResource("css/general.css").toExternalForm());
 
         this.mainController = mainController;
 
@@ -114,10 +119,12 @@ public class NewDrawingScene extends Scene {
 
             mainController.getDocumentController().createDocument();
 
-            mainController.getDocumentController().getDocument().addObserver(mainController.getGUIController().getMainWindow().getMainScene());
-            mainController.getGUIController().getGuiState().addObserver(mainController.getGUIController().getMainWindow().getMainScene());
-            mainController.getGUIController().getGuiState().addObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
-            mainController.getGUIController().getGuiState().addObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
+            mainController.getDocumentController().getDocument().registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
+            mainController.getDocumentController().getDocument().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
+            mainController.getGUIController().getGuiState().registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
+            mainController.getGUIController().getGuiState().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
+            mainController.getGUIController().getGuiState().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
+            mainController.getGUIController().getGuiState().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
 
             mainController.getDocumentController().setDimension(width, height);
             mainController.getDocumentController().setTitle(title);
