@@ -313,7 +313,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolColorPicker.setDisable(true);
         toolColorPicker.getStyleClass().add("split-button");
         toolColorPicker.setValue(Color.BLACK);
-        toolColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setCurrentForeground(toolColorPicker.getValue()));
+        toolColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setFillColor(toolColorPicker.getValue()));
 
         toolColorPickerMenuItem = new CustomMenuItem(toolColorPicker);
         toolColorPickerMenuItem.setHideOnClick(false);
@@ -479,7 +479,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
 
-        toolColorPicker.setValue(guiState.getCurrentForeground());
+        toolColorPicker.setValue(guiState.getFillColor());
 
         viewZoomSlider.setValue(guiState.getZoomLevel());
 

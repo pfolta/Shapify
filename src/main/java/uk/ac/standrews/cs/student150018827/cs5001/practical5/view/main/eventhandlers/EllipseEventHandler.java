@@ -33,7 +33,7 @@ public class EllipseEventHandler extends MouseEventHandler {
                 originalY = (int) event.getY();
 
                 ellipse = new Ellipse();
-                ellipse.setFill(mainController.getGUIController().getGuiState().getCurrentForeground());
+                ellipse.setFill(mainController.getGUIController().getGuiState().getFillColor());
                 ellipse.setRadiusX(1);
                 ellipse.setRadiusY(1);
                 ellipse.setCenterX(originalX);

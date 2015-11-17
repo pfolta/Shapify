@@ -45,21 +45,21 @@ public class SelectEventHandler extends MouseEventHandler {
                         Rectangle rectangle = (Rectangle) selectedObject;
 
                         // Set selected object color
-                        guiState.setCurrentForeground(((Color) rectangle.getFill()));
+                        guiState.setFillColor(((Color) rectangle.getFill()));
                     }
 
                     if (selectedObject instanceof Ellipse) {
                         Ellipse ellipse = (Ellipse) selectedObject;
 
                         // Set selected object color
-                        guiState.setCurrentForeground(((Color) ellipse.getFill()));
+                        guiState.setFillColor(((Color) ellipse.getFill()));
                     }
 
                     if (selectedObject instanceof Line) {
                         Line line = (Line) selectedObject;
 
                         // Set selected object color
-                        guiState.setCurrentForeground(((Color) line.getStroke()));
+                        guiState.setFillColor(((Color) line.getStroke()));
                     }
 
                     // Set selected object

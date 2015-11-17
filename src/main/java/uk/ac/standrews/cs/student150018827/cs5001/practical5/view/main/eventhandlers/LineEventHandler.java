@@ -33,7 +33,7 @@ public class LineEventHandler extends MouseEventHandler {
                 originalY = (int) event.getY();
 
                 line = new Line();
-                line.setStroke(mainController.getGUIController().getGuiState().getCurrentForeground());
+                line.setStroke(mainController.getGUIController().getGuiState().getFillColor());
                 line.setStrokeWidth(3);
                 line.setStartX(originalX);
                 line.setStartY(originalY);

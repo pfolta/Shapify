@@ -197,15 +197,15 @@ public class MainScene extends Scene implements Observer {
 
                 // Set Color of Object
                 if (selectedObject instanceof Rectangle) {
-                    ((Rectangle) selectedObject).setFill(guiState.getCurrentForeground());
+                    ((Rectangle) selectedObject).setFill(guiState.getFillColor());
                 }
 
                 if (selectedObject instanceof Ellipse) {
-                    ((Ellipse) selectedObject).setFill(guiState.getCurrentForeground());
+                    ((Ellipse) selectedObject).setFill(guiState.getFillColor());
                 }
 
                 if (selectedObject instanceof Line) {
-                    ((Line) selectedObject).setStroke(guiState.getCurrentForeground());
+                    ((Line) selectedObject).setStroke(guiState.getFillColor());
                 }
             }
 

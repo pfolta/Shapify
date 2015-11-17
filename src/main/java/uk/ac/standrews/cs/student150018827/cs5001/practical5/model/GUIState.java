@@ -22,8 +22,9 @@ public class GUIState {
 
     private DrawTools selectedDrawTool;
 
+    private Color fillColor;
+
     private Node selectedObject;
-    private Color currentForeground;
     private FocusOutline focusOutline;
 
     public GUIState(MainController mainController) {
@@ -33,7 +34,7 @@ public class GUIState {
 
         zoomLevel = 1.0;
         lastUsedDirectory = new File(System.getProperty("user.home"));
-        currentForeground = Color.BLACK;
+        fillColor = Color.BLACK;
     }
 
     public void registerObserver(Observer observer) {
@@ -65,12 +66,12 @@ public class GUIState {
         notifyObservers();
     }
 
-    public Color getCurrentForeground() {
-        return currentForeground;
+    public Color getFillColor() {
+        return fillColor;
     }
 
-    public void setCurrentForeground(Color foreground) {
-        currentForeground = foreground;
+    public void setFillColor(Color foreground) {
+        fillColor = foreground;
         notifyObservers();
     }
 

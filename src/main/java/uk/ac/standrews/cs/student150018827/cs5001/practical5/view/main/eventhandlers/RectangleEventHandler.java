@@ -33,7 +33,7 @@ public class RectangleEventHandler extends MouseEventHandler {
                 originalY = (int) event.getY();
 
                 rectangle = new Rectangle();
-                rectangle.setFill(mainController.getGUIController().getGuiState().getCurrentForeground());
+                rectangle.setFill(mainController.getGUIController().getGuiState().getFillColor());
                 rectangle.setHeight(1);
                 rectangle.setWidth(1);
                 rectangle.setX(originalX);
