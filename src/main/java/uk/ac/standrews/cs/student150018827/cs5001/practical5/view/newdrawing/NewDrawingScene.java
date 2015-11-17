@@ -117,7 +117,7 @@ public class NewDrawingScene extends Scene {
             int width = Integer.parseInt(widthTextField.getText());
             int height = Integer.parseInt(heightTextField.getText());
 
-            mainController.getDocumentController().createDocument();
+            mainController.getDocumentController().getHistoryController().setDocument(mainController.getDocumentController().createDocument());
 
             mainController.getDocumentController().getDocument().registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
             mainController.getDocumentController().getDocument().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());

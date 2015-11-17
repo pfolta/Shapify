@@ -2,7 +2,9 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 
 import javafx.scene.Node;
 import javafx.scene.transform.Rotate;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.CloneableNode;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.ResizeAnchor;
 
@@ -14,6 +16,8 @@ import java.util.List;
 public class Document {
 
     private MainController mainController;
+
+    private HistoryController historyController;
 
     private List<Observer> observers;
 
@@ -29,6 +33,8 @@ public class Document {
 
     public Document(MainController mainController) {
         this.mainController = mainController;
+
+        historyController = mainController.getDocumentController().getHistoryController();
 
         observers = new ArrayList<>();
 
@@ -97,16 +103,19 @@ public class Document {
 
     public void addObject(Node object) {
         objects.add(object);
+//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
     public void removeObject(Node object) {
         objects.remove(object);
+//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
     public void removeAllObjects() {
         objects.clear();
+//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
@@ -121,6 +130,7 @@ public class Document {
             Collections.swap(objects, index, index - 1);
         }
 
+//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
@@ -130,6 +140,7 @@ public class Document {
         if (index > 0) {
             Collections.swap(objects, index, index - 1);
 
+//            historyController.createHistoryPoint();
             notifyObservers();
         }
     }
@@ -140,6 +151,7 @@ public class Document {
         if (index < objects.size() - 1) {
             Collections.swap(objects, index, index + 1);
 
+//            historyController.createHistoryPoint();
             notifyObservers();
         }
     }
@@ -151,6 +163,7 @@ public class Document {
             Collections.swap(objects, index, index + 1);
         }
 
+//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
@@ -173,6 +186,28 @@ public class Document {
         for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
             resizeAnchor.getTransforms().add(rotation);
         }
+
+//        historyController.createHistoryPoint();
+    }
+
+    @Override
+    public Document clone() {
+        Document clone = new Document(this.mainController);
+
+        clone.setWidth(this.getWidth());
+        clone.setHeight(this.getHeight());
+        clone.setTitle(this.getTitle());
+
+        clone.setSaved(this.isSaved());
+
+        for (Node object : this.getObjects()) {
+            CloneableNode cloneableNode = (CloneableNode) object;
+            Node clonedObject = cloneableNode.clone();
+
+            clone.addObject(clonedObject);
+        }
+
+        return clone;
     }
 
 }

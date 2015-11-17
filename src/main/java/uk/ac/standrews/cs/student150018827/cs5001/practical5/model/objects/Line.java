@@ -1,6 +1,6 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects;
 
-public class Line extends javafx.scene.shape.Line {
+public class Line extends javafx.scene.shape.Line implements CloneableNode {
 
     public Line() {
         super();

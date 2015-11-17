@@ -162,13 +162,13 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         editUndoMenuItem.setText("_Undo");
         editUndoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/undo.png"))));
         editUndoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
-        editUndoMenuItem.setOnAction(event -> System.out.println("Undo Clicked!"));
+        editUndoMenuItem.setOnAction(event -> mainController.getDocumentController().getHistoryController().undo());
 
         editRedoMenuItem = new MenuItem();
         editRedoMenuItem.setText("_Redo");
         editRedoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/redo.png"))));
         editRedoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
-        editRedoMenuItem.setOnAction(event -> System.out.println("Redo Clicked!"));
+        editRedoMenuItem.setOnAction(event -> mainController.getDocumentController().getHistoryController().redo());
 
         editClearArtboard = new MenuItem();
         editClearArtboard.setText("_Clear Artboard");

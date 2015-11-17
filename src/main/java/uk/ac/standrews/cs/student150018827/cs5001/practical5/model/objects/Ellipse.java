@@ -1,6 +1,6 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects;
 
-public class Ellipse extends javafx.scene.shape.Ellipse {
+public class Ellipse extends javafx.scene.shape.Ellipse implements CloneableNode {
 
     public Ellipse() {
         super();

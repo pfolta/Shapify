@@ -89,12 +89,12 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         undoButton = new Button();
         undoButton.setText("Undo");
         undoButton.setTooltip(new Tooltip("Undo (Ctrl+Z)"));
-        undoButton.setOnAction(event -> System.out.println("Undo Clicked!"));
+        undoButton.setOnAction(event -> mainController.getDocumentController().getHistoryController().undo());
 
         redoButton = new Button();
         redoButton.setText("Redo");
         redoButton.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
-        redoButton.setOnAction(event -> System.out.println("Redo Clicked!"));
+        redoButton.setOnAction(event -> mainController.getDocumentController().getHistoryController().redo());
 
         arrangeButton = new MenuButton();
         arrangeButton.setText("Arrange");

@@ -20,11 +20,14 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 public class DocumentController {
 
     private MainController mainController;
+
+    private HistoryController historyController;
 
     private FileController fileController;
     private Document document;
@@ -35,6 +38,8 @@ public class DocumentController {
 
     public DocumentController(MainController mainController) {
         this.mainController = mainController;
+
+        historyController = new HistoryController(mainController);
 
         fileController = new FileController();
         mainScene = mainController.getGUIController().getMainWindow().getMainScene();
@@ -245,6 +250,10 @@ public class DocumentController {
         exportGroup.snapshot(snapshotParameters, image);
 
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+    }
+
+    public HistoryController getHistoryController() {
+        return historyController;
     }
 
 }

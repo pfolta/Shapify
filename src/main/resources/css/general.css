@@ -2,6 +2,10 @@
     -fx-font-weight: bold;
 }
 
+.border-left {
+    -fx-border-color: transparent transparent transparent #cccccc;
+}
+
 .border-right {
     -fx-border-color: transparent #cccccc transparent transparent;
 }

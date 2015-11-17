@@ -1,6 +1,6 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects;
 
-public class Rectangle extends javafx.scene.shape.Rectangle {
+public class Rectangle extends javafx.scene.shape.Rectangle implements CloneableNode {
 
     private boolean focusOutline;
 
