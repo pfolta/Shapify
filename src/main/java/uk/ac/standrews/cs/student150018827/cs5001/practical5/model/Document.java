@@ -3,8 +3,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 import javafx.scene.Node;
 import javafx.scene.transform.Rotate;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.ResizeAnchor;
 
 import java.nio.file.Path;
@@ -155,25 +154,24 @@ public class Document {
         notifyObservers();
     }
 
-    public void rotateObject(Node object, boolean selected, double angle) {
+    public void rotateSelectedObject(double angle) {
         GUIState guiState = mainController.getGUIController().getGuiState();
+
+        FocusOutline focusOutline = guiState.getFocusOutline();
 
         Rotate rotation = new Rotate();
         rotation.setAngle(angle);
 
-        object.getTransforms().add(rotation);
+        rotation.setPivotX(focusOutline.getRotateAnchor().getCenterX());
+        rotation.setPivotY(focusOutline.getRotateAnchor().getCenterY());
 
-        if (selected) {
-            Rectangle focusRectangle = guiState.getFocusOutline().getFocusRectangle();
-            Ellipse rotateAnchor = guiState.getFocusOutline().getRotateAnchor();
-            List<ResizeAnchor> resizeAnchors = guiState.getFocusOutline().getResizeAnchors();
+        focusOutline.getFocusRectangle().getTransforms().add(rotation);
+        focusOutline.getRotateAnchor().getTransforms().add(rotation);
 
-            focusRectangle.getTransforms().add(rotation);
-            rotateAnchor.getTransforms().add(rotation);
+        guiState.getSelectedObject().getTransforms().add(rotation);
 
-            for (ResizeAnchor resizeAnchor : resizeAnchors) {
-                resizeAnchor.getTransforms().add(rotation);
-            }
+        for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
+            resizeAnchor.getTransforms().add(rotation);
         }
     }
 

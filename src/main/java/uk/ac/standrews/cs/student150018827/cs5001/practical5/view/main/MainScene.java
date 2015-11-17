@@ -38,7 +38,7 @@ public class MainScene extends Scene implements Observer {
     private StatusBar statusBar;
 
     public MainScene(MainController mainController, MainWindow mainWindow) {
-        super(new BorderPane(), 0, 600);
+        super(new BorderPane(), 1024, 768);
 
         getStylesheets().add(ClassLoader.getSystemResource("css/general.css").toExternalForm());
         getStylesheets().add(ClassLoader.getSystemResource("css/mainscene.css").toExternalForm());
