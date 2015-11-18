@@ -179,7 +179,6 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private void buildColorControls() {
         colorPicker = new ColorPicker();
-        colorPicker.getStyleClass().add("split-button");
         colorPicker.setValue(Color.BLACK);
         colorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setFillColor(colorPicker.getValue()));
 

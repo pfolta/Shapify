@@ -311,7 +311,6 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         toolColorPicker = new ColorPicker();
         toolColorPicker.setDisable(true);
-        toolColorPicker.getStyleClass().add("split-button");
         toolColorPicker.setValue(Color.BLACK);
         toolColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setFillColor(toolColorPicker.getValue()));
 
