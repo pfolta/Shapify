@@ -77,4 +77,11 @@ public class StatusBar extends BorderPane implements Observer {
         int zoomLevel = (int) (guiState.getZoomLevel() * 100);
         zoomLabel.setText(zoomLevel + "%");
     }
+
+    public void clear() {
+        coordinatesLabel.setText("");
+        artBoardDimensionsLabel.setText("");
+        zoomLabel.setText("");
+    }
+
 }

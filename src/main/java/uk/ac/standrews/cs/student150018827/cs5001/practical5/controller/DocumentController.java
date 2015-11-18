@@ -131,8 +131,9 @@ public class DocumentController {
                 // Clear document
                 document = null;
 
-                // Clear Artboard
+                // Clear Artboard and clean up MainScene
                 mainScene.clearArtBoard();
+                mainScene.getStatusBar().clear();
                 mainScene.hideBanner();
                 mainScene.activateControls(false);
             }

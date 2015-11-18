@@ -1,10 +1,12 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 
 import javafx.beans.binding.Bindings;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -69,6 +71,22 @@ public class MainScene extends Scene implements Observer {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setContent(stackPane);
+        scrollPane.setOnMouseMoved(event -> {
+            if (artBoard != null) {
+                try {
+                    artBoard.fireEvent(event);
+                } catch (StackOverflowError error) {
+                }
+            }
+        });
+        scrollPane.setOnMouseDragged(event -> {
+            if (artBoard != null) {
+                try {
+                    artBoard.fireEvent(event);
+                } catch (StackOverflowError error) {
+                }
+            }
+        });
 
         stackPane.minWidthProperty().bind(Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds().getWidth(), scrollPane.viewportBoundsProperty()));
         stackPane.minHeightProperty().bind(Bindings.createDoubleBinding(() -> scrollPane.getViewportBounds().getHeight(), scrollPane.viewportBoundsProperty()));
@@ -142,6 +160,7 @@ public class MainScene extends Scene implements Observer {
     }
 
     public void clearArtBoard() {
+        artBoard = null;
         artBoardGroup.getChildren().clear();
     }
 
