@@ -271,10 +271,10 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         lineToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
         getItems().addAll(
-                selectToolButton,
-                rectangleToolButton,
-                ellipseToolButton,
-                lineToolButton
+            selectToolButton,
+            rectangleToolButton,
+            ellipseToolButton,
+            lineToolButton
         );
     }
 

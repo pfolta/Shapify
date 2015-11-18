@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6af774fd-4b81-4bc4-abe8-2be9505f97ef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -37,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="103" column="108" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="108" />
+              <caret line="322" column="9" selection-start-line="301" selection-start-column="8" selection-end-line="322" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -120,10 +119,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContextMenu.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ContextMenu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1680261">
+            <state vertical-scroll-proportion="0.0">
               <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
               <folding />
             </state>
@@ -140,11 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuBar.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MenuBar.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="265" column="61" selection-start-line="265" selection-start-column="61" selection-end-line="265" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.19575857">
+              <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -222,9 +221,9 @@
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/StrokeWidth.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainScene.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/SelectEventHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" />
       </list>
     </option>
   </component>
@@ -1196,13 +1195,7 @@
       <workItem from="1447776245697" duration="2560000" />
       <workItem from="1447844603857" duration="1210000" />
       <workItem from="1447846195212" duration="6534000" />
-      <workItem from="1447858693583" duration="908000" />
-    </task>
-    <task id="LOCAL-00001" summary="Created IntelliJ Project">
-      <created>1446460234489</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1446460234489</updated>
+      <workItem from="1447858693583" duration="1594000" />
     </task>
     <task id="LOCAL-00002" summary="Added Main class">
       <created>1446460680866</created>
@@ -1492,11 +1485,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447852687123</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Improvements to UI">
+      <created>1447859618089</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1447859618090</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69764000" />
+    <option name="totallyTimeSpent" value="70450000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1024" extended-state="6" />
@@ -1541,7 +1540,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Controller and Restructured Controllers" />
     <MESSAGE value="Reading Properties from Spinners" />
     <MESSAGE value="Fixed a bug where MenuBar could be hidden using ALT" />
     <MESSAGE value="Adjusted stroke width and resize anchor dimensions" />
@@ -1566,7 +1564,8 @@
     <MESSAGE value="Added missing classes" />
     <MESSAGE value="Several small UI Improvements" />
     <MESSAGE value="Adde support for Stroke/Border" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adde support for Stroke/Border" />
+    <MESSAGE value="Improvements to UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improvements to UI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1956,29 +1955,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="108" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="108" />
+          <caret line="322" column="9" selection-start-line="301" selection-start-column="8" selection-end-line="322" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="265" column="61" selection-start-line="265" selection-start-column="61" selection-end-line="265" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.19575857">
+          <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1680261">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

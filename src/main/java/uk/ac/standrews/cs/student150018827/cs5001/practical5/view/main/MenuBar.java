@@ -15,6 +15,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.StrokeWidth;
 
 public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
@@ -46,6 +47,14 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     private CustomMenuItem toolFillColorPickerMenuItem;
     private ColorPicker toolStrokeColorPicker;
     private CustomMenuItem toolStrokeColorPickerMenuItem;
+
+    private Menu toolStrokeWidthMenu;
+    private ToggleGroup toolStrokeWidthToggleGroup;
+    private RadioMenuItem toolStrokeWidthNoneMenuItem;
+    private RadioMenuItem toolStrokeWidthThinMenuItem;
+    private RadioMenuItem toolStrokeWidthMediumMenuItem;
+    private RadioMenuItem toolStrokeWidthThickMenuItem;
+    private RadioMenuItem toolStrokeWidthExtraThickMenuItem;
 
     private ToggleGroup toolToggleGroup;
     private RadioMenuItem toolSelectToolMenuItem;
@@ -333,6 +342,47 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolStrokeColorPickerMenuItem.setHideOnClick(false);
         toolStrokeColorPickerMenuItem.setDisable(true);
 
+        toolStrokeWidthMenu = new Menu();
+        toolStrokeWidthMenu.setText("Stroke Width");
+        toolStrokeWidthMenu.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/border_weight.png"))));
+        toolStrokeWidthMenu.setDisable(true);
+
+        toolStrokeWidthToggleGroup = new ToggleGroup();
+
+        toolStrokeWidthNoneMenuItem = new RadioMenuItem();
+        toolStrokeWidthNoneMenuItem.setText("None (0px)");
+        toolStrokeWidthNoneMenuItem.setToggleGroup(toolStrokeWidthToggleGroup);
+        toolStrokeWidthNoneMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.NONE));
+
+        toolStrokeWidthThinMenuItem = new RadioMenuItem();
+        toolStrokeWidthThinMenuItem.setText("Thin (1px)");
+        toolStrokeWidthThinMenuItem.setToggleGroup(toolStrokeWidthToggleGroup);
+        toolStrokeWidthThinMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.THIN));
+
+        toolStrokeWidthMediumMenuItem = new RadioMenuItem();
+        toolStrokeWidthMediumMenuItem.setText("Medium (3px)");
+        toolStrokeWidthMediumMenuItem.setToggleGroup(toolStrokeWidthToggleGroup);
+        toolStrokeWidthMediumMenuItem.setSelected(true);
+        toolStrokeWidthMediumMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.MEDIUM));
+
+        toolStrokeWidthThickMenuItem = new RadioMenuItem();
+        toolStrokeWidthThickMenuItem.setText("Thick (5px)");
+        toolStrokeWidthThickMenuItem.setToggleGroup(toolStrokeWidthToggleGroup);
+        toolStrokeWidthThickMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.THICK));
+
+        toolStrokeWidthExtraThickMenuItem = new RadioMenuItem();
+        toolStrokeWidthExtraThickMenuItem.setText("Extra Thick (8px)");
+        toolStrokeWidthExtraThickMenuItem.setToggleGroup(toolStrokeWidthToggleGroup);
+        toolStrokeWidthExtraThickMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.EXTRA_THICK));
+
+        toolStrokeWidthMenu.getItems().addAll(
+            toolStrokeWidthNoneMenuItem,
+            toolStrokeWidthThinMenuItem,
+            toolStrokeWidthMediumMenuItem,
+            toolStrokeWidthThickMenuItem,
+            toolStrokeWidthExtraThickMenuItem
+        );
+
         toolToggleGroup = new ToggleGroup();
 
         toolSelectToolMenuItem = new RadioMenuItem();
@@ -361,6 +411,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         menu.getItems().addAll(
             toolFillColorPickerMenuItem,
             toolStrokeColorPickerMenuItem,
+            toolStrokeWidthMenu,
             new SeparatorMenuItem(),
             toolSelectToolMenuItem,
             toolRectangleToolMenuItem,
@@ -479,6 +530,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolFillColorPickerMenuItem.setDisable(!activate);
         toolStrokeColorPicker.setDisable(!activate);
         toolStrokeColorPickerMenuItem.setDisable(!activate);
+        toolStrokeWidthMenu.setDisable(!activate);
         toolSelectToolMenuItem.setDisable(!activate);
         toolSelectToolMenuItem.setSelected(true);
         toolRectangleToolMenuItem.setDisable(!activate);
@@ -500,6 +552,29 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolStrokeColorPicker.setValue(guiState.getStrokeColor());
 
         viewZoomSlider.setValue(guiState.getZoomLevel());
+
+        switch (guiState.getStrokeWidth()) {
+            case NONE: {
+                toolStrokeWidthNoneMenuItem.setSelected(true);
+                break;
+            }
+            case THIN: {
+                toolStrokeWidthThinMenuItem.setSelected(true);
+                break;
+            }
+            case MEDIUM: {
+                toolStrokeWidthMediumMenuItem.setSelected(true);
+                break;
+            }
+            case THICK: {
+                toolStrokeWidthThickMenuItem.setSelected(true);
+                break;
+            }
+            case EXTRA_THICK: {
+                toolStrokeWidthExtraThickMenuItem.setSelected(true);
+                break;
+            }
+        }
 
         if (guiState.getSelectedDrawTool() != null) {
             switch (guiState.getSelectedDrawTool()) {
