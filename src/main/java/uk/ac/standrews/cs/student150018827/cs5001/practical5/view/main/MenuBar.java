@@ -263,6 +263,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         objectRotate90DegRightMenuItem = new MenuItem();
         objectRotate90DegRightMenuItem.setText("Rotate 90° _Right");
+        objectRotate90DegRightMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.RIGHT, KeyCombination.CONTROL_DOWN));
         objectRotate90DegRightMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_clockwise.png"))));
         objectRotate90DegRightMenuItem.setDisable(true);
         objectRotate90DegRightMenuItem.setOnAction(event -> {
@@ -272,6 +273,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         objectRotate90DegLeftMenuItem = new MenuItem();
         objectRotate90DegLeftMenuItem.setText("Rotate 90° _Left");
+        objectRotate90DegLeftMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.LEFT, KeyCombination.CONTROL_DOWN));
         objectRotate90DegLeftMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_anticlockwise.png"))));
         objectRotate90DegLeftMenuItem.setDisable(true);
         objectRotate90DegLeftMenuItem.setOnAction(event -> {

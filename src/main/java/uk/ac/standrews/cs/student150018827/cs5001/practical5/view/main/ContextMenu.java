@@ -3,6 +3,8 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -22,6 +24,8 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
     private MenuItem moveDownMenuItem;
     private MenuItem moveUpMenuItem;
     private MenuItem moveToTopMenuItem;
+    private MenuItem rotate90DegRightMenuItem;
+    private MenuItem rotate90DegLeftMenuItem;
 
     private MenuItem deselectMenuItem;
 
@@ -32,13 +36,13 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
         undoMenuItem.setText("_Undo");
         undoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
         undoMenuItem.setDisable(true);
-        undoMenuItem.setOnAction(event1 -> System.out.println("Undo Clicked!"));
+        undoMenuItem.setOnAction(event -> mainController.getDocumentController().getHistoryController().undo());
 
         redoMenuItem = new MenuItem();
         redoMenuItem.setText("_Redo");
         redoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
         redoMenuItem.setDisable(true);
-        redoMenuItem.setOnAction(event1 -> System.out.println("Redo Clicked!"));
+        redoMenuItem.setOnAction(event -> mainController.getDocumentController().getHistoryController().redo());
 
         duplicateMenuItem = new MenuItem();
         duplicateMenuItem.setText("_Duplicate");
@@ -101,14 +105,22 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
             documentController.moveObjectToTop(guiState.getSelectedObject());
         });
 
+        rotate90DegRightMenuItem = new MenuItem();
+        rotate90DegRightMenuItem.setText("Rotate 90° _Right");
+        rotate90DegRightMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.RIGHT, KeyCombination.CONTROL_DOWN));
+        rotate90DegRightMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_clockwise.png"))));
+        rotate90DegRightMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(-90.0));
+
+        rotate90DegLeftMenuItem = new MenuItem();
+        rotate90DegLeftMenuItem.setText("Rotate 90° _Left");
+        rotate90DegLeftMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.LEFT, KeyCombination.CONTROL_DOWN));
+        rotate90DegLeftMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_anticlockwise.png"))));
+        rotate90DegLeftMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(90.0));
+
         deselectMenuItem = new MenuItem();
         deselectMenuItem.setText("_Deselect");
         deselectMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.ESCAPE));
-        deselectMenuItem.setOnAction(event -> {
-            GUIState guiState = mainController.getGUIController().getGuiState();
-
-            guiState.setSelectedObject(null);
-        });
+        deselectMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setSelectedObject(null));
 
         getItems().addAll(
             undoMenuItem,
@@ -121,6 +133,9 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
             moveDownMenuItem,
             moveUpMenuItem,
             moveToTopMenuItem,
+            new SeparatorMenuItem(),
+            rotate90DegRightMenuItem,
+            rotate90DegLeftMenuItem,
             new SeparatorMenuItem(),
             deselectMenuItem
         );

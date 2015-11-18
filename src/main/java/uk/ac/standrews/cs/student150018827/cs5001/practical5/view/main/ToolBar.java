@@ -3,11 +3,13 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
@@ -30,7 +32,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     private MenuItem moveUpMenuItem;
     private MenuItem moveToTopMenuItem;
     private MenuItem rotate90DegRightMenuItem;
-    private MenuItem getRotate90DegLeftMenuItem;
+    private MenuItem rotate90DegLeftMenuItem;
 
     private ColorPicker fillColorPicker;
     private ColorPicker strokeColorPicker;
@@ -109,11 +111,11 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         arrangeMenuButton = new MenuButton();
         arrangeMenuButton.setText("Arrange");
         arrangeMenuButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/32x32/shape_move_back.png"))));
-        //arrangeMenuButton.setContentDisplay(ContentDisplay.TOP);
         arrangeMenuButton.setDisable(true);
 
         moveToBottomMenuItem = new MenuItem();
         moveToBottomMenuItem.setText("Move to _Bottom");
+        moveToBottomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.END));
         moveToBottomMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_back.png"))));
         moveToBottomMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
@@ -124,6 +126,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
         moveDownMenuItem = new MenuItem();
         moveDownMenuItem.setText("Move _Down");
+        moveDownMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_DOWN));
         moveDownMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_backwards.png"))));
         moveDownMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
@@ -134,6 +137,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
         moveUpMenuItem = new MenuItem();
         moveUpMenuItem.setText("Move _Up");
+        moveUpMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_UP));
         moveUpMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_forwards.png"))));
         moveUpMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
@@ -144,6 +148,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
         moveToTopMenuItem = new MenuItem();
         moveToTopMenuItem.setText("Move to _Top");
+        moveToTopMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.HOME));
         moveToTopMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_front.png"))));
         moveToTopMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
@@ -154,36 +159,30 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
         rotate90DegRightMenuItem = new MenuItem();
         rotate90DegRightMenuItem.setText("Rotate 90° _Right");
+        rotate90DegRightMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.RIGHT, KeyCombination.CONTROL_DOWN));
         rotate90DegRightMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_clockwise.png"))));
-        rotate90DegRightMenuItem.setOnAction(event -> {
-            Document document = mainController.getDocumentController().getDocument();
+        rotate90DegRightMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(-90.0));
 
-            document.rotateSelectedObject(-90.0);
-        });
-
-        getRotate90DegLeftMenuItem = new MenuItem();
-        getRotate90DegLeftMenuItem.setText("Rotate 90° _Left");
-        getRotate90DegLeftMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_anticlockwise.png"))));
-        getRotate90DegLeftMenuItem.setOnAction(event -> {
-            Document document = mainController.getDocumentController().getDocument();
-
-            document.rotateSelectedObject(90.0);
-        });
+        rotate90DegLeftMenuItem = new MenuItem();
+        rotate90DegLeftMenuItem.setText("Rotate 90° _Left");
+        rotate90DegLeftMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.LEFT, KeyCombination.CONTROL_DOWN));
+        rotate90DegLeftMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_anticlockwise.png"))));
+        rotate90DegLeftMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(90.0));
 
         arrangeMenuButton.getItems().addAll(
-                moveToBottomMenuItem,
-                moveDownMenuItem,
-                moveUpMenuItem,
-                moveToTopMenuItem,
-                new SeparatorMenuItem(),
-                rotate90DegRightMenuItem,
-                getRotate90DegLeftMenuItem
+            moveToBottomMenuItem,
+            moveDownMenuItem,
+            moveUpMenuItem,
+            moveToTopMenuItem,
+            new SeparatorMenuItem(),
+            rotate90DegRightMenuItem,
+            rotate90DegLeftMenuItem
         );
 
         getItems().addAll(
             undoButton,
             redoButton,
-                arrangeMenuButton
+            arrangeMenuButton
         );
     }
 
