@@ -9,6 +9,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
@@ -101,12 +102,14 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         undoButton = new Button();
         undoButton.setText("Undo");
         undoButton.setTooltip(new Tooltip("Undo (Ctrl+Z)"));
-        undoButton.setOnAction(event -> mainController.getDocumentController().getHistoryController().undo());
+        undoButton.setDisable(true);
+        undoButton.setOnAction(event -> HistoryController.getInstance(mainController).undo());
 
         redoButton = new Button();
         redoButton.setText("Redo");
+        redoButton.setDisable(true);
         redoButton.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
-        redoButton.setOnAction(event -> mainController.getDocumentController().getHistoryController().redo());
+        redoButton.setOnAction(event -> HistoryController.getInstance(mainController).redo());
 
         arrangeMenuButton = new MenuButton();
         arrangeMenuButton.setText("Arrange");
@@ -295,6 +298,9 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     @Override
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
+
+        undoButton.setDisable(!HistoryController.getInstance(mainController).isUndoAvailable());
+        redoButton.setDisable(!HistoryController.getInstance(mainController).isRedoAvailable());
 
         fillColorPicker.setValue(guiState.getFillColor());
         strokeColorPicker.setValue(guiState.getStrokeColor());

@@ -3,7 +3,6 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 import javafx.scene.Node;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Shear;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.CloneableNode;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
@@ -17,8 +16,6 @@ import java.util.List;
 public class Document {
 
     private MainController mainController;
-
-    private HistoryController historyController;
 
     private List<Observer> observers;
 
@@ -34,8 +31,6 @@ public class Document {
 
     public Document(MainController mainController) {
         this.mainController = mainController;
-
-        historyController = mainController.getDocumentController().getHistoryController();
 
         observers = new ArrayList<>();
 
@@ -104,7 +99,6 @@ public class Document {
 
     public void addObject(Node object) {
         objects.add(object);
-//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
@@ -112,13 +106,11 @@ public class Document {
         int index = objects.indexOf(object);
         objects.set(index, null);
         objects.remove(index);
-//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
     public void removeAllObjects() {
         objects.clear();
-//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
@@ -133,7 +125,6 @@ public class Document {
             Collections.swap(objects, index, index - 1);
         }
 
-//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
@@ -143,7 +134,6 @@ public class Document {
         if (index > 0) {
             Collections.swap(objects, index, index - 1);
 
-//            historyController.createHistoryPoint();
             notifyObservers();
         }
     }
@@ -154,7 +144,6 @@ public class Document {
         if (index < objects.size() - 1) {
             Collections.swap(objects, index, index + 1);
 
-//            historyController.createHistoryPoint();
             notifyObservers();
         }
     }
@@ -166,7 +155,6 @@ public class Document {
             Collections.swap(objects, index, index + 1);
         }
 
-//        historyController.createHistoryPoint();
         notifyObservers();
     }
 
@@ -189,8 +177,6 @@ public class Document {
         for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
             resizeAnchor.getTransforms().add(rotation);
         }
-
-//        historyController.createHistoryPoint();
     }
 
     public void shearSelectedObject(double x, double y) {
@@ -213,8 +199,6 @@ public class Document {
         for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
             resizeAnchor.getTransforms().add(shearing);
         }
-
-//        historyController.createHistoryPoint();
     }
 
     @Override

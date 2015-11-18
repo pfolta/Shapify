@@ -20,14 +20,11 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
 public class DocumentController {
 
     private MainController mainController;
-
-    private HistoryController historyController;
 
     private FileController fileController;
     private Document document;
@@ -39,8 +36,6 @@ public class DocumentController {
     public DocumentController(MainController mainController) {
         this.mainController = mainController;
 
-        historyController = new HistoryController(mainController);
-
         fileController = new FileController();
         mainScene = mainController.getGUIController().getMainWindow().getMainScene();
 
@@ -49,6 +44,10 @@ public class DocumentController {
 
     public Document getDocument() {
         return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
     }
 
     public Document loadDocumentFromFile(String path) throws IOException {
@@ -62,10 +61,14 @@ public class DocumentController {
 
     public Document createDocument() {
         document = new Document(mainController);
+
+        HistoryController.getInstance(mainController).reset();
+        HistoryController.getInstance(mainController).setDocument(document);
+
         return document;
     }
 
-    public void setDimension(int width, int height) {
+    public void setDimensions(int width, int height) {
         document.setDimensions(width, height);
 
         mainScene.setArtBoard(document.getWidth(), document.getHeight());
@@ -82,11 +85,13 @@ public class DocumentController {
 
     public void removeObject(Node object) {
         document.removeObject(object);
+        HistoryController.getInstance(mainController).createHistoryPoint();
     }
 
     public void clear() {
         if (document != null) {
             document.removeAllObjects();
+            HistoryController.getInstance(mainController).createHistoryPoint();
             guiState.setSelectedObject(null);
         }
     }
@@ -130,6 +135,9 @@ public class DocumentController {
 
                 // Clear document
                 document = null;
+
+                // Reset History
+                HistoryController.getInstance(mainController).reset();
 
                 // Clear Artboard and clean up MainScene
                 mainScene.clearArtBoard();
@@ -251,10 +259,6 @@ public class DocumentController {
         exportGroup.snapshot(snapshotParameters, image);
 
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-    }
-
-    public HistoryController getHistoryController() {
-        return historyController;
     }
 
 }

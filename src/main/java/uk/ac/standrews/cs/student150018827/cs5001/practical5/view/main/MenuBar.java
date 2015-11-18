@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -173,13 +174,13 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         editUndoMenuItem.setText("_Undo");
         editUndoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/undo.png"))));
         editUndoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
-        editUndoMenuItem.setOnAction(event -> mainController.getDocumentController().getHistoryController().undo());
+        editUndoMenuItem.setOnAction(event -> HistoryController.getInstance(mainController).undo());
 
         editRedoMenuItem = new MenuItem();
         editRedoMenuItem.setText("_Redo");
         editRedoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/redo.png"))));
         editRedoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
-        editRedoMenuItem.setOnAction(event -> mainController.getDocumentController().getHistoryController().redo());
+        editRedoMenuItem.setOnAction(event -> HistoryController.getInstance(mainController).redo());
 
         editClearArtboard = new MenuItem();
         editClearArtboard.setText("_Clear Artboard");

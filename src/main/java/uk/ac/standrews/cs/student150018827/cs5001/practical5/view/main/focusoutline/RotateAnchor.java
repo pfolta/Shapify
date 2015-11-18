@@ -27,6 +27,7 @@ public class RotateAnchor extends Ellipse {
         MouseEventHandler rotateEventHandler = new RotateEventHandler(this.mainController);
         setOnMousePressed(rotateEventHandler.getMousePressedEventHandler());
         setOnMouseDragged(rotateEventHandler.getMouseDraggedEventHandler());
+        setOnMouseReleased(rotateEventHandler.getMouseReleasedEventHandler());
 
         centerXProperty().bind(focusRectangle.xProperty().add(focusRectangle.widthProperty().divide(2)));
         centerYProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty().divide(2)));

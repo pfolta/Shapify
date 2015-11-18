@@ -2,6 +2,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhan
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 
 public class RotateEventHandler extends MouseEventHandler {
@@ -38,7 +39,11 @@ public class RotateEventHandler extends MouseEventHandler {
 
     @Override
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return null;
+        return event -> {
+            System.out.println("Release");
+            HistoryController.getInstance(mainController).createHistoryPoint();
+            document.notifyObservers();
+        };
     }
 
 }

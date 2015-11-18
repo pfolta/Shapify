@@ -12,7 +12,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 
 import java.util.InputMismatchException;
 
@@ -117,17 +120,24 @@ public class NewDrawingScene extends Scene {
             int width = Integer.parseInt(widthTextField.getText());
             int height = Integer.parseInt(heightTextField.getText());
 
-            mainController.getDocumentController().getHistoryController().setDocument(mainController.getDocumentController().createDocument());
+            mainController.getDocumentController().createDocument();
 
-            mainController.getDocumentController().getDocument().registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
-            mainController.getDocumentController().getDocument().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
-            mainController.getGUIController().getGuiState().registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
-            mainController.getGUIController().getGuiState().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
-            mainController.getGUIController().getGuiState().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
-            mainController.getGUIController().getGuiState().registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
+            Document document = mainController.getDocumentController().getDocument();
+            GUIState guiState = mainController.getGUIController().getGuiState();
 
-            mainController.getDocumentController().setDimension(width, height);
+            document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
+            document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
+            document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
+            document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
+            guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
+            guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
+            guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
+            guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
+
+            mainController.getDocumentController().setDimensions(width, height);
             mainController.getDocumentController().setTitle(title);
+
+            HistoryController.getInstance(mainController).createHistoryPoint();
 
             close();
         } catch (InputMismatchException exception) {

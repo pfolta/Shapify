@@ -123,6 +123,7 @@ public class FocusOutline {
         focusRectangle.setOnMouseMoved(mouseEventHandler.getMouseMovedEventHandler());
         focusRectangle.setOnMousePressed(mouseEventHandler.getMousePressedOutlineEventHandler());
         focusRectangle.setOnMouseDragged(mouseEventHandler.getMouseDraggedEventHandler());
+        focusRectangle.setOnMouseReleased(mouseEventHandler.getMouseReleasedEventHandler());
 
         focusRectangle.setOnContextMenuRequested(contextEventHandler);
     }

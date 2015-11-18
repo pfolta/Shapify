@@ -3,6 +3,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhan
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
@@ -102,6 +103,10 @@ public class EllipseEventHandler extends MouseEventHandler {
         return event -> {
             // Set selected object to the currently drawn one
             mainController.getGUIController().getGuiState().setSelectedObject(ellipse);
+
+            // Create History Point
+            HistoryController.getInstance(mainController).createHistoryPoint();
+            document.notifyObservers();
 
             ellipse = null;
         };

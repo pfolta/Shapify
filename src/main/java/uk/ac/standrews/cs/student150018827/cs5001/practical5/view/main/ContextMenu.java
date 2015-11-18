@@ -9,6 +9,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.DocumentController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 
@@ -36,13 +37,13 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
         undoMenuItem.setText("_Undo");
         undoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
         undoMenuItem.setDisable(true);
-        undoMenuItem.setOnAction(event -> mainController.getDocumentController().getHistoryController().undo());
+        undoMenuItem.setOnAction(event -> HistoryController.getInstance(mainController).undo());
 
         redoMenuItem = new MenuItem();
         redoMenuItem.setText("_Redo");
         redoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
         redoMenuItem.setDisable(true);
-        redoMenuItem.setOnAction(event -> mainController.getDocumentController().getHistoryController().redo());
+        redoMenuItem.setOnAction(event -> HistoryController.getInstance(mainController).redo());
 
         duplicateMenuItem = new MenuItem();
         duplicateMenuItem.setText("_Duplicate");
