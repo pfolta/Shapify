@@ -3,8 +3,10 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhan
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene;
 
 public abstract class MouseEventHandler {
@@ -43,6 +45,13 @@ public abstract class MouseEventHandler {
         };
     }
 
-    public abstract EventHandler<MouseEvent> getMouseReleasedEventHandler();
+    public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
+        return event -> {
+            if (!(event.getSource() instanceof ArtBoard)) {
+                // Create History Point
+                HistoryController.getInstance(mainController).createHistoryPoint();
+            }
+        };
+    }
 
 }

@@ -153,9 +153,4 @@ public class ResizeEventHandler extends MouseEventHandler {
         };
     }
 
-    @Override
-    public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return null;
-    }
-
 }

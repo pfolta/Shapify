@@ -106,7 +106,6 @@ public class RectangleEventHandler extends MouseEventHandler {
 
             // Create History Point
             HistoryController.getInstance(mainController).createHistoryPoint();
-            document.notifyObservers();
 
             rectangle = null;
         };

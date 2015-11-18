@@ -106,7 +106,6 @@ public class EllipseEventHandler extends MouseEventHandler {
 
             // Create History Point
             HistoryController.getInstance(mainController).createHistoryPoint();
-            document.notifyObservers();
 
             ellipse = null;
         };

@@ -72,8 +72,10 @@ public class HistoryController {
     }
 
     public void createHistoryPoint() {
-        if (historyPointer != history.size() - 1) {
-            for (int i = historyPointer + 1; i < history.size(); i++) {
+        if (historyPointer != (history.size() - 1)) {
+            System.out.println("Need to restructure undo");
+
+            for (int i = historyPointer + 1; i <= history.size(); i++) {
                history.remove(i);
             }
         }
@@ -81,6 +83,8 @@ public class HistoryController {
         Document clone = document.clone();
         history.add(clone);
         historyPointer++;
+
+        mainController.getDocumentController().getDocument().notifyObservers();
     }
 
 }

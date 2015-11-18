@@ -108,9 +108,4 @@ public class SelectEventHandler extends MouseEventHandler {
         };
     }
 
-    @Override
-    public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return null;
-    }
-
 }

@@ -96,7 +96,6 @@ public class LineEventHandler extends MouseEventHandler {
 
             // Create History Point
             HistoryController.getInstance(mainController).createHistoryPoint();
-            document.notifyObservers();
 
             line = null;
         };

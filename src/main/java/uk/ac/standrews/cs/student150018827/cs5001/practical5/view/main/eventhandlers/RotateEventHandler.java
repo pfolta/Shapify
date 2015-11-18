@@ -37,13 +37,4 @@ public class RotateEventHandler extends MouseEventHandler {
         };
     }
 
-    @Override
-    public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
-        return event -> {
-            System.out.println("Release");
-            HistoryController.getInstance(mainController).createHistoryPoint();
-            document.notifyObservers();
-        };
-    }
-
 }
