@@ -1,0 +1,1983 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6af774fd-4b81-4bc4-abe8-2be9505f97ef" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ArtBoard.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ArtBoard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/CloneableNode.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/CloneableNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java" />
+    </list>
+    <ignored path="CS5001-150018827-practical-05.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/CS5001-150018827-practical-05$Main.coverage" NAME="Main Coverage Results" MODIFIED="1446551726126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>uk.ac.standrews.cs.student150018827.cs5001.practical5.main.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="CS5001-150018827-practical-05" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="MouseEventHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MouseEventHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToolBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="187" column="5" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HistoryController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CloneableNode.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/CloneableNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.23488773">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewDrawingScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/newdrawing/NewDrawingScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="116" column="67" selection-start-line="116" selection-start-column="67" selection-end-line="116" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewDrawingStage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/newdrawing/NewDrawingStage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatusBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/StatusBar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArtBoard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ArtBoard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="37" column="71" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectEventHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/SelectEventHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/about/AboutWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/about/AboutDialog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/about/AboutScene.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/FileChooser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/gui/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/gui/GUIController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainToolBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainMenuBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/GUIUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/FileController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/about/AboutStage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/newdrawing/NewDrawingStage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/GUIController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Data.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/focusoutline/ResizeAnchor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/focusoutline/RotateAnchor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/GUIState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/StaticObservable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Observable.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/css/general.css" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/StatusBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Node.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Ellipse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Line.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Rectangle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Cloneable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/CloneableObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/DocumentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/newdrawing/NewDrawingScene.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MouseEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/SelectEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/focusoutline/FocusOutline.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ResizeEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/RectangleEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/LineEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/EllipseEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MoveEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/RotateEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ShearEventHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ArtBoard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainScene.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/CloneableNode.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
+    <option name="y" value="27" />
+    <option name="width" value="1922" />
+    <option name="height" value="1024" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newdrawing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="focusoutline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eventhandlers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exportbitmap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="about" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS5001-150018827-practical-05" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practical5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="200" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="220" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="220" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1250" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="200" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="220" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="220" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1250" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="BatchConfigurationType" factoryName="Batch">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/lib/jfxrt.jar" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Main" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="CS5001-150018827-practical-05" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+    </list>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6af774fd-4b81-4bc4-abe8-2be9505f97ef" name="Default" comment="" />
+      <created>1446460191907</created>
+      <option name="number" value="Default" />
+      <updated>1446460191907</updated>
+      <workItem from="1446460195043" duration="577000" />
+      <workItem from="1446460784372" duration="1531000" />
+      <workItem from="1446462326854" duration="234000" />
+      <workItem from="1446462577598" duration="477000" />
+      <workItem from="1446463936753" duration="1943000" />
+      <workItem from="1446477532914" duration="4211000" />
+      <workItem from="1446482234034" duration="9805000" />
+      <workItem from="1446542716783" duration="1611000" />
+      <workItem from="1446545609657" duration="6211000" />
+      <workItem from="1446557426765" duration="1454000" />
+      <workItem from="1446558909954" duration="3581000" />
+      <workItem from="1446806144197" duration="4945000" />
+      <workItem from="1446815379705" duration="2311000" />
+      <workItem from="1447065069692" duration="4941000" />
+      <workItem from="1447077846710" duration="1012000" />
+      <workItem from="1447233362242" duration="1209000" />
+      <workItem from="1447234896519" duration="392000" />
+      <workItem from="1447238804207" duration="1606000" />
+      <workItem from="1447241385410" duration="470000" />
+      <workItem from="1447344480622" duration="605000" />
+      <workItem from="1447756279127" duration="3413000" />
+      <workItem from="1447762544667" duration="2988000" />
+      <workItem from="1447772286755" duration="3025000" />
+      <workItem from="1447776245697" duration="2560000" />
+      <workItem from="1447844603857" duration="1210000" />
+      <workItem from="1447846195212" duration="920000" />
+    </task>
+    <task id="LOCAL-00001" summary="Created IntelliJ Project">
+      <created>1446460234489</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1446460234489</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added Main class">
+      <created>1446460680866</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1446460680866</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added .gitignore">
+      <created>1446460805003</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1446460805003</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added simple javafx application">
+      <created>1446463043466</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1446463043466</updated>
+    </task>
+    <task id="LOCAL-00005" summary="First Attempt at JavaFX Application">
+      <created>1446465849068</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1446465849068</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added basic JavaFX MainWindow, MenuBar and AboutDialog as well as Controller classes and Window Event handling">
+      <created>1446481731905</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1446481731905</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated AboutDialog, MainMenuBar and added MainToolBar">
+      <created>1446483556749</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1446483556749</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Simplified Code">
+      <created>1446483712630</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1446483712630</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated ToolBar">
+      <created>1446485138123</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1446485138123</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added Undo/Redo Items">
+      <created>1446489150540</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1446489150540</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added Open/Save/Save As File Dialogs">
+      <created>1446490613007</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1446490613007</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added Close MenuItem">
+      <created>1446491149785</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1446491149785</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added default file name for Save Dialogs">
+      <created>1446491164923</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1446491164923</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Created ArtBoard">
+      <created>1446492570814</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1446492570814</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added Method to Clear ArtBoard (remove it entirely)">
+      <created>1446492661376</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1446492661376</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Centered ArtBoard">
+      <created>1446493014075</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1446493014075</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added Export MenuItem">
+      <created>1446493427422</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1446493427422</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added .idea folder">
+      <created>1446542930473</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1446542930473</updated>
+    </task>
+    <task id="LOCAL-00019" summary="- Added ToolTips to Toolbar&#10;- Added Toolbar and Status Bar MenuItems to View Menu">
+      <created>1446543480027</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1446543480027</updated>
+    </task>
+    <task id="LOCAL-00020" summary="- Updated NewDrawing Dialog">
+      <created>1446551145121</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1446551145121</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added StatusBar">
+      <created>1446552091451</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1446552091451</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Ensure event is within artboard boundaries">
+      <created>1446552726534</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1446552726534</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Updated View Design">
+      <created>1446559140630</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1446559140630</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added Document Model">
+      <created>1446560456335</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1446560456335</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added Controller and Restructured Controllers">
+      <created>1446562096078</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1446562096078</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Reading Properties from Spinners">
+      <created>1446562477668</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1446562477668</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Fixed a bug where MenuBar could be hidden using ALT">
+      <created>1446806572851</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1446806572851</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Adjusted stroke width and resize anchor dimensions">
+      <created>1446807277676</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1446807277676</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Adjusted look of outline">
+      <created>1446807518440</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1446807518440</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Last drawn object is automatically selected at mouse released event">
+      <created>1446808024226</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1446808024226</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fixed a bug where resize anchors would not stay attached to focus rectangle">
+      <created>1446808674458</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1446808674458</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Resize now works with all four resize anchors">
+      <created>1446808890528</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1446808890528</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Rectangles and Ellipses are now properly resizable">
+      <created>1446809519987</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1446809519987</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Selection now stays persistent even when switching tools">
+      <created>1446809661901</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1446809661901</updated>
+    </task>
+    <task id="LOCAL-00035" summary="SE Resize now sticks to boundaries">
+      <created>1446810893380</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1446810893380</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Removed unused import">
+      <created>1446810915569</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1446810915569</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Added selection and binding of lines to FocusOutline">
+      <created>1446817685492</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1446817685492</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Fixed an Export Bitmap Bug">
+      <created>1447066007191</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1447066007191</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Changed Design of Resize Anchors slightly">
+      <created>1447066975606</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1447066975606</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Added first attempt of rotating shapes">
+      <created>1447068971831</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1447068971831</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Focus Outline is now set to correct rotation when shape is deselected and reselected">
+      <created>1447239444142</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1447239444142</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Updated Rotation handling">
+      <created>1447757912623</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1447757912623</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Renamed currentForeground color to fillColor">
+      <created>1447758203372</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1447758203372</updated>
+    </task>
+    <task id="LOCAL-00044" summary="First attempt of (nun functional) History Keeping (Undo/Redo)">
+      <created>1447772963369</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1447772963369</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added shearing">
+      <created>1447846339877</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1447846339877</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Changed design of color picker">
+      <created>1447846434007</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1447846434007</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Added missing classes">
+      <created>1447847062420</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1447847062420</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="63242000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1" y="27" width="1922" height="1024" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2923077" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated View Design" />
+    <MESSAGE value="Added Document Model" />
+    <MESSAGE value="Added Controller and Restructured Controllers" />
+    <MESSAGE value="Reading Properties from Spinners" />
+    <MESSAGE value="Fixed a bug where MenuBar could be hidden using ALT" />
+    <MESSAGE value="Adjusted stroke width and resize anchor dimensions" />
+    <MESSAGE value="Adjusted look of outline" />
+    <MESSAGE value="Last drawn object is automatically selected at mouse released event" />
+    <MESSAGE value="Fixed a bug where resize anchors would not stay attached to focus rectangle" />
+    <MESSAGE value="Resize now works with all four resize anchors" />
+    <MESSAGE value="Rectangles and Ellipses are now properly resizable" />
+    <MESSAGE value="Selection now stays persistent even when switching tools" />
+    <MESSAGE value="SE Resize now sticks to boundaries" />
+    <MESSAGE value="Removed unused import" />
+    <MESSAGE value="Added selection and binding of lines to FocusOutline" />
+    <MESSAGE value="Fixed an Export Bitmap Bug" />
+    <MESSAGE value="Changed Design of Resize Anchors slightly" />
+    <MESSAGE value="Added first attempt of rotating shapes" />
+    <MESSAGE value="Focus Outline is now set to correct rotation when shape is deselected and reselected" />
+    <MESSAGE value="Updated Rotation handling" />
+    <MESSAGE value="Renamed currentForeground color to fillColor" />
+    <MESSAGE value="First attempt of (nun functional) History Keeping (Undo/Redo)" />
+    <MESSAGE value="Added shearing" />
+    <MESSAGE value="Changed design of color picker" />
+    <MESSAGE value="Added missing classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added missing classes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/EllipseEventHandler.java</url>
+          <line>95</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/about/AboutStage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.01934016">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/about/AboutScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/about/AboutStage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/KeyEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="63" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/focusoutline/ResizeAnchor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="5" selection-start-line="84" selection-start-column="8" selection-end-line="85" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Observer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/css/general.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1388889">
+          <caret line="5" column="65" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/css/mainscene.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.055555556">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/GUIState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Line.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="74" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/FileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Ellipse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/DocumentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/focusoutline/RotateAnchor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/focusoutline/FocusOutline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="111" column="13" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="61" selection-start-line="2" selection-start-column="61" selection-end-line="2" selection-end-column="61" />
+          <folding>
+            <element signature="e#982#983#0" expanded="true" />
+            <element signature="e#1030#1031#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ResizeEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="62" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/RectangleEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="62" selection-start-line="56" selection-start-column="62" selection-end-line="56" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/LineEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/EllipseEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="62" selection-start-line="56" selection-start-column="62" selection-end-line="56" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MoveEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/RotateEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ShearEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="311" column="31" selection-start-line="311" selection-start-column="31" selection-end-line="311" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ArtBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="71" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/SelectEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MouseEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/newdrawing/NewDrawingScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="67" selection-start-line="116" selection-start-column="67" selection-end-line="116" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/newdrawing/NewDrawingStage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/StatusBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="14" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="187" column="5" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/CloneableNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23488773">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>JavaFXApp</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>CS5001-150018827-practical-05</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>jfxrt</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

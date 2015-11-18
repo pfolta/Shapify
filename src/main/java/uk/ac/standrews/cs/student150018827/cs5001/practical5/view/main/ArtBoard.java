@@ -41,4 +41,5 @@ public class ArtBoard extends Canvas {
         setOnMouseDragged(mouseEventHandler.getMouseDraggedEventHandler());
         setOnMouseReleased(mouseEventHandler.getMouseReleasedEventHandler());
     }
+
 }

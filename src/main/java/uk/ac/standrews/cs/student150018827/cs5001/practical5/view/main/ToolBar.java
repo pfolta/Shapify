@@ -99,7 +99,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         arrangeButton = new MenuButton();
         arrangeButton.setText("Arrange");
         arrangeButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/32x32/shape_move_back.png"))));
-        arrangeButton.setContentDisplay(ContentDisplay.TOP);
+        //arrangeButton.setContentDisplay(ContentDisplay.TOP);
         arrangeButton.setDisable(true);
 
         moveToBottomMenuItem = new MenuItem();
@@ -179,7 +179,9 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private void buildColorControls() {
         colorPicker = new ColorPicker();
+        colorPicker.setTooltip(new Tooltip("Set Fill Color"));
         colorPicker.setValue(Color.BLACK);
+        colorPicker.setMaxHeight(Double.MAX_VALUE);
         colorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setFillColor(colorPicker.getValue()));
 
         getItems().addAll(colorPicker);
