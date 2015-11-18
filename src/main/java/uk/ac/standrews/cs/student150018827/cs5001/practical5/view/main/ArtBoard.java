@@ -16,6 +16,8 @@ public class ArtBoard extends Canvas {
 
         this.mainController = mainController;
 
+        getStyleClass().add("no-focus-outline");
+
         paintArtBoardBackground(Data.ARTBOARD_BACKGROUND_TITLE_SIZE);
         setMouseEventHandler(new SelectEventHandler(this.mainController));
     }

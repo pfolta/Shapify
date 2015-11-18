@@ -61,13 +61,17 @@ public class MainScene extends Scene implements Observer {
         mainBorderPane.setTop(topPane);
 
         artBoardGroup = new Group();
+        artBoardGroup.getStyleClass().add("no-focus-outline");
+
         artBoardZoomGroup = new Group();
+        artBoardZoomGroup.getStyleClass().add("no-focus-outline");
         artBoardZoomGroup.getChildren().add(artBoardGroup);
 
         StackPane stackPane = new StackPane(artBoardZoomGroup);
+        stackPane.getStyleClass().add("no-focus-outline");
 
         ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setStyle("-fx-focus-color: transparent;");
+        scrollPane.getStyleClass().add("no-focus-outline");
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setContent(stackPane);
@@ -217,14 +221,19 @@ public class MainScene extends Scene implements Observer {
                 // Set Color of Object
                 if (selectedObject instanceof Rectangle) {
                     ((Rectangle) selectedObject).setFill(guiState.getFillColor());
+                    ((Rectangle) selectedObject).setStroke(guiState.getStrokeColor());
+                    ((Rectangle) selectedObject).setStrokeWidth(guiState.getStrokeWidth().getStrokeWidth());
                 }
 
                 if (selectedObject instanceof Ellipse) {
                     ((Ellipse) selectedObject).setFill(guiState.getFillColor());
+                    ((Ellipse) selectedObject).setStroke(guiState.getStrokeColor());
+                    ((Ellipse) selectedObject).setStrokeWidth(guiState.getStrokeWidth().getStrokeWidth());
                 }
 
                 if (selectedObject instanceof Line) {
-                    ((Line) selectedObject).setStroke(guiState.getFillColor());
+                    ((Line) selectedObject).setStroke(guiState.getStrokeColor());
+                    ((Line) selectedObject).setStrokeWidth(guiState.getStrokeWidth().getStrokeWidth());
                 }
             }
 

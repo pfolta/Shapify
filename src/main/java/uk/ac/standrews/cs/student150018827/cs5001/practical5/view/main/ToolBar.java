@@ -11,6 +11,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Observer;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.StrokeWidth;
 
 public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
@@ -23,7 +24,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     private Button undoButton;
     private Button redoButton;
 
-    private MenuButton arrangeButton;
+    private MenuButton arrangeMenuButton;
     private MenuItem moveToBottomMenuItem;
     private MenuItem moveDownMenuItem;
     private MenuItem moveUpMenuItem;
@@ -31,7 +32,16 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     private MenuItem rotate90DegRightMenuItem;
     private MenuItem getRotate90DegLeftMenuItem;
 
-    private ColorPicker colorPicker;
+    private ColorPicker fillColorPicker;
+    private ColorPicker strokeColorPicker;
+
+    private MenuButton strokeWidthMenuButton;
+    private ToggleGroup strokeWidthToggleGroup;
+    private RadioMenuItem strokeWidthNoneMenuItem;
+    private RadioMenuItem strokeWidthThinMenuItem;
+    private RadioMenuItem strokeWidthMediumMenuItem;
+    private RadioMenuItem strokeWidthThickMenuItem;
+    private RadioMenuItem strokeWidthExtraThickMenuItem;
 
     private ToggleGroup toolToggleGroup;
     private ToggleButton selectToolButton;
@@ -96,11 +106,11 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         redoButton.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
         redoButton.setOnAction(event -> mainController.getDocumentController().getHistoryController().redo());
 
-        arrangeButton = new MenuButton();
-        arrangeButton.setText("Arrange");
-        arrangeButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/32x32/shape_move_back.png"))));
-        //arrangeButton.setContentDisplay(ContentDisplay.TOP);
-        arrangeButton.setDisable(true);
+        arrangeMenuButton = new MenuButton();
+        arrangeMenuButton.setText("Arrange");
+        arrangeMenuButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/32x32/shape_move_back.png"))));
+        //arrangeMenuButton.setContentDisplay(ContentDisplay.TOP);
+        arrangeMenuButton.setDisable(true);
 
         moveToBottomMenuItem = new MenuItem();
         moveToBottomMenuItem.setText("Move to _Bottom");
@@ -160,7 +170,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
             document.rotateSelectedObject(90.0);
         });
 
-        arrangeButton.getItems().addAll(
+        arrangeMenuButton.getItems().addAll(
                 moveToBottomMenuItem,
                 moveDownMenuItem,
                 moveUpMenuItem,
@@ -173,18 +183,69 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         getItems().addAll(
             undoButton,
             redoButton,
-            arrangeButton
+                arrangeMenuButton
         );
     }
 
     private void buildColorControls() {
-        colorPicker = new ColorPicker();
-        colorPicker.setTooltip(new Tooltip("Set Fill Color"));
-        colorPicker.setValue(Color.BLACK);
-        colorPicker.setMaxHeight(Double.MAX_VALUE);
-        colorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setFillColor(colorPicker.getValue()));
+        fillColorPicker = new ColorPicker();
+        fillColorPicker.setTooltip(new Tooltip("Set Fill Color"));
+        fillColorPicker.setValue(Color.BLACK);
+        fillColorPicker.setMaxHeight(Double.MAX_VALUE);
+        fillColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setFillColor(fillColorPicker.getValue()));
 
-        getItems().addAll(colorPicker);
+        strokeColorPicker = new ColorPicker();
+        strokeColorPicker.setTooltip(new Tooltip("Set Stroke Color"));
+        strokeColorPicker.setValue(Color.BLACK);
+        strokeColorPicker.setMaxHeight(Double.MAX_VALUE);
+        strokeColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeColor(strokeColorPicker.getValue()));
+
+        strokeWidthMenuButton = new MenuButton();
+        strokeWidthMenuButton.setText("Stroke Width");
+        strokeWidthMenuButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/32x32/border_weight.png"))));
+        strokeWidthMenuButton.setDisable(true);
+
+        strokeWidthToggleGroup = new ToggleGroup();
+
+        strokeWidthNoneMenuItem = new RadioMenuItem();
+        strokeWidthNoneMenuItem.setText("None (0px)");
+        strokeWidthNoneMenuItem.setToggleGroup(strokeWidthToggleGroup);
+        strokeWidthNoneMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.NONE));
+
+        strokeWidthThinMenuItem = new RadioMenuItem();
+        strokeWidthThinMenuItem.setText("Thin (1px)");
+        strokeWidthThinMenuItem.setToggleGroup(strokeWidthToggleGroup);
+        strokeWidthThinMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.THIN));
+
+        strokeWidthMediumMenuItem = new RadioMenuItem();
+        strokeWidthMediumMenuItem.setText("Medium (3px)");
+        strokeWidthMediumMenuItem.setToggleGroup(strokeWidthToggleGroup);
+        strokeWidthMediumMenuItem.setSelected(true);
+        strokeWidthMediumMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.MEDIUM));
+
+        strokeWidthThickMenuItem = new RadioMenuItem();
+        strokeWidthThickMenuItem.setText("Thick (5px)");
+        strokeWidthThickMenuItem.setToggleGroup(strokeWidthToggleGroup);
+        strokeWidthThickMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.THICK));
+
+        strokeWidthExtraThickMenuItem = new RadioMenuItem();
+        strokeWidthExtraThickMenuItem.setText("Extra Thick (8px)");
+        strokeWidthExtraThickMenuItem.setToggleGroup(strokeWidthToggleGroup);
+        strokeWidthExtraThickMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.EXTRA_THICK));
+
+        strokeWidthMenuButton.getItems().addAll(
+            strokeWidthNoneMenuItem,
+            strokeWidthThinMenuItem,
+            strokeWidthMediumMenuItem,
+            strokeWidthThickMenuItem,
+            strokeWidthExtraThickMenuItem
+        );
+
+        getItems().addAll(
+            fillColorPicker,
+            strokeColorPicker,
+            strokeWidthMenuButton
+        );
     }
 
     private void buildToolControls() {
@@ -211,17 +272,19 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         lineToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
         getItems().addAll(
-            selectToolButton,
-            rectangleToolButton,
-            ellipseToolButton,
-            lineToolButton
+                selectToolButton,
+                rectangleToolButton,
+                ellipseToolButton,
+                lineToolButton
         );
     }
 
     public void activateControls(boolean activate) {
         saveButton.setDisable(!activate);
 
-        colorPicker.setDisable(!activate);
+        fillColorPicker.setDisable(!activate);
+        strokeColorPicker.setDisable(!activate);
+        strokeWidthMenuButton.setDisable(!activate);
 
         selectToolButton.setDisable(!activate);
         selectToolButton.setSelected(true);
@@ -234,7 +297,31 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
 
-        colorPicker.setValue(guiState.getFillColor());
+        fillColorPicker.setValue(guiState.getFillColor());
+        strokeColorPicker.setValue(guiState.getStrokeColor());
+
+        switch (guiState.getStrokeWidth()) {
+            case NONE: {
+                strokeWidthNoneMenuItem.setSelected(true);
+                break;
+            }
+            case THIN: {
+                strokeWidthThinMenuItem.setSelected(true);
+                break;
+            }
+            case MEDIUM: {
+                strokeWidthMediumMenuItem.setSelected(true);
+                break;
+            }
+            case THICK: {
+                strokeWidthThickMenuItem.setSelected(true);
+                break;
+            }
+            case EXTRA_THICK: {
+                strokeWidthExtraThickMenuItem.setSelected(true);
+                break;
+            }
+        }
 
         if (guiState.getSelectedDrawTool() != null) {
             switch (guiState.getSelectedDrawTool()) {
@@ -259,7 +346,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     }
 
     public void objectSelected(boolean selected) {
-        arrangeButton.setDisable(!selected);
+        arrangeMenuButton.setDisable(!selected);
     }
 
 }

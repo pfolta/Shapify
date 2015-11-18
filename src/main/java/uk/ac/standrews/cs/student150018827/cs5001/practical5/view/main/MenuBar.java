@@ -42,8 +42,10 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     private MenuItem objectRotate90DegLeftMenuItem;
     private MenuItem objectDeselectMenuItem;
 
-    private ColorPicker toolColorPicker;
-    private CustomMenuItem toolColorPickerMenuItem;
+    private ColorPicker toolFillColorPicker;
+    private CustomMenuItem toolFillColorPickerMenuItem;
+    private ColorPicker toolStrokeColorPicker;
+    private CustomMenuItem toolStrokeColorPickerMenuItem;
 
     private ToggleGroup toolToggleGroup;
     private RadioMenuItem toolSelectToolMenuItem;
@@ -309,14 +311,25 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         Menu menu = new Menu();
         menu.setText("_Tool");
 
-        toolColorPicker = new ColorPicker();
-        toolColorPicker.setDisable(true);
-        toolColorPicker.setValue(Color.BLACK);
-        toolColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setFillColor(toolColorPicker.getValue()));
+        toolFillColorPicker = new ColorPicker();
+        toolFillColorPicker.setDisable(true);
+        toolFillColorPicker.setValue(Color.BLACK);
+        toolFillColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setFillColor(toolFillColorPicker.getValue()));
 
-        toolColorPickerMenuItem = new CustomMenuItem(toolColorPicker);
-        toolColorPickerMenuItem.setHideOnClick(false);
-        toolColorPickerMenuItem.setDisable(true);
+        toolFillColorPickerMenuItem = new CustomMenuItem(toolFillColorPicker);
+        toolFillColorPickerMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/border_color.png"))));
+        toolFillColorPickerMenuItem.setHideOnClick(false);
+        toolFillColorPickerMenuItem.setDisable(true);
+
+        toolStrokeColorPicker = new ColorPicker();
+        toolStrokeColorPicker.setDisable(true);
+        toolStrokeColorPicker.setValue(Color.BLACK);
+        toolStrokeColorPicker.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeColor(toolStrokeColorPicker.getValue()));
+
+        toolStrokeColorPickerMenuItem = new CustomMenuItem(toolStrokeColorPicker);
+        toolStrokeColorPickerMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/fill_color.png"))));
+        toolStrokeColorPickerMenuItem.setHideOnClick(false);
+        toolStrokeColorPickerMenuItem.setDisable(true);
 
         toolToggleGroup = new ToggleGroup();
 
@@ -344,7 +357,8 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolLineToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
         menu.getItems().addAll(
-            toolColorPickerMenuItem,
+            toolFillColorPickerMenuItem,
+            toolStrokeColorPickerMenuItem,
             new SeparatorMenuItem(),
             toolSelectToolMenuItem,
             toolRectangleToolMenuItem,
@@ -459,8 +473,10 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         editClearArtboard.setDisable(!activate);
 
-        toolColorPicker.setDisable(!activate);
-        toolColorPickerMenuItem.setDisable(!activate);
+        toolFillColorPicker.setDisable(!activate);
+        toolFillColorPickerMenuItem.setDisable(!activate);
+        toolStrokeColorPicker.setDisable(!activate);
+        toolStrokeColorPickerMenuItem.setDisable(!activate);
         toolSelectToolMenuItem.setDisable(!activate);
         toolSelectToolMenuItem.setSelected(true);
         toolRectangleToolMenuItem.setDisable(!activate);
@@ -478,7 +494,8 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
 
-        toolColorPicker.setValue(guiState.getFillColor());
+        toolFillColorPicker.setValue(guiState.getFillColor());
+        toolStrokeColorPicker.setValue(guiState.getStrokeColor());
 
         viewZoomSlider.setValue(guiState.getZoomLevel());
 

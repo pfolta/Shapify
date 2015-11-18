@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 
 public class RectangleEventHandler extends MouseEventHandler {
@@ -26,14 +27,19 @@ public class RectangleEventHandler extends MouseEventHandler {
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
+                GUIState guiState = mainController.getGUIController().getGuiState();
+
                 // Reset selected object
-                mainController.getGUIController().getGuiState().setSelectedObject(null);
+                guiState.setSelectedObject(null);
 
                 originalX = (int) event.getX();
                 originalY = (int) event.getY();
 
                 rectangle = new Rectangle();
-                rectangle.setFill(mainController.getGUIController().getGuiState().getFillColor());
+                rectangle.setFill(guiState.getFillColor());
+                rectangle.setStroke(guiState.getStrokeColor());
+                rectangle.setStrokeWidth(guiState.getStrokeWidth().getStrokeWidth());
+
                 rectangle.setHeight(1);
                 rectangle.setWidth(1);
                 rectangle.setX(originalX);

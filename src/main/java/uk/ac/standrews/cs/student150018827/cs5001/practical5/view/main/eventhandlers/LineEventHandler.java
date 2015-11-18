@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Line;
 
 public class LineEventHandler extends MouseEventHandler {
@@ -26,15 +27,18 @@ public class LineEventHandler extends MouseEventHandler {
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
+                GUIState guiState = mainController.getGUIController().getGuiState();
+
                 // Reset selected object
-                mainController.getGUIController().getGuiState().setSelectedObject(null);
+                guiState.setSelectedObject(null);
 
                 originalX = (int) event.getX();
                 originalY = (int) event.getY();
 
                 line = new Line();
-                line.setStroke(mainController.getGUIController().getGuiState().getFillColor());
-                line.setStrokeWidth(3);
+                line.setStroke(guiState.getStrokeColor());
+                line.setStrokeWidth(guiState.getStrokeWidth().getStrokeWidth());
+
                 line.setStartX(originalX);
                 line.setStartY(originalY);
                 line.setEndX(originalX + 1);

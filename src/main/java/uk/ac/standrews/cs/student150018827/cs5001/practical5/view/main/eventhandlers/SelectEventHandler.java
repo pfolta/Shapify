@@ -9,8 +9,8 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Line;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.StrokeWidth;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.ArtBoard;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 
 public class SelectEventHandler extends MouseEventHandler {
 
@@ -46,6 +46,8 @@ public class SelectEventHandler extends MouseEventHandler {
 
                         // Set selected object color
                         guiState.setFillColor(((Color) rectangle.getFill()));
+                        guiState.setStrokeColor((Color) rectangle.getStroke());
+                        guiState.setStrokeWidth(StrokeWidth.fromInteger((int) rectangle.getStrokeWidth()));
                     }
 
                     if (selectedObject instanceof Ellipse) {
@@ -53,13 +55,16 @@ public class SelectEventHandler extends MouseEventHandler {
 
                         // Set selected object color
                         guiState.setFillColor(((Color) ellipse.getFill()));
+                        guiState.setStrokeColor((Color) ellipse.getStroke());
+                        guiState.setStrokeWidth(StrokeWidth.fromInteger((int) ellipse.getStrokeWidth()));
                     }
 
                     if (selectedObject instanceof Line) {
                         Line line = (Line) selectedObject;
 
                         // Set selected object color
-                        guiState.setFillColor(((Color) line.getStroke()));
+                        guiState.setStrokeColor((Color) line.getStroke());
+                        guiState.setStrokeWidth(StrokeWidth.fromInteger((int) line.getStrokeWidth()));
                     }
 
                     // Set selected object

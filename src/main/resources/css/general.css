@@ -9,3 +9,9 @@
 .border-right {
     -fx-border-color: transparent #cccccc transparent transparent;
 }
+
+.no-focus-outline,
+.no-focus-outline:hover,
+.no-focus-outline:focused {
+    -fx-focus-color: transparent;
+}

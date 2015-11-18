@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
 
 public class EllipseEventHandler extends MouseEventHandler {
@@ -26,14 +27,19 @@ public class EllipseEventHandler extends MouseEventHandler {
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
+                GUIState guiState = mainController.getGUIController().getGuiState();
+
                 // Reset selected object
-                mainController.getGUIController().getGuiState().setSelectedObject(null);
+                guiState.setSelectedObject(null);
 
                 originalX = (int) event.getX();
                 originalY = (int) event.getY();
 
                 ellipse = new Ellipse();
-                ellipse.setFill(mainController.getGUIController().getGuiState().getFillColor());
+                ellipse.setFill(guiState.getFillColor());
+                ellipse.setStroke(guiState.getStrokeColor());
+                ellipse.setStrokeWidth(guiState.getStrokeWidth().getStrokeWidth());
+
                 ellipse.setRadiusX(1);
                 ellipse.setRadiusY(1);
                 ellipse.setCenterX(originalX);

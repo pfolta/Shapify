@@ -109,7 +109,9 @@ public class Document {
     }
 
     public void removeObject(Node object) {
-        objects.remove(object);
+        int index = objects.indexOf(object);
+        objects.set(index, null);
+        objects.remove(index);
 //        historyController.createHistoryPoint();
         notifyObservers();
     }

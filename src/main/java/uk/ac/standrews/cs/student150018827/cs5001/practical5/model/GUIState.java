@@ -4,11 +4,14 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.StrokeWidth;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static uk.ac.standrews.cs.student150018827.cs5001.practical5.view.StrokeWidth.MEDIUM;
 
 public class GUIState {
 
@@ -23,6 +26,8 @@ public class GUIState {
     private DrawTools selectedDrawTool;
 
     private Color fillColor;
+    private Color strokeColor;
+    private StrokeWidth strokeWidth;
 
     private Node selectedObject;
     private FocusOutline focusOutline;
@@ -34,7 +39,10 @@ public class GUIState {
 
         zoomLevel = 1.0;
         lastUsedDirectory = new File(System.getProperty("user.home"));
+
         fillColor = Color.BLACK;
+        strokeColor = Color.BLACK;
+        strokeWidth = MEDIUM;
     }
 
     public void registerObserver(Observer observer) {
@@ -70,8 +78,26 @@ public class GUIState {
         return fillColor;
     }
 
-    public void setFillColor(Color foreground) {
-        fillColor = foreground;
+    public void setFillColor(Color fillColor) {
+        this.fillColor = fillColor;
+        notifyObservers();
+    }
+
+    public Color getStrokeColor() {
+        return strokeColor;
+    }
+
+    public void setStrokeColor(Color strokeColor) {
+        this.strokeColor = strokeColor;
+        notifyObservers();
+    }
+
+    public StrokeWidth getStrokeWidth() {
+        return strokeWidth;
+    }
+
+    public void setStrokeWidth(StrokeWidth strokeWidth) {
+        this.strokeWidth = strokeWidth;
         notifyObservers();
     }
 
