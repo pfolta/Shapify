@@ -6,7 +6,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainCont
 
 public class RotateEventHandler extends MouseEventHandler {
 
-    private int mouseOriginalX;
+    private int originalX;
 
     public RotateEventHandler(MainController mainController) {
         super(mainController);
@@ -20,15 +20,17 @@ public class RotateEventHandler extends MouseEventHandler {
     @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
-            mouseOriginalX = (int) event.getX();
+            originalX = (int) event.getX();
         };
     }
 
     @Override
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
+            super.getMouseDraggedEventHandler().handle(event);
+
             int x = (int) event.getX();
-            int angle = x - mouseOriginalX;
+            int angle = x - originalX;
 
             document.rotateSelectedObject(angle);
         };

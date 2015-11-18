@@ -110,8 +110,6 @@ public class FocusOutline {
                 selectedLine.endYProperty().bind(focusRectangle.yProperty());
                 selectedLine.startYProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()));
             }
-
-            focusRectangle.setRotate(selectedLine.getRotate());
         }
 
         // Apply rotation to focus outline

@@ -14,14 +14,14 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutl
 
 public class SelectEventHandler extends MouseEventHandler {
 
-    private int originalX;
-    private int originalY;
-
-    private int deltaX;
-    private int deltaY;
+    private MoveEventHandler moveEventHandler;
+    private ShearEventHandler shearEventHandler;
 
     public SelectEventHandler(MainController mainController) {
         super(mainController);
+
+        moveEventHandler = new MoveEventHandler(mainController);
+        shearEventHandler = new ShearEventHandler(mainController);
     }
 
     @Override
@@ -65,12 +65,11 @@ public class SelectEventHandler extends MouseEventHandler {
                     // Set selected object
                     guiState.setSelectedObject(selectedObject);
 
-                    // Delegate event to Focus Outline for instant object move capabilities
-                    if (!(event.getSource() instanceof Rectangle) || !((Rectangle) event.getSource()).isFocusOutline()) {
-                        FocusOutline focusOutline = guiState.getFocusOutline();
-                        Rectangle focusRectangle = focusOutline.getFocusRectangle();
-
-                        focusRectangle.fireEvent(event);
+                    // Delegate event
+                    if (event.isShiftDown()) {
+                        shearEventHandler.getMousePressedEventHandler().handle(event);
+                    } else {
+                        moveEventHandler.getMousePressedEventHandler().handle(event);
                     }
                 }
             }
@@ -80,13 +79,11 @@ public class SelectEventHandler extends MouseEventHandler {
     public EventHandler<MouseEvent> getMousePressedOutlineEventHandler() {
         return event -> {
             if (event.isPrimaryButtonDown()) {
-                originalX = (int) event.getX();
-                originalY = (int) event.getY();
-
-                Rectangle rectangle = (Rectangle) event.getSource();
-
-                deltaX = (int) (originalX - rectangle.getX());
-                deltaY = (int) (originalY - rectangle.getY());
+                if (event.isShiftDown()) {
+                    shearEventHandler.getMousePressedOutlineEventHandler().handle(event);
+                } else {
+                    moveEventHandler.getMousePressedOutlineEventHandler().handle(event);
+                }
             }
         };
     }
@@ -94,33 +91,14 @@ public class SelectEventHandler extends MouseEventHandler {
     @Override
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
+            super.getMouseDraggedEventHandler().handle(event);
+
             if (event.isPrimaryButtonDown()) {
-                // Delegate event to Focus Outline for instant object move capabilities
-                if (!(event.getSource() instanceof Rectangle) || !((Rectangle) event.getSource()).isFocusOutline()) {
-                    GUIState guiState = mainController.getGUIController().getGuiState();
-
-                    FocusOutline focusOutline = guiState.getFocusOutline();
-                    Rectangle focusRectangle = focusOutline.getFocusRectangle();
-
-                    focusRectangle.fireEvent(event);
-
-                    return;
+                if (event.isShiftDown()) {
+                    shearEventHandler.getMouseDraggedEventHandler().handle(event);
+                } else {
+                    moveEventHandler.getMouseDraggedEventHandler().handle(event);
                 }
-
-                int x = (int) event.getX();
-                int y = (int) event.getY();
-
-                int xpos = x - deltaX;
-                int ypos = y - deltaY;
-
-                Object object = event.getSource();
-
-                Rectangle rectangle = (Rectangle) object;
-
-                rectangle.setX(xpos);
-                rectangle.setY(ypos);
-
-                mainScene.getStatusBar().setCoordinatesLabel(x, y);
             }
         };
     }

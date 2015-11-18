@@ -2,6 +2,7 @@ package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 
 import javafx.scene.Node;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Shear;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.CloneableNode;
@@ -185,6 +186,30 @@ public class Document {
 
         for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
             resizeAnchor.getTransforms().add(rotation);
+        }
+
+//        historyController.createHistoryPoint();
+    }
+
+    public void shearSelectedObject(double x, double y) {
+        GUIState guiState = mainController.getGUIController().getGuiState();
+
+        FocusOutline focusOutline = guiState.getFocusOutline();
+
+        Shear shearing = new Shear();
+        shearing.setX(x);
+        shearing.setY(y);
+
+        shearing.setPivotX(focusOutline.getRotateAnchor().getCenterX());
+        shearing.setPivotY(focusOutline.getRotateAnchor().getCenterY());
+
+        focusOutline.getFocusRectangle().getTransforms().add(shearing);
+        focusOutline.getRotateAnchor().getTransforms().add(shearing);
+
+        guiState.getSelectedObject().getTransforms().add(shearing);
+
+        for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
+            resizeAnchor.getTransforms().add(shearing);
         }
 
 //        historyController.createHistoryPoint();

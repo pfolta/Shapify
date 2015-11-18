@@ -47,6 +47,8 @@ public class ResizeEventHandler extends MouseEventHandler {
     @Override
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
+            super.getMouseDraggedEventHandler().handle(event);
+
             int x = (int) event.getX();
             int y = (int) event.getY();
 

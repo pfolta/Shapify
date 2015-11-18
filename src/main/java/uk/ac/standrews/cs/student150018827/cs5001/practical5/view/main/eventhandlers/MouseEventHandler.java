@@ -34,7 +34,14 @@ public abstract class MouseEventHandler {
 
     public abstract EventHandler<MouseEvent> getMousePressedEventHandler();
 
-    public abstract EventHandler<MouseEvent> getMouseDraggedEventHandler();
+    public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
+        return event -> {
+            int x = (int) event.getX();
+            int y = (int) event.getY();
+
+            mainScene.getStatusBar().setCoordinatesLabel(x, y);
+        };
+    }
 
     public abstract EventHandler<MouseEvent> getMouseReleasedEventHandler();
 
