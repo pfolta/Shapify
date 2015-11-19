@@ -32,6 +32,8 @@ public class SvgController {
 
         svgDocument = new Document();
         svgDocument.setRootElement(svgElement);
+
+        svgElement.setAttribute("version", "1.1");
     }
 
     public void setDimensions(int width, int height) {
