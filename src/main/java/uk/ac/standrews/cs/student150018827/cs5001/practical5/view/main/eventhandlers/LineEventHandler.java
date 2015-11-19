@@ -85,6 +85,7 @@ public class LineEventHandler extends MouseEventHandler {
             }
 
             mainScene.getStatusBar().setCoordinatesLabel(x, y);
+            changed = true;
         };
     }
 

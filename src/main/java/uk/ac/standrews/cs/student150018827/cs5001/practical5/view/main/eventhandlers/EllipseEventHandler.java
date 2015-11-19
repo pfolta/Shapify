@@ -95,6 +95,7 @@ public class EllipseEventHandler extends MouseEventHandler {
             }
 
             mainScene.getStatusBar().setCoordinatesLabel(x, y);
+            changed = true;
         };
     }
 

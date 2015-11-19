@@ -41,7 +41,8 @@ public class HistoryController {
 
             historyPointer--;
 
-            Document document = history.get(historyPointer).clone();
+            document = history.get(historyPointer).clone();
+
             mainController.getDocumentController().setDocument(document);
             guiState.setSelectedObject(null);
 
@@ -57,9 +58,9 @@ public class HistoryController {
         if (isRedoAvailable()) {
             historyPointer++;
 
-            Document document = history.get(historyPointer).clone();
-            mainController.getDocumentController().setDocument(document);
+            document = history.get(historyPointer).clone();
 
+            mainController.getDocumentController().setDocument(document);
             mainController.getGUIController().getGuiState().notifyObservers();
         }
     }

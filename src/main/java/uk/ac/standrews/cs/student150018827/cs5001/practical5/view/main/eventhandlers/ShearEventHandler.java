@@ -24,6 +24,8 @@ public class ShearEventHandler extends MouseEventHandler {
     @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
+            changed = false;
+
             if (event.isPrimaryButtonDown() && event.isShiftDown()) {
                 GUIState guiState = mainController.getGUIController().getGuiState();
 
@@ -39,6 +41,8 @@ public class ShearEventHandler extends MouseEventHandler {
 
     public EventHandler<MouseEvent> getMousePressedOutlineEventHandler() {
         return event -> {
+            changed = false;
+
             if (event.isPrimaryButtonDown()) {
                 originalX = (int) event.getX();
             }
@@ -65,6 +69,7 @@ public class ShearEventHandler extends MouseEventHandler {
                 double shearX = (x - originalX) / 1000.0;
 
                 document.shearSelectedObject(shearX, 0);
+                changed = true;
             }
         };
     }

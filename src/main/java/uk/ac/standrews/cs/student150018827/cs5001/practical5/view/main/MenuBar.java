@@ -280,7 +280,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         objectRotate90DegRightMenuItem.setDisable(true);
         objectRotate90DegRightMenuItem.setOnAction(event -> {
             Document document = mainController.getDocumentController().getDocument();
-            document.rotateSelectedObject(-90.0);
+            document.rotateSelectedObject(90.0);
         });
 
         objectRotate90DegLeftMenuItem = new MenuItem();
@@ -290,7 +290,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         objectRotate90DegLeftMenuItem.setDisable(true);
         objectRotate90DegLeftMenuItem.setOnAction(event -> {
             Document document = mainController.getDocumentController().getDocument();
-            document.rotateSelectedObject(90.0);
+            document.rotateSelectedObject(-90.0);
         });
 
         objectDeselectMenuItem = new MenuItem();

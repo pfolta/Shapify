@@ -31,6 +31,8 @@ public class ResizeEventHandler extends MouseEventHandler {
     @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
+            changed = false;
+
             mouseOriginalX = (int) event.getX();
             mouseOriginalY = (int) event.getY();
 
@@ -150,6 +152,8 @@ public class ResizeEventHandler extends MouseEventHandler {
                     break;
                 }
             }
+
+            changed = true;
         };
     }
 

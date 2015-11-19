@@ -22,6 +22,8 @@ public class RotateEventHandler extends MouseEventHandler {
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
             originalX = (int) event.getX();
+
+            changed = false;
         };
     }
 
@@ -34,6 +36,7 @@ public class RotateEventHandler extends MouseEventHandler {
             int angle = x - originalX;
 
             document.rotateSelectedObject(angle);
+            changed = true;
         };
     }
 

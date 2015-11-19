@@ -206,6 +206,8 @@ public class DocumentController {
             mainController.getDocumentController().addObject(clone);
             guiState.setSelectedObject(clone);
         }
+
+        HistoryController.getInstance(mainController).createHistoryPoint();
     }
 
     public void moveObjectToBottom(Node object) {

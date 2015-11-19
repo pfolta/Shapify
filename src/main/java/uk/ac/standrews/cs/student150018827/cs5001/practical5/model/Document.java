@@ -1,8 +1,13 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Shape;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Shear;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.CloneableNode;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
@@ -88,6 +93,7 @@ public class Document {
 
     public void addObject(Node object) {
         objects.add(object);
+        addPropertyChangedListener(object);
         notifyObservers();
     }
 
@@ -208,6 +214,24 @@ public class Document {
         }
 
         return clone;
+    }
+
+    public void addPropertyChangedListener(Node object) {
+        if (object instanceof Shape) {
+            Shape shape = (Shape) object;
+
+            shape.fillProperty().addListener((observable, oldValue, newValue) -> {
+                HistoryController.getInstance(mainController).createHistoryPoint();
+            });
+
+            shape.strokeProperty().addListener((observable, oldValue, newValue) -> {
+                HistoryController.getInstance(mainController).createHistoryPoint();
+            });
+
+            shape.strokeWidthProperty().addListener((observable, oldValue, newValue) -> {
+                HistoryController.getInstance(mainController).createHistoryPoint();
+            });
+        }
     }
 
 }

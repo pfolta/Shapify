@@ -33,6 +33,8 @@ public class MoveEventHandler extends MouseEventHandler {
     @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
+            changed = false;
+
             if (event.isPrimaryButtonDown()) {
                 GUIState guiState = mainController.getGUIController().getGuiState();
 
@@ -48,6 +50,8 @@ public class MoveEventHandler extends MouseEventHandler {
 
     public EventHandler<MouseEvent> getMousePressedOutlineEventHandler() {
         return event -> {
+            changed = false;
+
             if (event.isPrimaryButtonDown()) {
                 originalX = (int) event.getX();
                 originalY = (int) event.getY();
@@ -63,6 +67,8 @@ public class MoveEventHandler extends MouseEventHandler {
     @Override
     public EventHandler<MouseEvent> getMouseDraggedEventHandler() {
         return event -> {
+            super.getMouseDraggedEventHandler().handle(event);
+
             if (event.isPrimaryButtonDown()) {
                 // Delegate event to Focus Outline for instant object moving
                 if (!(event.getSource() instanceof Rectangle) || !((Rectangle) event.getSource()).isFocusOutline()) {
@@ -88,6 +94,8 @@ public class MoveEventHandler extends MouseEventHandler {
 
                 rectangle.setX(xpos);
                 rectangle.setY(ypos);
+
+                changed = true;
             }
         };
     }

@@ -16,6 +16,8 @@ public abstract class MouseEventHandler {
     protected MainScene mainScene;
     protected Document document;
 
+    protected boolean changed;
+
     public MouseEventHandler(MainController mainController) {
         this.mainController = mainController;
 
@@ -48,8 +50,10 @@ public abstract class MouseEventHandler {
     public EventHandler<MouseEvent> getMouseReleasedEventHandler() {
         return event -> {
             if (!(event.getSource() instanceof ArtBoard)) {
-                // Create History Point
-                HistoryController.getInstance(mainController).createHistoryPoint();
+                if (changed) {
+                    // Create History Point
+                    HistoryController.getInstance(mainController).createHistoryPoint();
+                }
             }
         };
     }
