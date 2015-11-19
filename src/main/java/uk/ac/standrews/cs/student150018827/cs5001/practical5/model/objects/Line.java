@@ -7,6 +7,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.SvgContr
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.util.ColorUtils;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.util.ShapeUtils;
 
+import java.lang.reflect.MalformedParametersException;
 import java.util.List;
 
 public class Line extends javafx.scene.shape.Line implements CloneableNode {
@@ -60,21 +61,29 @@ public class Line extends javafx.scene.shape.Line implements CloneableNode {
         return element;
     }
 
-    public void createFromSvg(Element element) {
-        this.setStartX(Double.parseDouble(element.getAttributeValue("x1")));
-        this.setStartY(Double.parseDouble(element.getAttributeValue("y1")));
-        this.setEndX(Double.parseDouble(element.getAttributeValue("x2")));
-        this.setEndY(Double.parseDouble(element.getAttributeValue("y2")));
+    public static Line createFromSvg(Element element) throws MalformedParametersException {
+        if (!element.getName().toLowerCase().trim().equals("line")) {
+            throw new MalformedParametersException("SVG Element is not a Line.");
+        }
 
-        this.setStroke(Color.web(element.getAttributeValue("stroke"), Double.parseDouble(element.getAttributeValue("stroke-opacity"))));
-        this.setStrokeWidth(Double.parseDouble(element.getAttributeValue("stroke-width")));
+        Line line = new Line();
+
+        line.setStartX(Double.parseDouble(element.getAttributeValue("x1")));
+        line.setStartY(Double.parseDouble(element.getAttributeValue("y1")));
+        line.setEndX(Double.parseDouble(element.getAttributeValue("x2")));
+        line.setEndY(Double.parseDouble(element.getAttributeValue("y2")));
+
+        line.setStroke(Color.web(element.getAttributeValue("stroke"), Double.parseDouble(element.getAttributeValue("stroke-opacity"))));
+        line.setStrokeWidth(Double.parseDouble(element.getAttributeValue("stroke-width")));
 
         String svgTransforms = element.getAttributeValue("transform");
 
         if (svgTransforms != null) {
             List<Transform> transforms = ShapeUtils.getTransformsFromSvg(svgTransforms);
-            this.getTransforms().addAll(transforms);
+            line.getTransforms().addAll(transforms);
         }
+
+        return line;
     }
 
 }

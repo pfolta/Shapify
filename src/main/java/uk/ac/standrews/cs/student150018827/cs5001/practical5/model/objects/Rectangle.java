@@ -7,6 +7,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.SvgContr
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.util.ColorUtils;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.util.ShapeUtils;
 
+import java.lang.reflect.MalformedParametersException;
 import java.util.List;
 
 public class Rectangle extends javafx.scene.shape.Rectangle implements CloneableNode {
@@ -67,23 +68,31 @@ public class Rectangle extends javafx.scene.shape.Rectangle implements Cloneable
         return element;
     }
 
-    public void createFromSvg(Element element) {
-        this.setX(Double.parseDouble(element.getAttributeValue("x")));
-        this.setY(Double.parseDouble(element.getAttributeValue("y")));
-        this.setWidth(Double.parseDouble(element.getAttributeValue("width")));
-        this.setHeight(Double.parseDouble(element.getAttributeValue("height")));
+    public static Rectangle createFromSvg(Element element) throws MalformedParametersException {
+        if (!element.getName().toLowerCase().trim().equals("rect")) {
+            throw new MalformedParametersException("SVG Element is not a Rectangle.");
+        }
 
-        this.setFill(Color.web(element.getAttributeValue("fill"), Double.parseDouble(element.getAttributeValue("fill-opacity"))));
+        Rectangle rectangle = new Rectangle();
 
-        this.setStroke(Color.web(element.getAttributeValue("stroke"), Double.parseDouble(element.getAttributeValue("stroke-opacity"))));
-        this.setStrokeWidth(Double.parseDouble(element.getAttributeValue("stroke-width")));
+        rectangle.setX(Double.parseDouble(element.getAttributeValue("x")));
+        rectangle.setY(Double.parseDouble(element.getAttributeValue("y")));
+        rectangle.setWidth(Double.parseDouble(element.getAttributeValue("width")));
+        rectangle.setHeight(Double.parseDouble(element.getAttributeValue("height")));
+
+        rectangle.setFill(Color.web(element.getAttributeValue("fill"), Double.parseDouble(element.getAttributeValue("fill-opacity"))));
+
+        rectangle.setStroke(Color.web(element.getAttributeValue("stroke"), Double.parseDouble(element.getAttributeValue("stroke-opacity"))));
+        rectangle.setStrokeWidth(Double.parseDouble(element.getAttributeValue("stroke-width")));
 
         String svgTransforms = element.getAttributeValue("transform");
 
         if (svgTransforms != null) {
             List<Transform> transforms = ShapeUtils.getTransformsFromSvg(svgTransforms);
-            this.getTransforms().addAll(transforms);
+            rectangle.getTransforms().addAll(transforms);
         }
+
+        return rectangle;
     }
 
     public void setFocusOutline(boolean focusOutline) {
