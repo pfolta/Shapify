@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import org.jdom2.JDOMException;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Image;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.about.AboutStage;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.exportbitmap.ExportBitmapStage;
@@ -141,13 +142,56 @@ public class GUIController {
         return guiState;
     }
 
+    public boolean importImage(Stage parent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image to Import");
+        fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
+
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("All Images (*.jpg, *.jpeg, *.gif, *.png)", "*.jpg", "*.JPG", "*.jpeg", "*.JPEG", "*.gif", "*.GIF", "*.png", "*.PNG"),
+            new FileChooser.ExtensionFilter("All Files (*.*)", "*.*"),
+            new FileChooser.ExtensionFilter("JPEG Image (*.jpg, *.jpeg)", "*.jpg", "*.JPG", "*.jpeg", "*.JPEG"),
+            new FileChooser.ExtensionFilter("GIF Image (*.gif)", "*.gif", "*.GIF"),
+            new FileChooser.ExtensionFilter("PNG Image (*.png)", "*.png", "*.PNG")
+        );
+
+        File file = fileChooser.showOpenDialog(parent);
+
+        if (file != null) {
+            if (file.getParentFile().isDirectory()) {
+                guiState.setLastUsedDirectory(file.getParentFile());
+            }
+
+            try {
+                DocumentController documentController = mainController.getDocumentController();
+                Document document = documentController.getDocument();
+
+                Image image = documentController.importImage(file);
+
+                guiState.setSelectedObject(image);
+                setSelectedTool(DrawTools.SELECT_TOOL);
+                document.notifyObservers();
+
+                return true;
+            } catch (IOException exception) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(parent);
+                alert.setContentText("An error occured while trying to load the image: " + exception.getMessage());
+
+                alert.showAndWait();
+            }
+        }
+
+        return false;
+    }
+
     public boolean openFile(Stage parent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File to Open");
         fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
 
         fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg"),
+            new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg", "*.SVG"),
             new FileChooser.ExtensionFilter("All Files (*.*)", "*.*")
         );
 
@@ -198,7 +242,7 @@ public class GUIController {
         fileChooser.setInitialFileName(mainController.getDocumentController().getDocument().getTitle() + ".svg");
 
         fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg"),
+            new FileChooser.ExtensionFilter("Scalable Vector Graphic (*.svg)", "*.svg", "*.SVG"),
             new FileChooser.ExtensionFilter("All Files (*.*)", "*.*")
         );
 
@@ -231,7 +275,7 @@ public class GUIController {
         fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
         fileChooser.setInitialFileName(mainController.getDocumentController().getDocument().getTitle() + ".png");
         fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("PNG Image (*.png)", "*.png")
+            new FileChooser.ExtensionFilter("PNG Image (*.png)", "*.png", "*.PNG")
         );
 
         File file = fileChooser.showSaveDialog(parent);

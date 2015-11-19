@@ -12,13 +12,7 @@ import java.util.List;
 
 public class Rectangle extends javafx.scene.shape.Rectangle implements CloneableNode {
 
-    private boolean focusOutline;
-
-    public Rectangle() {
-        super();
-
-        focusOutline = false;
-    }
+    private boolean focusOutline = false;
 
     @Override
     public Rectangle clone() {

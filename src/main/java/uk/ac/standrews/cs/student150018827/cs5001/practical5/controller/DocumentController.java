@@ -14,6 +14,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Image;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Line;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene;
@@ -21,6 +22,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Optional;
 
@@ -278,6 +280,24 @@ public class DocumentController {
         exportGroup.snapshot(snapshotParameters, image);
 
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+    }
+
+    public Image importImage(File file) throws IOException {
+        javafx.scene.image.Image img = new javafx.scene.image.Image(Files.newInputStream(file.toPath()));
+
+        Image image = new Image();
+        image.setImage(img);
+        image.setX(0);
+        image.setY(0);
+        image.setFitWidth(img.getWidth());
+        image.setFitHeight(img.getHeight());
+
+        addObject(image);
+
+        // Create History Point
+        HistoryController.getInstance(mainController).createHistoryPoint();
+
+        return image;
     }
 
 }

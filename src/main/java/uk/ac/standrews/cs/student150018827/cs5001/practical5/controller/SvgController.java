@@ -4,10 +4,12 @@ import javafx.scene.Node;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
+import org.jdom2.Namespace;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Ellipse;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Image;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Line;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 
@@ -20,6 +22,7 @@ import java.util.List;
 public class SvgController {
 
     public static final String SVG_NAMESPACE = "http://www.w3.org/2000/svg";
+    public static final Namespace XLINK_NAMESPACE = Namespace.getNamespace("xlink", "http://www.w3.org/1999/xlink");
 
     private Document svgDocument;
     private Element svgElement;
@@ -29,6 +32,7 @@ public class SvgController {
 
     public void createSVGDocument() {
         svgElement = new Element("svg", SVG_NAMESPACE);
+        svgElement.addNamespaceDeclaration(XLINK_NAMESPACE);
 
         svgDocument = new Document();
         svgDocument.setRootElement(svgElement);
@@ -77,6 +81,10 @@ public class SvgController {
                 element = ((Line) object).getSvgElement();
             }
 
+            if (object instanceof Image) {
+                element = ((Image) object).getSvgElement();
+            }
+
             if (element != null) {
                 svgElement.addContent(element);
             }
@@ -101,6 +109,10 @@ public class SvgController {
                 }
                 case "line": {
                     object = Line.createFromSvg(element);
+                    break;
+                }
+                case "image": {
+                    object = Image.createFromSvg(element);
                     break;
                 }
             }

@@ -12,10 +12,6 @@ import java.util.List;
 
 public class Ellipse extends javafx.scene.shape.Ellipse implements CloneableNode {
 
-    public Ellipse() {
-        super();
-    }
-
     @Override
     public Ellipse clone() {
         Ellipse clone = new Ellipse();

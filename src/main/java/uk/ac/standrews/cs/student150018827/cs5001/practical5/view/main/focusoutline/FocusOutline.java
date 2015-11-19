@@ -7,6 +7,7 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Image;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Rectangle;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.ContextEventHandler;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers.SelectEventHandler;
@@ -51,15 +52,12 @@ public class FocusOutline {
             focusRectangle.setY(selectedRectangle.getY());
             focusRectangle.setWidth(selectedRectangle.getWidth());
             focusRectangle.setHeight(selectedRectangle.getHeight());
-            focusRectangle.setRotate(selectedRectangle.getRotate());
 
             selectedRectangle.xProperty().bind(focusRectangle.xProperty());
             selectedRectangle.yProperty().bind(focusRectangle.yProperty());
 
             selectedRectangle.widthProperty().bind(focusRectangle.widthProperty());
             selectedRectangle.heightProperty().bind(focusRectangle.heightProperty());
-
-            selectedRectangle.rotateProperty().bind(focusRectangle.rotateProperty());
         }
 
         if (selectedObject instanceof Ellipse) {
@@ -69,15 +67,12 @@ public class FocusOutline {
             focusRectangle.setY(selectedEllipse.getCenterY() - selectedEllipse.getRadiusY());
             focusRectangle.setWidth(2 * selectedEllipse.getRadiusX());
             focusRectangle.setHeight(2 * selectedEllipse.getRadiusY());
-            focusRectangle.setRotate(selectedEllipse.getRotate());
 
             selectedEllipse.centerXProperty().bind(focusRectangle.xProperty().add(selectedEllipse.radiusXProperty()));
             selectedEllipse.centerYProperty().bind(focusRectangle.yProperty().add(selectedEllipse.radiusYProperty()));
 
             selectedEllipse.radiusXProperty().bind(focusRectangle.widthProperty().divide(2));
             selectedEllipse.radiusYProperty().bind(focusRectangle.heightProperty().divide(2));
-
-            selectedEllipse.rotateProperty().bind(focusRectangle.rotateProperty());
         }
 
         if (selectedObject instanceof Line) {
@@ -110,6 +105,21 @@ public class FocusOutline {
                 selectedLine.endYProperty().bind(focusRectangle.yProperty());
                 selectedLine.startYProperty().bind(focusRectangle.yProperty().add(focusRectangle.heightProperty()));
             }
+        }
+
+        if (selectedObject instanceof Image) {
+            Image selectedImage = (Image) selectedObject;
+
+            focusRectangle.setX(selectedImage.getX());
+            focusRectangle.setY(selectedImage.getY());
+            focusRectangle.setWidth(selectedImage.getFitWidth());
+            focusRectangle.setHeight(selectedImage.getFitHeight());
+
+            selectedImage.xProperty().bind(focusRectangle.xProperty());
+            selectedImage.yProperty().bind(focusRectangle.yProperty());
+
+            selectedImage.fitWidthProperty().bind(focusRectangle.widthProperty());
+            selectedImage.fitHeightProperty().bind(focusRectangle.heightProperty());
         }
 
         // Apply rotation to focus outline

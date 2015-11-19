@@ -51,6 +51,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
     private ToggleButton rectangleToolButton;
     private ToggleButton ellipseToolButton;
     private ToggleButton lineToolButton;
+    private Button imageToolButton;
 
     public ToolBar(MainController mainController) {
         super();
@@ -277,11 +278,17 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         lineToolButton.setToggleGroup(toolToggleGroup);
         lineToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
+        imageToolButton = new Button();
+        imageToolButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/image.png"))));
+        imageToolButton.setTooltip(new Tooltip("Import Image"));
+        imageToolButton.setOnAction(event -> mainController.getGUIController().importImage(mainController.getGUIController().getMainWindow().getMainStage()));
+
         getItems().addAll(
             selectToolButton,
             rectangleToolButton,
             ellipseToolButton,
-            lineToolButton
+            lineToolButton,
+            imageToolButton
         );
     }
 
@@ -297,6 +304,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         rectangleToolButton.setDisable(!activate);
         ellipseToolButton.setDisable(!activate);
         lineToolButton.setDisable(!activate);
+        imageToolButton.setDisable(!activate);
     }
 
     @Override

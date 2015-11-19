@@ -12,10 +12,6 @@ import java.util.List;
 
 public class Line extends javafx.scene.shape.Line implements CloneableNode {
 
-    public Line() {
-        super();
-    }
-
     @Override
     public Line clone() {
         Line clone = new Line();

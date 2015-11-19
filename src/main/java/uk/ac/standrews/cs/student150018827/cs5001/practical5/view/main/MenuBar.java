@@ -62,6 +62,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     private RadioMenuItem toolRectangleToolMenuItem;
     private RadioMenuItem toolEllipseToolMenuItem;
     private RadioMenuItem toolLineToolMenuItem;
+    private MenuItem toolImageMenuItem;
 
     private CheckMenuItem viewMenuBarMenuItem;
     private CheckMenuItem viewToolBarMenuItem;
@@ -411,6 +412,11 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolLineToolMenuItem.setToggleGroup(toolToggleGroup);
         toolLineToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
+        toolImageMenuItem = new MenuItem();
+        toolImageMenuItem.setText("Image");
+        toolImageMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/image.png"))));
+        toolImageMenuItem.setOnAction(event -> mainController.getGUIController().importImage(mainController.getGUIController().getMainWindow().getMainStage()));
+
         menu.getItems().addAll(
             toolFillColorPickerMenuItem,
             toolStrokeColorPickerMenuItem,
@@ -419,7 +425,8 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
             toolSelectToolMenuItem,
             toolRectangleToolMenuItem,
             toolEllipseToolMenuItem,
-            toolLineToolMenuItem
+            toolLineToolMenuItem,
+            toolImageMenuItem
         );
 
         return menu;
@@ -539,6 +546,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolRectangleToolMenuItem.setDisable(!activate);
         toolEllipseToolMenuItem.setDisable(!activate);
         toolLineToolMenuItem.setDisable(!activate);
+        toolImageMenuItem.setDisable(!activate);
 
         viewZoomInMenuItem.setDisable(!activate);
         viewZoomOutMenuItem.setDisable(!activate);
