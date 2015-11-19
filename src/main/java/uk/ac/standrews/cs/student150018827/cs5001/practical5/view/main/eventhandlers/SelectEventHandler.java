@@ -32,6 +32,8 @@ public class SelectEventHandler extends MouseEventHandler {
     @Override
     public EventHandler<MouseEvent> getMousePressedEventHandler() {
         return event -> {
+            changed = false;
+
             if (event.isPrimaryButtonDown()) {
                 GUIState guiState = mainController.getGUIController().getGuiState();
 
@@ -105,6 +107,8 @@ public class SelectEventHandler extends MouseEventHandler {
                     moveEventHandler.getMouseDraggedEventHandler().handle(event);
                 }
             }
+
+            changed = true;
         };
     }
 

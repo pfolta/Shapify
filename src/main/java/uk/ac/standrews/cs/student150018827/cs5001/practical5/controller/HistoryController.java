@@ -76,10 +76,8 @@ public class HistoryController {
 
     public void createHistoryPoint() {
         if (historyPointer != (history.size() - 1)) {
-            System.out.println("Need to restructure undo");
-
-            for (int i = historyPointer + 1; i <= history.size(); i++) {
-               history.remove(i);
+            while ((historyPointer + 1) < history.size()) {
+                history.remove(historyPointer + 1);
             }
         }
 
