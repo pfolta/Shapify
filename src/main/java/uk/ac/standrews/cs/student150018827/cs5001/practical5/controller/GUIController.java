@@ -161,7 +161,7 @@ public class GUIController {
         saveAsFile(parent);
     }
 
-    public void saveAsFile(Stage parent) {
+    public boolean saveAsFile(Stage parent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File to Save To");
         fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
@@ -175,8 +175,24 @@ public class GUIController {
         File file = fileChooser.showSaveDialog(parent);
 
         if (file != null) {
-            System.out.println("File selected: " + file);
+            if (file.getParentFile().isDirectory()) {
+                guiState.setLastUsedDirectory(file.getParentFile());
+            }
+
+            try {
+                mainController.getDocumentController().saveDocumentToSvg(file);
+
+                return true;
+            } catch (IOException exception) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(parent);
+                alert.setContentText("An error occured while trying to save the document: " + exception.getMessage());
+
+                alert.showAndWait();
+            }
         }
+
+        return false;
     }
 
     public boolean exportBitmap(Stage parent, double scaleFactor) {

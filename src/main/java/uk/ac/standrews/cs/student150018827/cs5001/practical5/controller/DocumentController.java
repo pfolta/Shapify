@@ -26,7 +26,6 @@ public class DocumentController {
 
     private MainController mainController;
 
-    private FileController fileController;
     private Document document;
 
     private GUIState guiState;
@@ -36,7 +35,6 @@ public class DocumentController {
     public DocumentController(MainController mainController) {
         this.mainController = mainController;
 
-        fileController = new FileController();
         mainScene = mainController.getGUIController().getMainWindow().getMainScene();
 
         guiState = mainController.getGUIController().getGuiState();
@@ -50,13 +48,21 @@ public class DocumentController {
         this.document = document;
     }
 
-    public Document loadDocumentFromFile(String path) throws IOException {
-        document = fileController.loadDocumentFromFile(path);
-        return document;
+    public Document loadDocumentFromSvg(File file) throws IOException {
+        return null;
     }
 
-    public void saveDocumentToFile() throws IOException {
-        fileController.saveDocument(document);
+    public void saveDocumentToSvg(File file) throws IOException {
+        SvgController svgController = mainController.getSvgController();
+
+        svgController.createSVGDocument();
+        svgController.setDimensions(document.getWidth(), document.getHeight());
+        svgController.setTitle(document.getTitle());
+        svgController.setObjects(document.getObjects());
+
+        svgController.output(file);
+
+        document.setSaved(true);
     }
 
     public Document createDocument() {
