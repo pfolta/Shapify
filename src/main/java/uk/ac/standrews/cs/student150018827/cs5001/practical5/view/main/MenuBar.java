@@ -116,6 +116,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         fileOpenMenuItem = new MenuItem();
         fileOpenMenuItem.setText("_Open...");
+        fileOpenMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/folder_page.png"))));
         fileOpenMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
         fileOpenMenuItem.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {
@@ -377,17 +378,18 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolStrokeWidthExtraThickMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.EXTRA_THICK));
 
         toolStrokeWidthMenu.getItems().addAll(
-            toolStrokeWidthNoneMenuItem,
-            toolStrokeWidthThinMenuItem,
-            toolStrokeWidthMediumMenuItem,
-            toolStrokeWidthThickMenuItem,
-            toolStrokeWidthExtraThickMenuItem
+                toolStrokeWidthNoneMenuItem,
+                toolStrokeWidthThinMenuItem,
+                toolStrokeWidthMediumMenuItem,
+                toolStrokeWidthThickMenuItem,
+                toolStrokeWidthExtraThickMenuItem
         );
 
         toolToggleGroup = new ToggleGroup();
 
         toolSelectToolMenuItem = new RadioMenuItem();
         toolSelectToolMenuItem.setText("Select");
+        toolSelectToolMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/cursor.png"))));
         toolSelectToolMenuItem.setToggleGroup(toolToggleGroup);
         toolSelectToolMenuItem.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.SELECT_TOOL));
 

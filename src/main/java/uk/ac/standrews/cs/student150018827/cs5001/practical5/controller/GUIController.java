@@ -165,6 +165,10 @@ public class GUIController {
                 document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
                 document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
                 document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
+                guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
+                guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
+                guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
+                guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
 
                 document.notifyObservers();
 

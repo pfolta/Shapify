@@ -82,7 +82,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         });
 
         openButton = new Button();
-        openButton.setText("Open...");
+        openButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/folder_page.png"))));
         openButton.setTooltip(new Tooltip("Open (Ctrl+O)"));
         openButton.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {
@@ -91,7 +91,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         });
 
         saveButton = new Button();
-        saveButton.setText("Save");
+        saveButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/diskette.png"))));
         saveButton.setTooltip(new Tooltip("Save (Ctrl+S)"));
         saveButton.setOnAction(event -> mainController.getGUIController().saveFile(mainController.getGUIController().getMainWindow().getMainStage()));
 
@@ -100,20 +100,20 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private void buildEditControls() {
         undoButton = new Button();
-        undoButton.setText("Undo");
+        undoButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/undo.png"))));
         undoButton.setTooltip(new Tooltip("Undo (Ctrl+Z)"));
         undoButton.setDisable(true);
         undoButton.setOnAction(event -> HistoryController.getInstance(mainController).undo());
 
         redoButton = new Button();
-        redoButton.setText("Redo");
+        redoButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/redo.png"))));
         redoButton.setDisable(true);
         redoButton.setTooltip(new Tooltip("Redo (Ctrl+Shift+Z)"));
         redoButton.setOnAction(event -> HistoryController.getInstance(mainController).redo());
 
         arrangeMenuButton = new MenuButton();
         arrangeMenuButton.setText("Arrange");
-        arrangeMenuButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/32x32/shape_move_back.png"))));
+        arrangeMenuButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_back.png"))));
         arrangeMenuButton.setDisable(true);
 
         moveToBottomMenuItem = new MenuItem();
@@ -204,7 +204,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
         strokeWidthMenuButton = new MenuButton();
         strokeWidthMenuButton.setText("Stroke Width");
-        strokeWidthMenuButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/32x32/border_weight.png"))));
+        strokeWidthMenuButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/border_weight.png"))));
         strokeWidthMenuButton.setDisable(true);
 
         strokeWidthToggleGroup = new ToggleGroup();
@@ -254,22 +254,26 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         toolToggleGroup = new ToggleGroup();
 
         selectToolButton = new ToggleButton();
-        selectToolButton.setText("Select");
+        selectToolButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/cursor.png"))));
+        selectToolButton.setTooltip(new Tooltip("Select and Transform Objects"));
         selectToolButton.setToggleGroup(toolToggleGroup);
         selectToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.SELECT_TOOL));
 
         rectangleToolButton = new ToggleButton();
-        rectangleToolButton.setText("Rectangle");
+        rectangleToolButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_square.png"))));
+        rectangleToolButton.setTooltip(new Tooltip("Draw Rectangles and Squares"));
         rectangleToolButton.setToggleGroup(toolToggleGroup);
         rectangleToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.RECTANGLE_TOOL));
 
         ellipseToolButton = new ToggleButton();
-        ellipseToolButton.setText("Ellipse");
+        ellipseToolButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/draw_ellipse.png"))));
+        ellipseToolButton.setTooltip(new Tooltip("Draw Ellipses and Circles"));
         ellipseToolButton.setToggleGroup(toolToggleGroup);
         ellipseToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.ELLIPSE_TOOL));
 
         lineToolButton = new ToggleButton();
-        lineToolButton.setText("Line");
+        lineToolButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/draw_line.png"))));
+        lineToolButton.setTooltip(new Tooltip("Draw Lines"));
         lineToolButton.setToggleGroup(toolToggleGroup);
         lineToolButton.setOnAction(event -> mainController.getGUIController().setSelectedTool(DrawTools.LINE_TOOL));
 
