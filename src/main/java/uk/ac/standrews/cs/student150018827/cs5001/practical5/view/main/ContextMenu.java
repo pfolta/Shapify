@@ -15,6 +15,8 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 
 public class ContextMenu extends javafx.scene.control.ContextMenu {
 
+    private MainController mainController;
+
     private MenuItem undoMenuItem;
     private MenuItem redoMenuItem;
 
@@ -33,18 +35,18 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
     public ContextMenu(MainController mainController) {
         super();
 
+        this.mainController = mainController;
+
         undoMenuItem = new MenuItem();
         undoMenuItem.setText("_Undo");
         undoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/undo.png"))));
         undoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
-        undoMenuItem.setDisable(!HistoryController.getInstance(mainController).isUndoAvailable());
         undoMenuItem.setOnAction(event -> HistoryController.getInstance(mainController).undo());
 
         redoMenuItem = new MenuItem();
         redoMenuItem.setText("_Redo");
         redoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/redo.png"))));
         redoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
-        redoMenuItem.setDisable(!HistoryController.getInstance(mainController).isRedoAvailable());
         redoMenuItem.setOnAction(event -> HistoryController.getInstance(mainController).redo());
 
         duplicateMenuItem = new MenuItem();
@@ -142,6 +144,14 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
             new SeparatorMenuItem(),
             deselectMenuItem
         );
+    }
+
+    @Override
+    public void show() {
+        super.show();
+
+        undoMenuItem.setDisable(!HistoryController.getInstance(mainController).isUndoAvailable());
+        redoMenuItem.setDisable(!HistoryController.getInstance(mainController).isRedoAvailable());
     }
 
 }

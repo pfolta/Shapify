@@ -61,6 +61,7 @@ public class HistoryController {
             document = history.get(historyPointer).clone();
 
             mainController.getDocumentController().setDocument(document);
+            mainController.getGUIController().setSelectedTool(mainController.getGUIController().getGuiState().getSelectedDrawTool());
             mainController.getGUIController().getGuiState().notifyObservers();
         }
     }
