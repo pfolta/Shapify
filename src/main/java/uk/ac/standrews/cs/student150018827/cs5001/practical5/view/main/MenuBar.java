@@ -379,11 +379,11 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         toolStrokeWidthExtraThickMenuItem.setOnAction(event -> mainController.getGUIController().getGuiState().setStrokeWidth(StrokeWidth.EXTRA_THICK));
 
         toolStrokeWidthMenu.getItems().addAll(
-                toolStrokeWidthNoneMenuItem,
-                toolStrokeWidthThinMenuItem,
-                toolStrokeWidthMediumMenuItem,
-                toolStrokeWidthThickMenuItem,
-                toolStrokeWidthExtraThickMenuItem
+            toolStrokeWidthNoneMenuItem,
+            toolStrokeWidthThinMenuItem,
+            toolStrokeWidthMediumMenuItem,
+            toolStrokeWidthThickMenuItem,
+            toolStrokeWidthExtraThickMenuItem
         );
 
         toolToggleGroup = new ToggleGroup();
@@ -558,6 +558,9 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
     @Override
     public void update() {
         GUIState guiState = mainController.getGUIController().getGuiState();
+
+        editUndoMenuItem.setDisable(!HistoryController.getInstance(mainController).isUndoAvailable());
+        editRedoMenuItem.setDisable(!HistoryController.getInstance(mainController).isRedoAvailable());
 
         toolFillColorPicker.setValue(guiState.getFillColor());
         toolStrokeColorPicker.setValue(guiState.getStrokeColor());

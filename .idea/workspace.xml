@@ -7,8 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6af774fd-4b81-4bc4-abe8-2be9505f97ef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/SelectEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/SelectEventHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CS5001-150018827-practical-05.iws" />
@@ -37,53 +38,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DocumentController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/DocumentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="209" column="75" selection-start-line="209" selection-start-column="75" selection-end-line="209" selection-end-column="75" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HistoryController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HistoryController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5179153">
-              <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MoveEventHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MoveEventHandler.java">
+      <file leaf-file-name="ToolBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="69" column="44" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
+              <caret line="314" column="96" selection-start-line="313" selection-start-column="8" selection-end-line="314" selection-end-column="96" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MouseEventHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MouseEventHandler.java">
+      <file leaf-file-name="MenuBar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+              <caret line="176" column="125" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="125" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RotateEventHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/RotateEventHandler.java">
+      <file leaf-file-name="ContextEventHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ContextEventHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="27" selection-start-line="37" selection-start-column="49" selection-end-line="38" selection-end-column="27" />
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContextMenu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Data.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="63" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="44" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -99,54 +118,36 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Document.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.60912055">
+              <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1259#1260#0" expanded="true" />
+                <element signature="e#1298#1299#0" expanded="true" />
+                <element signature="e#1418#1419#0" expanded="true" />
+                <element signature="e#1446#1447#0" expanded="true" />
+                <element signature="e#1581#1582#0" expanded="true" />
+                <element signature="e#1611#1612#0" expanded="true" />
+                <element signature="e#1893#1894#0" expanded="true" />
+                <element signature="e#1921#1922#0" expanded="true" />
+                <element signature="e#2051#2052#0" expanded="true" />
+                <element signature="e#2080#2081#0" expanded="true" />
+                <element signature="e#2654#2655#0" expanded="true" />
+                <element signature="e#2684#2685#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ShearEventHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ShearEventHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="71" column="31" selection-start-line="70" selection-start-column="56" selection-end-line="71" selection-end-column="31" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResizeEventHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ResizeEventHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUIController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/GUIController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="283" column="31" selection-start-line="283" selection-start-column="31" selection-end-line="283" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Document.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="95" column="42" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1377#1378#0" expanded="true" />
-                <element signature="e#1416#1417#0" expanded="true" />
-                <element signature="e#1699#1700#0" expanded="true" />
-                <element signature="e#1729#1730#0" expanded="true" />
-                <element signature="e#2011#2012#0" expanded="true" />
-                <element signature="e#2039#2040#0" expanded="true" />
-                <element signature="e#2169#2170#0" expanded="true" />
-                <element signature="e#2198#2199#0" expanded="true" />
-                <element signature="e#2772#2773#0" expanded="true" />
-                <element signature="e#2802#2803#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -207,9 +208,7 @@
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/SvgController.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Image.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/GUIController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/EllipseEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/LineEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ResizeEventHandler.java" />
@@ -217,13 +216,15 @@
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/DocumentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Ellipse.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/objects/Rectangle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MouseEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/MoveEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/RotateEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ShearEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/SelectEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java" />
       </list>
     </option>
   </component>
@@ -1229,13 +1230,7 @@
       <workItem from="1447930052816" duration="9963000" />
       <workItem from="1447951236511" duration="269000" />
       <workItem from="1447952257110" duration="3513000" />
-      <workItem from="1447957698456" duration="2204000" />
-    </task>
-    <task id="LOCAL-00013" summary="Added default file name for Save Dialogs">
-      <created>1446491164923</created>
-      <option name="number" value="00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1446491164923</updated>
+      <workItem from="1447957698456" duration="2724000" />
     </task>
     <task id="LOCAL-00014" summary="Created ArtBoard">
       <created>1446492570814</created>
@@ -1525,11 +1520,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447956460999</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Fixed Undo/Redo">
+      <created>1447961146587</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1447961146587</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107870000" />
+    <option name="totallyTimeSpent" value="108390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1024" extended-state="6" />
@@ -1574,7 +1575,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added selection and binding of lines to FocusOutline" />
     <MESSAGE value="Fixed an Export Bitmap Bug" />
     <MESSAGE value="Changed Design of Resize Anchors slightly" />
     <MESSAGE value="Added first attempt of rotating shapes" />
@@ -1599,7 +1599,8 @@
     <MESSAGE value="Updated Undo" />
     <MESSAGE value="Added Image Support" />
     <MESSAGE value="Improved History Handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved History Handling" />
+    <MESSAGE value="Fixed Undo/Redo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Undo/Redo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1724,13 +1725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ContextEventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/RectangleEventHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1744,13 +1738,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="35" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="44" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1773,13 +1760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="63" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -1844,30 +1824,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="115" column="26" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="282" column="42" selection-start-line="282" selection-start-column="42" selection-end-line="282" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="173" column="128" selection-start-line="173" selection-start-column="128" selection-end-line="173" selection-end-column="128" />
-          <folding />
+          <folding>
+            <element signature="e#2033#2034#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2117#2118#0" expanded="true" />
+            <element signature="e#2174#2175#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1906,7 +1868,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1925,26 +1887,6 @@
           <caret line="209" column="75" selection-start-line="209" selection-start-column="75" selection-end-line="209" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="95" column="42" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1377#1378#0" expanded="true" />
-            <element signature="e#1416#1417#0" expanded="true" />
-            <element signature="e#1699#1700#0" expanded="true" />
-            <element signature="e#1729#1730#0" expanded="true" />
-            <element signature="e#2011#2012#0" expanded="true" />
-            <element signature="e#2039#2040#0" expanded="true" />
-            <element signature="e#2169#2170#0" expanded="true" />
-            <element signature="e#2198#2199#0" expanded="true" />
-            <element signature="e#2772#2773#0" expanded="true" />
-            <element signature="e#2802#2803#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1999,9 +1941,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/controller/HistoryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5179153">
-          <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ToolBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="314" column="96" selection-start-line="313" selection-start-column="8" selection-end-line="314" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/eventhandlers/ContextEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/MenuBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="176" column="125" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="125" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/view/main/ContextMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/main/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="63" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/ac/standrews/cs/student150018827/cs5001/practical5/model/Document.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60912055">
+          <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1259#1260#0" expanded="true" />
+            <element signature="e#1298#1299#0" expanded="true" />
+            <element signature="e#1418#1419#0" expanded="true" />
+            <element signature="e#1446#1447#0" expanded="true" />
+            <element signature="e#1581#1582#0" expanded="true" />
+            <element signature="e#1611#1612#0" expanded="true" />
+            <element signature="e#1893#1894#0" expanded="true" />
+            <element signature="e#1921#1922#0" expanded="true" />
+            <element signature="e#2051#2052#0" expanded="true" />
+            <element signature="e#2080#2081#0" expanded="true" />
+            <element signature="e#2654#2655#0" expanded="true" />
+            <element signature="e#2684#2685#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

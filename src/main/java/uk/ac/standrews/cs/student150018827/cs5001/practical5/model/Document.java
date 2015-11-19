@@ -1,9 +1,6 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Shear;
@@ -199,6 +196,8 @@ public class Document {
     @Override
     public Document clone() {
         Document clone = new Document(this.mainController);
+
+        observers.forEach(clone::registerObserver);
 
         clone.setWidth(this.getWidth());
         clone.setHeight(this.getHeight());

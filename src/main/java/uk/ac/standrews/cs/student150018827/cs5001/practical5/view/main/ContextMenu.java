@@ -35,14 +35,16 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
 
         undoMenuItem = new MenuItem();
         undoMenuItem.setText("_Undo");
+        undoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/undo.png"))));
         undoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN));
-        undoMenuItem.setDisable(true);
+        undoMenuItem.setDisable(!HistoryController.getInstance(mainController).isUndoAvailable());
         undoMenuItem.setOnAction(event -> HistoryController.getInstance(mainController).undo());
 
         redoMenuItem = new MenuItem();
         redoMenuItem.setText("_Redo");
+        redoMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/redo.png"))));
         redoMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
-        redoMenuItem.setDisable(true);
+        redoMenuItem.setDisable(!HistoryController.getInstance(mainController).isRedoAvailable());
         redoMenuItem.setOnAction(event -> HistoryController.getInstance(mainController).redo());
 
         duplicateMenuItem = new MenuItem();
