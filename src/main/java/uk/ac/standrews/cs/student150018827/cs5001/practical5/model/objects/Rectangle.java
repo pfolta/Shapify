@@ -1,13 +1,13 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects;
 
 import javafx.scene.paint.Color;
-import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Shear;
 import javafx.scene.transform.Transform;
 import org.jdom2.Element;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.SvgController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.util.ColorUtils;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.util.ShapeUtils;
+
+import java.util.List;
 
 public class Rectangle extends javafx.scene.shape.Rectangle implements CloneableNode {
 
@@ -65,6 +65,25 @@ public class Rectangle extends javafx.scene.shape.Rectangle implements Cloneable
         }
 
         return element;
+    }
+
+    public void createFromSvg(Element element) {
+        this.setX(Double.parseDouble(element.getAttributeValue("x")));
+        this.setY(Double.parseDouble(element.getAttributeValue("y")));
+        this.setWidth(Double.parseDouble(element.getAttributeValue("width")));
+        this.setHeight(Double.parseDouble(element.getAttributeValue("height")));
+
+        this.setFill(Color.web(element.getAttributeValue("fill"), Double.parseDouble(element.getAttributeValue("fill-opacity"))));
+
+        this.setStroke(Color.web(element.getAttributeValue("stroke"), Double.parseDouble(element.getAttributeValue("stroke-opacity"))));
+        this.setStrokeWidth(Double.parseDouble(element.getAttributeValue("stroke-width")));
+
+        String svgTransforms = element.getAttributeValue("transform");
+
+        if (svgTransforms != null) {
+            List<Transform> transforms = ShapeUtils.getTransformsFromSvg(svgTransforms);
+            this.getTransforms().addAll(transforms);
+        }
     }
 
     public void setFocusOutline(boolean focusOutline) {

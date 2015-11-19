@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.jdom2.JDOMException;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
@@ -140,7 +141,7 @@ public class GUIController {
         return guiState;
     }
 
-    public void openFile(Stage parent) {
+    public boolean openFile(Stage parent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File to Open");
         fileChooser.setInitialDirectory(guiState.getLastUsedDirectory());
@@ -153,8 +154,35 @@ public class GUIController {
         File file = fileChooser.showOpenDialog(parent);
 
         if (file != null) {
-            System.out.println("File selected: " + file);
+            if (file.getParentFile().isDirectory()) {
+                guiState.setLastUsedDirectory(file.getParentFile());
+            }
+
+            try {
+                Document document = mainController.getDocumentController().loadDocumentFromSvg(file);
+
+                document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
+                document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
+                document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
+                document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
+                guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
+                guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
+                guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
+                guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
+
+                document.notifyObservers();
+
+                return true;
+            } catch (JDOMException | IOException exception) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(parent);
+                alert.setContentText("An error occured while trying to load the document: " + exception.getMessage());
+
+                alert.showAndWait();
+            }
         }
+
+        return false;
     }
 
     public void saveFile(Stage parent) {

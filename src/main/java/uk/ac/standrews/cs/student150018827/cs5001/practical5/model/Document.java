@@ -8,7 +8,6 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects.Clone
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.FocusOutline;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.focusoutline.ResizeAnchor;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,7 +19,6 @@ public class Document {
     private List<Observer> observers;
 
     private String title;
-    private Path file;
 
     private boolean isSaved;
 
@@ -52,15 +50,6 @@ public class Document {
 
     public void setTitle(String title) {
         this.title = title;
-        notifyObservers();
-    }
-
-    public Path getFile() {
-        return file;
-    }
-
-    public void setFile(Path file) {
-        this.file = file;
         notifyObservers();
     }
 

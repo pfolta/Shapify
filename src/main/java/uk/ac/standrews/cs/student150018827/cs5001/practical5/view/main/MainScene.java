@@ -163,7 +163,12 @@ public class MainScene extends Scene implements Observer {
         return artBoard;
     }
 
-    public void clearArtBoard() {
+    public void reset() {
+        clearArtBoard();
+        mainWindow.setTitle(null);
+    }
+
+    private void clearArtBoard() {
         artBoard = null;
         artBoardGroup.getChildren().clear();
     }

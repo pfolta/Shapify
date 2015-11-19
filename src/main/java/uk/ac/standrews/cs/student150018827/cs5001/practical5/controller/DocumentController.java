@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.jdom2.JDOMException;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.main.Data;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -20,6 +21,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.MainScene
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 public class DocumentController {
@@ -48,8 +50,19 @@ public class DocumentController {
         this.document = document;
     }
 
-    public Document loadDocumentFromSvg(File file) throws IOException {
-        return null;
+    public Document loadDocumentFromSvg(File file) throws IOException, JDOMException {
+        SvgController svgController = mainController.getSvgController();
+
+        svgController.input(file);
+
+        document = createDocument();
+        setDimensions(svgController.getWidth(), svgController.getHeight());
+        setTitle(svgController.getTitle());
+
+        List<Node> objects = svgController.getObjects();
+        objects.forEach(this::addObject);
+
+        return document;
     }
 
     public void saveDocumentToSvg(File file) throws IOException {
@@ -146,7 +159,7 @@ public class DocumentController {
                 HistoryController.getInstance(mainController).reset();
 
                 // Clear Artboard and clean up MainScene
-                mainScene.clearArtBoard();
+                mainScene.reset();
                 mainScene.getStatusBar().clear();
                 mainScene.hideBanner();
                 mainScene.activateControls(false);

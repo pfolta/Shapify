@@ -1,10 +1,13 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.model.objects;
 
 import javafx.scene.paint.Color;
+import javafx.scene.transform.Transform;
 import org.jdom2.Element;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.SvgController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.util.ColorUtils;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.util.ShapeUtils;
+
+import java.util.List;
 
 public class Ellipse extends javafx.scene.shape.Ellipse implements CloneableNode {
 
@@ -58,6 +61,25 @@ public class Ellipse extends javafx.scene.shape.Ellipse implements CloneableNode
         }
 
         return element;
+    }
+
+    public void createFromSvg(Element element) {
+        this.setCenterX(Double.parseDouble(element.getAttributeValue("cx")));
+        this.setCenterY(Double.parseDouble(element.getAttributeValue("cy")));
+        this.setRadiusX(Double.parseDouble(element.getAttributeValue("rx")));
+        this.setRadiusY(Double.parseDouble(element.getAttributeValue("ry")));
+
+        this.setFill(Color.web(element.getAttributeValue("fill"), Double.parseDouble(element.getAttributeValue("fill-opacity"))));
+
+        this.setStroke(Color.web(element.getAttributeValue("stroke"), Double.parseDouble(element.getAttributeValue("stroke-opacity"))));
+        this.setStrokeWidth(Double.parseDouble(element.getAttributeValue("stroke-width")));
+
+        String svgTransforms = element.getAttributeValue("transform");
+
+        if (svgTransforms != null) {
+            List<Transform> transforms = ShapeUtils.getTransformsFromSvg(svgTransforms);
+            this.getTransforms().addAll(transforms);
+        }
     }
 
 }
