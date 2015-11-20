@@ -83,8 +83,10 @@ public class DocumentController {
         document.setSaved(true);
     }
 
-    public Document createDocument() {
+    public Document createDocument(String title, int width, int height) {
         document = new Document(mainController);
+        setTitle(title);
+        setDimensions(width, height);
 
         HistoryController.getInstance(mainController).setDocument(document);
 
@@ -207,6 +209,17 @@ public class DocumentController {
             clone.setStartY(clone.getStartY() + Data.DUPLICATION_OFFSET_Y);
             clone.setEndX(clone.getEndX() + Data.DUPLICATION_OFFSET_X);
             clone.setEndY(clone.getEndY() + Data.DUPLICATION_OFFSET_Y);
+
+            mainController.getDocumentController().addObject(clone);
+            guiState.setSelectedObject(clone);
+        }
+
+        if (object instanceof Image) {
+            Image selectedImage = (Image) object;
+
+            Image clone = selectedImage.clone();
+            clone.setX(clone.getX() + Data.DUPLICATION_OFFSET_X);
+            clone.setY(clone.getY() + Data.DUPLICATION_OFFSET_Y);
 
             mainController.getDocumentController().addObject(clone);
             guiState.setSelectedObject(clone);

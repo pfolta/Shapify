@@ -12,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
@@ -121,9 +120,7 @@ public class NewDrawingScene extends Scene {
             int width = Integer.parseInt(widthTextField.getText());
             int height = Integer.parseInt(heightTextField.getText());
 
-            mainController.getDocumentController().createDocument();
-
-            Document document = mainController.getDocumentController().getDocument();
+            Document document = mainController.getDocumentController().createDocument(title, width, height);
             GUIState guiState = mainController.getGUIController().getGuiState();
 
             document.registerObserver(mainController.getGUIController().getMainWindow().getMainScene());
@@ -134,9 +131,6 @@ public class NewDrawingScene extends Scene {
             guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getMenuBar());
             guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
             guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
-
-            mainController.getDocumentController().setDimensions(width, height);
-            mainController.getDocumentController().setTitle(title);
 
             mainController.getGUIController().setSelectedTool(DrawTools.SELECT_TOOL);
 

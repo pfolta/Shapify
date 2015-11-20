@@ -20,9 +20,15 @@ public class Image extends ImageView implements CloneableNode {
 
     @Override
     public Image clone() {
+        try {
+            super.clone();
+        } catch (CloneNotSupportedException exception) {
+            exception.addSuppressed(new CloneNotSupportedException());
+        }
+
         Image clone = new Image();
 
-        clone.setImage(this.getImage());
+        clone.setImage(getImageFromBase64(getBase64Encoding()));
 
         clone.setX(this.getX());
         clone.setY(this.getY());
@@ -88,25 +94,25 @@ public class Image extends ImageView implements CloneableNode {
     private String getBase64Encoding() {
         String base64 = null;
 
-        try {
-            BufferedImage image = SwingFXUtils.fromFXImage(this.getImage(), null);
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ImageIO.write(image, "png", byteArrayOutputStream);
-            base64 = new String(Base64.getEncoder().encode(byteArrayOutputStream.toByteArray()));
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        } finally {
-            return base64;
+        if (this.getImage() != null) {
+            try {
+                BufferedImage image = SwingFXUtils.fromFXImage(this.getImage(), null);
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", byteArrayOutputStream);
+                base64 = new String(Base64.getEncoder().encode(byteArrayOutputStream.toByteArray()));
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
         }
+
+        return base64;
     }
 
     private static javafx.scene.image.Image getImageFromBase64(String base64) {
         base64 = base64.replace("data:image/png;base64,", "");
 
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(Base64.getDecoder().decode(base64));
-        javafx.scene.image.Image image = new javafx.scene.image.Image(byteArrayInputStream);
-
-        return image;
+        return new javafx.scene.image.Image(byteArrayInputStream);
     }
 
 }
