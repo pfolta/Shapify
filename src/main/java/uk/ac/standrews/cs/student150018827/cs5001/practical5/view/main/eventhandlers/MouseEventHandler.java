@@ -1,6 +1,5 @@
 package uk.ac.standrews.cs.student150018827.cs5001.practical5.view.main.eventhandlers;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryController;

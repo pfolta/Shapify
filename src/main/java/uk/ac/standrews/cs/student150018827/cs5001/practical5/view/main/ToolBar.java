@@ -165,13 +165,13 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
         rotate90DegRightMenuItem.setText("Rotate 90° _Right");
         rotate90DegRightMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.RIGHT, KeyCombination.CONTROL_DOWN));
         rotate90DegRightMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_clockwise.png"))));
-        rotate90DegRightMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(90.0));
+        rotate90DegRightMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(90.0, true));
 
         rotate90DegLeftMenuItem = new MenuItem();
         rotate90DegLeftMenuItem.setText("Rotate 90° _Left");
         rotate90DegLeftMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.LEFT, KeyCombination.CONTROL_DOWN));
         rotate90DegLeftMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_anticlockwise.png"))));
-        rotate90DegLeftMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(-90.0));
+        rotate90DegLeftMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(-90.0, true));
 
         arrangeMenuButton.getItems().addAll(
             moveToBottomMenuItem,

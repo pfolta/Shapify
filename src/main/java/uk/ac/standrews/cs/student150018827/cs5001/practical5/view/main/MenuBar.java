@@ -278,20 +278,14 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
         objectRotate90DegRightMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.RIGHT, KeyCombination.CONTROL_DOWN));
         objectRotate90DegRightMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_clockwise.png"))));
         objectRotate90DegRightMenuItem.setDisable(true);
-        objectRotate90DegRightMenuItem.setOnAction(event -> {
-            Document document = mainController.getDocumentController().getDocument();
-            document.rotateSelectedObject(90.0);
-        });
+        objectRotate90DegRightMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(90.0, true));
 
         objectRotate90DegLeftMenuItem = new MenuItem();
         objectRotate90DegLeftMenuItem.setText("Rotate 90° _Left");
         objectRotate90DegLeftMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.LEFT, KeyCombination.CONTROL_DOWN));
         objectRotate90DegLeftMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_rotate_anticlockwise.png"))));
         objectRotate90DegLeftMenuItem.setDisable(true);
-        objectRotate90DegLeftMenuItem.setOnAction(event -> {
-            Document document = mainController.getDocumentController().getDocument();
-            document.rotateSelectedObject(-90.0);
-        });
+        objectRotate90DegLeftMenuItem.setOnAction(event -> mainController.getDocumentController().getDocument().rotateSelectedObject(-90.0, true));
 
         objectDeselectMenuItem = new MenuItem();
         objectDeselectMenuItem.setText("D_eselect");

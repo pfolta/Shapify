@@ -150,7 +150,7 @@ public class Document {
         notifyObservers();
     }
 
-    public void rotateSelectedObject(double angle) {
+    public void rotateSelectedObject(double angle, boolean createHistoryPoint) {
         GUIState guiState = mainController.getGUIController().getGuiState();
 
         FocusOutline focusOutline = guiState.getFocusOutline();
@@ -168,6 +168,10 @@ public class Document {
 
         for (ResizeAnchor resizeAnchor : focusOutline.getResizeAnchors()) {
             resizeAnchor.getTransforms().add(rotation);
+        }
+
+        if (createHistoryPoint) {
+            HistoryController.getInstance(mainController).createHistoryPoint();
         }
     }
 
