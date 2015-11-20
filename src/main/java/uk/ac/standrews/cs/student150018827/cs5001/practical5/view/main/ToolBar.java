@@ -74,7 +74,7 @@ public class ToolBar extends javafx.scene.control.ToolBar implements Observer {
 
     private void buildFileControls() {
         newButton = new Button();
-        newButton.setText("New");
+        newButton.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/page.png"))));
         newButton.setTooltip(new Tooltip("New (Ctrl+N)"));
         newButton.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {

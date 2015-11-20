@@ -108,6 +108,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         fileNewMenuItem = new MenuItem();
         fileNewMenuItem.setText("_New");
+        fileNewMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/page.png"))));
         fileNewMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
         fileNewMenuItem.setOnAction(event -> {
             if (mainController.getDocumentController().closeDocument()) {
@@ -216,6 +217,7 @@ public class MenuBar extends javafx.scene.control.MenuBar implements Observer {
 
         objectRemoveMenuItem = new MenuItem();
         objectRemoveMenuItem.setText("_Remove");
+        objectRemoveMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/delete.png"))));
         objectRemoveMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.DELETE));
         objectRemoveMenuItem.setDisable(true);
         objectRemoveMenuItem.setOnAction(event -> {

@@ -62,6 +62,7 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
 
         removeMenuItem = new MenuItem();
         removeMenuItem.setText("_Remove");
+        removeMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/delete.png"))));
         removeMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.DELETE));
         removeMenuItem.setOnAction(event -> {
             GUIState guiState = mainController.getGUIController().getGuiState();
