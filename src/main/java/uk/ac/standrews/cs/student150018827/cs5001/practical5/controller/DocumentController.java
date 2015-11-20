@@ -57,7 +57,10 @@ public class DocumentController {
 
         svgController.input(file);
 
-        document = createDocument();
+        // Create Document
+        document = new Document(mainController);
+        HistoryController.getInstance(mainController).setDocument(document);
+
         setDimensions(svgController.getWidth(), svgController.getHeight());
         setTitle(svgController.getTitle());
 
@@ -83,8 +86,10 @@ public class DocumentController {
     public Document createDocument() {
         document = new Document(mainController);
 
-        HistoryController.getInstance(mainController).reset();
         HistoryController.getInstance(mainController).setDocument(document);
+
+        // Create History Point
+        HistoryController.getInstance(mainController).createHistoryPoint();
 
         return document;
     }

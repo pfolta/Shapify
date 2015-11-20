@@ -21,6 +21,8 @@ public class GUIState {
 
     private double zoomLevel;
 
+    private File file;
+
     private File lastUsedDirectory;
 
     private DrawTools selectedDrawTool;
@@ -59,6 +61,14 @@ public class GUIState {
 
     public void setLastUsedDirectory(File lastUsedDirectory) {
         this.lastUsedDirectory = lastUsedDirectory;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 
     public Node getSelectedObject() {

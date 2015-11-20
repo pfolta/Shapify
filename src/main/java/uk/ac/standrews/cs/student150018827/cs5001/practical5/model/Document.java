@@ -236,14 +236,17 @@ public class Document {
             Shape shape = (Shape) object;
 
             shape.fillProperty().addListener((observable, oldValue, newValue) -> {
+                setSaved(false);
                 HistoryController.getInstance(mainController).createHistoryPoint();
             });
 
             shape.strokeProperty().addListener((observable, oldValue, newValue) -> {
+                setSaved(false);
                 HistoryController.getInstance(mainController).createHistoryPoint();
             });
 
             shape.strokeWidthProperty().addListener((observable, oldValue, newValue) -> {
+                setSaved(false);
                 HistoryController.getInstance(mainController).createHistoryPoint();
             });
         }

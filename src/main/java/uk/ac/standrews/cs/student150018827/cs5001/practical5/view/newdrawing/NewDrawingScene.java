@@ -16,6 +16,7 @@ import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.HistoryC
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.controller.MainController;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.Document;
 import uk.ac.standrews.cs.student150018827.cs5001.practical5.model.GUIState;
+import uk.ac.standrews.cs.student150018827.cs5001.practical5.view.DrawTools;
 
 import java.util.InputMismatchException;
 
@@ -137,7 +138,7 @@ public class NewDrawingScene extends Scene {
             mainController.getDocumentController().setDimensions(width, height);
             mainController.getDocumentController().setTitle(title);
 
-            HistoryController.getInstance(mainController).createHistoryPoint();
+            mainController.getGUIController().setSelectedTool(DrawTools.SELECT_TOOL);
 
             close();
         } catch (InputMismatchException exception) {

@@ -75,7 +75,7 @@ public class GUIController {
 
         switch (selectedDrawTool) {
             case SELECT_TOOL: {
-                getMainWindow().getMainScene().hideBanner();
+                getMainWindow().getMainScene().showBanner("Hold SHIFT down while dragging an object to shear it.");
                 mouseEventHandler = new SelectEventHandler(mainController);
 
                 artBoard.setCursor(Cursor.DEFAULT);
@@ -214,9 +214,15 @@ public class GUIController {
                 guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getToolBar());
                 guiState.registerObserver(mainController.getGUIController().getMainWindow().getMainScene().getStatusBar());
 
+                mainController.getDocumentController().getDocument().setSaved(true);
+                guiState.setFile(file);
+
                 document.notifyObservers();
 
                 setSelectedTool(DrawTools.SELECT_TOOL);
+
+                // Create History Point
+                HistoryController.getInstance(mainController).createHistoryPoint();
 
                 return true;
             } catch (JDOMException | IOException exception) {
@@ -231,8 +237,27 @@ public class GUIController {
         return false;
     }
 
-    public void saveFile(Stage parent) {
-        saveAsFile(parent);
+    public boolean saveFile(Stage parent) {
+        if (guiState.getFile() != null) {
+            try {
+                mainController.getDocumentController().saveDocumentToSvg(guiState.getFile());
+                mainController.getDocumentController().getDocument().setSaved(true);
+
+                return true;
+            } catch (IOException exception) {
+                mainController.getDocumentController().getDocument().setSaved(false);
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(parent);
+                alert.setContentText("An error occured while trying to save the document: " + exception.getMessage());
+
+                alert.showAndWait();
+            }
+
+            return false;
+        }
+
+        return saveAsFile(parent);
     }
 
     public boolean saveAsFile(Stage parent) {
@@ -256,8 +281,13 @@ public class GUIController {
             try {
                 mainController.getDocumentController().saveDocumentToSvg(file);
 
+                guiState.setFile(file);
+                mainController.getDocumentController().getDocument().setSaved(true);
+
                 return true;
             } catch (IOException exception) {
+                mainController.getDocumentController().getDocument().setSaved(false);
+
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.initOwner(parent);
                 alert.setContentText("An error occured while trying to save the document: " + exception.getMessage());
