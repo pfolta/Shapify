@@ -72,6 +72,7 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
 
         moveToBottomMenuItem = new MenuItem();
         moveToBottomMenuItem.setText("Move to Bottom");
+        moveToBottomMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_back.png"))));
         moveToBottomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.END));
         moveToBottomMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
@@ -82,6 +83,7 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
 
         moveDownMenuItem = new MenuItem();
         moveDownMenuItem.setText("Move Down");
+        moveDownMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_backwards.png"))));
         moveDownMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_DOWN));
         moveDownMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
@@ -92,6 +94,7 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
 
         moveUpMenuItem = new MenuItem();
         moveUpMenuItem.setText("Move Up");
+        moveUpMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_forwards.png"))));
         moveUpMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.PAGE_UP));
         moveUpMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();
@@ -102,6 +105,7 @@ public class ContextMenu extends javafx.scene.control.ContextMenu {
 
         moveToTopMenuItem = new MenuItem();
         moveToTopMenuItem.setText("Move to Top");
+        moveToTopMenuItem.setGraphic(new ImageView(new Image(ClassLoader.getSystemResourceAsStream("icons/16x16/shape_move_front.png"))));
         moveToTopMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.HOME));
         moveToTopMenuItem.setOnAction(event -> {
             DocumentController documentController = mainController.getDocumentController();

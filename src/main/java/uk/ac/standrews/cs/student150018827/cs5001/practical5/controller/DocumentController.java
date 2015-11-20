@@ -278,6 +278,17 @@ public class DocumentController {
 
                 exportGroup.getChildren().add(clone);
             }
+
+            if (object instanceof Image) {
+                Image clone = ((Image) object).clone();
+
+                clone.setX(scaleFactor * clone.getX());
+                clone.setY(scaleFactor * clone.getY());
+                clone.setFitWidth(scaleFactor * clone.getFitWidth());
+                clone.setFitHeight(scaleFactor * clone.getFitHeight());
+
+                exportGroup.getChildren().add(clone);
+            }
         }
 
         SnapshotParameters snapshotParameters = new SnapshotParameters();

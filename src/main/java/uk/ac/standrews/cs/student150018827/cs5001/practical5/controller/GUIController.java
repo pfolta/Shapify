@@ -228,7 +228,7 @@ public class GUIController {
             } catch (JDOMException | IOException exception) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.initOwner(parent);
-                alert.setContentText("An error occured while trying to load the document: " + exception.getMessage());
+                alert.setContentText("An error occurred while trying to load the document: " + exception.getMessage());
 
                 alert.showAndWait();
             }
@@ -248,7 +248,7 @@ public class GUIController {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.initOwner(parent);
-                alert.setContentText("An error occured while trying to save the document: " + exception.getMessage());
+                alert.setContentText("An error occurred while trying to save the document: " + exception.getMessage());
 
                 alert.showAndWait();
             }
@@ -288,7 +288,7 @@ public class GUIController {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.initOwner(parent);
-                alert.setContentText("An error occured while trying to save the document: " + exception.getMessage());
+                alert.setContentText("An error occurred while trying to save the document: " + exception.getMessage());
 
                 alert.showAndWait();
             }
@@ -320,7 +320,7 @@ public class GUIController {
             } catch (IOException exception) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.initOwner(parent);
-                alert.setContentText("An error occured while trying to save the exported image: " + exception.getMessage());
+                alert.setContentText("An error occurred while trying to save the exported image: " + exception.getMessage());
 
                 alert.showAndWait();
             }
