@@ -241,7 +241,6 @@ public class GUIController {
         if (guiState.getFile() != null) {
             try {
                 mainController.getDocumentController().saveDocumentToSvg(guiState.getFile());
-                mainController.getDocumentController().getDocument().setSaved(true);
 
                 return true;
             } catch (IOException exception) {
@@ -282,7 +281,6 @@ public class GUIController {
                 mainController.getDocumentController().saveDocumentToSvg(file);
 
                 guiState.setFile(file);
-                mainController.getDocumentController().getDocument().setSaved(true);
 
                 return true;
             } catch (IOException exception) {
