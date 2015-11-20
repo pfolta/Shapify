@@ -117,6 +117,9 @@ public class Document {
             Collections.swap(objects, index, index - 1);
         }
 
+        // Create History Point
+        HistoryController.getInstance(mainController).createHistoryPoint();
+
         notifyObservers();
     }
 
@@ -125,6 +128,9 @@ public class Document {
 
         if (index > 0) {
             Collections.swap(objects, index, index - 1);
+
+            // Create History Point
+            HistoryController.getInstance(mainController).createHistoryPoint();
 
             notifyObservers();
         }
@@ -136,6 +142,9 @@ public class Document {
         if (index < objects.size() - 1) {
             Collections.swap(objects, index, index + 1);
 
+            // Create History Point
+            HistoryController.getInstance(mainController).createHistoryPoint();
+
             notifyObservers();
         }
     }
@@ -146,6 +155,9 @@ public class Document {
         while ((index = objects.indexOf(object)) < objects.size() - 1) {
             Collections.swap(objects, index, index + 1);
         }
+
+        // Create History Point
+        HistoryController.getInstance(mainController).createHistoryPoint();
 
         notifyObservers();
     }
