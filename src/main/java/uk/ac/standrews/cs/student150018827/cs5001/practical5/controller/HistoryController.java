@@ -82,6 +82,11 @@ public class HistoryController {
             }
         }
 
+        if (historyPointer >= 0) {
+            // Set File to Unsaved
+            mainController.getDocumentController().getDocument().setSaved(false);
+        }
+
         Document clone = document.clone();
         history.add(clone);
         historyPointer++;
