@@ -31,6 +31,7 @@ public class Ellipse extends javafx.scene.shape.Ellipse implements CloneableNode
         clone.setOnMousePressed(this.getOnMousePressed());
         clone.setOnMouseDragged(this.getOnMouseDragged());
         clone.setOnMouseReleased(this.getOnMouseReleased());
+        clone.setOnContextMenuRequested(this.getOnContextMenuRequested());
 
         return clone;
     }

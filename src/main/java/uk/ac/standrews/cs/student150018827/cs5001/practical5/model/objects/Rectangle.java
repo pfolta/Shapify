@@ -33,6 +33,7 @@ public class Rectangle extends javafx.scene.shape.Rectangle implements Cloneable
         clone.setOnMousePressed(this.getOnMousePressed());
         clone.setOnMouseDragged(this.getOnMouseDragged());
         clone.setOnMouseReleased(this.getOnMouseReleased());
+        clone.setOnContextMenuRequested(this.getOnContextMenuRequested());
 
         return clone;
     }

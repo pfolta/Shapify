@@ -30,6 +30,7 @@ public class Line extends javafx.scene.shape.Line implements CloneableNode {
         clone.setOnMousePressed(this.getOnMousePressed());
         clone.setOnMouseDragged(this.getOnMouseDragged());
         clone.setOnMouseReleased(this.getOnMouseReleased());
+        clone.setOnContextMenuRequested(this.getOnContextMenuRequested());
 
         return clone;
     }

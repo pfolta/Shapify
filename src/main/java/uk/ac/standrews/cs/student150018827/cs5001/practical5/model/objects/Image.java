@@ -35,6 +35,7 @@ public class Image extends ImageView implements CloneableNode {
         clone.setOnMousePressed(this.getOnMousePressed());
         clone.setOnMouseDragged(this.getOnMouseDragged());
         clone.setOnMouseReleased(this.getOnMouseReleased());
+        clone.setOnContextMenuRequested(this.getOnContextMenuRequested());
 
         return clone;
     }
