@@ -1,3 +1,6 @@
-/.idea/workspace.xml
-/out
+# IntelliJ Project Files
+*.iml
+/.idea
+
+# Compiled Java Classes
 *.class
