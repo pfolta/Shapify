@@ -7,6 +7,9 @@
 /.idea
 /*.iml
 
+# Eclipse Project Files
+/.project
+
 # Gradle Build Output
 /build
 /target
