@@ -1,6 +1,7 @@
 # OS Ignore Files
 **/.DS_Store
 **/Thumbs.db
+.classpath
 
 # IntelliJ Project Files
 /.idea
@@ -8,3 +9,4 @@
 
 # Gradle Build Output
 /build
+/target
